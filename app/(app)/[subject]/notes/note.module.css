@@ -1,0 +1,637 @@
+/* ── Single note article (reading layout) ─────────────────────────────
+   Scroll container + sticky chrome (progress, section jump) live on the shell. */
+
+.articleWrap {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .articleWrap {
+    scroll-behavior: auto;
+  }
+
+  .readProgressFill {
+    transition: none;
+  }
+}
+
+.articleStickyHead {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  flex-shrink: 0;
+  padding: var(--sp-2) clamp(var(--sp-2), 2vw, var(--sp-4)) var(--sp-3);
+  margin: 0 0 var(--sp-1);
+  background: color-mix(in srgb, var(--bg) 92%, var(--surface));
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+}
+
+.readProgressTrack {
+  height: 3px;
+  border-radius: var(--r-pill);
+  background: var(--hover-fill-strong);
+  overflow: hidden;
+  margin-bottom: var(--sp-2);
+}
+
+.readProgressFill {
+  height: 100%;
+  width: 100%;
+  transform-origin: left center;
+  border-radius: inherit;
+  background: var(--accent);
+  transition: transform 140ms ease-out;
+}
+
+.sectionJump {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2) var(--sp-3);
+}
+
+.sectionJumpLabel {
+  font-size: var(--fs-label-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.sectionJumpPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1);
+}
+
+.sectionJumpPill,
+.sectionJumpPillOn {
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: var(--fs-label-sm);
+  font-weight: 500;
+  font-family: inherit;
+  padding: 6px 12px;
+  border-radius: var(--r-pill);
+  transition: background 100ms ease, color 100ms ease, border-color 100ms ease;
+}
+
+.sectionJumpPill:hover {
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+  color: var(--text);
+}
+
+.sectionJumpPillOn {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+  background: var(--accent-subtle);
+  color: var(--accent);
+}
+
+.article {
+  flex: 1;
+  min-height: 0;
+  max-width: min(60rem, 100%);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 clamp(var(--sp-2), 2vw, var(--sp-4)) var(--sp-5);
+}
+
+@media (max-width: 760px) {
+  .articleStickyHead {
+    padding-inline: var(--sp-3);
+  }
+
+  .sectionJump {
+    display: grid;
+    gap: var(--sp-2);
+  }
+
+  .sectionJumpPills {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  .sectionJumpPills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sectionJumpPill,
+  .sectionJumpPillOn {
+    flex: 0 0 auto;
+    min-height: 40px;
+  }
+
+  .article {
+    padding-inline: var(--sp-3);
+  }
+
+  .title {
+    font-size: clamp(1.35rem, 8vw, var(--fs-display));
+  }
+
+  .majorSurface {
+    padding: var(--sp-3);
+    border-radius: var(--r-md);
+  }
+}
+
+.articleHeader {
+  margin-bottom: var(--sp-3);
+  padding-bottom: var(--sp-3);
+  border-bottom: 1px solid var(--border);
+}
+
+.kicker {
+  margin: 0 0 var(--sp-2);
+  font-size: var(--fs-label-sm);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.metaRow {
+  margin: 0 0 var(--sp-2);
+  font-size: var(--fs-label-sm);
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.title {
+  margin: 0 0 var(--sp-2);
+  font-size: var(--fs-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: var(--lh-snug);
+  color: var(--text);
+}
+
+.topicLine {
+  margin: 0;
+  font-size: var(--fs-body);
+  color: var(--text-muted);
+  line-height: var(--lh-relaxed);
+}
+
+/* ── Fixed note page regions (syllabus / pitfalls / examples / self-test) ─ */
+
+.majorSection {
+  margin-bottom: var(--sp-5);
+}
+
+.majorSurface {
+  padding: var(--sp-4) var(--sp-4);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: 0 1px 0 var(--hover-fill);
+}
+
+.majorSurfacePitfalls {
+  background: color-mix(in srgb, var(--danger) 6%, var(--surface));
+  border-color: color-mix(in srgb, var(--danger) 22%, var(--border));
+}
+
+.majorHeading {
+  margin: 0 0 var(--sp-2);
+  font-size: var(--fs-heading);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: var(--lh-snug);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  scroll-margin-top: var(--sp-4);
+}
+
+.majorIcon {
+  flex-shrink: 0;
+  color: var(--accent);
+  opacity: 0.92;
+}
+
+.majorLead {
+  margin: 0 0 var(--sp-4);
+  font-size: var(--fs-body);
+  line-height: var(--lh-relaxed);
+  color: var(--text-muted);
+}
+
+.majorLeadMuted {
+  margin: 0 0 var(--sp-3);
+  font-size: var(--fs-label);
+  line-height: var(--lh-relaxed);
+  color: var(--text-muted);
+}
+
+.bodyProse .bodyP:last-child {
+  margin-bottom: 0;
+}
+
+/* Collapsible syllabus blocks */
+.syStack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.syDetails {
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: color-mix(in srgb, var(--bg) 55%, var(--surface));
+  overflow: hidden;
+  scroll-margin-top: var(--sp-5);
+}
+
+.sySummary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-3);
+  transition: background 100ms ease;
+}
+
+.sySummary::-webkit-details-marker {
+  display: none;
+}
+
+.sySummary:hover {
+  background: var(--hover-fill);
+}
+
+.syChevron {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--accent);
+  transition: transform 160ms ease;
+}
+
+.syDetails[open] .syChevron {
+  transform: rotate(180deg);
+}
+
+.sySummaryText {
+  margin: 0;
+  flex: 1;
+  font-size: var(--fs-body-lg);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: var(--lh-snug);
+  color: var(--text);
+}
+
+.syPanel {
+  padding: 0 var(--sp-3) var(--sp-3);
+  border-top: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+}
+
+.syPanel .bodyProse {
+  padding-top: var(--sp-2);
+}
+
+.pitfallsPanel {
+  padding: var(--sp-4);
+  border-radius: var(--r-md);
+  border: 1px solid color-mix(in srgb, var(--danger) 22%, var(--border));
+  border-left: 4px solid var(--danger);
+  background: color-mix(in srgb, var(--danger) 7%, var(--surface));
+}
+
+.pitfallsIntro {
+  margin: 0 0 var(--sp-3);
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-relaxed);
+  color: var(--text);
+}
+
+.pitfallsList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-relaxed);
+  color: var(--text);
+}
+
+.pitfallsList li {
+  position: relative;
+  margin-bottom: var(--sp-3);
+  padding-left: var(--sp-5);
+}
+
+.pitfallsList li:last-child {
+  margin-bottom: 0;
+}
+
+.pitfallsList li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--danger) 45%, transparent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--danger) 14%, var(--surface));
+}
+
+.majorIconPitfalls {
+  color: var(--danger);
+  opacity: 1;
+}
+
+.examplesStack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.exampleCard {
+  position: relative;
+  padding: var(--sp-4) var(--sp-4) var(--sp-4) calc(var(--sp-4) + 4px);
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-panel);
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.exampleCard:hover {
+  border-color: color-mix(in srgb, var(--accent) 22%, var(--border));
+  box-shadow: var(--shadow-panel-hover);
+}
+
+.exampleAccent {
+  position: absolute;
+  left: 0;
+  top: var(--sp-3);
+  bottom: var(--sp-3);
+  width: 4px;
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--accent) 85%, transparent),
+    color-mix(in srgb, var(--accent) 35%, transparent)
+  );
+}
+
+.exampleTitle {
+  margin: 0 0 var(--sp-3);
+  font-size: var(--fs-body-lg);
+  font-weight: 600;
+  line-height: var(--lh-snug);
+  color: var(--text);
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+}
+
+.exampleIndex {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  border-radius: var(--r-sm);
+  background: var(--accent-subtle);
+  color: var(--accent);
+  font-size: var(--fs-label-sm);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.examplePart {
+  margin-bottom: var(--sp-3);
+}
+
+.examplePart:last-child {
+  margin-bottom: 0;
+}
+
+.exampleLabel {
+  margin: 0 0 var(--sp-1);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.selfTestList {
+  margin: 0;
+  padding-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.selfTestItem {
+  padding: 0;
+}
+
+.selfTestItem::marker {
+  font-weight: 700;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.selfTestCard {
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg) 40%, var(--surface));
+}
+
+.selfTestQ {
+  margin: 0 0 var(--sp-3);
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-relaxed);
+  color: var(--text);
+}
+
+.reveal {
+  margin: 0;
+}
+
+.revealSummary {
+  cursor: pointer;
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-sm);
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+  background: var(--surface);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  color: var(--accent);
+  transition: background 100ms ease, border-color 100ms ease, transform 100ms ease;
+}
+
+.revealSummary::-webkit-details-marker {
+  display: none;
+}
+
+.revealChevron {
+  display: inline-block;
+  font-size: 0.75rem;
+  line-height: 1;
+  transition: transform 160ms ease;
+  color: var(--accent);
+}
+
+.reveal[open] .revealChevron {
+  transform: rotate(90deg);
+}
+
+.revealSummary:hover {
+  background: var(--accent-subtle);
+  border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
+}
+
+.reveal[open] .revealSummary {
+  margin-bottom: var(--sp-2);
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+}
+
+.revealBody {
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-md);
+  border: 1px solid color-mix(in srgb, var(--accent) 15%, var(--border));
+  background: color-mix(in srgb, var(--accent) 6%, var(--surface));
+}
+
+.bodyP {
+  margin: 0 0 var(--sp-3);
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-relaxed);
+  color: var(--text);
+}
+
+.syPanel .bodyP,
+.bodyProse .bodyP {
+  margin-bottom: var(--sp-3);
+}
+
+.bodyList {
+  margin: 0 0 var(--sp-2);
+  padding-left: 1.25rem;
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-relaxed);
+  color: var(--text);
+}
+
+.bodyList li {
+  margin-bottom: var(--sp-1);
+}
+
+.bodyList li:last-child {
+  margin-bottom: 0;
+}
+
+.equationBlock {
+  margin: var(--sp-3) 0;
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-md);
+  background: var(--hover-fill);
+  border: 1px solid var(--border);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: var(--fs-label);
+  font-weight: 500;
+  line-height: var(--lh-relaxed);
+  color: var(--text);
+  text-align: center;
+}
+
+.equationBlock + .equationBlock {
+  margin-top: var(--sp-2);
+}
+
+.aside {
+  margin: var(--sp-3) 0;
+  padding: var(--sp-3) var(--sp-4);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  background: var(--accent-subtle);
+}
+
+.asideTitle {
+  margin: 0 0 var(--sp-2);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.asideList {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: var(--fs-body);
+  line-height: var(--lh-relaxed);
+  color: var(--text-muted);
+}
+
+.asideList li {
+  margin-bottom: var(--sp-2);
+}
+
+.placeholder {
+  padding: var(--sp-4);
+  border-radius: var(--r-md);
+  border: 1px dashed var(--border);
+  background: var(--hover-fill);
+}
+
+.placeholderP {
+  margin: 0;
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-relaxed);
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.navRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  justify-content: space-between;
+  margin-top: var(--sp-4);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--border);
+}
+
+.navLink {
+  font-size: var(--fs-body);
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 120ms ease;
+}
+
+.navLink:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+.navLinkMuted {
+  font-size: var(--fs-body);
+  color: var(--text-muted);
+  pointer-events: none;
+}

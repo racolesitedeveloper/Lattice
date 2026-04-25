@@ -1,0 +1,340 @@
+import type { SubtopicPracticePack } from "./types";
+
+/**
+ * 9701 Topic 31 / 31.1 — Halogen compounds: one course subtopic `t31-1`.
+ *
+ * LO crosswalk (`data/syllabus/chemistry-9701-learning-outcomes.md` §31.1;
+ * `data/courses/chemistry-9701.json` subtopic `t31-1` / code 31.1):
+ * - Recall formation of halogenoarenes (Cl_2 or Br_2, AlCl_3 or AlBr_3; benzene → chlorobenzene;
+ *   methylbenzene → 2-chloromethylbenzene and 4-chloromethylbenzene) → d1, d2, d3, d4, d5, d6
+ * - Explain reactivity difference halogenoalkane vs halogenoarene (chloroethane vs chlorobenzene) → d7, d8, d9, d10
+ */
+export const CHEMISTRY_TOPIC31_PRACTICE: Record<string, SubtopicPracticePack> = {
+  "t31-1": {
+    noteId: "t31-1",
+    drills: [
+      {
+        id: "t31-1-d1",
+        noteId: "t31-1",
+        kind: "structured",
+        difficulty: 1,
+        marks: 5,
+        stem: "Describe how chlorobenzene can be prepared from benzene. State the reagents, the catalyst, and the type of reaction, and write a balanced equation using molecular formulae (e.g. C_6H_6) for the organic species.",
+        modelAnswerPoints: [
+          "Reagents: chlorine (Cl_2); catalyst: aluminium chloride (AlCl_3) (anhydrous).",
+          "Reaction type: electrophilic substitution of hydrogen on the ring by an electrophilic chlorine species generated in the presence of the Lewis acid catalyst.",
+          "Equation: C_6H_6 + Cl_2 -> C_6H_5Cl + HCl (with AlCl_3 as catalyst, often written over the arrow or stated separately).",
+          "The arene ring remains aromatic; one ring hydrogen is replaced by chlorine.",
+        ],
+        workedSolution: [
+          "Chlorobenzene is prepared from benzene by treating benzene with chlorine in the presence of a Lewis acid catalyst, typically anhydrous aluminium chloride, which is essential because benzene alone does not react sufficiently fast with Cl_2 under mild conditions.",
+          "The process is classified as electrophilic aromatic substitution: a strongly electrophilic chlorine-containing species is generated (the syllabus does not require the full mechanistic detail here), and this species attacks the benzene ring, replacing one hydrogen atom while preserving the delocalised aromatic system.",
+          "A balanced equation using the molecular formulae requested is C_6H_6 + Cl_2 -> C_6H_5Cl + HCl, where AlCl_3 is understood to be present as a catalyst rather than being consumed in the overall stoichiometry in the simplified overall picture.",
+          "The transformation therefore converts benzene into chlorobenzene with hydrogen chloride as the inorganic co-product, matching the syllabus exemplification of substitution of an arene with Cl_2 in the presence of AlCl_3 to form a halogenoarene.",
+        ],
+        commonMistake:
+          "Omitting the Lewis acid catalyst or describing the reaction as a free-radical chain chlorination like alkanes in UV light.",
+        tags: ["halogenoarenes", "reagents", "electrophilic-substitution", "equations"],
+      },
+      {
+        id: "t31-1-d2",
+        noteId: "t31-1",
+        kind: "mcq",
+        difficulty: 1,
+        stem: "Which set of conditions is appropriate for converting benzene into bromobenzene in the laboratory?",
+        options: [
+          { id: "A", text: "Br_2(l) with an AlBr_3 catalyst." },
+          { id: "B", text: "Br_2(aq) in the dark with no catalyst." },
+          { id: "C", text: "NaBr(aq) with concentrated H_2SO_4 only." },
+          { id: "D", text: "HBr(g) passed into benzene with UV light only." },
+        ],
+        correctOptionId: "A",
+        explanation:
+          "The syllabus pairs halogenation of arenes with Cl_2/AlCl_3 or Br_2/AlBr_3; the Lewis acid catalyst polarises the halogen and generates an electrophile that substitutes on the ring.",
+        distractorRationale: {
+          B: "Aqueous bromine without a Lewis acid is associated with phenol chemistry, not standard benzene bromination to bromobenzene.",
+          C: "That does not generate the electrophilic bromine species needed for aromatic substitution on benzene under the taught conditions.",
+          D: "UV with HBr suggests radical chemistry on alkanes, not the electrophilic substitution route required for arenes.",
+        },
+        tags: ["bromobenzene", "reagents", "catalyst"],
+      },
+      {
+        id: "t31-1-d3",
+        noteId: "t31-1",
+        kind: "structured",
+        difficulty: 2,
+        marks: 6,
+        stem: "When methylbenzene (toluene) reacts with chlorine in the presence of anhydrous AlCl_3, chlorination occurs on the ring. Name the two monosubstituted chloromethylbenzene isomers formed and explain, in outline, why substitution occurs mainly at the 2- and 4-positions relative to the methyl group rather than at the 3-position.",
+        modelAnswerPoints: [
+          "Products: 2-chloromethylbenzene (ortho) and 4-chloromethylbenzene (para).",
+          "The methyl group is an activating, ortho-para directing substituent: it donates electron density into the ring through inductive and hyperconjugative effects.",
+          "The intermediate for attack at the 2- or 4-position is stabilised relative to attack at the 3-position because positive charge in the sigma complex can be delocalised onto the carbon bearing the methyl group in the ortho and para pathways.",
+          "Hence electrophilic substitution is faster at the 2- and 4-positions, giving those isomers as the main monosubstituted products named in the syllabus.",
+        ],
+        workedSolution: [
+          "Under the conditions specified, chlorine with aluminium chloride generates an electrophile capable of attacking the aromatic ring of methylbenzene, and the two monochlorinated ring-substituted products that the syllabus singles out are 2-chloromethylbenzene and 4-chloromethylbenzene, corresponding to ortho and para substitution relative to the methyl substituent.",
+          "The methyl group is classified as an activating substituent that directs an incoming electrophile preferentially to the ortho and para positions rather than to the meta position, which is the pattern expected when an alkyl group is attached to the ring.",
+          "In outline, when the electrophile adds to form the sigma complex, the positive charge that develops can be stabilised by delocalisation involving the ring carbons; for ortho and para attack, resonance structures can place partial positive character on the ring carbon that carries the methyl group, which is stabilised by the electron-donating alkyl group, whereas the meta pathway lacks this particular stabilisation.",
+          "Therefore substitution at the 2- and 4-positions is favoured kinetically, which is why the syllabus uses methylbenzene as the example that yields 2-chloromethylbenzene and 4-chloromethylbenzene rather than emphasising the 3-isomer as a major product under these electrophilic conditions.",
+        ],
+        commonMistake:
+          "Naming only one isomer, or claiming meta substitution is favoured as if the methyl group were meta-directing.",
+        tags: ["methylbenzene", "isomers", "directing-effects", "electrophilic-substitution"],
+      },
+      {
+        id: "t31-1-d4",
+        noteId: "t31-1",
+        kind: "mcq",
+        difficulty: 2,
+        stem: "In the chlorination of methylbenzene with Cl_2 and AlCl_3, which pair best describes the expected major monosubstituted ring products?",
+        options: [
+          { id: "A", text: "1-chloromethylbenzene and 3-chloromethylbenzene only." },
+          { id: "B", text: "2-chloromethylbenzene and 4-chloromethylbenzene." },
+          { id: "C", text: "Chloromethylbenzene with Cl only on the side-chain carbon." },
+          { id: "D", text: "3-chloromethylbenzene and 5-chloromethylbenzene only." },
+        ],
+        correctOptionId: "B",
+        explanation:
+          "The syllabus exemplifies ring chlorination to the ortho and para isomers (2- and 4-chloromethylbenzene) under electrophilic conditions with AlCl_3.",
+        distractorRationale: {
+          A: "Those positions do not match the ortho/para pair taught for methylbenzene electrophilic substitution.",
+          C: "Side-chain substitution is a different radical pathway; the specified AlCl_3-catalysed chlorination here is ring electrophilic substitution.",
+          D: "Those labels do not correspond to the ortho/para pair expected for a monosubstituted methylbenzene product set in this context.",
+        },
+        tags: ["methylbenzene", "isomers", "mcq"],
+      },
+      {
+        id: "t31-1-d5",
+        noteId: "t31-1",
+        kind: "structured",
+        difficulty: 2,
+        marks: 4,
+        stem: "State the role of AlCl_3 (or AlBr_3) in the halogenation of an arene with Cl_2 or Br_2. Explain briefly how its Lewis acidity helps generate the species that attacks the benzene ring.",
+        modelAnswerPoints: [
+          "AlCl_3 acts as a Lewis acid catalyst (electron pair acceptor).",
+          "It coordinates to a halogen molecule, polarising the Cl–Cl or Br–Br bond and weakening it so that a more electrophilic halogen-containing species is available.",
+          "That electrophile is attacked by the electron-rich pi system of the arene in electrophilic substitution.",
+        ],
+        workedSolution: [
+          "Aluminium chloride functions as a Lewis acid catalyst in this context because the aluminium atom in AlCl_3 is electron-deficient and can accept a lone pair from a halogen molecule.",
+          "When AlCl_3 interacts with Cl_2 or Br_2, the halogen–halogen bond becomes strongly polarised, which promotes formation of a species that behaves as a much stronger electrophile than the halogen alone would be towards benzene.",
+          "The benzene ring, with its delocalised pi electrons, then acts as a nucleophile towards that electrophilic halogen-containing entity, leading to substitution on the ring while the catalyst is regenerated in the catalytic cycle in the usual textbook treatment.",
+        ],
+        commonMistake:
+          "Calling AlCl_3 an oxidising agent or a source of Cl^+ as a free isolated ion without mentioning Lewis acid coordination and bond polarisation.",
+        tags: ["catalyst", "lewis-acid", "mechanism-outline"],
+      },
+      {
+        id: "t31-1-d6",
+        noteId: "t31-1",
+        kind: "mcq",
+        difficulty: 1,
+        stem: "Which statement correctly matches the syllabus route to a halogenoarene from benzene?",
+        options: [
+          { id: "A", text: "Benzene reacts with Cl_2 in the presence of AlCl_3 to form chlorobenzene." },
+          { id: "B", text: "Benzene reacts with dilute HCl(aq) alone to form chlorobenzene." },
+          { id: "C", text: "Benzene reacts with Cl_2 in UV light without a catalyst to form chlorobenzene." },
+          { id: "D", text: "Benzene reacts with NaCl(aq) to form chlorobenzene." },
+        ],
+        correctOptionId: "A",
+        explanation:
+          "The learning outcome specifies substitution of an arene with Cl_2 or Br_2 in the presence of AlCl_3 or AlBr_3, exemplified by benzene to chlorobenzene.",
+        distractorRationale: {
+          B: "Aqueous HCl does not bring about electrophilic chlorination of benzene under the taught conditions.",
+          C: "Free-radical chlorination is characteristic of alkanes in UV, not the electrophilic aromatic substitution pathway for benzene.",
+          D: "Chloride in aqueous sodium chloride is not an electrophilic chlorinating agent for benzene in this syllabus context.",
+        },
+        tags: ["benzene", "chlorobenzene", "recall"],
+      },
+      {
+        id: "t31-1-d7",
+        noteId: "t31-1",
+        kind: "structured",
+        difficulty: 3,
+        marks: 7,
+        stem: "Explain why chloroethane undergoes nucleophilic substitution with aqueous hydroxide far more readily than chlorobenzene under mild conditions. Refer to the nature of the C–Cl bond in each compound and to electron delocalisation in chlorobenzene.",
+        modelAnswerPoints: [
+          "In chloroethane the carbon bonded to chlorine is tetrahedral (sp^3); the C–Cl bond is a conventional polar sigma bond, and the carbon is relatively electron-deficient and open to backside attack in S_N2 (or can form a carbocation in S_N1).",
+          "In chlorobenzene the chlorine is bonded to an sp^2 ring carbon; the C–Cl bond has partial double-bond character because a lone pair on chlorine can overlap with the pi system of the ring.",
+          "That overlap delocalises electron density into the ring, strengthening and shortening the C–Cl bond compared with a typical alkyl C–Cl bond.",
+          "The ring carbon is not easily attacked from the back because of the planar ring geometry and electron density around the ring, so S_N2 is disfavoured; the lone pair donation also reduces partial positive charge on the ring carbon.",
+          "Therefore chlorobenzene is relatively unreactive towards OH^- under mild conditions compared with chloroethane.",
+        ],
+        workedSolution: [
+          "Chloroethane is a halogenoalkane in which the carbon attached to chlorine is a saturated sp^3 centre, so the carbon–chlorine linkage is essentially a single polar covalent bond and the carbon carries a partial positive charge that is readily approached by nucleophiles such as hydroxide in aqueous solution.",
+          "Nucleophilic substitution therefore proceeds readily under mild conditions by the familiar S_N2 pathway (or by S_N1 where applicable), because the leaving group can depart as Cl^- while the nucleophile forms a new bond at that electrophilic carbon without needing to disrupt an aromatic system.",
+          "Chlorobenzene is a halogenoarene in which the chlorine is attached directly to an aromatic ring carbon; here the carbon is sp^2 hybridised and part of a continuous pi framework, and a lone pair on chlorine can overlap sideways with the ring pi orbitals.",
+          "That overlap allows electron density from chlorine to be delocalised into the ring, which gives the carbon–chlorine bond partial double-bond character, making it stronger and shorter than a typical alkyl C–Cl bond and making Cl^- a poorer leaving group in simple substitution under mild conditions.",
+          "Moreover, the geometry of the aromatic ring prevents efficient backside attack at the ring carbon in an S_N2 sense, and the delocalisation reduces the local electrophilicity of that carbon towards OH^-, so chlorobenzene does not undergo easy hydrolysis with aqueous hydroxide under the same mild conditions that rapidly convert chloroethane.",
+        ],
+        commonMistake:
+          "Claiming chlorobenzene is inert because the ring is non-polar overall, without mentioning lone pair overlap, partial double-bond character, and the difficulty of nucleophilic attack at an sp^2 ring carbon.",
+        tags: ["reactivity", "chloroethane", "chlorobenzene", "delocalisation"],
+      },
+      {
+        id: "t31-1-d8",
+        noteId: "t31-1",
+        kind: "mcq",
+        difficulty: 3,
+        stem: "Which statement best explains the low reactivity of the C–Cl bond in chlorobenzene towards nucleophiles compared with chloroethane?",
+        options: [
+          {
+            id: "A",
+            text: "A lone pair on chlorine overlaps the ring pi system, giving the C–Cl bond partial double-bond character and strengthening it.",
+          },
+          { id: "B", text: "Chlorobenzene has no lone pairs on chlorine, so Cl^- cannot leave." },
+          { id: "C", text: "The C–Cl bond in chlorobenzene is purely ionic, so no substitution occurs." },
+          { id: "D", text: "Chloroethane is aromatic, which makes its C–Cl bond weaker." },
+        ],
+        correctOptionId: "A",
+        explanation:
+          "Delocalisation of chlorine lone pair density into the ring increases C–Cl bond order locally and is the central syllabus explanation contrasting aryl and alkyl chlorides.",
+        distractorRationale: {
+          B: "Chlorine in chlorobenzene still has lone pairs; the issue is how they interact with the ring, not their absence.",
+          C: "The C–Cl bond is covalent with polarisation; calling it purely ionic is incorrect and does not explain the pattern.",
+          D: "Chloroethane is not aromatic; that option reverses the chemical identities.",
+        },
+        tags: ["reactivity", "bonding", "mcq"],
+      },
+      {
+        id: "t31-1-d9",
+        noteId: "t31-1",
+        kind: "structured",
+        difficulty: 4,
+        marks: 5,
+        stem: "Contrast the ease of hydrolysis with warm aqueous sodium hydroxide for chloroethane and for chlorobenzene. State what happens in each case under typical mild conditions taught for the alkyl halide, and explain the aryl halide behaviour using the ideas of orbital overlap and leaving-group ability.",
+        modelAnswerPoints: [
+          "Chloroethane: hydrolysis occurs on warming with NaOH(aq), giving ethanol (and chloride ion), via nucleophilic substitution at the saturated carbon.",
+          "Chlorobenzene: essentially no reaction under the same mild aqueous hydroxide conditions; the C–Cl bond remains largely intact.",
+          "In chlorobenzene, overlap of a chlorine lone pair with the aromatic pi system delocalises electron density and strengthens the C–Cl bond, so Cl^- is not easily displaced by OH^- without forcing conditions not covered as 'mild' for aryl halides here.",
+        ],
+        workedSolution: [
+          "When chloroethane is warmed with aqueous sodium hydroxide, nucleophilic substitution takes place at the ethyl carbon, and the organic product is ethanol, because hydroxide replaces chloride by attack at the electrophilic sp^3 carbon in a straightforward substitution pathway.",
+          "When chlorobenzene is treated similarly with warm aqueous sodium hydroxide under mild laboratory conditions associated with simple alkyl halide hydrolysis, essentially no reaction occurs and the aryl chloride persists, because the substitution mechanism that works well at a saturated carbon is not available in the same facile way at the aromatic ring carbon.",
+          "The explanation is that in chlorobenzene the chlorine atom possesses a lone pair in an orbital that can overlap side-on with the delocalised pi system of the benzene ring, which feeds electron density into the ring and increases the degree of bonding interaction between carbon and chlorine compared with a simple single bond.",
+          "That overlap gives the C–Cl linkage partial double-bond character, which strengthens it and makes chloride a much poorer leaving group in direct nucleophilic displacement by hydroxide under mild conditions, whereas in chloroethane no comparable aromatic stabilisation of a partial double bond between carbon and chlorine exists, so chloride leaves far more readily during substitution.",
+        ],
+        commonMistake:
+          "Predicting phenol from chlorobenzene under mild NaOH(aq) alone, which confuses harsh industrial conditions or multi-step routes with the syllabus contrast.",
+        tags: ["hydrolysis", "chloroethane", "chlorobenzene", "comparison"],
+      },
+      {
+        id: "t31-1-d10",
+        noteId: "t31-1",
+        kind: "mcq",
+        difficulty: 3,
+        stem: "For the C–Cl bond in chlorobenzene compared with that in chloroethane, which trend is expected as a consequence of lone-pair overlap between chlorine and the aromatic ring?",
+        options: [
+          { id: "A", text: "Shorter and stronger in chlorobenzene; longer and weaker in chloroethane." },
+          { id: "B", text: "Longer and weaker in chlorobenzene; shorter and stronger in chloroethane." },
+          { id: "C", text: "Identical bond lengths because both contain a C–Cl single bond." },
+          { id: "D", text: "Weaker in both compounds because aromatic rings repel chlorine." },
+        ],
+        correctOptionId: "A",
+        explanation:
+          "Partial double-bond character from Cl lone pair donation into the ring tightens the aryl C–Cl bond relative to a typical alkyl C–Cl sigma bond.",
+        distractorRationale: {
+          B: "That reverses the direction of bond strengthening caused by pi overlap in aryl chlorides.",
+          C: "Bond orders are not identical once delocalisation increases pi contribution to the aryl C–Cl linkage.",
+          D: "The explanation is specific orbital overlap and bond order, not a vague repulsion picture.",
+        },
+        tags: ["bonding", "reactivity", "mcq"],
+      },
+    ],
+    flashcards: [
+      {
+        id: "t31-1-f1",
+        noteId: "t31-1",
+        difficulty: 1,
+        front: "Reagents and catalyst to make chlorobenzene from benzene?",
+        back: "Cl_2 with anhydrous AlCl_3 (Lewis acid); electrophilic substitution on the ring.",
+        examPhrasing: "State how chlorobenzene may be prepared from benzene.",
+        tags: ["chlorobenzene", "reagents"],
+      },
+      {
+        id: "t31-1-f2",
+        noteId: "t31-1",
+        difficulty: 1,
+        front: "Bromobenzene from benzene — halogen and catalyst pair?",
+        back: "Br_2 with AlBr_3 (analogous to Cl_2 / AlCl_3).",
+        examPhrasing: "Give the reagents for converting benzene into bromobenzene.",
+        tags: ["bromobenzene", "reagents"],
+      },
+      {
+        id: "t31-1-f3",
+        noteId: "t31-1",
+        difficulty: 2,
+        front: "Overall equation benzene + chlorine (catalysed) → chlorobenzene?",
+        back: "C_6H_6 + Cl_2 -> C_6H_5Cl + HCl (AlCl_3 catalyst).",
+        examPhrasing: "Write an equation for the formation of chlorobenzene from benzene.",
+        tags: ["equations", "benzene"],
+      },
+      {
+        id: "t31-1-f4",
+        noteId: "t31-1",
+        difficulty: 2,
+        front: "Monochlorination of methylbenzene on the ring — which two isomers are named in the syllabus?",
+        back: "2-chloromethylbenzene and 4-chloromethylbenzene (ortho and para).",
+        examPhrasing: "Name the products when methylbenzene reacts with Cl_2 in the presence of AlCl_3.",
+        confusionPair: "ring substitution vs side-chain chlorination",
+        tags: ["methylbenzene", "isomers"],
+      },
+      {
+        id: "t31-1-f5",
+        noteId: "t31-1",
+        difficulty: 3,
+        front: "Why is the methyl group in methylbenzene ortho-para directing in electrophilic substitution?",
+        back: "It donates electron density; the sigma complex for attack at 2- or 4-positions is stabilised relative to meta attack.",
+        examPhrasing: "Explain why chlorination of methylbenzene gives mainly the 2- and 4-isomers.",
+        tags: ["directing-effects", "toluene"],
+      },
+      {
+        id: "t31-1-f6",
+        noteId: "t31-1",
+        difficulty: 3,
+        front: "What is the role of AlCl_3 in aromatic chlorination?",
+        back: "Lewis acid catalyst: polarises Cl_2 and helps generate a strong electrophile for the ring to attack.",
+        examPhrasing: "Explain why AlCl_3 is used in the reaction between benzene and chlorine.",
+        tags: ["catalyst", "lewis-acid"],
+      },
+      {
+        id: "t31-1-f7",
+        noteId: "t31-1",
+        difficulty: 4,
+        front: "One sentence: why is chlorobenzene much less reactive than chloroethane towards nucleophilic substitution?",
+        back: "The aryl C–Cl bond has partial double-bond character from Cl lone pair overlap with the ring, so Cl^- leaves only with difficulty under mild conditions.",
+        examPhrasing: "Explain the difference in reactivity towards nucleophiles of chloroethane and chlorobenzene.",
+        confusionPair: "aryl vs alkyl C–Cl",
+        tags: ["reactivity", "delocalisation"],
+      },
+      {
+        id: "t31-1-f8",
+        noteId: "t31-1",
+        difficulty: 4,
+        front: "Hybridisation of the carbon bonded to Cl in chloroethane vs chlorobenzene?",
+        back: "sp^3 in chloroethane (tetrahedral); sp^2 in chlorobenzene (trigonal planar ring carbon).",
+        examPhrasing: "State the hybridisation of the carbon attached to chlorine in chloroethane and in chlorobenzene.",
+        tags: ["hybridisation", "structure"],
+      },
+      {
+        id: "t31-1-f9",
+        noteId: "t31-1",
+        difficulty: 5,
+        front: "Does warm NaOH(aq) hydrolyse chlorobenzene as easily as chloroethane?",
+        back: "No — chloroethane gives ethanol; chlorobenzene resists mild aqueous OH^- because of the strengthened, delocalised C–Cl bond.",
+        examPhrasing: "Compare the hydrolysis of chloroethane and chlorobenzene with aqueous sodium hydroxide.",
+        tags: ["hydrolysis", "comparison"],
+      },
+      {
+        id: "t31-1-f10",
+        noteId: "t31-1",
+        difficulty: 5,
+        front: "Reaction type: benzene + Cl_2 / AlCl_3?",
+        back: "Electrophilic substitution (aromatic); not free-radical chain chlorination.",
+        examPhrasing: "Name the mechanism type for the formation of chlorobenzene from benzene.",
+        confusionPair: "electrophilic substitution vs radical halogenation",
+        tags: ["mechanism", "definitions"],
+      },
+    ],
+  },
+};

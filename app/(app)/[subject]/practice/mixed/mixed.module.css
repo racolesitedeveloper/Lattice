@@ -1,0 +1,243 @@
+.wrap {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: var(--sp-4);
+}
+
+.header {
+  margin-bottom: var(--sp-3);
+  display: grid;
+  gap: var(--sp-1);
+}
+
+.meta {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--fs-label-sm);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--fs-heading);
+  font-weight: 500;
+}
+
+.hint {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--fs-label-sm);
+}
+
+.panel {
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+}
+
+.panelInner {
+  padding: var(--sp-4);
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.qMeta {
+  margin: 0;
+  font-size: var(--fs-label-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.qStem {
+  margin: 0;
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-relaxed);
+}
+
+.choices {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.choiceBtn {
+  width: 100%;
+  min-height: 44px;
+  text-align: left;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--r-sm);
+  padding: var(--sp-2) var(--sp-3);
+  font-family: inherit;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.choiceBtnOn {
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+}
+
+.choiceBtnCorrect {
+  border-color: color-mix(in srgb, var(--success) 35%, var(--border));
+  background: color-mix(in srgb, var(--success) 8%, var(--surface));
+}
+
+.choiceBtnWrong {
+  border-color: color-mix(in srgb, var(--danger) 35%, var(--border));
+  background: color-mix(in srgb, var(--danger) 8%, var(--surface));
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border-top: 1px solid var(--border);
+}
+
+.btn {
+  min-height: 40px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--r-sm);
+  padding: 0.42rem 0.72rem;
+  font-family: inherit;
+  font-size: var(--fs-label);
+  cursor: pointer;
+}
+
+.btnPrimary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+@media (max-width: 640px) {
+  .wrap {
+    padding: var(--sp-3);
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .btn {
+    min-height: 44px;
+  }
+}
+
+.feedback {
+  margin: 0;
+  font-size: var(--fs-label-sm);
+  color: var(--text-muted);
+}
+
+.summary {
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  padding: var(--sp-4);
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.stepStripShell {
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.stepStripScroller::-webkit-scrollbar {
+  height: 8px;
+}
+
+.stepStripScroller::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--text-muted) 30%, transparent);
+  border-radius: 999px;
+}
+
+.fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 34px;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.16s ease-out;
+}
+
+.fadeOn {
+  opacity: 1;
+}
+
+.fadeLeft {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--surface) 92%, var(--text) 8%) 0%,
+    transparent 100%
+  );
+}
+
+.fadeRight {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    color-mix(in srgb, var(--surface) 92%, var(--text) 8%) 0%,
+    transparent 100%
+  );
+}
+
+.edgeNudge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 34px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  color: color-mix(in srgb, var(--text-muted) 78%, var(--text) 22%);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.16s ease-out, color 0.16s ease-out;
+}
+
+.edgeNudgeOn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.edgeNudge:hover:not(:disabled) {
+  color: var(--text);
+}
+
+.edgeNudge:disabled {
+  cursor: default;
+}
+
+.edgeNudgeLeft {
+  left: 0;
+}
+
+.edgeNudgeRight {
+  right: 0;
+}

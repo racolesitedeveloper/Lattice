@@ -1,0 +1,627 @@
+import type { SubtopicPracticePack } from "./types";
+
+/**
+ * Topic 11 (9700 Biology) practice — `data/courses/biology-9700.json` (`t11-1`, `t11-2` only).
+ *
+ * **`t11-2` (Antibodies and vaccination)** — Crosswalk to `data/syllabus/biology-9700-learning-outcomes.md` §11.2:
+ * d1–d2 antibody structure and functions; d3 hybridoma; d4–d5 monoclonal use in diagnosis and treatment;
+ * d6 active/passive vs natural/artificial immunity; d7 vaccines; d8 vaccination programmes; d9–d10 exam consolidation (MCQ).
+ *
+ * **`t11-1` (The immune system)** — **Extract gap:** `biology-9700-learning-outcomes.md` jumps from “Topic 10” to
+ * **§11.2** under “Topic 11” with **no §11.1 bullet list** in the repository. This pack is authored from **standard
+ * Cambridge 9700 AS & A Level 11.1** (innate vs adaptive; phagocytosis; antigen presentation; B and T lymphocytes;
+ * plasma and memory cells; primary vs secondary response; **HIV/AIDS outline** as commonly examined with immunity).
+ * Crosswalk: d1 non-specific / specific; d2 phagocytosis; d3 antigen presentation; d4 B cells / plasma / memory;
+ * d5 T-helper vs cytotoxic; d6 primary/secondary; d7 HIV; d8–d10 application and MCQs.
+ */
+export const BIOLOGY_TOPIC11_PRACTICE: Record<string, SubtopicPracticePack> = {
+  "t11-1": {
+    noteId: "t11-1",
+    drills: [
+      {
+        id: "t11-1-d1",
+        noteId: "t11-1",
+        kind: "structured",
+        difficulty: 1,
+        marks: 6,
+        stem: "Distinguish clearly between non-specific (innate) immunity and specific (adaptive) immunity in mammals, with one example of each type of mechanism.",
+        modelAnswerPoints: [
+          "Non-specific defences are immediate, lack antigen specificity, and are the same in all individuals (e.g. skin/mucus, complement, phagocytosis, inflammation).",
+          "Specific immunity involves lymphocytes, antigen recognition, clonal selection, and memory, so a later response to the same pathogen is faster and larger.",
+        ],
+        workedSolution: [
+          "Non-specific, innate immunity is the first line of protection that does not require prior encounter with a particular pathogen: physical barriers (skin, mucous membranes and their secretions), soluble factors such as complement and lysozyme, and cellular responses including phagocytes and natural killer activity act within minutes to hours, recognising common molecular patterns on many microbes rather than one highly specific epitope.",
+          "Specific, adaptive immunity depends on T and B lymphocytes that express antigen-specific receptors; when antigen is taken up or presented, a small fraction of pre-existing lymphocytes with the best-fitting receptors proliferate and differentiate, producing a tailored response to that microbe, which may include antibodies and/or cytotoxic T cells, and is refined by the requirement for prior activation in secondary lymphoid tissue.",
+          "Memory is the hallmark of the adaptive system: some lymphocytes survive long after clearance of infection and enable a more rapid, larger secondary response if the same pathogen reappears, whereas innate defences are deployed afresh to every encounter without antigen-specific clonal memory.",
+          "A concise contrast in exam terms would pair, for example, acid in stomach secretions and neutrophil phagocytosis as non-specific, with a vaccine-induced B-cell response producing high-affinity plasma-cell antibodies or with cytotoxic T lymphocytes killing host cells displaying foreign peptide–MHC complexes as the specific, adaptive output.",
+        ],
+        commonMistake:
+          "Saying only that innate immunity is ‘faster’ without stating it is non-clonal and non-antigen-specific, or claiming T cells are part of the innate system.",
+        tags: ["innate", "adaptive", "definitions"],
+      },
+      {
+        id: "t11-1-d2",
+        noteId: "t11-1",
+        kind: "structured",
+        difficulty: 2,
+        marks: 5,
+        stem: "Outline the process of phagocytosis by a mammalian phagocyte, from recognition to destruction of the pathogen, naming at least one intracellular organelle involved in digestion.",
+        modelAnswerPoints: [
+          "Receptor-mediated recognition/attachment; pseudopodia engulf the particle into a phagosome.",
+          "Phagosome fuses with a lysosome to form a phagolysosome; hydrolytic enzymes digest contents.",
+          "Antigenic peptides can be presented on MHC in many teaching contexts, linking to the specific response (optional extra credit in longer marks).",
+        ],
+        workedSolution: [
+          "A professional phagocyte such as a neutrophil or macrophage first attaches to a pathogen or opsonised particle through pattern-recognition receptors, complement receptors, or Fc receptors that bind antibody-coated surfaces, so binding is the trigger for the cytoskeleton to begin rearranging at the point of contact.",
+          "Pseudopodia extend around the target and fuse to internalise the particle inside a membrane-bound intracellular vesicle called a phagosome, sequestering the microbe in the cytoplasm but still outside the cytosol until fusion events occur with degradative organelles.",
+          "The phagosome fuses with one or more lysosomes whose acidic interior contains hydrolytic enzymes such as proteases, nucleases, and lipases; the resulting phagolysosome is where the bacterium is killed and digested, with reactive oxygen species often contributing to oxidative killing in neutrophils and macrophages.",
+          "In adaptive immunity, fragments of degraded protein may be loaded onto MHC class II molecules in antigen-presenting cells and displayed to helper T cells, but the core of the phagocytosis mark here is the mechanical engulfment, lysosomal delivery, and enzymatic destruction of the invader within the phagolysosome.",
+        ],
+        commonMistake:
+          "Omitting fusion with a lysosome and describing digestion as if it occurred free in the cytoplasm, or confusing phagocytosis with the pinocytosis of soluble molecules only.",
+        tags: ["phagocytosis", "phagocytes"],
+      },
+      {
+        id: "t11-1-d3",
+        noteId: "t11-1",
+        kind: "structured",
+        difficulty: 2,
+        marks: 6,
+        stem: "Explain what is meant by antigen presentation, including the idea that fragments are displayed on the surface of some cells, and state why this is important for activating a specific T-cell response.",
+        modelAnswerPoints: [
+          "Antigen presentation: protein fragments (peptides) derived from pathogens (or from host proteins in tolerance/autoimmunity) are bound to MHC on the cell surface for inspection by T cells.",
+          "T-lymphocyte receptors bind peptide–MHC, not free soluble antigen in the blood, so only cells that can process and display antigen can act as the bridge to T-cell activation in most pathways.",
+        ],
+        workedSolution: [
+          "After intracellular or extracellular processing, short peptides from microbial proteins become bound in the groove of major histocompatibility complex (MHC) class I or class II molecules, depending on the cellular pathway, and the stable complex is exported to the surface where it can be probed by passing T cells bearing αβ T-cell receptors of matching specificity.",
+          "Antigen presentation therefore converts a whole microbe, hidden inside a cell, into a molecular ‘handle’ that a T lymphocyte can physically recognise while receiving co-stimulatory signals: without peptide–MHC on an antigen-presenting cell or on an infected somatic cell, naive helper or cytotoxic T cells with relevant receptors are not productively engaged.",
+          "This is essential for linking innate detection of infection to the adaptive programme: macrophages, dendritic cells, and B cells in different contexts can present antigen to help helper T cells license B-cell class switching, activate macrophages, or, when virus-infected cells display peptide on MHC I, allow cytotoxic T cells to identify and destroy altered self cells that harbour replicating virus and cannot be reached by secreted antibody alone.",
+        ],
+        commonMistake:
+          "Claiming B-cell receptors or secreted antibody directly see whole intact native antigen on a virus floating free in blood as the only trigger for T help—examiners expect peptide–MHC and TCR recognition.",
+        tags: ["antigen", "MHC", "T-cells"],
+      },
+      {
+        id: "t11-1-d4",
+        noteId: "t11-1",
+        kind: "structured",
+        difficulty: 2,
+        marks: 5,
+        stem: "Describe the roles of B lymphocytes, plasma cells, and memory B cells in the humoral (antibody mediated) specific immune response.",
+        modelAnswerPoints: [
+          "B cells carry membrane-bound immunoglobulin as their antigen-specific receptor; activation generally requires T-cell help in T-dependent antigens, plus other signals (co-stimulation) from antigen-presenting cells.",
+          "Plasma cells are terminally differentiated, antibody-secreting B-lineage cells; they release large amounts of specific antibody (soluble immunoglobulin) to bind extracellular pathogen, neutralise, and mark for destruction.",
+          "Memory B cells persist, respond faster, and can yield a stronger, often higher-affinity secondary response to re-exposure.",
+        ],
+        workedSolution: [
+          "A naive B lymphocyte in follicular tissue first binds extracellular or membrane-presented antigen with its B-cell receptor, which is a membrane-anchored antibody of a single specificity; for most protein antigens, the B cell also requires cognate help from a CD4+ T follicular helper cell that has been primed to epitopes on the same pathogen, together with co-stimulatory signals, before it undergoes clonal expansion and isotype switching in germinal centre reactions in teaching-level accounts.",
+          "Once appropriately stimulated, a subset of daughter cells differentiates into plasma cells, which are specialised to synthesise and secrete very large numbers of specific antibody molecules per minute, flooding blood and extracellular spaces so that the same epitopes the B cell first recognised are now coated with a soluble, diffusible form of the receptor, mediating agglutination, neutralisation of toxins/virions, opsonisation for phagocytes, and complement activation depending on the class produced.",
+          "A parallel subset becomes long-lived memory B cells that do not secrete high levels of antibody in the steady state but retain surface receptor and a proliferative program that allows a far faster secondary response: new plasma cells and higher titres on reinfection, which is the immunological basis of vaccine-induced long-term B-cell memory.",
+        ],
+        commonMistake:
+          "Saying B cells secrete large volumes of antibody before they differentiate, or conflating plasma cells and memory B cells as the same cell type with identical function.",
+        tags: ["B-cells", "plasma", "memory", "antibody"],
+      },
+      {
+        id: "t11-1-d5",
+        noteId: "t11-1",
+        kind: "structured",
+        difficulty: 3,
+        marks: 6,
+        stem: "Outline the distinct roles in specific immunity of helper T lymphocytes and cytotoxic T lymphocytes, including what each type of effector cell is specialised to do after activation.",
+        modelAnswerPoints: [
+          "Helper T (CD4+) cells: recognise foreign peptide on MHC class II; secrete cytokines; coordinate (help) B-cell responses and macrophage activation, among other roles.",
+          "Cytotoxic T (CD8+) cells: recognise foreign peptide on MHC class I on target cells; kill infected or altered cells, limiting intracellular pathogen (e.g. virus) replication and spread.",
+        ],
+        workedSolution: [
+          "After interacting with a dendritic cell or another professional antigen-presenting cell displaying peptide in MHC class II, helper T cells bearing the right TCR receive co-stimulatory second signals, become activated, and secrete a cytokine mix that is tailored to the pathogen and instructs B cells in follicles to undergo proliferation, isotype switch, and affinity maturation, while also mobilising and activating macrophages in granuloma-type responses and providing growth signals for the immune microenvironment in outline-level narrative.",
+          "In contrast, when a virus replicates in the cytosol of a host somatic cell, endogenous antigens are processed and loaded preferentially on MHC class I; naive CD8+ T cells in draining lymphoid tissue, once primed, differentiate into effector cytotoxic T lymphocytes that patrol tissues and, upon re-recognition of the infected cell, release perforin and granzymes or engage death receptors to trigger apoptosis, eliminating the intracellular replicative niche before additional virions bud.",
+          "Stated in examination contrast, helper T cells are chiefly a regulatory, cytokine-dominant hub for co-ordination, whereas cytotoxic T cells are a direct, cell-mediated killing effector, each requiring peptide–MHC but with a different MHC class emphasis and a different end-stage outcome for host cells and extracellular vs intracellular defence.",
+        ],
+        commonMistake:
+          "Assigning intracellular virally infected cell killing to B cells, or saying helper T cells secrete the bulk of circulating antibodies (that is the plasma B-cell lineage’s job).",
+        tags: ["T-cells", "CD4", "CD8"],
+      },
+      {
+        id: "t11-1-d6",
+        noteId: "t11-1",
+        kind: "structured",
+        difficulty: 3,
+        marks: 6,
+        stem: "Compare the primary and secondary immune responses to the same pathogen, with reference to the time course of serum antibody, the cell populations involved, and the concept of memory.",
+        modelAnswerPoints: [
+          "Primary response: first exposure; longer lag, lower peak antibody, mainly IgM then class switching, naive lymphocyte activation and germinal centre formation.",
+          "Secondary (anamnestic) response: re-exposure; much shorter lag, much higher and longer-lasting antibody, memory cells, often IgG-dominated, affinity maturation already occurred.",
+        ],
+        workedSolution: [
+          "In the primary response after first injection or infection, naive clones must be found in the large repertoire, activated, undergo expansion in lymphoid tissue, and generate plasma and memory progeny, so a measurable humoral lag of several days is typical, with serum IgM rising first in teaching diagrams and a smaller IgG peak that trails class switching, whereas memory cells are not yet in large numbers to dominate kinetics before their formation completes.",
+          "In the secondary response, pre-existing long-lived memory B and T cells with higher-affinity receptors are already at elevated frequency, localised partly in niches, and are poised to re-enter a rapid clonal expansion after antigen recognition, so the antibody rise begins sooner, reaches a higher titre, and persists longer, often with immunoglobulin class appropriate to long-lived plasma output such as IgG in blood rather than a prolonged IgM-only profile in typical vaccine or recall curves.",
+          "The biological meaning is protective dose and duration: a robust secondary curve underlies the principle that booster immunisations in vaccination schedules produce stronger protection than a single inoculation, and explains why a second encounter with a natural pathogen is often subclinical in partially immune adults compared with naïve individuals.",
+        ],
+        commonMistake:
+          "Saying the secondary response has a *longer* lag than the primary, or that memory cells produce antibody directly in large quantity without a second wave of plasmablasts/plasma cells on rechallenge (memory cells respond faster but still generate new effectors on stimulation).",
+        tags: ["primary", "secondary", "memory"],
+      },
+      {
+        id: "t11-1-d7",
+        noteId: "t11-1",
+        kind: "structured",
+        difficulty: 3,
+        marks: 6,
+        stem: "Outline the impact of human immunodeficiency virus (HIV) on the specific immune system in untreated infection, and identify the class of cell chiefly targeted, linking this to the development of Acquired Immune Deficiency Syndrome (AIDS).",
+        modelAnswerPoints: [
+          "HIV is a retrovirus that infects cells bearing CD4 (especially helper T cells and some macrophage/dendritic cell populations) and integrates a DNA copy, establishing chronic infection and progressive loss of CD4+ T cells.",
+          "Depletion of central helper activity weakens cell-mediated and humoral defences, increasing opportunistic infection and neoplasia, defining the AIDS stage; transmission routes include sexual, blood, vertical.",
+        ],
+        workedSolution: [
+          "HIV (human immunodeficiency virus) uses gp120 binding to the CD4 receptor and co-receptors to enter helper T lymphocytes, macrophages, and dendritic cells, reverse transcribes its RNA genome, integrates proviral DNA with host cell machinery, and is therefore a persistent retroviral infection that cannot be fully cleared by the immune response alone without modern antiviral regimens in teaching contexts.",
+          "Because CD4+ T cells are the orchestrators of adaptive immunity, their gradual depletion in untreated infection progressively impairs the ability to mount and sustain responses to previously controlled pathogens, so the clinical stage known as Acquired Immune Deficiency Syndrome (AIDS) is defined by a severe drop in absolute CD4 count and/or the appearance of defining opportunistic conditions such as *Pneumocystis* pneumonia or certain cancers that rarely occur in immunocompetent hosts.",
+          "Transmission in syllabus-level biology remains sexual, parenteral (including shared needles and historically unscreened blood products), and perinatal (mother to child) rather than by casual contact, and public-health education ties prevention to barrier methods, clean needles, and screening, while the immunological point examiners test is the selective targeting of a central T-cell subset rather than all leukocytes indiscriminately.",
+        ],
+        commonMistake:
+          "Stating that HIV is a double-stranded DNA virus, or that it kills neutrophils as its primary effect (the characteristic defect is in CD4+ T-cell depletion and consequent specific immune failure).",
+        tags: ["HIV", "AIDS", "CD4"],
+      },
+      {
+        id: "t11-1-d8",
+        noteId: "t11-1",
+        kind: "mcq",
+        difficulty: 2,
+        stem: "Which description best characterises a professional antigen-presenting cell in the specific immune response to a protein-based vaccine or pathogen in humans?",
+        options: [
+          { id: "A", text: "A red blood cell that phagocytoses bacteria" },
+          { id: "B", text: "A specialised cell that can process protein and display peptide to T cells" },
+          { id: "C", text: "A plasma B cell that kills virus-infected host cells" },
+          { id: "D", text: "A muscle fibre that stores antibody in glycogen granules" },
+        ],
+        correctOptionId: "B",
+        explanation:
+          "Antigen presentation involves processing proteins into peptides, binding them to MHC, and showing them to TCRs—specialised phagocytic and dendritic cells are classic APCs, not RBCs or cytotoxic effectors in this role.",
+        distractorRationale: {
+          A: "Erythrocytes lack a nucleus, MHC presentation machinery, and phagocytic function in the usual A-level model.",
+          C: "Plasma cells secrete antibody; cytotoxic T cells, not B plasma cells, kill infected somatic cells.",
+          D: "Skeletal muscle is not a source of MHC class II display for adaptive priming; this is biologically spurious in this form.",
+        },
+        tags: ["antigen", "APC", "MCQ"],
+      },
+      {
+        id: "t11-1-d9",
+        noteId: "t11-1",
+        kind: "mcq",
+        difficulty: 3,
+        stem: "Which feature is the clearest indicator that a defence mechanism belongs to the adaptive, specific arm of the mammalian immune system rather than the non-specific, innate arm?",
+        options: [
+          { id: "A", text: "It acts within minutes to hours" },
+          { id: "B", text: "It involves antigen recognition by clonally distributed lymphocyte receptors" },
+          { id: "C", text: "It requires skin keratin" },
+          { id: "D", text: "It is identical in all individuals" },
+        ],
+        correctOptionId: "B",
+        explanation:
+          "Innate defences are rapid, germline-encoded, and broadly the same; adaptive immunity is defined by clonal, antigen-specific lymphocyte receptors and memory.",
+        distractorRationale: {
+          A: "Rapid kinetics is typical of *innate* or barrier responses, not exclusive to the adaptive system.",
+          C: "Keratin in epidermis is a physical, non-specific barrier, not a lymphocyte property.",
+          D: "Identical in all people describes innate/ barrier components; adaptive TCR/BCR repertoires are individually generated.",
+        },
+        tags: ["MCQ", "innate", "adaptive"],
+      },
+      {
+        id: "t11-1-d10",
+        noteId: "t11-1",
+        kind: "structured",
+        difficulty: 4,
+        marks: 6,
+        stem: "A patient with a genetic defect in phagocyte oxidative burst (but normal lymphocyte development) is compared with a patient who lacks normal B-lymphocyte function. In two short paragraphs, contrast the types of pathogen and disease presentation each defect would be expected to make worse, and explain one functional difference in each case.",
+        modelAnswerPoints: [
+          "Defective phagocyte killing: extracellular and intracellular bacteria, fungi, and some other microbes not cleared; recurrent pyogenic infection—non-specific/ innate arm compromised.",
+          "B-cell / antibody failure: protection against many encapsulated extracellular bacteria and repeated viral re-infection; poor antibody-mediated neutralisation/ opsonisation—humoral specific arm compromised.",
+        ],
+        workedSolution: [
+          "A classic chronic granulomatous–type phagocytic failure leaves neutrophils and macrophages able to phagocytose but unable to mount a normal burst of superoxide to kill certain catalase-positive ingested bacteria and several fungi, so the patient is prone to life-threatening, recurrent, deep-seated infections with *Staphylococcus*, *Burkholderia* species, *Serratia* and *Aspergillus*-type organisms and forms granulomas as macrophages wall off but fail to clear persisting organisms, because innate phagocytic final killing, not T-cell or B-cell development per se, is the weak link in this stem.",
+          "A primary humoral (B-lineage) failure such as an inability to class-switch or to produce antibody reduces opsonisation, complement activation via the classical route, and neutralisation of many toxins and polysaccharide-encapsulated extracellular bacteria for which thymus-independent and T-cell-dependent humoral help are central, and also leaves mucosal defence and clearance of some viruses weaker because secretory IgA and high-affinity blood IgG are missing in quantity.",
+          "The functional difference examiners may reward is the former scenario impairs a front-line, cell-intrinsic bactericidal and antifungal step after phagosome formation, while the latter impairs a soluble, distance-acting, epitope-tagged set of defences: thus patients present differently—deep abscesses and opportunistic fungi versus recurrent sinopulmonary pyogenic bacteria and need for replacement immunoglobulin in severe cases.",
+        ],
+        commonMistake:
+          "Treating all immunodeficiency as ‘more colds’ without distinguishing T-cell, B-cell, and phagocyte disease patterns.",
+        tags: ["application", "complement", "phagocytes"],
+      },
+    ],
+    flashcards: [
+      {
+        id: "t11-1-f1",
+        noteId: "t11-1",
+        difficulty: 1,
+        front: "Innate vs adaptive — one-line distinction.",
+        back: "Innate: fast, same in everyone, non-clonal, non-antigen specific. Adaptive: lymphocytes, antigen-specific, memory, clonal selection.",
+        examPhrasing: "Distinguish non-specific and specific immune responses.",
+        tags: ["definitions"],
+      },
+      {
+        id: "t11-1-f2",
+        noteId: "t11-1",
+        difficulty: 1,
+        front: "Phagosome + what does it fuse with?",
+        back: "Fuses with a lysosome to form a phagolysosome; hydrolytic enzymes digest the microbe.",
+        examPhrasing: "Outline phagocytosis.",
+        tags: ["phagocytosis"],
+      },
+      {
+        id: "t11-1-f3",
+        noteId: "t11-1",
+        difficulty: 2,
+        front: "What does “antigen presentation” add that free antigen in the blood does not, for T cells?",
+        back: "Peptides in the groove of MHC on a cell surface for TCR recognition, plus co-stimulation from APCs.",
+        examPhrasing: "Explain the importance of antigen presentation.",
+        tags: ["MHC", "T-cells"],
+      },
+      {
+        id: "t11-1-f4",
+        noteId: "t11-1",
+        difficulty: 2,
+        front: "Plasma cell: main job.",
+        back: "Secrete large amounts of one specificity of antibody; terminally differentiated B-lineage effector.",
+        examPhrasing: "State the function of plasma cells.",
+        tags: ["B-cells", "antibody"],
+      },
+      {
+        id: "t11-1-f5",
+        noteId: "t11-1",
+        difficulty: 3,
+        front: "Helper T (CD4) — recognising MHC class.",
+        back: "Peptide + MHC class II on professional APC; secretes cytokines, helps B and macrophage responses.",
+        examPhrasing: "Outline helper T cell activation.",
+        confusionPair: "MHC I vs MHC II",
+        tags: ["CD4", "MHC"],
+      },
+      {
+        id: "t11-1-f6",
+        noteId: "t11-1",
+        difficulty: 3,
+        front: "Cytotoxic T (CD8) — what cells does it check?",
+        back: "Host cells showing peptide on MHC class I (e.g. virus-infected); induces apoptosis of targets.",
+        examPhrasing: "Describe the role of cytotoxic T lymphocytes.",
+        tags: ["CD8", "virus"],
+      },
+      {
+        id: "t11-1-f7",
+        noteId: "t11-1",
+        difficulty: 4,
+        front: "Primary vs secondary — lag and peak antibody (qualitative).",
+        back: "Primary: longer lag, lower/shorter Ig response. Secondary: short lag, higher sustained titre; memory + affinity advantage.",
+        examPhrasing: "Compare primary and secondary immune responses.",
+        tags: ["memory"],
+      },
+      {
+        id: "t11-1-f8",
+        noteId: "t11-1",
+        difficulty: 4,
+        front: "HIV — which surface molecule on host cells? Why does loss matter?",
+        back: "CD4 (co-receptors e.g. CCR5). Helper T depletion undermines co-ordination of adaptive responses → opportunistic disease (AIDS).",
+        examPhrasing: "Outline the effect of HIV on the immune system.",
+        tags: ["HIV"],
+      },
+      {
+        id: "t11-1-f9",
+        noteId: "t11-1",
+        difficulty: 5,
+        front: "Memory B cell vs memory T cell (brief).",
+        back: "Both long-lived, antigen-experienced; re-expand fast on rechallenge. B: antibody lineage memory; T: clonal, cytotoxic or helper memory pools.",
+        examPhrasing: "Explain immunological memory.",
+        tags: ["memory", "B-cells", "T-cells"],
+      },
+      {
+        id: "t11-1-f10",
+        noteId: "t11-1",
+        difficulty: 5,
+        front: "One reason antibody alone cannot end all viral disease.",
+        back: "Intracellular replication hides from humoral access; MHC I–mediated T-cell killing and cell-mediated control are also required.",
+        examPhrasing: "Discuss limitations of the antibody response.",
+        tags: ["integration"],
+      },
+    ],
+  },
+  "t11-2": {
+    noteId: "t11-2",
+    drills: [
+      {
+        id: "t11-2-d1",
+        noteId: "t11-2",
+        kind: "structured",
+        difficulty: 1,
+        marks: 6,
+        stem: "Relate the molecular structure of a typical antibody (immunoglobulin) to its function in the specific humoral response, with reference to binding sites, overall shape, and the regions that determine antigen specificity.",
+        modelAnswerPoints: [
+          "Y-shaped: two identical heavy and two light polypeptide chains, disulphide bonds stabilise structure.",
+          "Each arm has a variable (V) region forming the antigen-binding site (paratope) at the tips; constant (C) regions form the stem (Fc) whose class mediates effector function.",
+        ],
+        workedSolution: [
+          "A membrane-bound or secreted immunoglobulin is built from two heavy and two light chains held in a Y-shaped conformation by inter- and intrachain disulphide bridges, creating two identical arms each carrying one antigen-combining site, so a single bivalent (IgG) molecule can cross-link a multivalent pathogen to promote agglutination and immune complex formation in teaching models.",
+          "In each arm, the N-terminal variable domains of heavy and light chains (VH and VL) come together in three-dimensional space to make the hypervariable or complementarity determining regions, which are why each clone has a different surface contour that fits one epitope’s shape, charge, and hydrogen-bonding pattern on an antigen, whereas the C-terminal constant domains of the heavy chain define the class and subclass, determining complement fixation and Fc receptor binding.",
+          "The stem or Fc region does not set antigen specificity, but is the part recognised by Fcγ receptors on phagocytes (opsonising phagocytosis) or that triggers complement cascade (IgM/IgG depending on class), and it is the domain engineered when therapeutic monoclonals are given human constant regions in biotechnology contexts.",
+        ],
+        commonMistake:
+          "Locating antigen specificity in the Fc ‘tail’ or claiming a single V domain alone can fold into a full binding site without the paired heavy and light N-terminal interface.",
+        tags: ["antibody", "structure", "function"],
+      },
+      {
+        id: "t11-2-d2",
+        noteId: "t11-2",
+        kind: "structured",
+        difficulty: 2,
+        marks: 5,
+        stem: "Outline the main effector ways in which binding of antibody to a pathogen or toxin in extracellular space helps protect a mammalian host, other than the binding itself.",
+        modelAnswerPoints: [
+          "Neutralisation of toxins or entry proteins by blocking host receptor binding; neutralisation of virus by preventing attachment or fusion.",
+          "Opsonisation: Fc and complement enhance phagocytosis.",
+          "Agglutination of microbes; complement activation; antibody-dependent cell-mediated cytotoxicity in higher-level discussion where appropriate (optional extra).",
+        ],
+        workedSolution: [
+          "Once antibody binds, it does not have to be bactericidal in itself: by coating virus particles, bacterial pili, or exotoxins, it sterically hinders the pathogen or toxin from docking on host cell receptors, which is the neutralising function examiners want tied to the shape complementarity in the first question rather than a vague ‘blocks infection’ phrasing only.",
+          "In opsonisation, the Fc portion projects outward and is recognised by Fc receptors on macrophages and neutrophils, or bound complement fragment C3b (classical pathway after IgM/gG engagement) is recognised by complement receptors, lowering the phagocytic threshold so organisms that are poor activators of innate recognition alone are ingested in large numbers in phagolysosomes.",
+          "Bivalent and multivalent IgM can cross-clump (agglutinate) bacteria, limiting spread physically and making large complexes easier to clear, while complement cascades on surface-bound IgG or pentameric IgM can form membrane-attack complex pores in Gram-negative outer membranes, lyse, or opsonise further—each a distinct consequence of structure-class interactions beyond the initial Fab binding event.",
+        ],
+        commonMistake:
+          "Saying phagocytes ‘eat the antibody’ instead of the opsonised microbe, or that neutralisation is the same as osmotic lysis in all cases.",
+        tags: ["antibody", "neutralisation", "opsonisation"],
+      },
+      {
+        id: "t11-2-d3",
+        noteId: "t11-2",
+        kind: "structured",
+        difficulty: 2,
+        marks: 6,
+        stem: "Outline the hybridoma method for producing monoclonal antibodies, with reference to fusing a sensitized B cell with a myeloma cell and why selection for hybrid cells is part of the procedure.",
+        modelAnswerPoints: [
+          "Immunise a mouse, isolate splenic B cells that make some antibody; fuse with an immortal plasmacytoma (myeloma) cell in PEG/virus mediated fusion, producing heterokaryons with mixed cytoplasm and nuclei that may fuse to hybridoma.",
+          "HAT (hypoxanthine–aminopterin–thymidine) medium selects against unfused myeloma and unfused spleen cells, leaving hybridoma colonies that are immortal and antibody-secreting.",
+          "Screen for wells secreting a single, desired epitope-specific antibody, then subclone, expand, and use as monoclonal source.",
+        ],
+        workedSolution: [
+          "In outline, a laboratory mouse is first immunised with the antigen of interest so splenic B lymphocytes in the spleen include activated plasma-blasts producing antibody against a particular epitope; these short-lived, Ig-secreting cells are then harvested in suspension together with a fusion partner taken from a myeloma line already engineered to lack a key synthesis enzyme so it cannot use the salvage purine pathway when classical synthesis is blocked.",
+          "Chemical or electrofusion is used to create multinucleate fusions, many of which will pair a spleen cell nucleus with a myeloma nucleus in a single hybrid with combined traits: the myeloma half supplies unlimited division (immortality) while the B-cell half encodes a productive immunoglobulin gene rearrangement that yields the desired specificity, producing a clonal, continuously dividing hybridoma line that secretes one antibody from one clone.",
+          "Culturing in HAT medium exploits aminopterin to block the de novo thymidine/guanine-like pathways, killing unfused myeloma cells that are enzyme-deficient, while unfused short-lived spleen cells also die, leaving only HAT+ hybrids that inherit the salvage-pathway enzyme from the B-cell parent; after screening by ELISA, positive wells are subcloned to guarantee monoclonality, and the chosen line is mass-produced in bioreactors for diagnostic or clinical-grade purified antibody, which is the core examination narrative for hybridoma technology in 9700-level biology.",
+        ],
+        commonMistake:
+          "Omitting selection in HAT (or the equivalent), or claiming a random fusion always yields exactly one antibody by itself without subcloning and screening for specificity.",
+        tags: ["hybridoma", "monoclonal"],
+      },
+      {
+        id: "t11-2-d4",
+        noteId: "t11-2",
+        kind: "structured",
+        difficulty: 3,
+        marks: 5,
+        stem: "Describe principles of how monoclonal antibodies are used in the diagnosis of disease, giving at least two different diagnostic contexts in which a highly specific, single-epitope reagent is advantageous.",
+        modelAnswerPoints: [
+          "Paired (capture and detection) in immunoassays (e.g. ELISA) to measure particular proteins or pathogen antigens in serum, urine, or other fluids.",
+          "Immunostaining/immunofluorescence in tissues to map presence of a viral protein or tumour antigen.",
+          "Pregnancy: hCG detection with matched monoclonal pair is a high-yield example.",
+        ],
+        workedSolution: [
+          "Monoclonal reagents in diagnostics exploit unchanging specificity: one clone always binds the same conformational epitope, so a capture antibody on a well can immobilise only that analyte, and a second peroxidase- or radiolabelled monoclonal used as a tracer in sandwich ELISAs can detect femtomolar to picomolar amounts of a viral capside protein, tumour marker like HER2 on histology, or a cardiac troponin in emergency labs with reduced cross-reaction compared with a polyspecific antiserum.",
+          "A classic consumer-facing example is lateral-flow pregnancy test strips where a labelled anti-hCG line captures urinary human chorionic gonadotropin, giving a line only when this hormone is present; another is typing infectious agents by immunofluorescent staining in throat swab cells for influenza, where fluorochrome-conjugated anti-nucleoprotein shows infected epithelial nuclei, enabling rapid public-health point-of-care decisions that depend on a defined epitope, not a broad spectrum of reactivity in patient-derived antibody pools.",
+        ],
+        commonMistake:
+          "Saying any blood test is ‘a monoclonal’ without the sandwich, ELISA, or IF principle; confusing diagnosis with *therapeutic* infusion of antibody.",
+        tags: ["monoclonal", "diagnosis", "ELISA"],
+      },
+      {
+        id: "t11-2-d5",
+        noteId: "t11-2",
+        kind: "structured",
+        difficulty: 3,
+        marks: 5,
+        stem: "Outline how monoclonal antibodies may be used in the treatment of disease, with reference to targeting specific cell-surface or soluble molecules, and one limitation or risk at outline level.",
+        modelAnswerPoints: [
+          "Bind one antigen on malignant cells, immune effector molecules, or cytokines, blocking signalling or flagging for immune destruction; examples: anti-CD20 B-cell depletion, anti-TNF, checkpoint inhibitors (high-level only).",
+          "Limitation: cost, loss of target with mutation, infusion reactions, on-target / off-tissue side effects, human anti-mouse if murine, etc. (one clear point is enough at outline).",
+        ],
+        workedSolution: [
+          "Chimeric or humanised monoclonals in oncology bind tumour-associated antigens or lineage markers such as B-cell CD20, recruiting complement and antibody-dependent cell-mediated phagocytosis, or in checkpoint blockade they interrupt inhibitory signals so pre-existing T cells become active, while in autoimmunity anti-cytokine biologics like anti-TNFα neutralise a soluble pro-inflammatory driver that drives Crohn’s disease and rheumatoid arthritis in clinical teaching, each being a *defined* target compared with a small-molecule that hits many kinases at once in overview.",
+          "A typical limitation in examination answers is the narrow epitope: if a tumour subclone loses the antigen by mutation, treatment fails, or a normal tissue shares the antigen, systemic toxicity and infusion reactions (cytokine release, hypersensitivity) become dose-limiting, all of which still justify the principle that a monoclonal can modulate a single pathway in host biology when conventional drugs cannot, while acknowledging the complexity of in vivo use.",
+        ],
+        commonMistake:
+          "Pretending a monoclonal is an antibiotic for bacteria or a vaccine that trains memory cells, instead of a passive, ready-made, targeted binding protein.",
+        tags: ["monoclonal", "therapy", "treatment"],
+      },
+      {
+        id: "t11-2-d6",
+        noteId: "t11-2",
+        kind: "structured",
+        difficulty: 2,
+        marks: 6,
+        stem: "Describe the differences between: (a) active immunity and passive immunity; and (b) natural immunity and artificial immunity, and give one example in each of the four cells of a 2×2 classification (active/passive × natural/artificial).",
+        modelAnswerPoints: [
+          "Active: host produces own specific lymphocyte response; passive: receive ready-made antibody or cells from another (may be time-limited).",
+          "Natural: exposure in daily life/ infection/ maternal/ colostrum; artificial: result of medical intervention, vaccine, or medical antibody.",
+          "Example grid: natural active = infection; artificial active = most vaccines; natural passive = maternal IgG (placental) / colostral IgA; artificial passive = injected immunoglobulin or antitoxin in emergency.",
+        ],
+        workedSolution: [
+          "Active immunity is defined by the host mounting its own B- and T-cell clonal response so immunoglobulins in circulation are the host’s, often long-lasting with memory, whereas passive immunity is the administration or transfer of preformed antibody, short-lived, without necessarily generating a memory pool in the recipient because the effector protein is exogenous, which is a classic contrast between immunisation and convalescent plasma or prophylactic antiserum in rabies in older protocols.",
+          "Natural events occur without deliberate clinical scheduling, such as acquiring measles in childhood (natural active) that produces lasting immunity, or transplacental IgG passively protecting a neonate for a few months (natural passive) because maternal Fc is crossed before birth, while milk IgA in some species provides mucosal passive transfer, still treated as a natural, non-vaccine route in comparative immunology if asked in examination comparative tables.",
+          "Artificial active immunity is the deliberate use of a vaccine to drive the host to produce memory without full disease, while artificial passive immunity is medical injection of hyperimmune human immunoglobulin or a monoclonal drug that supplies neutralising power immediately, used when the patient cannot form their own response fast enough, completing the 2×2 with four distinct, commonly memorised real-world cases.",
+        ],
+        commonMistake:
+          "Classifying a vaccine as passive, or colostral antibody as ‘active’ because it protects a baby, instead of as passive *natural* transfer to the child.",
+        tags: ["immunity", "classifications"],
+      },
+      {
+        id: "t11-2-d7",
+        noteId: "t11-2",
+        kind: "structured",
+        difficulty: 2,
+        marks: 5,
+        stem: "Explain that vaccines usually contain antigens (or elicit antigenic molecules) and describe how a successful vaccination can provide long-term immunity, without pasting the board’s phrasing word-for-word.",
+        modelAnswerPoints: [
+          "A vaccine provides innocuous or attenuated / subunit / toxoid or genetic instructions so the immune system is exposed to pathogen antigens without causing disease, or to safe representations of them, priming lymphocytes as in natural active immunity.",
+          "Stimulation of B- and T-cell memory, plasma / cellular responses, and often booster schedules yield persistent immunoglobulin and/or memory T cells, giving long-term, faster recall on re-exposure, reducing severe disease in vaccinated people.",
+        ],
+        workedSolution: [
+          "Whether the formulation is a killed whole-cell bacterium, inactivated or live-attenuated virus, acellular subunit, conjugated polysaccharide, mRNA in lipid vehicles encoding a spike, or a harmless viral vector carrying a gene, the unifying point is the immune system experiences authentic foreign epitopes, usually with adjuvant to enhance dendritic cell priming, under conditions where replication is absent or very limited, so the inflammatory milieu is sufficient for priming but not for disease pathology.",
+          "Dendritic cells in draining lymph nodes present peptide–MHC to naive cells, T follicular help licenses germinal centre reactions, and B cells and T cells with appropriate receptors are expanded into long-lived memory pools; serum antibody titres may eventually decay but memory cells remain primed, so a second encounter, whether a booster dose in schedule or a wild pathogen, triggers a high-magnitude, rapid secondary response that aborts or greatly attenuates infection, which in population terms is the immune explanation for the phrase ‘conferring long-term immunity’ used in the syllabus in teaching contexts.",
+        ],
+        commonMistake:
+          "Saying a vaccine is ‘a weak live infection’ in all cases (some are entirely non-replicating), or that passive antibody from the vaccine (there is no passive host antibody) confers the memory, instead of host-generated lymphocyte memory after presentation of vaccine antigens.",
+        tags: ["vaccine", "antigen", "memory"],
+      },
+      {
+        id: "t11-2-d8",
+        noteId: "t11-2",
+        kind: "structured",
+        difficulty: 3,
+        marks: 6,
+        stem: "Explain how vaccination programmes at population level can help control the spread of infectious diseases, with reference to reducing susceptible hosts, interrupting transmission, and one factor that can limit the success of a programme in real communities.",
+        modelAnswerPoints: [
+          "As coverage increases, the average number of new infections from one case (effective reproduction) falls, paths of transmission break, incidence drops regionally, and in principle elimination/eradication can be reached for some agents.",
+          "Herd protection protects those who cannot be vaccinated if enough around them are immune (outline expected).",
+          "Limit: vaccine hesitancy, supply cold-chain, coverage gaps, pathogen animal reservoirs, or antigenic drift, etc.",
+        ],
+        workedSolution: [
+          "If a large fraction of a cohort is left susceptible, each infectious person contacts many more effective transmission opportunities; mass vaccination in childhood schedules reduces the *density* of susceptibles in mixing networks, so each infected individual infects on average fewer than one subsequent case when coverage crosses a model-dependent threshold, which is the population-level version of the basic reproduction number (R0) being driven below one by accumulated immunity rather than by behavioural lockdowns alone, while still using the same S–I–R thinking at outline.",
+          "Herd immunity or indirect protection is the phenomenon where a vaccinated majority interrupts chains so the very young, immunosuppressed, or pregnant who cannot be immunised on schedule are at lower risk, because the pathogen is simply less often introduced into the household, school, or hospital ward, which is public-health’s justification for national campaigns even when an individual’s risk of severe disease is low at younger ages for certain organisms.",
+          "Conversely, persistent pockets of unvaccinated individuals—whether for logistical, economic, or misinformation-based reasons—can sustain circulation and allow reintroductions from other regions, and zoonotic reservoirs (wild poliovirus in narrow circumstances historically, influenza in avian species) or antigenic change can defeat strain-matched protection, all of which are valid examination caveats to the optimistic picture of a perfectly executed programme, without denying the role of high uptake in *controlling* spread in practice.",
+        ],
+        commonMistake:
+          "Claiming 100% of people must be vaccinated, or that herd effect works with non-communicable diseases, or conflating ‘control of spread’ with ‘curative care’ for the already infected in the same question stem.",
+        tags: ["herd-immunity", "public-health", "vaccination"],
+      },
+      {
+        id: "t11-2-d9",
+        noteId: "t11-2",
+        kind: "mcq",
+        difficulty: 2,
+        stem: "Which best describes *passive* artificial immunity in humans at syllabus level?",
+        options: [
+          { id: "A", text: "Recovery from a natural measles infection" },
+          { id: "B", text: "Oral polio drops taken on the national schedule" },
+          { id: "C", text: "Injection of pre-formed antibody in emergency (e.g. some immunoglobulins/antisera use)" },
+          { id: "D", text: "Transplacental transfer of IgG" },
+        ],
+        correctOptionId: "C",
+        explanation:
+          "Passive = receive pre-made antibody. Artificial = medical intervention, not placenta or colostrum; active measles and oral vaccine are *active* routes.",
+        distractorRationale: {
+          A: "Infection recovery is *natural* *active* immunity (host’s own long-lived response).",
+          B: "Oral polio (where used) is *active* artificial vaccination, priming the host, not a passive Ab transfer in this classification.",
+          D: "Placental IgG is *natural* *passive* to the fetus, not a needle-delivered *artificial* product.",
+        },
+        tags: ["MCQ", "classifications"],
+      },
+      {
+        id: "t11-2-d10",
+        noteId: "t11-2",
+        kind: "mcq",
+        difficulty: 3,
+        stem: "In contrast to a polyspecific polyclonal antiserum from immunised blood, a monoclonal antibody from a single hybridoma clone is especially valuable when:",
+        options: [
+          { id: "A", text: "You need a mixture of random epitope affinities in one bottle" },
+          { id: "B", text: "You need unlimited genetic diversity in one preparation" },
+          { id: "C", text: "You need a stable, single-epitope, reproducible reagent for a diagnostic or therapeutic use" },
+          { id: "D", text: "You want a vaccine to replace memory T cells" },
+        ],
+        correctOptionId: "C",
+        explanation:
+          "Monoclonals are a single isotype, single specificity, clonal reagent—reproducible, standardisable for assays and targeted therapy, unlike a polyclonal antiserum’s heterogeneity in epitopes and titer over bleeds.",
+        distractorRationale: {
+          A: "The opposite is true: a monoclonal is defined by *one* epitope repertoire from one clone, not a deliberate mixture.",
+          B: "A monoclonal is clonal, not a snapshot of a vast evolving repertoire; diversity is a feature of a polyclonal or infection response, not a single line.",
+          D: "A monoclonal is passive, targeted biologic therapy or lab reagent, not a primary immunisation that *generates* de novo T-cell memory like a vaccine in the usual sense of the comparison.",
+        },
+        tags: ["monoclonal", "MCQ"],
+      },
+    ],
+    flashcards: [
+      {
+        id: "t11-2-f1",
+        noteId: "t11-2",
+        difficulty: 1,
+        front: "Antibody: four polypeptides, shape.",
+        back: "Two heavy + two light chains; Y-shaped; disulphide-stabilised; two Fab arms, one Fc stem region per typical IgG (class-dependent).",
+        examPhrasing: "Relate antibody structure to function.",
+        tags: ["antibody", "structure"],
+      },
+      {
+        id: "t11-2-f2",
+        noteId: "t11-2",
+        difficulty: 1,
+        front: "Where is antigen *specificity* in the immunoglobulin?",
+        back: "Variable (V) domains at N-termini of each heavy+light pair form the paratope / binding site; constant regions set class and effector functions.",
+        examPhrasing: "Explain specificity of the antibody molecule.",
+        tags: ["antibody", "V-region"],
+      },
+      {
+        id: "t11-2-f3",
+        noteId: "t11-2",
+        difficulty: 2,
+        front: "Two effector ‘jobs’ of bound antibody (not counting binding itself).",
+        back: "Neutralisation; opsonisation (phagocyte/C3b); agglutination; complement activation (class dependent).",
+        examPhrasing: "Outline how antibodies protect a host.",
+        tags: ["effector", "opsonisation"],
+      },
+      {
+        id: "t11-2-f4",
+        noteId: "t11-2",
+        difficulty: 2,
+        front: "Hybridoma — two parent cell types fused.",
+        back: "Antibody-producing spleen B cell + enzyme-defect immortal myeloma; HAT selection enriches true hybrids; screen for the desired single specificity.",
+        examPhrasing: "Outline the hybridoma method.",
+        tags: ["hybridoma", "HAT"],
+      },
+      {
+        id: "t11-2-f5",
+        noteId: "t11-2",
+        difficulty: 3,
+        front: "Monoclonal in diagnosis: one-line principle.",
+        back: "Highly specific, reproducible capture/detect in immunoassay or specific stain; quantifies/identifies a defined antigen.",
+        examPhrasing: "Give principles of monoclonal use in diagnosis.",
+        tags: ["ELISA", "diagnosis"],
+      },
+      {
+        id: "t11-2-f6",
+        noteId: "t11-2",
+        difficulty: 3,
+        front: "Monoclonal in therapy: one-line + risk.",
+        back: "Targets one molecule (cytokine, surface marker); risk: infusion reaction, on-target off-tumour, escape variants.",
+        examPhrasing: "Outline use of monoclonal antibodies in treatment.",
+        tags: ["therapy", "mAb"],
+      },
+      {
+        id: "t11-2-f7",
+        noteId: "t11-2",
+        difficulty: 4,
+        front: "Active *natural* vs active *artificial* — one example each.",
+        back: "Natural: infection (e.g. varicella). Artificial: inactivated/ subunit/ live-attenuated vaccine in schedule, priming host immune response without disease (when successful).",
+        examPhrasing: "Distinguish natural and artificial active immunity.",
+        tags: ["classifications", "vaccine"],
+      },
+      {
+        id: "t11-2-f8",
+        noteId: "t11-2",
+        difficulty: 4,
+        front: "Passive *natural* example (mother → baby) vs passive *artificial* (needle).",
+        back: "Natural passive: transplacental IgG, colostral IgA. Artificial passive: IV immunoglobulin, antitoxin, therapeutic monoclonal infusion in medicine.",
+        examPhrasing: "Give examples of passive natural and artificial immunity.",
+        tags: ["passive", "immunity"],
+      },
+      {
+        id: "t11-2-f9",
+        noteId: "t11-2",
+        difficulty: 5,
+        front: "Why does vaccinating children protect the unvaccinated (one mechanism)?",
+        back: "Interrupts person-to-person chains; enough immune hosts that pathogen R_eff < 1; indirect protection in vulnerable groups.",
+        examPhrasing: "Explain how vaccination programmes control spread of infectious disease.",
+        tags: ["herd-immunity", "R0"],
+      },
+      {
+        id: "t11-2-f10",
+        noteId: "t11-2",
+        difficulty: 5,
+        front: "Vaccine: antigen vs *memory* in one line.",
+        back: "Present antigens in a safe way so host lymphocytes *generate* clonal memory and long-lived plasma cells (where applicable), not just transient antibody in the vial (that would be more like passive prophylaxis).",
+        examPhrasing: "Explain that vaccines provide long-term immunity by stimulating an immune response.",
+        tags: ["vaccine", "memory"],
+      },
+    ],
+  },
+};

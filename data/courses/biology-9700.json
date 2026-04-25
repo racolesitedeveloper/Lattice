@@ -1,0 +1,185 @@
+{
+  "syllabusCode": "9700",
+  "qualificationTitle": "Cambridge International AS & A Level Biology",
+  "examYears": "2025–2027",
+  "sourceUrl": "https://www.cambridgeinternational.org/Images/664560-2025-2027-syllabus.pdf",
+  "copyrightNote": "Topic and subtopic headings follow the public 9700 subject-content structure for exams in 2025–2027. Learning outcomes are not reproduced here — use the official PDF from Cambridge International for authoritative wording.",
+  "asLastTopic": 11,
+  "topics": [
+    {
+      "id": "t1",
+      "number": 1,
+      "title": "Cell structure",
+      "subtopics": [
+        { "id": "t1-1", "code": "1.1", "title": "The microscope in cell studies" },
+        { "id": "t1-2", "code": "1.2", "title": "Cells as the basic units of living organisms" }
+      ]
+    },
+    {
+      "id": "t2",
+      "number": 2,
+      "title": "Biological molecules",
+      "subtopics": [
+        { "id": "t2-1", "code": "2.1", "title": "Testing for biological molecules" },
+        { "id": "t2-2", "code": "2.2", "title": "Carbohydrates and lipids" },
+        { "id": "t2-3", "code": "2.3", "title": "Proteins" },
+        { "id": "t2-4", "code": "2.4", "title": "Water" }
+      ]
+    },
+    {
+      "id": "t3",
+      "number": 3,
+      "title": "Enzymes",
+      "subtopics": [
+        { "id": "t3-1", "code": "3.1", "title": "Mode of action of enzymes" },
+        { "id": "t3-2", "code": "3.2", "title": "Factors that affect enzyme action" }
+      ]
+    },
+    {
+      "id": "t4",
+      "number": 4,
+      "title": "Cell membranes and transport",
+      "subtopics": [
+        { "id": "t4-1", "code": "4.1", "title": "Fluid mosaic membranes" },
+        { "id": "t4-2", "code": "4.2", "title": "Movement into and out of cells" }
+      ]
+    },
+    {
+      "id": "t5",
+      "number": 5,
+      "title": "The mitotic cell cycle",
+      "subtopics": [
+        { "id": "t5-1", "code": "5.1", "title": "Replication and division of nuclei and cells" },
+        { "id": "t5-2", "code": "5.2", "title": "Chromosome behaviour in mitosis" }
+      ]
+    },
+    {
+      "id": "t6",
+      "number": 6,
+      "title": "Nucleic acids and protein synthesis",
+      "subtopics": [
+        { "id": "t6-1", "code": "6.1", "title": "Structure of nucleic acids and replication of DNA" },
+        { "id": "t6-2", "code": "6.2", "title": "Protein synthesis" }
+      ]
+    },
+    {
+      "id": "t7",
+      "number": 7,
+      "title": "Transport in plants",
+      "subtopics": [
+        { "id": "t7-1", "code": "7.1", "title": "Structure of transport tissues" },
+        { "id": "t7-2", "code": "7.2", "title": "Transport mechanisms" }
+      ]
+    },
+    {
+      "id": "t8",
+      "number": 8,
+      "title": "Transport in mammals",
+      "subtopics": [
+        { "id": "t8-1", "code": "8.1", "title": "The circulatory system" },
+        { "id": "t8-2", "code": "8.2", "title": "Transport of oxygen and carbon dioxide" },
+        { "id": "t8-3", "code": "8.3", "title": "The heart" }
+      ]
+    },
+    {
+      "id": "t9",
+      "number": 9,
+      "title": "Gas exchange",
+      "subtopics": [{ "id": "t9-1", "code": "9.1", "title": "The gas exchange system" }]
+    },
+    {
+      "id": "t10",
+      "number": 10,
+      "title": "Infectious diseases",
+      "subtopics": [
+        { "id": "t10-1", "code": "10.1", "title": "Infectious diseases" },
+        { "id": "t10-2", "code": "10.2", "title": "Antibiotics" }
+      ]
+    },
+    {
+      "id": "t11",
+      "number": 11,
+      "title": "Immunity",
+      "subtopics": [
+        { "id": "t11-1", "code": "11.1", "title": "The immune system" },
+        { "id": "t11-2", "code": "11.2", "title": "Antibodies and vaccination" }
+      ]
+    },
+    {
+      "id": "t12",
+      "number": 12,
+      "title": "Energy and respiration",
+      "subtopics": [
+        { "id": "t12-1", "code": "12.1", "title": "Energy" },
+        { "id": "t12-2", "code": "12.2", "title": "Respiration" }
+      ]
+    },
+    {
+      "id": "t13",
+      "number": 13,
+      "title": "Photosynthesis",
+      "subtopics": [
+        { "id": "t13-1", "code": "13.1", "title": "Photosynthesis as an energy transfer process" },
+        { "id": "t13-2", "code": "13.2", "title": "Investigation of limiting factors" }
+      ]
+    },
+    {
+      "id": "t14",
+      "number": 14,
+      "title": "Homeostasis",
+      "subtopics": [
+        { "id": "t14-1", "code": "14.1", "title": "Homeostasis in mammals" },
+        { "id": "t14-2", "code": "14.2", "title": "Homeostasis in plants" }
+      ]
+    },
+    {
+      "id": "t15",
+      "number": 15,
+      "title": "Control and coordination",
+      "subtopics": [
+        { "id": "t15-1", "code": "15.1", "title": "Control and coordination in mammals" },
+        { "id": "t15-2", "code": "15.2", "title": "Control and coordination in plants" }
+      ]
+    },
+    {
+      "id": "t16",
+      "number": 16,
+      "title": "Inheritance",
+      "subtopics": [
+        { "id": "t16-1", "code": "16.1", "title": "Passage of information from parents to offspring" },
+        { "id": "t16-2", "code": "16.2", "title": "The roles of genes in determining the phenotype" },
+        { "id": "t16-3", "code": "16.3", "title": "Gene control" }
+      ]
+    },
+    {
+      "id": "t17",
+      "number": 17,
+      "title": "Selection and evolution",
+      "subtopics": [
+        { "id": "t17-1", "code": "17.1", "title": "Variation" },
+        { "id": "t17-2", "code": "17.2", "title": "Natural and artificial selection" },
+        { "id": "t17-3", "code": "17.3", "title": "Evolution" }
+      ]
+    },
+    {
+      "id": "t18",
+      "number": 18,
+      "title": "Classification, biodiversity and conservation",
+      "subtopics": [
+        { "id": "t18-1", "code": "18.1", "title": "Classification" },
+        { "id": "t18-2", "code": "18.2", "title": "Biodiversity" },
+        { "id": "t18-3", "code": "18.3", "title": "Conservation" }
+      ]
+    },
+    {
+      "id": "t19",
+      "number": 19,
+      "title": "Genetic technology",
+      "subtopics": [
+        { "id": "t19-1", "code": "19.1", "title": "Principles of genetic technology" },
+        { "id": "t19-2", "code": "19.2", "title": "Genetic technology applied to medicine" },
+        { "id": "t19-3", "code": "19.3", "title": "Genetically modified organisms in agriculture" }
+      ]
+    }
+  ]
+}

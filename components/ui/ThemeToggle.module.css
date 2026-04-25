@@ -1,0 +1,46 @@
+.toggle {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  border: 1px solid color-mix(in srgb, var(--accent) 12%, var(--border));
+  border-radius: var(--r-sm);
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  color: var(--text-muted);
+  padding: 0 var(--sp-3);
+  font-family: inherit;
+  font-size: var(--fs-label-sm);
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 140ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 140ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    color 140ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.toggle:hover {
+  border-color: color-mix(in srgb, var(--accent) 28%, var(--border));
+  background: color-mix(in srgb, var(--accent-subtle) 46%, var(--surface));
+  color: var(--text);
+}
+
+.toggle:active {
+  transform: translateY(1px);
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent-subtle);
+  color: var(--accent);
+}
+
+.label {
+  min-width: 28px;
+  text-align: left;
+}

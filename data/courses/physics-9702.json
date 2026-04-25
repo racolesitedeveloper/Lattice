@@ -1,0 +1,259 @@
+{
+  "syllabusCode": "9702",
+  "qualificationTitle": "Cambridge International AS & A Level Physics",
+  "examYears": "2025–2027",
+  "sourceUrl": "https://www.cambridgeinternational.org/Images/664565-2025-2027-syllabus.pdf",
+  "copyrightNote": "Topic and subtopic headings follow the public 9702 subject-content structure for exams in 2025–2027. Learning outcomes are not reproduced here — use the official PDF from Cambridge International for authoritative wording.",
+  "asLastTopic": 11,
+  "topics": [
+    {
+      "id": "t1",
+      "number": 1,
+      "title": "Physical quantities and units",
+      "subtopics": [
+        { "id": "t1-1", "code": "1.1", "title": "Physical quantities" },
+        { "id": "t1-2", "code": "1.2", "title": "SI units" },
+        { "id": "t1-3", "code": "1.3", "title": "Errors and uncertainties" },
+        { "id": "t1-4", "code": "1.4", "title": "Scalars and vectors" }
+      ]
+    },
+    {
+      "id": "t2",
+      "number": 2,
+      "title": "Kinematics",
+      "subtopics": [{ "id": "t2-1", "code": "2.1", "title": "Equations of motion" }]
+    },
+    {
+      "id": "t3",
+      "number": 3,
+      "title": "Dynamics",
+      "subtopics": [
+        { "id": "t3-1", "code": "3.1", "title": "Momentum and Newton’s laws of motion" },
+        { "id": "t3-2", "code": "3.2", "title": "Non-uniform motion" },
+        { "id": "t3-3", "code": "3.3", "title": "Linear momentum and its conservation" }
+      ]
+    },
+    {
+      "id": "t4",
+      "number": 4,
+      "title": "Forces, density and pressure",
+      "subtopics": [
+        { "id": "t4-1", "code": "4.1", "title": "Turning effects of forces" },
+        { "id": "t4-2", "code": "4.2", "title": "Equilibrium of forces" },
+        { "id": "t4-3", "code": "4.3", "title": "Density and pressure" }
+      ]
+    },
+    {
+      "id": "t5",
+      "number": 5,
+      "title": "Work, energy and power",
+      "subtopics": [
+        { "id": "t5-1", "code": "5.1", "title": "Energy conservation" },
+        { "id": "t5-2", "code": "5.2", "title": "Gravitational potential energy and kinetic energy" }
+      ]
+    },
+    {
+      "id": "t6",
+      "number": 6,
+      "title": "Deformation of solids",
+      "subtopics": [
+        { "id": "t6-1", "code": "6.1", "title": "Stress and strain" },
+        { "id": "t6-2", "code": "6.2", "title": "Elastic and plastic behaviour" }
+      ]
+    },
+    {
+      "id": "t7",
+      "number": 7,
+      "title": "Waves",
+      "subtopics": [
+        { "id": "t7-1", "code": "7.1", "title": "Progressive waves" },
+        { "id": "t7-2", "code": "7.2", "title": "Transverse and longitudinal waves" },
+        { "id": "t7-3", "code": "7.3", "title": "Doppler effect for sound waves" },
+        { "id": "t7-4", "code": "7.4", "title": "Electromagnetic spectrum" },
+        { "id": "t7-5", "code": "7.5", "title": "Polarisation" }
+      ]
+    },
+    {
+      "id": "t8",
+      "number": 8,
+      "title": "Superposition",
+      "subtopics": [
+        { "id": "t8-1", "code": "8.1", "title": "Stationary waves" },
+        { "id": "t8-2", "code": "8.2", "title": "Diffraction" },
+        { "id": "t8-3", "code": "8.3", "title": "Interference" },
+        { "id": "t8-4", "code": "8.4", "title": "The diffraction grating" }
+      ]
+    },
+    {
+      "id": "t9",
+      "number": 9,
+      "title": "Electricity",
+      "subtopics": [
+        { "id": "t9-1", "code": "9.1", "title": "Electric current" },
+        { "id": "t9-2", "code": "9.2", "title": "Potential difference and power" },
+        { "id": "t9-3", "code": "9.3", "title": "Resistance and resistivity" }
+      ]
+    },
+    {
+      "id": "t10",
+      "number": 10,
+      "title": "D.C. circuits",
+      "subtopics": [
+        { "id": "t10-1", "code": "10.1", "title": "Practical circuits" },
+        { "id": "t10-2", "code": "10.2", "title": "Kirchhoff’s laws" },
+        { "id": "t10-3", "code": "10.3", "title": "Potential dividers" }
+      ]
+    },
+    {
+      "id": "t11",
+      "number": 11,
+      "title": "Particle physics",
+      "subtopics": [
+        { "id": "t11-1", "code": "11.1", "title": "Atoms, nuclei and radiation" },
+        { "id": "t11-2", "code": "11.2", "title": "Fundamental particles" }
+      ]
+    },
+    {
+      "id": "t12",
+      "number": 12,
+      "title": "Motion in a circle",
+      "subtopics": [
+        { "id": "t12-1", "code": "12.1", "title": "Kinematics of uniform circular motion" },
+        { "id": "t12-2", "code": "12.2", "title": "Centripetal acceleration" }
+      ]
+    },
+    {
+      "id": "t13",
+      "number": 13,
+      "title": "Gravitational fields",
+      "subtopics": [
+        { "id": "t13-1", "code": "13.1", "title": "Gravitational field" },
+        { "id": "t13-2", "code": "13.2", "title": "Gravitational force between point masses" },
+        { "id": "t13-3", "code": "13.3", "title": "Gravitational field of a point mass" },
+        { "id": "t13-4", "code": "13.4", "title": "Gravitational potential" }
+      ]
+    },
+    {
+      "id": "t14",
+      "number": 14,
+      "title": "Temperature",
+      "subtopics": [
+        { "id": "t14-1", "code": "14.1", "title": "Thermal equilibrium" },
+        { "id": "t14-2", "code": "14.2", "title": "Temperature scales" },
+        { "id": "t14-3", "code": "14.3", "title": "Specific heat capacity and specific latent heat" }
+      ]
+    },
+    {
+      "id": "t15",
+      "number": 15,
+      "title": "Ideal gases",
+      "subtopics": [
+        { "id": "t15-1", "code": "15.1", "title": "The mole" },
+        { "id": "t15-2", "code": "15.2", "title": "Equation of state" },
+        { "id": "t15-3", "code": "15.3", "title": "Kinetic theory of gases" }
+      ]
+    },
+    {
+      "id": "t16",
+      "number": 16,
+      "title": "Thermodynamics",
+      "subtopics": [
+        { "id": "t16-1", "code": "16.1", "title": "Internal energy" },
+        { "id": "t16-2", "code": "16.2", "title": "The first law of thermodynamics" }
+      ]
+    },
+    {
+      "id": "t17",
+      "number": 17,
+      "title": "Oscillations",
+      "subtopics": [
+        { "id": "t17-1", "code": "17.1", "title": "Simple harmonic oscillations" },
+        { "id": "t17-2", "code": "17.2", "title": "Energy in simple harmonic motion" },
+        { "id": "t17-3", "code": "17.3", "title": "Damped and forced oscillations, resonance" }
+      ]
+    },
+    {
+      "id": "t18",
+      "number": 18,
+      "title": "Electric fields",
+      "subtopics": [
+        { "id": "t18-1", "code": "18.1", "title": "Electric fields and field lines" },
+        { "id": "t18-2", "code": "18.2", "title": "Uniform electric fields" },
+        { "id": "t18-3", "code": "18.3", "title": "Electric force between point charges" },
+        { "id": "t18-4", "code": "18.4", "title": "Electric field of a point charge" },
+        { "id": "t18-5", "code": "18.5", "title": "Electric potential" }
+      ]
+    },
+    {
+      "id": "t19",
+      "number": 19,
+      "title": "Capacitance",
+      "subtopics": [
+        { "id": "t19-1", "code": "19.1", "title": "Capacitors and capacitance" },
+        { "id": "t19-2", "code": "19.2", "title": "Energy stored in a capacitor" },
+        { "id": "t19-3", "code": "19.3", "title": "Discharging a capacitor" }
+      ]
+    },
+    {
+      "id": "t20",
+      "number": 20,
+      "title": "Magnetic fields",
+      "subtopics": [
+        { "id": "t20-1", "code": "20.1", "title": "Concept of a magnetic field" },
+        { "id": "t20-2", "code": "20.2", "title": "Force on a current-carrying conductor" },
+        { "id": "t20-3", "code": "20.3", "title": "Force on a moving charge" },
+        { "id": "t20-4", "code": "20.4", "title": "Magnetic fields due to currents" },
+        { "id": "t20-5", "code": "20.5", "title": "Electromagnetic induction" }
+      ]
+    },
+    {
+      "id": "t21",
+      "number": 21,
+      "title": "Alternating currents",
+      "subtopics": [
+        { "id": "t21-1", "code": "21.1", "title": "Characteristics of alternating currents" },
+        { "id": "t21-2", "code": "21.2", "title": "Rectification and smoothing" }
+      ]
+    },
+    {
+      "id": "t22",
+      "number": 22,
+      "title": "Quantum physics",
+      "subtopics": [
+        { "id": "t22-1", "code": "22.1", "title": "Energy and momentum of a photon" },
+        { "id": "t22-2", "code": "22.2", "title": "Photoelectric effect" },
+        { "id": "t22-3", "code": "22.3", "title": "Wave-particle duality" },
+        { "id": "t22-4", "code": "22.4", "title": "Energy levels in atoms and line spectra" }
+      ]
+    },
+    {
+      "id": "t23",
+      "number": 23,
+      "title": "Nuclear physics",
+      "subtopics": [
+        { "id": "t23-1", "code": "23.1", "title": "Mass defect and nuclear binding energy" },
+        { "id": "t23-2", "code": "23.2", "title": "Radioactive decay" }
+      ]
+    },
+    {
+      "id": "t24",
+      "number": 24,
+      "title": "Medical physics",
+      "subtopics": [
+        { "id": "t24-1", "code": "24.1", "title": "Production and use of ultrasound" },
+        { "id": "t24-2", "code": "24.2", "title": "Production and use of X-rays" },
+        { "id": "t24-3", "code": "24.3", "title": "PET scanning" }
+      ]
+    },
+    {
+      "id": "t25",
+      "number": 25,
+      "title": "Astronomy and cosmology",
+      "subtopics": [
+        { "id": "t25-1", "code": "25.1", "title": "Standard candles" },
+        { "id": "t25-2", "code": "25.2", "title": "Stellar radii" },
+        { "id": "t25-3", "code": "25.3", "title": "Hubble’s law and the Big Bang theory" }
+      ]
+    }
+  ]
+}

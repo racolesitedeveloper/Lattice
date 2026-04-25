@@ -1,0 +1,123 @@
+/* Gated / upgrade surface: one focused panel; hairline structure, no drop shadow (CIE spec). */
+.card {
+  width: min(100%, 480px);
+  margin: min(6vh, 3rem) auto 0;
+  padding: var(--sp-5) var(--sp-5);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  box-shadow: none;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.kicker {
+  margin: 0 0 var(--sp-2);
+  color: var(--text-muted);
+  font-size: var(--fs-label-xs);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  color: var(--text);
+  font-size: var(--fs-heading);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.28;
+  text-wrap: balance;
+  max-width: 26ch;
+}
+
+.message {
+  margin: var(--sp-3) 0 0;
+  color: var(--text-muted);
+  font-size: var(--fs-body);
+  line-height: var(--lh-relaxed);
+  text-wrap: pretty;
+  max-width: 42ch;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: var(--sp-2);
+  margin-top: var(--sp-5);
+}
+
+.cta,
+.secondaryCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0.5rem var(--sp-4);
+  border-radius: var(--r-sm);
+  font-family: inherit;
+  font-size: var(--fs-label);
+  font-weight: 600;
+  text-decoration: none;
+  box-sizing: border-box;
+  transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+.cta {
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--on-accent);
+  cursor: pointer;
+}
+
+.cta:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.cta:disabled {
+  cursor: wait;
+  opacity: 0.76;
+}
+
+.secondaryCta {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.secondaryCta:hover {
+  background: color-mix(in srgb, var(--text) 4%, var(--surface));
+  border-color: color-mix(in srgb, var(--text) 10%, var(--border));
+  color: var(--text);
+}
+
+@media (max-width: 520px) {
+  .card {
+    margin-top: var(--sp-2);
+    padding: var(--sp-5) var(--sp-4);
+  }
+
+  .title {
+    max-width: none;
+  }
+
+  .message {
+    max-width: none;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
+
+  .cta,
+  .secondaryCta {
+    width: 100%;
+    min-height: 44px;
+  }
+}

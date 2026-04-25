@@ -1,0 +1,27 @@
+/* ── Logo lockup ──────────────────────────────── */
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  flex-shrink: 0;
+  color: var(--text-landing-md, var(--text-muted));
+}
+
+.mark {
+  flex-shrink: 0;
+  display: block;
+}
+
+.word {
+  font-size: 1.25rem; /* 20px — pairs with 24px mark */
+  font-weight: 600;
+  letter-spacing: -0.028em;
+  color: var(--accent);
+  line-height: 1;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+}

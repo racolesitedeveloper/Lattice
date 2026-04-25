@@ -1,0 +1,70 @@
+/* ── Final CTA ────────────────────────────────── */
+
+.section {
+  background: var(--surface);
+  border-top: 1px solid var(--border-landing);
+  padding: var(--sp-8) 0 calc(var(--sp-8) + var(--sp-6));
+
+  animation: ctaReveal linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 30%;
+}
+
+@keyframes ctaReveal {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section { animation: none; opacity: 1; transform: none; }
+}
+
+.inner {
+  max-width: var(--max-landing);
+  margin: 0 auto;
+  padding: 0 var(--landing-px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--sp-5);
+}
+
+.heading {
+  font-size: clamp(1.75rem, 4vw, var(--fs-landing-sm));
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: var(--text-landing);
+  max-width: 22ch;
+}
+
+.cta {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--on-accent);
+  border-radius: var(--r-sm);
+  padding: var(--sp-3) var(--sp-6);
+  font-size: var(--fs-body-lg);
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 140ms ease;
+}
+
+.cta:hover {
+  background: var(--accent-hover);
+}
+
+.note {
+  font-size: var(--fs-label);
+  color: var(--text-landing-md);
+  margin-top: calc(var(--sp-3) * -1);
+}
+
+/* ── Responsive ──────────────────────────────── */
+
+@media (max-width: 560px) {
+  .section {
+    padding: var(--sp-7) 0 var(--sp-8);
+  }
+}

@@ -1,0 +1,75 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  width: 100%;
+}
+
+.orRow {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--fs-label-sm);
+}
+
+.orLine {
+  flex: 1;
+  height: 1px;
+  background: var(--border-landing);
+}
+
+.googleIcon {
+  display: flex;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.google :global(svg) {
+  display: block;
+}
+
+.google {
+  width: 100%;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: var(--sp-3) var(--sp-4);
+  font-family: inherit;
+  font-size: var(--fs-body);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 120ms ease, border-color 120ms ease, opacity 120ms ease;
+  box-sizing: border-box;
+}
+
+.google:hover:not(:disabled) {
+  background: var(--field-bg-hover);
+  border-color: var(--border-landing);
+}
+
+.google:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.error {
+  font-size: var(--fs-label-sm);
+  color: var(--danger);
+  line-height: 1.45;
+  margin: 0;
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .google {
+    font-size: 1rem;
+  }
+}

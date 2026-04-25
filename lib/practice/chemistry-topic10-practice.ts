@@ -1,0 +1,340 @@
+import type { SubtopicPracticePack } from "./types";
+
+/**
+ * 9701 Topic 10 / 10.1 — Group 2 (Mg–Ba): one course subtopic `t10-1`.
+ *
+ * LO crosswalk (each bullet in `data/syllabus/chemistry-9701-learning-outcomes.md` §10.1
+ * is hit by ≥1 drill id):
+ * - Elements + O2 / H2O / dilute HCl & H2SO4 → d2, d4
+ * - Oxides, hydroxides, carbonates + water & dilute acids → d5, d6
+ * - Thermal decomposition of nitrates & carbonates + trend → d8, d9
+ * - Trends / predictions (physical + chemical) → d1, d3, d4, d7, d8, d9, d10
+ * - Solubility of hydroxides & sulfates → d1, d7, d10
+ */
+export const CHEMISTRY_TOPIC10_PRACTICE: Record<string, SubtopicPracticePack> = {
+  "t10-1": {
+    noteId: "t10-1",
+    drills: [
+      {
+        id: "t10-1-d1",
+        noteId: "t10-1",
+        kind: "structured",
+        difficulty: 1,
+        marks: 5,
+        stem: "Define what is meant by the solubility of an ionic solid in water. State how the solubilities of the Group 2 metal hydroxides M(OH)2 and of the Group 2 metal sulfates MSO4 change as M changes from magnesium to barium, and relate the sulfate trend to a common qualitative test for aqueous sulfate ions.",
+        modelAnswerPoints: [
+          "Solubility is the maximum amount of solute that dissolves in a given amount of solvent at a stated temperature to reach saturation (often expressed in mol dm^-3 or g per 100 g water).",
+          "Hydroxide solubility increases down Group 2 from magnesium to barium (e.g. Mg(OH)2 is only slightly soluble; Ba(OH)2 is much more soluble).",
+          "Sulfate solubility decreases down the group (MgSO4 is soluble; CaSO4 is sparingly soluble; BaSO4 is very insoluble).",
+          "Because BaSO4 is so insoluble, acidified aqueous barium chloride (or nitrate) is used to give a white precipitate with aqueous sulfate ions.",
+        ],
+        workedSolution: [
+          "Solubility means how much of the ionic solid can dissolve in water before the solution is saturated at a particular temperature, so it is the concentration (or mass per fixed mass of water) in the saturated solution rather than a vague idea of 'how well it dissolves'.",
+          "For Group 2 hydroxides, solubility in water increases from magnesium to barium, which is why magnesium hydroxide is only slightly soluble in neutral water whereas barium hydroxide can produce much more concentrated alkaline solutions under comparable conditions.",
+          "For Group 2 sulfates, the opposite pattern is observed: solubility decreases from magnesium to barium, so magnesium sulfate is readily soluble, calcium sulfate is only sparingly soluble, and barium sulfate is extremely insoluble.",
+          "The very low solubility of barium sulfate is exploited in qualitative analysis by adding acidified barium chloride solution to an unknown: if sulfate ions are present, a dense white precipitate of barium sulfate forms, which confirms sulfate without contradicting the general trend that sulfates become less soluble down Group 2.",
+        ],
+        commonMistake:
+          "Reversing one or both trends (claiming hydroxide solubility decreases or sulfate solubility increases down the group).",
+        tags: ["solubility", "definitions", "group-2", "hydroxides", "sulfates"],
+      },
+      {
+        id: "t10-1-d2",
+        noteId: "t10-1",
+        kind: "structured",
+        difficulty: 2,
+        marks: 4,
+        stem: "Write balanced equations, with state symbols, for the reactions of (i) magnesium and (ii) barium with an excess of dry oxygen, naming the oxide product in each case.",
+        modelAnswerPoints: [
+          "Magnesium burns in oxygen to form magnesium oxide: 2Mg(s) + O2(g) -> 2MgO(s).",
+          "Barium burns in oxygen to form barium oxide: 2Ba(s) + O2(g) -> 2BaO(s).",
+          "In each case the Group 2 metal is oxidised to M2+ combined with O2- in a basic oxide lattice.",
+        ],
+        workedSolution: [
+          "Magnesium is a Group 2 metal, so when it burns in a supply of oxygen each magnesium atom loses two electrons and combines with oxide ions to give the ionic solid magnesium oxide, which is represented by the balanced equation 2Mg(s) + O2(g) -> 2MgO(s) with magnesium and oxygen as reactants and solid magnesium oxide as the only product.",
+          "Barium behaves analogously at the bottom of the group, forming barium oxide rather than a higher oxide under normal combustion conditions, so the corresponding equation is 2Ba(s) + O2(g) -> 2BaO(s) with solid barium oxide as the product.",
+          "Both equations show the +2 oxidation state characteristic of Group 2 metals in their binary oxides, and the state symbols distinguish the solid metals, gaseous oxygen and solid ionic oxides in the way mark schemes expect for high-temperature combination reactions.",
+        ],
+        commonMistake: "Using peroxide or superoxide formulae for barium when the syllabus expects the simple oxide BaO from metal + oxygen.",
+        tags: ["equations", "oxygen", "group-2", "state-symbols"],
+      },
+      {
+        id: "t10-1-d3",
+        noteId: "t10-1",
+        kind: "mcq",
+        difficulty: 1,
+        stem: "Which statement about first ionisation energy for the Group 2 metals from magnesium to barium is correct?",
+        options: [
+          { id: "A", text: "First ionisation energy increases from magnesium to barium." },
+          { id: "B", text: "First ionisation energy decreases from magnesium to barium." },
+          { id: "C", text: "First ionisation energy is the same for every element in the group." },
+          { id: "D", text: "First ionisation energy increases to calcium then decreases." },
+        ],
+        correctOptionId: "B",
+        explanation:
+          "Down the group the outer electron occupies a shell farther from the nucleus with more inner shielding, so less energy is required to remove it from a gaseous atom.",
+        distractorRationale: {
+          A: "That would match a move up the group or across a period toward higher effective nuclear charge on the same shell, not descending Group 2.",
+          C: "Atomic number and electron configuration change at each step, so first ionisation energy cannot be identical for Mg, Ca, Sr and Ba.",
+          D: "There is no maximum at calcium; first ionisation energy falls steadily from magnesium to barium in the usual teaching sequence.",
+        },
+        tags: ["ionisation-energy", "trends", "group-2"],
+      },
+      {
+        id: "t10-1-d4",
+        noteId: "t10-1",
+        kind: "structured",
+        difficulty: 3,
+        marks: 6,
+        stem: "Describe how magnesium differs from calcium in its reaction with cold water, and write a balanced equation with state symbols for magnesium reacting with steam. Write the general balanced equation with state symbols for any Group 2 metal M reacting with an excess of dilute hydrochloric acid, and state how the same stoichiometry applies when the acid is dilute sulfuric acid provided an acid-soluble sulfate is formed.",
+        modelAnswerPoints: [
+          "Magnesium reacts only very slowly with cold water (often described as slight bubbling over time); calcium reacts more readily, producing calcium hydroxide and hydrogen.",
+          "Magnesium with steam: Mg(s) + H2O(g) -> MgO(s) + H2(g).",
+          "General metal + dilute HCl: M(s) + 2HCl(aq) -> MCl2(aq) + H2(g).",
+          "With dilute H2SO4 the same 1 mol M : 2 mol acid : 1 mol H2 pattern holds as M(s) + H2SO4(aq) -> MSO4(aq) + H2(g) when the metal sulfate is soluble (e.g. Mg, Ca); for barium, BaSO4 is insoluble so the surface reaction can differ in practice even though the underlying redox is still metal to M2+ with H+ reduced.",
+        ],
+        workedSolution: [
+          "With cold water, magnesium metal only reacts slowly, so hydrogen evolution is faint or needs a long wait, whereas calcium metal reacts more obviously under the same kind of laboratory conditions, producing calcium hydroxide and hydrogen in a reaction that is clearly faster than for magnesium.",
+          "When magnesium is heated in steam, the familiar equation is Mg(s) + H2O(g) -> MgO(s) + H2(g), which shows the metal being oxidised to magnesium oxide and water being reduced to hydrogen gas, with steam as the reactant water state rather than liquid cold water.",
+          "Any Group 2 metal M that is reactive enough reacts with excess dilute hydrochloric acid according to M(s) + 2HCl(aq) -> MCl2(aq) + H2(g), because each metal atom supplies two electrons to reduce two hydrogen ions to one molecule of hydrogen while the metal becomes M2+ in solution.",
+          "Dilute sulfuric acid behaves analogously when the sulfate salt stays in solution, giving M(s) + H2SO4(aq) -> MSO4(aq) + H2(g) for metals such as magnesium where magnesium sulfate is soluble, and the stoichiometry still corresponds to one mole of metal producing one mole of hydrogen gas for each mole of M2+ formed, which is the same electron-accounting picture as with hydrochloric acid even though the counter-ion is sulfate rather than chloride.",
+        ],
+        commonMistake:
+          "Writing Mg(OH)2 from magnesium + steam, or claiming magnesium reacts vigorously with cold water like an alkali metal.",
+        tags: ["water-reactions", "steam", "acids", "equations", "group-2"],
+      },
+      {
+        id: "t10-1-d5",
+        noteId: "t10-1",
+        kind: "mcq",
+        difficulty: 2,
+        stem: "Which ionic equation best represents the reaction of excess dilute hydrochloric acid with solid calcium carbonate?",
+        options: [
+          { id: "A", text: "CaCO3(s) + 2H+(aq) -> Ca2+(aq) + CO2(g) + H2O(l)" },
+          { id: "B", text: "CaCO3(s) + H+(aq) -> Ca2+(aq) + HCO3^-(aq)" },
+          { id: "C", text: "Ca2+(aq) + CO3^2-(aq) + 2H+(aq) -> Ca2+(aq) + CO2(g) + H2O(l)" },
+          { id: "D", text: "CaCO3(s) -> CaO(s) + CO2(g)" },
+        ],
+        correctOptionId: "A",
+        explanation:
+          "Carbonate is protonated and breaks down to carbon dioxide and water; two moles of H+ per mole of CO3^2- are required, and chloride is a spectator in dilute HCl.",
+        distractorRationale: {
+          B: "With excess strong acid the hydrogen carbonate intermediate is not the final observation; full protonation releases CO2.",
+          C: "Solid calcium carbonate should not be rewritten as free Ca2+ and CO3^2- ions in the initial state.",
+          D: "That equation is thermal decomposition of limestone, not the room-temperature acid reaction.",
+        },
+        tags: ["carbonates", "ionic-equations", "acids"],
+      },
+      {
+        id: "t10-1-d6",
+        noteId: "t10-1",
+        kind: "structured",
+        difficulty: 3,
+        marks: 6,
+        stem: "Write balanced equations with state symbols for: (i) calcium oxide reacting with cold water, (ii) solid magnesium hydroxide reacting with excess dilute nitric acid, and (iii) solid strontium carbonate reacting with excess dilute sulfuric acid. State briefly how the reaction in (i) illustrates the behaviour expected for a basic oxide.",
+        modelAnswerPoints: [
+          "(i) CaO(s) + H2O(l) -> Ca(OH)2(aq) or Ca(OH)2(s) depending on amount dissolved; exothermic formation of calcium hydroxide.",
+          "(ii) Mg(OH)2(s) + 2HNO3(aq) -> Mg(NO3)2(aq) + 2H2O(l) (or ionic form with spectator nitrate).",
+          "(iii) SrCO3(s) + H2SO4(aq) -> SrSO4(s) + CO2(g) + H2O(l) noting SrSO4 is sparingly soluble so may appear as a precipitate.",
+          "Basic oxide + water gives a hydroxide (alkaline character), which is the defining acid-base pattern for Group 2 oxides.",
+        ],
+        workedSolution: [
+          "Calcium oxide is a basic oxide, so it reacts exothermically with cold water to produce calcium hydroxide, represented by CaO(s) + H2O(l) -> Ca(OH)2(aq) when enough water is present to dissolve the hydroxide formed, or with Ca(OH)2(s) if emphasis is on the slight solubility of lime in limited water, but in all cases the chemistry is union of O2- with water to give hydroxide ions around Ca2+.",
+          "Magnesium hydroxide is an insoluble base, but it still neutralises strong acids, so with excess dilute nitric acid the full molecular equation is Mg(OH)2(s) + 2HNO3(aq) -> Mg(NO3)2(aq) + 2H2O(l), which shows the hydroxide ions being replaced by water while magnesium ions and nitrate ions pass into solution.",
+          "Strontium carbonate reacts with dilute sulfuric acid in a typical carbonate-acid reaction, SrCO3(s) + H2SO4(aq) -> SrSO4(s) + CO2(g) + H2O(l), where carbon dioxide bubbles off and strontium sulfate, being only sparingly soluble, often appears as a solid layer even though hydrogen ions have attacked the carbonate lattice.",
+          "The reaction of calcium oxide with water is exactly what is meant by a basic oxide reacting with water: the oxide ion is not stable as discrete O2- in water and instead converts to hydroxide, producing an alkaline solution or suspension, which is the chemical basis for calling calcium oxide 'basic' in syllabus language.",
+        ],
+        commonMistake:
+          "Forgetting CO2(g) when acid meets carbonate, or writing SrSO4(aq) without comment when the syllabus expects awareness of low solubility.",
+        tags: ["oxides", "hydroxides", "carbonates", "acids", "equations"],
+      },
+      {
+        id: "t10-1-d7",
+        noteId: "t10-1",
+        kind: "mcq",
+        difficulty: 2,
+        stem: "Which comparison of solubility in water for Group 2 compounds is correct?",
+        options: [
+          { id: "A", text: "Ba(OH)2 is less soluble than Mg(OH)2." },
+          { id: "B", text: "Ba(OH)2 is more soluble than Mg(OH)2." },
+          { id: "C", text: "BaSO4 is more soluble than MgSO4." },
+          { id: "D", text: "Mg(OH)2 and Ba(OH)2 have equal solubility." },
+        ],
+        correctOptionId: "B",
+        explanation:
+          "Hydroxide solubility increases down Group 2, so barium hydroxide is considerably more soluble than magnesium hydroxide; sulfate solubility decreases, so BaSO4 is much less soluble than MgSO4.",
+        distractorRationale: {
+          A: "That reverses the hydroxide trend down the group.",
+          C: "That reverses the sulfate trend; barium sulfate is famously insoluble.",
+          D: "Magnesium hydroxide is only slightly soluble whereas barium hydroxide is much more soluble, so they are not equal.",
+        },
+        tags: ["solubility", "hydroxides", "sulfates"],
+      },
+      {
+        id: "t10-1-d8",
+        noteId: "t10-1",
+        kind: "structured",
+        difficulty: 4,
+        marks: 6,
+        stem: "Write balanced equations, with state symbols where appropriate, for the thermal decomposition of (i) magnesium carbonate and (ii) magnesium nitrate. State how the thermal stability of the carbonates MCO3 and of the nitrates M(NO3)2 changes from magnesium to barium, and explain the carbonate trend in terms of the size and charge density of the M2+ ion and polarisation of the carbonate ion.",
+        modelAnswerPoints: [
+          "Carbonate: MgCO3(s) -> MgO(s) + CO2(g) (and similarly for other M).",
+          "Nitrate: 2Mg(NO3)2(s) -> 2MgO(s) + 4NO2(g) + O2(g) (or equivalent balanced form for Group 2 nitrates).",
+          "Thermal stability increases down the group for both carbonates and nitrates (more heat needed to decompose barium salts than magnesium salts).",
+          "Smaller M2+ (e.g. Mg2+) has higher charge density, polarises the large carbonate anion more strongly, weakens C–O bonding within the ion, so the lattice decomposes more easily; larger Ba2+ polarises less, so the anion is more stable to heat.",
+        ],
+        workedSolution: [
+          "When magnesium carbonate is heated strongly it undergoes thermal decomposition to magnesium oxide and carbon dioxide gas, which is written as MgCO3(s) -> MgO(s) + CO2(g), and this pattern is general for Group 2 carbonates even though the temperature required changes with the metal.",
+          "Magnesium nitrate decomposes on heating to magnesium oxide together with brown nitrogen dioxide gas and oxygen, in a balanced form such as 2Mg(NO3)2(s) -> 2MgO(s) + 4NO2(g) + O2(g), which conserves atoms and reflects the usual nitrate decomposition products taught for Group 2.",
+          "Thermal stability of both the carbonates and the nitrates increases from magnesium to barium, meaning a higher temperature is needed to bring about a comparable extent of decomposition for barium salts than for magnesium salts under similar conditions.",
+          "The explanation in terms of polarisation is that the carbonate ion is large and easily distorted by a nearby cation: magnesium ion is small with charge +2 spread over a small volume, so its high charge density pulls electron density within the carbonate ion and encourages earlier loss of CO2, whereas barium ion is much larger at the same +2 charge, so its charge density is lower, it polarises the carbonate less, the internal bonding of the anion is less weakened, and more thermal energy is therefore required before decomposition occurs.",
+        ],
+        commonMistake:
+          "Claiming thermal stability decreases down the group, or omitting NO2 and O2 when writing nitrate decomposition.",
+        tags: ["thermal-stability", "carbonates", "nitrates", "polarisation", "equations"],
+      },
+      {
+        id: "t10-1-d9",
+        noteId: "t10-1",
+        kind: "mcq",
+        difficulty: 3,
+        stem: "Why does barium carbonate require a higher temperature than magnesium carbonate to decompose at a similar rate?",
+        options: [
+          { id: "A", text: "Ba2+ has lower charge density than Mg2+, so it polarises the carbonate ion less and the lattice is more stable to heat." },
+          { id: "B", text: "Ba2+ has higher charge density than Mg2+, so it weakens the carbonate ion more." },
+          { id: "C", text: "Barium carbonate contains fewer moles of CO2 per gram than magnesium carbonate." },
+          { id: "D", text: "The C–O bonds in carbonate are stronger in MgCO3 than in BaCO3." },
+        ],
+        correctOptionId: "A",
+        explanation:
+          "Charge density falls as M2+ radius increases at constant +2 charge; weaker polarisation of the carbonate by Ba2+ means the anion survives to higher temperature.",
+        distractorRationale: {
+          B: "Barium ion is larger than magnesium ion at the same charge, so its charge density is lower, not higher.",
+          C: "Stoichiometry of the carbonate type is the same (MCO3); the decomposition temperature trend is explained by cation polarisation, not by a simple mass ratio argument.",
+          D: "The question is about lattice-level polarisation by M2+, not about asserting stronger C–O bonds in the magnesium case as the primary syllabus explanation.",
+        },
+        tags: ["thermal-stability", "polarisation", "charge-density"],
+      },
+      {
+        id: "t10-1-d10",
+        noteId: "t10-1",
+        kind: "structured",
+        difficulty: 4,
+        marks: 5,
+        stem: "A sample of pure calcium carbonate of mass 3.00 g is treated with excess dilute hydrochloric acid. Calculate the volume of carbon dioxide produced, measured at room temperature and pressure (rtp), where the molar volume of a gas at rtp is 24.0 dm^3 mol^-1. Use Ar: Ca = 40, C = 12, O = 16. Predict, with reasoning, whether the same mass of barium carbonate would produce a larger, smaller or the same volume of CO2 under the same conditions of excess acid and rtp.",
+        modelAnswerPoints: [
+          "Mr(CaCO3) = 40 + 12 + (3 × 16) = 100 (no unit penalty if omitted).",
+          "Amount n(CaCO3) = 3.00 / 100 = 0.0300 mol.",
+          "1 mol CaCO3 gives 1 mol CO2, so n(CO2) = 0.0300 mol.",
+          "V(CO2) = 0.0300 × 24.0 = 0.720 dm^3 (or 720 cm^3).",
+          "BaCO3 has the same 1:1 stoichiometry to CO2 per mole of MCO3, so 3.00 g of BaCO3 is fewer moles (higher Mr), giving a smaller volume of CO2 at rtp than 3.00 g of CaCO3.",
+        ],
+        workedSolution: [
+          "The relative formula mass of calcium carbonate is obtained by summing the atomic masses given, Mr(CaCO3) = 40 + 12 + 48 = 100, which is the mass in grams of one mole of CaCO3.",
+          "The amount in moles of calcium carbonate in the sample is therefore n(CaCO3) = mass / Mr = 3.00 g / 100 g mol^-1 = 0.0300 mol, assuming the sample is pure as stated.",
+          "The reaction between calcium carbonate and excess dilute acid is a 1:1 molar conversion from CaCO3 to CO2 in the usual ionic picture, so the amount of carbon dioxide formed is also 0.0300 mol.",
+          "At rtp the molar volume is given as 24.0 dm^3 mol^-1, so the volume of gas is V = n × Vm = 0.0300 mol × 24.0 dm^3 mol^-1 = 0.720 dm^3, which should be reported as 0.720 dm^3 or equivalently 720 cm^3 with consistent units.",
+          "Barium carbonate still produces one mole of carbon dioxide per mole of carbonate reacting, but barium has a much larger atomic mass than calcium, so the Mr of BaCO3 exceeds 100 and 3.00 g corresponds to fewer moles of carbonate than for calcium carbonate, which means fewer moles of CO2 and therefore a smaller gas volume at rtp, even though the qualitative reaction is the same.",
+        ],
+        commonMistake:
+          "Using a 2:1 mole ratio between CO2 and carbonate, or claiming equal volumes of CO2 for equal masses of different carbonates without comparing amounts in moles.",
+        tags: ["calculations", "stoichiometry", "carbonates", "prediction"],
+      },
+    ],
+    flashcards: [
+      {
+        id: "t10-1-f1",
+        noteId: "t10-1",
+        difficulty: 1,
+        front: "What is the usual oxidation number of Group 2 metals in their compounds?",
+        back: "+2: they form M2+ ions in salts and in aqueous solution under normal conditions.",
+        examPhrasing: "State the typical ionic charge of Group 2 metal ions in compounds.",
+        tags: ["oxidation-state", "definitions"],
+      },
+      {
+        id: "t10-1-f2",
+        noteId: "t10-1",
+        difficulty: 1,
+        front: "How does first ionisation energy change from magnesium to barium?",
+        back: "It decreases: outer electrons are farther out and more shielded, so they are removed with less energy.",
+        examPhrasing: "Describe the trend in first ionisation energy down Group 2.",
+        tags: ["ionisation-energy", "trends"],
+      },
+      {
+        id: "t10-1-f3",
+        noteId: "t10-1",
+        difficulty: 2,
+        front: "Write the equation for magnesium burning in oxygen.",
+        back: "2Mg(s) + O2(g) -> 2MgO(s).",
+        examPhrasing: "Write a balanced equation, with state symbols, for magnesium reacting with oxygen.",
+        tags: ["equations", "oxygen"],
+      },
+      {
+        id: "t10-1-f4",
+        noteId: "t10-1",
+        difficulty: 2,
+        front: "How does magnesium differ from calcium when each is added to cold water?",
+        back: "Mg reacts only very slowly (often just a few bubbles over time); Ca reacts more readily, forming Ca(OH)2 and H2.",
+        examPhrasing: "Compare the reactions of magnesium and calcium with cold water.",
+        confusionPair: "Mg + cold water vs Mg + steam",
+        tags: ["water-reactions", "reactivity"],
+      },
+      {
+        id: "t10-1-f5",
+        noteId: "t10-1",
+        difficulty: 3,
+        front: "What is the equation for magnesium reacting with steam?",
+        back: "Mg(s) + H2O(g) -> MgO(s) + H2(g).",
+        examPhrasing: "Write the equation for the reaction of magnesium with steam.",
+        tags: ["steam", "equations"],
+      },
+      {
+        id: "t10-1-f6",
+        noteId: "t10-1",
+        difficulty: 3,
+        front: "General equation for a Group 2 metal with excess dilute hydrochloric acid?",
+        back: "M(s) + 2HCl(aq) -> MCl2(aq) + H2(g).",
+        examPhrasing: "Write an equation for a Group 2 metal reacting with dilute hydrochloric acid.",
+        tags: ["acids", "equations"],
+      },
+      {
+        id: "t10-1-f7",
+        noteId: "t10-1",
+        difficulty: 4,
+        front: "How does thermal stability of Group 2 carbonates and nitrates change from Mg to Ba?",
+        back: "Thermal stability increases down the group: more heat is needed to decompose Ba salts than Mg salts.",
+        examPhrasing: "State the trend in thermal stability of Group 2 carbonates on heating.",
+        confusionPair: "thermal stability vs rate of reaction with water",
+        tags: ["thermal-stability"],
+      },
+      {
+        id: "t10-1-f8",
+        noteId: "t10-1",
+        difficulty: 4,
+        front: "Products when a Group 2 nitrate is strongly heated?",
+        back: "Metal oxide + nitrogen dioxide + oxygen, e.g. 2Mg(NO3)2(s) -> 2MgO(s) + 4NO2(g) + O2(g).",
+        examPhrasing: "Write an equation for the thermal decomposition of magnesium nitrate.",
+        tags: ["nitrates", "equations"],
+      },
+      {
+        id: "t10-1-f9",
+        noteId: "t10-1",
+        difficulty: 5,
+        front: "Trend in hydroxide solubility vs sulfate solubility down Group 2?",
+        back: "Hydroxide solubility increases; sulfate solubility decreases (BaSO4 is very insoluble).",
+        examPhrasing: "State the variation in solubility of Group 2 hydroxides and of Group 2 sulfates.",
+        confusionPair: "hydroxide trend vs sulfate trend",
+        tags: ["solubility"],
+      },
+      {
+        id: "t10-1-f10",
+        noteId: "t10-1",
+        difficulty: 5,
+        front: "Why does higher M2+ charge density lower thermal stability of the carbonate?",
+        back: "The small highly charged ion distorts the carbonate electron cloud more (polarisation), weakening it so CO2 is lost more easily on heating.",
+        examPhrasing: "Explain the trend in thermal stability of Group 2 carbonates using polarisation ideas.",
+        tags: ["polarisation", "thermal-stability"],
+      },
+    ],
+  },
+};

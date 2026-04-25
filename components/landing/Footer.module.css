@@ -1,0 +1,80 @@
+/* ── Site footer (marketing) ─────────────────── */
+
+.footer {
+  border-top: 1px solid var(--border-landing);
+  background: var(--bg-landing);
+  padding: var(--sp-6) 0;
+}
+
+.inner {
+  max-width: var(--max-landing);
+  margin: 0 auto;
+  padding: 0 var(--landing-px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sp-5) var(--sp-6);
+}
+
+.brandBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  min-width: 0;
+}
+
+.brand {
+  text-decoration: none;
+  display: inline-flex;
+}
+
+.tagline {
+  font-size: var(--fs-label);
+  line-height: var(--lh-relaxed);
+  color: var(--text-landing-md);
+  max-width: 36ch;
+  margin: 0;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+.navLink {
+  font-size: var(--fs-label);
+  font-weight: 500;
+  color: var(--text-landing);
+  text-decoration: none;
+}
+
+.navLink:hover {
+  color: var(--accent);
+}
+
+.copy {
+  font-size: var(--fs-label-sm);
+  color: var(--text-landing-md);
+  margin: 0;
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--border-landing);
+}
+
+@media (max-width: 560px) {
+  .inner {
+    padding: 0 var(--sp-4);
+  }
+
+  .nav {
+    width: 100%;
+  }
+}

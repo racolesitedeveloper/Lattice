@@ -1,0 +1,358 @@
+/* ── Notes — course outline list ─────────────────────────────────────── */
+
+.titleGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-width: 0;
+}
+
+.titleGroup h1 {
+  margin: 0;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin: 0 0 0 calc(var(--sp-2) * -1);
+  color: var(--text-muted);
+  text-decoration: none;
+  border-radius: var(--r-sm);
+  transition: color 140ms ease, background 140ms ease;
+}
+
+.back:hover {
+  color: var(--text);
+  background: var(--hover-fill);
+}
+
+.backIcon {
+  flex-shrink: 0;
+  opacity: 0.72;
+  display: block;
+}
+
+.notesMain {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: var(--sp-5);
+}
+
+.outlineRoot {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.levelToggle {
+  display: inline-flex;
+  align-self: flex-start;
+  margin-bottom: var(--sp-2);
+  padding: 3px;
+  border-radius: var(--r-md);
+  background: var(--hover-fill);
+  border: 1px solid var(--border);
+  gap: 2px;
+}
+
+.levelBtn {
+  min-height: 40px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--fs-label-sm);
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: 6px 12px;
+  border-radius: calc(var(--r-md) - 3px);
+  transition:
+    color 120ms ease,
+    background 120ms ease,
+    box-shadow 120ms ease;
+}
+
+.levelBtn:hover {
+  color: var(--text);
+}
+
+.levelBtnOn {
+  color: var(--text);
+  background: var(--surface);
+  box-shadow: 0 1px 2px rgba(14, 17, 16, 0.06);
+}
+
+.levelHint {
+  margin: 0 0 var(--sp-4);
+  font-size: var(--fs-label-sm);
+  color: var(--text-muted);
+  line-height: var(--lh-relaxed);
+}
+
+.levelSections {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+}
+
+.levelSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: var(--fs-label-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.attribution {
+  position: relative;
+  margin: 0 0 var(--sp-5);
+  padding: var(--sp-3) 2.35rem var(--sp-3) var(--sp-4);
+  background: var(--hover-fill);
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+}
+
+.attributionText {
+  margin: 0;
+  font-size: var(--fs-label-sm);
+  line-height: var(--lh-relaxed);
+  color: var(--text-muted);
+}
+
+.attribution a {
+  color: var(--accent);
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.attribution a:hover {
+  text-decoration: underline;
+}
+
+.attributionDismiss {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 120ms ease, background 120ms ease;
+}
+
+.attributionDismiss:hover {
+  color: var(--text);
+  background: var(--hover-fill-strong);
+}
+
+.attributionDismissIcon {
+  display: block;
+  opacity: 0.7;
+}
+
+.topicList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.topic {
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.topicLocked {
+  background: color-mix(in srgb, var(--surface) 82%, var(--bg));
+}
+
+.topic summary {
+  list-style: none;
+  cursor: pointer;
+  min-height: 44px;
+  padding: var(--sp-3) var(--sp-4);
+  font-size: var(--fs-body);
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+  user-select: none;
+}
+
+.lockBadge {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.15rem 0.45rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--border));
+  border-radius: var(--r-pill);
+  background: var(--accent-subtle);
+  color: var(--accent);
+  font-size: var(--fs-label-xs);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.topic summary::-webkit-details-marker {
+  display: none;
+}
+
+.topic summary::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid var(--text-muted);
+  border-bottom: 1.5px solid var(--text-muted);
+  transform: rotate(-45deg);
+  flex-shrink: 0;
+  margin-top: -2px;
+  opacity: 0.55;
+  transition: transform 120ms ease;
+}
+
+.topic[open] summary::before {
+  transform: rotate(45deg);
+  margin-top: 2px;
+}
+
+.topicNum {
+  font-size: var(--fs-label-sm);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+  min-width: 1.75rem;
+}
+
+.subtopicList {
+  list-style: none;
+  margin: 0;
+  padding: 0 var(--sp-4) var(--sp-3) calc(var(--sp-4) + 1.75rem + var(--sp-2));
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.subtopic {
+  font-size: var(--fs-body);
+  line-height: var(--lh-relaxed);
+}
+
+.subtopicLink {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: baseline;
+  color: inherit;
+  text-decoration: none;
+  border-radius: var(--r-sm);
+  margin: calc(var(--sp-1) * -1) calc(var(--sp-2) * -1);
+  padding: var(--sp-1) var(--sp-2);
+  transition: color 120ms ease, background 120ms ease;
+}
+
+.subtopicLocked {
+  cursor: not-allowed;
+  color: var(--text-muted);
+  opacity: 0.72;
+}
+
+.lockText {
+  margin-left: auto;
+  color: var(--accent);
+  font-size: var(--fs-label-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.subtopicLink:hover {
+  color: var(--text);
+  background: var(--hover-fill);
+}
+
+.subtopicTitle {
+  color: var(--text-muted);
+}
+
+.subtopicLink:hover .subtopicTitle {
+  color: var(--text);
+}
+
+.subtopicLink:hover .code {
+  color: var(--text);
+}
+
+.code {
+  font-size: var(--fs-label-sm);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  min-width: 2.5rem;
+}
+
+@media (max-width: 760px) {
+  .notesMain {
+    padding: var(--sp-3);
+  }
+
+  .levelToggle {
+    width: 100%;
+  }
+
+  .levelBtn {
+    flex: 1;
+    min-height: 44px;
+  }
+
+  .topic summary {
+    padding: var(--sp-3);
+  }
+
+  .subtopicList {
+    padding-inline: var(--sp-3);
+  }
+
+  .subtopicLink {
+    min-height: 44px;
+    align-items: center;
+  }
+}

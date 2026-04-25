@@ -1,0 +1,587 @@
+/* ── Feature showcase section ─────────────────── */
+
+.section {
+  background: var(--landing-section);
+  border-top: 1px solid var(--border-landing);
+  padding: var(--sp-8) 0;
+}
+
+/* Section intro */
+.intro {
+  max-width: var(--max-landing);
+  margin: 0 auto;
+  padding: 0 var(--landing-px);
+  margin-bottom: var(--sp-8);
+}
+
+.eyebrow {
+  display: block;
+  font-size: var(--fs-label-xs);
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-landing-md);
+  margin-bottom: var(--sp-3);
+}
+
+.sectionHead {
+  font-size: var(--fs-landing-sm);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--text-landing);
+  max-width: 20ch;
+  margin-bottom: var(--sp-3);
+}
+
+.sectionSub {
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-relaxed);
+  color: var(--text-landing-md);
+  max-width: 52ch;
+}
+
+/* ── Alternating rows ─────────────────────────── */
+
+.row {
+  display: grid;
+  grid-template-columns: 58fr 42fr;
+  gap: var(--sp-8);
+  max-width: var(--max-landing);
+  margin: 0 auto;
+  padding: var(--sp-7) var(--landing-px);
+  align-items: center;
+  opacity: 1;
+  transform: none;
+}
+
+/* Copy-left / frame-right */
+.rowFlip {
+  grid-template-columns: 42fr 58fr;
+}
+
+.rowDivider {
+  max-width: var(--max-landing);
+  margin: 0 auto;
+  padding: 0 var(--landing-px);
+}
+
+.rowDivider::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background: var(--border-landing);
+}
+
+@keyframes featureReveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .row {
+    /* CSS scroll-driven reveal — one unit, no per-child stagger */
+    animation: featureReveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 28%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .row {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── Columns ──────────────────────────────────── */
+
+.frameCol {
+  min-width: 0;
+  overflow: hidden;
+  border-radius: var(--r-lg);
+}
+
+.copyCol {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.featureHead {
+  font-size: var(--fs-landing-sm);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--text-landing);
+  max-width: 22ch;
+}
+
+.featureBody {
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-relaxed);
+  color: var(--text-landing-md);
+  max-width: 46ch;
+}
+
+/* ── App frame chrome ─────────────────────────── */
+
+.frame {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--border-landing);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-panel);
+  background: var(--surface);
+  overflow: hidden;
+  contain: layout paint;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Mini sidebar */
+.sidebar {
+  width: 112px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--border);
+  background: var(--bg);
+  padding: var(--sp-4) var(--sp-3);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebarBrand {
+  font-size: var(--fs-label);
+  font-weight: 700;
+  color: var(--accent);
+  padding: var(--sp-1) var(--sp-2);
+  margin-bottom: var(--sp-3);
+  letter-spacing: -0.01em;
+}
+
+.sidebarLabel {
+  font-size: var(--fs-label-xs);
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  padding: var(--sp-3) var(--sp-2) var(--sp-1);
+  display: block;
+}
+
+.sidebarItem {
+  font-size: var(--fs-label);
+  color: var(--text-muted);
+  padding: var(--sp-2) var(--sp-2);
+  border-radius: var(--r-sm);
+  line-height: 1.4;
+}
+
+.sidebarItemOn {
+  background: var(--accent-subtle);
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* Frame content area */
+.frameBody {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.frameTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-3) var(--sp-4);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.frameViewTitle {
+  font-size: var(--fs-heading);
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.subjectPill {
+  font-size: var(--fs-label-sm);
+  color: var(--text-muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  padding: 2px var(--sp-3);
+}
+
+/* ── Syllabus tree ────────────────────────────── */
+
+.treeWrap {
+  padding: var(--sp-3) var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.topicRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-2) var(--sp-2);
+  border-radius: var(--r-sm);
+  gap: var(--sp-2);
+}
+
+.topicRowLocked {
+  opacity: 0.45;
+}
+
+.topicLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-width: 0;
+}
+
+.checkmark {
+  color: var(--accent);
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+.dotProgress {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.5;
+  flex-shrink: 0;
+  margin: 0 3px;
+}
+
+.lockIcon {
+  color: var(--text-muted);
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+.topicName {
+  font-size: var(--fs-body);
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.topicBold {
+  font-weight: 500;
+}
+
+.topicFrac {
+  font-size: var(--fs-label-sm);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.fracDone {
+  color: var(--accent);
+}
+
+.fracLocked {
+  font-size: var(--fs-label-xs);
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+
+/* Subtopics */
+.subtopicRow {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 4px var(--sp-2) 4px calc(var(--sp-2) + 18px);
+}
+
+.checkmarkSm {
+  color: var(--accent);
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  display: block;
+}
+
+.dotProgressSm {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.4;
+  flex-shrink: 0;
+  margin: 0 3px;
+}
+
+.subtopicName {
+  font-size: var(--fs-label-sm);
+  color: var(--text-muted);
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.subtopicFrac {
+  font-size: var(--fs-label-xs);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+/* ── Drill question ───────────────────────────── */
+
+.drillWrap {
+  padding: var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.drillMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.drillTag {
+  font-size: var(--fs-label-sm);
+  font-weight: 500;
+  color: var(--accent);
+  background: var(--accent-subtle);
+  border-radius: var(--r-pill);
+  padding: 2px var(--sp-3);
+}
+
+.drillCount {
+  font-size: var(--fs-label-sm);
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.drillProgress {
+  height: 3px;
+  background: var(--border);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+}
+
+.drillProgressFill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: var(--r-pill);
+}
+
+.drillStem {
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-relaxed);
+  color: var(--text);
+}
+
+.drillOptions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.option {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  padding: var(--sp-2) var(--sp-3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  cursor: default;
+}
+
+.optionSelected {
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+}
+
+.optionKey {
+  font-size: var(--fs-label-sm);
+  font-weight: 600;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  width: 16px;
+  padding-top: 1px;
+}
+
+.optionSelected .optionKey {
+  color: var(--accent);
+}
+
+.optionText {
+  font-size: var(--fs-body);
+  color: var(--text);
+  line-height: 1.45;
+}
+
+.checkBtn {
+  align-self: flex-start;
+  background: var(--accent);
+  color: var(--on-accent);
+  border: none;
+  border-radius: var(--r-sm);
+  padding: var(--sp-2) var(--sp-4);
+  font-size: var(--fs-body);
+  font-weight: 500;
+  cursor: default;
+  margin-top: var(--sp-1);
+}
+
+/* ── Mistakes table ───────────────────────────── */
+
+.mistakesWrap {
+  flex: 1;
+  overflow: hidden;
+}
+
+.mistakesHeader {
+  display: grid;
+  grid-template-columns: 130px 1fr 80px 52px;
+  gap: var(--sp-3);
+  padding: var(--sp-2) var(--sp-4);
+  border-bottom: 1px solid var(--border);
+}
+
+.mhTopic,
+.mhQuestion,
+.mhDate,
+.mhAction {
+  font-size: var(--fs-label-xs);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.mistakeRow {
+  display: grid;
+  grid-template-columns: 130px 1fr 80px 52px;
+  gap: var(--sp-3);
+  align-items: center;
+  padding: var(--sp-3) var(--sp-4);
+  border-bottom: 1px solid var(--border);
+}
+
+.mrTopic {
+  font-size: var(--fs-label-sm);
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mrQuestion {
+  font-size: var(--fs-label-sm);
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mrDate {
+  font-size: var(--fs-label-sm);
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.retryBtn {
+  font-size: var(--fs-label-sm);
+  font-weight: 500;
+  color: var(--accent);
+  border: 1px solid var(--accent-subtle);
+  border-radius: var(--r-sm);
+  padding: 2px var(--sp-2);
+  text-align: center;
+  cursor: default;
+}
+
+/* ── Responsive ──────────────────────────────── */
+
+@media (max-width: 1080px) {
+  .row,
+  .rowFlip {
+    grid-template-columns: 1fr;
+    gap: var(--sp-6);
+    padding: var(--sp-6) var(--landing-px);
+  }
+
+  .featureHead,
+  .sectionHead {
+    max-width: 100%;
+  }
+
+  .featureBody {
+    max-width: 100%;
+  }
+
+  /* On mobile the frame col order is always first */
+  .rowFlip .frameCol {
+    order: -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .section {
+    padding: var(--sp-6) 0;
+  }
+
+  .intro {
+    padding: 0 var(--sp-4);
+    margin-bottom: var(--sp-6);
+  }
+
+  .row,
+  .rowFlip {
+    padding: var(--sp-5) var(--sp-4);
+    gap: var(--sp-5);
+  }
+
+  /* Simplify the frame on very small screens */
+  .sidebar {
+    width: 72px;
+  }
+
+  .sidebarBrand,
+  .sidebarLabel {
+    display: none;
+  }
+
+  .mistakesHeader,
+  .mistakeRow {
+    grid-template-columns: 100px 1fr 58px;
+  }
+
+  .mhDate,
+  .mrDate {
+    display: none;
+  }
+}

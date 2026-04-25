@@ -1,0 +1,314 @@
+/* ── App shell ────────────────────────────────── */
+
+.shell {
+  display: flex;
+  height: 100dvh;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* ── Sidebar ──────────────────────────────────── */
+
+.sidebar {
+  width: 168px;
+  flex-shrink: 0;
+  border-right: 1px solid color-mix(in srgb, var(--accent) 10%, var(--border));
+  background: var(--bg-sidebar);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--sp-4) var(--sp-3);
+  overflow-y: auto;
+}
+
+.brand {
+  display: inline-flex;
+  text-decoration: none;
+  padding: var(--sp-1) var(--sp-2);
+  margin-bottom: var(--sp-4);
+}
+
+.navBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-bottom: var(--sp-3);
+}
+
+.sectionLabel {
+  font-size: var(--fs-label-xs);
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: var(--sp-3) var(--sp-2) var(--sp-1);
+}
+
+.sectionLabel:first-of-type {
+  padding-top: var(--sp-2);
+}
+
+.navItem {
+  font-size: var(--fs-label);
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: var(--sp-2);
+  border-radius: var(--r-sm);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.4;
+  transition: background 100ms ease, color 100ms ease;
+}
+
+.navIcon {
+  flex-shrink: 0;
+  opacity: 0.82;
+}
+
+.navItem:hover .navIcon {
+  opacity: 1;
+}
+
+.navItemOn .navIcon {
+  opacity: 1;
+}
+
+.navItem:hover {
+  background: color-mix(in srgb, var(--accent) 9%, var(--bg-sidebar));
+  color: var(--text);
+}
+
+.navItemOn {
+  background: var(--nav-active-bg);
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.navItemOn:hover {
+  background: var(--nav-active-bg);
+  color: var(--accent);
+}
+
+/* ── Sidebar bottom ───────────────────────────── */
+
+.bottom {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding-top: var(--sp-4);
+  border-top: 1px solid color-mix(in srgb, var(--accent) 10%, var(--border));
+}
+
+.upgradeBtn,
+.manageBillingBtn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: var(--r-sm);
+  padding: var(--sp-2) var(--sp-3);
+  font-family: inherit;
+  font-size: var(--fs-label-sm);
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+
+.upgradeBtn {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.upgradeBtn:hover {
+  background: var(--accent-hover);
+}
+
+.manageBillingBtn {
+  background: transparent;
+  border-color: color-mix(in srgb, var(--accent) 12%, var(--border));
+  color: var(--text-muted);
+}
+
+.manageBillingBtn:hover {
+  background: color-mix(in srgb, var(--accent) 9%, var(--bg-sidebar));
+  color: var(--text);
+}
+
+.upgradeBtn:disabled,
+.manageBillingBtn:disabled {
+  cursor: wait;
+  opacity: 0.76;
+}
+
+.signOutBtn {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-radius: var(--r-sm);
+  padding: var(--sp-2) var(--sp-3);
+  font-family: inherit;
+  font-size: var(--fs-label-sm);
+  color: var(--text-muted);
+  cursor: pointer;
+  text-align: left;
+  transition: background 100ms ease, color 100ms ease;
+}
+
+.signOutBtn:hover {
+  background: color-mix(in srgb, var(--accent) 9%, var(--bg-sidebar));
+  color: var(--text);
+}
+
+.mobileMore {
+  display: none;
+}
+
+/* ── Main content area ────────────────────────── */
+
+.main {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+@media (max-width: 1120px) {
+  .sidebar {
+    width: 152px;
+    padding-inline: var(--sp-2);
+  }
+
+  .navItem {
+    min-height: 40px;
+  }
+}
+
+@media (max-width: 860px) {
+  .shell {
+    display: block;
+    min-height: 100dvh;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .main {
+    height: 100dvh;
+    padding-bottom: calc(64px + env(safe-area-inset-bottom));
+  }
+
+  .sidebar {
+    position: fixed;
+    z-index: 40;
+    inset-inline: 0;
+    inset-block: auto 0;
+    width: auto;
+    height: calc(64px + env(safe-area-inset-bottom));
+    padding: var(--sp-2) max(var(--sp-3), env(safe-area-inset-left)) calc(var(--sp-2) + env(safe-area-inset-bottom)) max(var(--sp-3), env(safe-area-inset-right));
+    border-right: none;
+    border-top: 1px solid color-mix(in srgb, var(--accent) 10%, var(--border));
+    background: color-mix(in srgb, var(--bg-sidebar) 92%, var(--surface));
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 56px;
+    gap: var(--sp-1);
+    overflow: visible;
+  }
+
+  .brand,
+  .sectionLabel,
+  .bottom {
+    display: none;
+  }
+
+  .navBlock {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--sp-1);
+    min-width: 0;
+  }
+
+  .navItem,
+  .mobileMoreSummary {
+    min-width: 0;
+    min-height: 48px;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2px;
+    padding: var(--sp-1) var(--sp-2);
+    border-radius: var(--r-md);
+    font-size: var(--fs-label-xs);
+    line-height: 1.15;
+    text-align: center;
+  }
+
+  .mobileMore {
+    position: relative;
+    display: block;
+    min-width: 0;
+  }
+
+  .mobileMoreSummary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    color: var(--text-muted);
+    cursor: pointer;
+  }
+
+  .mobileMoreSummary::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobileMore[open] .mobileMoreSummary {
+    background: var(--nav-active-bg);
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .mobileMorePanel {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + var(--sp-2));
+    width: min(240px, calc(100vw - var(--sp-6)));
+    display: grid;
+    gap: var(--sp-2);
+    padding: var(--sp-3);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    background: var(--surface);
+    box-shadow: var(--shadow-panel);
+  }
+
+  .mobileMorePanel .signOutBtn {
+    min-height: 40px;
+    text-align: center;
+    border: 1px solid color-mix(in srgb, var(--accent) 12%, var(--border));
+  }
+
+  .navIcon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 380px) {
+  .sidebar {
+    height: calc(60px + env(safe-area-inset-bottom));
+    padding-inline: var(--sp-2);
+  }
+
+  .main {
+    padding-bottom: calc(60px + env(safe-area-inset-bottom));
+  }
+
+  .navItem,
+  .mobileMoreSummary {
+    min-height: 44px;
+    font-size: var(--fs-label-xs);
+  }
+}

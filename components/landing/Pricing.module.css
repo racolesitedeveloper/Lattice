@@ -1,0 +1,316 @@
+/* ── Pricing section ──────────────────────────── */
+
+.section {
+  background: var(--bg-landing);
+  border-top: 1px solid var(--border-landing);
+  padding: var(--sp-8) 0;
+
+  animation: pricingReveal linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 25%;
+}
+
+@keyframes pricingReveal {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section { animation: none; opacity: 1; transform: none; }
+}
+
+.inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 var(--landing-px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-8);
+}
+
+/* ── Intro ────────────────────────────────────── */
+
+.intro {
+  text-align: center;
+}
+
+.eyebrow {
+  display: block;
+  font-size: var(--fs-label-xs);
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-landing-md);
+  margin-bottom: var(--sp-3);
+}
+
+.heading {
+  font-size: var(--fs-landing-sm);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--text-landing);
+  margin-bottom: var(--sp-3);
+}
+
+.sub {
+  font-size: var(--fs-body-lg);
+  color: var(--text-landing-md);
+  line-height: var(--lh-relaxed);
+}
+
+/* ── Tier layout ──────────────────────────────── */
+
+.tiers {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  align-items: start;
+  background: var(--surface);
+  border: 1px solid var(--border-landing);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-panel);
+}
+
+/* Vertical hairline between tiers */
+.tierDivider {
+  background: var(--border-landing);
+  align-self: stretch;
+}
+
+/* ── Shared tier styles ───────────────────────── */
+
+.tierFree,
+.tierFull {
+  padding: var(--sp-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+
+.tierFull {
+  /* Subtle tint to signal "recommended" without a loud background */
+  background: var(--surface-muted);
+}
+
+.tierHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.tierNameRow {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.tierName {
+  font-size: var(--fs-heading);
+  font-weight: 600;
+  color: var(--text-landing);
+  letter-spacing: -0.01em;
+}
+
+/* "Recommended" label — tracked uppercase, no pill badge */
+.badge {
+  font-size: var(--fs-label-xs);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.tierPrice {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-1);
+  margin-top: var(--sp-1);
+}
+
+.priceAmount {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-landing);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.pricePer {
+  font-size: var(--fs-body-lg);
+  color: var(--text-landing-md);
+}
+
+.billingChoices {
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.billingChoice {
+  display: grid;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  border: 1px solid var(--border-landing);
+  border-radius: var(--r-md);
+  background: var(--surface);
+}
+
+.billingChoiceRecommended {
+  border-color: color-mix(in srgb, var(--accent) 28%, var(--border-landing));
+}
+
+.billingChoiceLabel {
+  margin: 0 0 var(--sp-2);
+  color: var(--text-landing-md);
+  font-size: var(--fs-label-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tierDesc {
+  font-size: var(--fs-body);
+  line-height: var(--lh-relaxed);
+  color: var(--text-landing-md);
+  max-width: 34ch;
+}
+
+/* ── Feature lists ────────────────────────────── */
+
+.featureList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  flex: 1;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  font-size: var(--fs-body);
+  color: var(--text-landing);
+  line-height: 1.45;
+}
+
+.featureItemLocked {
+  color: var(--text-landing-md);
+}
+
+.checkIcon {
+  width: 16px;
+  height: 16px;
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.lockIcon {
+  width: 16px;
+  height: 16px;
+  color: var(--text-landing-md);
+  flex-shrink: 0;
+  margin-top: 1px;
+  opacity: 0.5;
+}
+
+/* ── CTAs ─────────────────────────────────────── */
+
+.ctaFree,
+.ctaFull {
+  display: block;
+  text-align: center;
+  border-radius: var(--r-sm);
+  padding: var(--sp-3) var(--sp-4);
+  font-size: var(--fs-body);
+  font-weight: 500;
+  transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
+  text-decoration: none;
+}
+
+button.ctaFull {
+  width: 100%;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Ghost/secondary treatment for the free CTA */
+.ctaFree {
+  border: 1px solid var(--border-landing);
+  color: var(--text-landing);
+  background: transparent;
+}
+
+.ctaFree:hover {
+  background: var(--bg-landing);
+  border-color: var(--landing-border-hover);
+}
+
+/* Primary treatment for the paid CTA */
+.ctaFull {
+  background: var(--accent);
+  color: var(--on-accent);
+  border: 1px solid transparent;
+}
+
+.ctaFull:hover {
+  background: var(--accent-hover);
+}
+
+.ctaFull:disabled {
+  cursor: wait;
+  opacity: 0.76;
+}
+
+.finePrint {
+  font-size: var(--fs-label-sm);
+  color: var(--text-landing-md);
+  text-align: center;
+  margin-top: calc(var(--sp-3) * -1); /* pull closer to CTA */
+}
+
+/* ── Reassurance line ─────────────────────────── */
+
+.reassurance {
+  font-size: var(--fs-label);
+  color: var(--text-landing-md);
+  text-align: center;
+  max-width: 56ch;
+  line-height: var(--lh-relaxed);
+}
+
+/* ── Responsive ──────────────────────────────── */
+
+@media (max-width: 640px) {
+  .tiers {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1px auto;
+  }
+
+  /* Horizontal hairline on mobile */
+  .tierDivider {
+    width: auto;
+    height: 1px;
+    background: var(--border-landing);
+  }
+
+  /* Full tier goes first on mobile so it's most prominent */
+  .tierFull { order: -1; }
+  .tierDivider { order: 0; }
+  .tierFree { order: 1; }
+
+  .tierFree,
+  .tierFull {
+    padding: var(--sp-5);
+  }
+
+  .inner {
+    gap: var(--sp-6);
+  }
+}

@@ -1,0 +1,1113 @@
+/* ── Onboarding shell ─────────────────────────── */
+
+.shell {
+  min-height: 100dvh;
+  background: var(--bg-landing);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-6) var(--sp-4);
+}
+
+.inner {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-7);
+}
+
+/* ── Top bar ──────────────────────────────────── */
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-5);
+}
+
+.brand {
+  text-decoration: none;
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.progress {
+  flex: 1;
+  height: 3px;
+  background: var(--border-landing);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+  max-width: 200px;
+  margin-left: auto;
+}
+
+.progressFill {
+  height: 100%;
+  width: 25%;
+  background: var(--accent);
+  border-radius: var(--r-pill);
+  transition: width 300ms ease;
+}
+
+/* ── Content ──────────────────────────────────── */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+
+.kicker {
+  margin: 0 0 calc(var(--sp-3) * -1);
+  color: var(--accent);
+  font-size: var(--fs-label-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.heading {
+  font-size: var(--fs-landing-sm);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--text-landing);
+}
+
+.sub {
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-relaxed);
+  color: var(--text-landing-md);
+  margin-top: calc(var(--sp-3) * -1);
+}
+
+/* ── Form ─────────────────────────────────────── */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+
+.setupStack,
+.previewStack {
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.setupPanel {
+  display: grid;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  border: 1px solid var(--border-landing);
+  border-radius: var(--r-md);
+  background: var(--surface);
+}
+
+.stepActions {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--sp-3);
+  align-items: center;
+}
+
+.secondaryButton {
+  min-height: 43px;
+  border: 1px solid var(--border-landing);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--text-landing-md);
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--fs-body);
+  font-weight: 500;
+  padding: 0 var(--sp-4);
+  transition: border-color 120ms ease, color 120ms ease, background 120ms ease;
+}
+
+.secondaryButton:hover {
+  border-color: color-mix(in srgb, var(--accent) 28%, var(--border-landing));
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent-subtle) 30%, var(--surface));
+}
+
+/* Subject choice controls: detailed styles in viewport-tight block below. */
+
+.subjectGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-3);
+}
+
+/* ── Exam period ──────────────────────────────── */
+
+.periodField {
+  display: grid;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  border: 1px solid var(--border-landing);
+  border-radius: var(--r-md);
+  background: var(--surface);
+}
+
+.periodLabel {
+  margin: 0;
+  font-size: var(--fs-label);
+  font-weight: 500;
+  color: var(--text-landing);
+}
+
+.periodHint {
+  margin: var(--sp-1) 0 0;
+  font-size: var(--fs-label-sm);
+  line-height: 1.45;
+  color: var(--text-landing-md);
+}
+
+.periodGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--sp-3);
+}
+
+.periodCard {
+  min-height: 76px;
+  display: grid;
+  gap: var(--sp-1);
+  align-content: start;
+  text-align: left;
+  padding: var(--sp-3);
+  border: 1px solid var(--border-landing);
+  border-radius: var(--r-sm);
+  background: var(--bg-landing);
+  color: var(--text-landing);
+  font: inherit;
+  cursor: pointer;
+  transition: background 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.periodCard:hover {
+  border-color: rgba(63, 93, 82, 0.35);
+  background: color-mix(in srgb, var(--accent-subtle) 36%, var(--bg-landing));
+}
+
+.periodCardOn {
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+  box-shadow: 0 0 0 3px rgba(63, 93, 82, 0.1);
+}
+
+.periodName {
+  font-size: var(--fs-body-lg);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.periodDesc {
+  color: var(--text-landing-md);
+  font-size: var(--fs-label-sm);
+  line-height: 1.4;
+}
+
+/* ── Preview questions ───────────────────────── */
+
+.previewCard {
+  display: grid;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  border: 1px solid var(--border-landing);
+  border-radius: var(--r-md);
+  background: var(--surface);
+}
+
+.previewMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  color: var(--text-landing-md);
+  font-size: var(--fs-label-sm);
+}
+
+.previewMeta span:first-child {
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.previewStem {
+  margin: 0;
+  color: var(--text-landing);
+  font-size: var(--fs-body-lg);
+  font-weight: 500;
+  line-height: var(--lh-relaxed);
+  letter-spacing: -0.01em;
+}
+
+.optionList {
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.optionButton {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--sp-3);
+  align-items: start;
+  text-align: left;
+  border: 1px solid var(--border-landing);
+  border-radius: var(--r-sm);
+  background: var(--bg-landing);
+  color: var(--text-landing);
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--fs-body);
+  line-height: 1.45;
+  padding: var(--sp-3);
+  transition: border-color 120ms ease, background 120ms ease;
+}
+
+.optionButton span {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--border-landing);
+  border-radius: var(--r-pill);
+  color: var(--text-landing-md);
+  font-size: var(--fs-label-sm);
+  font-weight: 600;
+}
+
+.optionButton:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--accent) 32%, var(--border-landing));
+  background: color-mix(in srgb, var(--accent-subtle) 24%, var(--bg-landing));
+}
+
+.optionButton:disabled {
+  cursor: default;
+}
+
+.optionButtonOn {
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+}
+
+.optionButtonCorrect {
+  border-color: color-mix(in srgb, var(--success) 34%, var(--border-landing));
+  background: color-mix(in srgb, var(--success) 8%, var(--surface));
+}
+
+.optionButtonWrong {
+  border-color: color-mix(in srgb, var(--danger) 34%, var(--border-landing));
+  background: color-mix(in srgb, var(--danger) 7%, var(--surface));
+}
+
+.feedback {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-label);
+}
+
+.feedbackGood {
+  color: var(--success);
+  background: color-mix(in srgb, var(--success) 8%, var(--surface));
+}
+
+.feedbackBad {
+  color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 7%, var(--surface));
+}
+
+
+/* ── Free tier note ───────────────────────────── */
+
+.tierNote {
+  background: var(--surface);
+  border: 1px solid var(--border-landing);
+  border-radius: var(--r-md);
+  padding: var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.tierNoteHeading {
+  font-size: var(--fs-label);
+  font-weight: 500;
+  color: var(--text-landing);
+}
+
+.tierList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.tierItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  font-size: var(--fs-label);
+  color: var(--text-landing);
+  line-height: 1.45;
+}
+
+.tierItemLocked {
+  color: var(--text-landing-md);
+}
+
+.checkIcon {
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+.lockIconWrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  margin-top: 3px;
+  color: var(--text-landing-md);
+  opacity: 0.55;
+}
+
+.lockIcon {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+.tierDivider {
+  height: 1px;
+  background: var(--border-landing);
+}
+
+.tierUpgrade {
+  font-size: var(--fs-label-sm);
+  color: var(--text-landing-md);
+}
+
+.tierUpgradeLink {
+  color: var(--accent);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.tierUpgradeLink:hover {
+  color: var(--accent-hover);
+}
+
+/* ── Error + submit ───────────────────────────── */
+
+.error {
+  font-size: var(--fs-label-sm);
+  color: var(--danger);
+  padding: var(--sp-2) var(--sp-3);
+  background: #fef2f2;
+  border: 1px solid rgba(185, 28, 28, 0.18);
+  border-radius: var(--r-sm);
+}
+
+.submit {
+  width: 100%;
+  background: var(--accent);
+  color: var(--on-accent);
+  border: none;
+  border-radius: var(--r-sm);
+  padding: var(--sp-3) var(--sp-4);
+  font-family: inherit;
+  font-size: var(--fs-body-lg);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 140ms ease, opacity 140ms ease;
+}
+
+.submit:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.submit:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ── Responsive ──────────────────────────────── */
+
+@media (max-width: 560px) {
+  .subjectGrid,
+  .periodGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .stepActions {
+    grid-template-columns: 1fr;
+  }
+
+  .secondaryButton {
+    order: 2;
+  }
+
+  .heading {
+    font-size: calc(var(--fs-landing-sm) * 0.82);
+  }
+
+  .previewMeta {
+    display: grid;
+  }
+}
+
+/* ── Viewport-tight composition ───────────────── */
+
+.shell {
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+  padding: clamp(var(--sp-4), 3dvh, var(--sp-6)) var(--sp-5);
+  position: relative;
+  isolation: isolate;
+}
+
+.shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 18%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 28%),
+    linear-gradient(115deg, transparent 0 58%, color-mix(in srgb, var(--accent) 5%, transparent) 58% 100%);
+  opacity: 0.75;
+  z-index: -1;
+}
+
+/* Setup step: product UI — calmer field; hairlines do the work (see design plan). */
+.shellSetup::before {
+  opacity: 0.35;
+  background: radial-gradient(
+    circle at 12% 8%,
+    color-mix(in srgb, var(--accent) 6%, transparent),
+    transparent 42%
+  );
+}
+
+.shell::after {
+  content: "";
+  position: fixed;
+  inset: var(--sp-5);
+  pointer-events: none;
+  border: 1px solid color-mix(in srgb, var(--border-landing) 48%, transparent);
+  border-radius: calc(var(--r-lg) + var(--sp-2));
+  z-index: -1;
+}
+
+.shellSetup::after {
+  opacity: 0.5;
+  inset: var(--sp-4);
+}
+
+.inner {
+  max-width: 980px;
+  height: min(720px, calc(100dvh - clamp(var(--sp-4), 3dvh, var(--sp-6)) * 2));
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: clamp(var(--sp-4), 3dvh, var(--sp-6));
+}
+
+.top {
+  min-height: 32px;
+}
+
+.progress {
+  max-width: 280px;
+}
+
+.content {
+  min-height: 0;
+  gap: var(--sp-4);
+}
+
+.titleBlock {
+  display: grid;
+  gap: var(--sp-3);
+  align-content: start;
+  min-width: 0;
+}
+
+.titleBlock .submit {
+  width: min(100%, 280px);
+  margin-top: var(--sp-2);
+}
+
+.kicker {
+  margin: 0;
+}
+
+.heading {
+  font-size: clamp(1.75rem, 3.4vw, 2.4rem);
+  line-height: 1.05;
+}
+
+.sub {
+  max-width: 54ch;
+  margin-top: 0;
+  font-size: var(--fs-body-lg);
+  line-height: 1.45;
+}
+
+.contentIntro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.82fr);
+  align-items: center;
+  gap: var(--sp-6);
+}
+
+.contentIntro .heading {
+  max-width: 11ch;
+}
+
+.contentIntro .sub {
+  max-width: 40ch;
+}
+
+.tierNote {
+  align-self: center;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  box-shadow: 0 16px 40px rgba(14, 17, 16, 0.06);
+}
+
+.tierNoteHeading {
+  font-weight: 600;
+}
+
+.tierItem {
+  font-size: var(--fs-label);
+  line-height: 1.35;
+}
+
+.contentSetup {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.7fr) minmax(400px, 1.3fr);
+  grid-template-rows: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "intro setup"
+    "actions actions";
+  align-items: stretch;
+  gap: var(--sp-5);
+}
+
+.contentSetup .titleBlock {
+  grid-area: intro;
+  align-content: start;
+  padding: var(--sp-5) var(--sp-5) var(--sp-4);
+  border: 1px solid var(--border-landing);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  box-shadow: inset 0 1px 0 var(--inset-highlight);
+}
+
+.setupKicker {
+  margin: 0;
+  color: var(--text-landing-md);
+  font-size: var(--fs-label-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+.contentSetup .sub {
+  max-width: 32ch;
+}
+
+.setupStack {
+  grid-area: setup;
+  min-height: 0;
+  display: block;
+}
+
+.setupSurface {
+  min-height: 0;
+  border: 1px solid var(--border-landing);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  box-shadow: inset 0 1px 0 var(--inset-highlight);
+}
+
+.setupSection {
+  display: grid;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  border-bottom: 1px solid var(--border-landing);
+}
+
+.setupSection:last-child {
+  border-bottom: none;
+}
+
+.setupSectionLabel {
+  margin: 0;
+  color: var(--text-landing-md);
+  font-size: var(--fs-label-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+.setupSectionHint {
+  margin: var(--sp-1) 0 0;
+  font-size: var(--fs-label);
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--text-landing-md);
+  max-width: 48ch;
+}
+
+.periodLabel {
+  font-size: var(--fs-label);
+  font-weight: 600;
+}
+
+.periodHint {
+  margin-top: 2px;
+  line-height: 1.35;
+}
+
+.periodGrid {
+  gap: var(--sp-2);
+}
+
+.periodCard {
+  min-height: 72px;
+  padding: var(--sp-3);
+  gap: var(--sp-1);
+  background: color-mix(in srgb, var(--surface) 72%, var(--bg-landing));
+  border-color: color-mix(in srgb, var(--border-landing) 80%, transparent);
+}
+
+.periodCard:focus-visible,
+.subjectCard:focus-visible,
+.secondaryButton:focus-visible,
+.submit:focus-visible {
+  outline: 2px solid var(--accent-ring);
+  outline-offset: 2px;
+}
+
+.periodName {
+  font-size: var(--fs-body-lg);
+}
+
+.periodDesc {
+  font-size: var(--fs-label-sm);
+  line-height: 1.25;
+}
+
+.subjectGrid {
+  gap: var(--sp-2);
+  align-items: stretch;
+}
+
+.subjectCard {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto minmax(0, 1fr);
+  column-gap: var(--sp-3);
+  row-gap: var(--sp-1);
+  align-items: start;
+  min-height: 96px;
+  padding: var(--sp-3) var(--sp-4);
+  text-align: left;
+  border: 1px solid var(--border-landing);
+  border-radius: var(--r-sm);
+  background: var(--surface-muted);
+  cursor: pointer;
+  font: inherit;
+  transition: border-color 140ms ease, background 140ms ease;
+}
+
+.subjectIcon {
+  grid-row: 1 / -1;
+  align-self: start;
+  padding-top: 2px;
+  color: var(--text-landing-md);
+  opacity: 0.9;
+}
+
+.subjectName {
+  font-size: var(--fs-body-lg);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-landing);
+}
+
+.subjectDesc {
+  font-size: var(--fs-label-sm);
+  line-height: 1.35;
+  color: var(--text-landing-md);
+}
+
+.subjectCardOn .subjectName,
+.subjectCard[aria-pressed="true"] .subjectName {
+  color: var(--accent);
+}
+
+.periodCardOn,
+.subjectCardOn,
+.subjectCard[aria-pressed="true"] {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border-landing));
+  background: var(--accent-subtle);
+  box-shadow: inset 0 1px 0 var(--inset-highlight);
+}
+
+.subjectCardOn .subjectIcon,
+.subjectCard[aria-pressed="true"] .subjectIcon {
+  color: var(--accent);
+  opacity: 1;
+}
+
+.periodCard:hover,
+.subjectCard:hover {
+  border-color: color-mix(in srgb, var(--accent) 28%, var(--border-landing));
+  background: color-mix(in srgb, var(--accent-subtle) 40%, var(--surface-muted));
+}
+
+.contentSetup .stepActions {
+  grid-area: actions;
+}
+
+.stepActionsSetup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  width: 100%;
+}
+
+.stepActionsSetup .submit {
+  flex: 0 1 auto;
+  width: auto;
+  min-width: min(100%, 220px);
+  max-width: 300px;
+  margin-left: auto;
+  font-size: var(--fs-body);
+  font-weight: 600;
+}
+
+.stepActionsSetup .secondaryButton {
+  flex: 0 0 auto;
+}
+
+.contentPreview {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+}
+
+.contentPreview .titleBlock {
+  grid-template-columns: minmax(0, 0.78fr) minmax(280px, 1fr);
+  align-items: end;
+  column-gap: var(--sp-5);
+}
+
+.contentPreview .sub {
+  justify-self: end;
+  max-width: 42ch;
+}
+
+.previewStack {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--sp-3);
+  align-items: stretch;
+}
+
+.previewCard {
+  min-height: 0;
+  gap: var(--sp-2);
+  padding: var(--sp-3);
+  align-content: start;
+}
+
+.previewMeta {
+  gap: var(--sp-2);
+  font-size: var(--fs-label-xs);
+}
+
+.previewMeta span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.previewStem {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  font-size: var(--fs-label);
+  line-height: 1.35;
+}
+
+.optionList {
+  gap: var(--sp-1);
+}
+
+.optionButton {
+  gap: var(--sp-2);
+  padding: var(--sp-2);
+  font-size: var(--fs-label-sm);
+  line-height: 1.3;
+}
+
+.optionButton span {
+  width: 20px;
+  height: 20px;
+  font-size: var(--fs-label-xs);
+}
+
+.feedback {
+  padding: var(--sp-2);
+  font-size: var(--fs-label-sm);
+}
+
+.contentComplete {
+  width: min(100%, 820px);
+  place-self: center;
+  display: grid;
+  align-content: center;
+  gap: var(--sp-5);
+  text-align: left;
+}
+
+.completeCard {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--sp-5);
+  padding: var(--sp-6);
+  border: 1px solid var(--border-landing);
+  border-radius: var(--r-lg);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--surface) 96%, var(--accent-subtle)), var(--surface)),
+    var(--surface);
+  box-shadow: 0 22px 70px rgba(14, 17, 16, 0.08);
+}
+
+.completeCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 12%, transparent), transparent 38%),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 31px,
+      color-mix(in srgb, var(--border-landing) 28%, transparent) 31px 32px
+    );
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.completeCard > * {
+  position: relative;
+}
+
+.completeMark {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+  background: var(--accent-subtle);
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--border-landing));
+  border-radius: var(--r-lg);
+  box-shadow: inset 0 1px 0 var(--inset-highlight);
+}
+
+.contentComplete .titleBlock {
+  gap: var(--sp-2);
+}
+
+.contentComplete .heading {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+}
+
+.completeSummary {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--sp-2);
+  margin: var(--sp-2) 0 0;
+}
+
+.completeSummary div {
+  padding: var(--sp-3);
+  border: 1px solid color-mix(in srgb, var(--border-landing) 76%, transparent);
+  border-radius: var(--r-sm);
+  background: color-mix(in srgb, var(--surface-muted) 78%, transparent);
+}
+
+.completeSummary dt {
+  margin: 0 0 var(--sp-1);
+  color: var(--text-landing-md);
+  font-size: var(--fs-label-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.completeSummary dd {
+  margin: 0;
+  color: var(--text-landing);
+  font-size: var(--fs-body-lg);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.form {
+  gap: var(--sp-3);
+}
+
+.stepActions {
+  gap: var(--sp-2);
+}
+
+.secondaryButton,
+.submit {
+  min-height: 42px;
+}
+
+.error {
+  padding: var(--sp-2) var(--sp-3);
+  font-size: var(--fs-label-sm);
+}
+
+@media (max-height: 720px) and (min-width: 760px) {
+  .inner {
+    height: calc(100dvh - var(--sp-5) * 2);
+    gap: var(--sp-3);
+  }
+
+  .heading {
+    font-size: clamp(1.55rem, 3vw, 2rem);
+  }
+
+  .sub {
+    font-size: var(--fs-body);
+  }
+
+  .setupSection,
+  .tierNote,
+  .previewCard {
+    padding: var(--sp-3);
+  }
+
+  .subjectCard {
+    min-height: 80px;
+    padding: var(--sp-2) var(--sp-3);
+  }
+
+  .periodCard {
+    min-height: 52px;
+    padding: var(--sp-2);
+  }
+
+  .subjectDesc,
+  .periodDesc {
+    line-height: 1.22;
+  }
+}
+
+@media (max-width: 760px) {
+  .shell {
+    overflow: auto;
+    padding: var(--sp-4);
+  }
+
+  .inner {
+    height: auto;
+    min-height: calc(100dvh - var(--sp-4) * 2);
+  }
+
+  .contentIntro,
+  .contentPreview .titleBlock {
+    grid-template-columns: 1fr;
+    grid-template-areas: none;
+  }
+
+  .contentSetup {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "intro"
+      "setup"
+      "actions";
+  }
+
+  .contentSetup .titleBlock {
+    grid-template-columns: 1fr;
+  }
+
+  .subjectGrid,
+  .periodGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .contentSetup,
+  .contentPreview {
+    grid-template-rows: auto;
+  }
+
+  .contentSetup .sub,
+  .contentPreview .sub {
+    justify-self: start;
+  }
+
+  .titleBlock .submit,
+  .stepActions {
+    width: 100%;
+  }
+
+  .stepActionsSetup {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .stepActionsSetup .submit,
+  .stepActionsSetup .secondaryButton {
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+  }
+
+  .shell::after {
+    display: none;
+  }
+
+  .completeCard,
+  .completeSummary {
+    grid-template-columns: 1fr;
+  }
+
+  .completeMark {
+    width: 48px;
+    height: 48px;
+  }
+}

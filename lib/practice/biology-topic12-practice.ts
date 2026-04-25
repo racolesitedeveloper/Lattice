@@ -1,0 +1,640 @@
+import type { SubtopicPracticePack } from "./types";
+
+/**
+ * Topic 12 (9700 Biology) practice — `data/courses/biology-9700.json` (`t12-1`, `t12-2`).
+ *
+ * **`t12-2` (Respiration)** — Crosswalk to `data/syllabus/biology-9700-learning-outcomes.md` §12.2 and
+ * §12.2 continued: d1 four aerobic stage locations; d2 glycolysis; d3 pyruvate to mitochondria + link
+ * reaction and coenzyme A; d4 Krebs cycle; d5 oxidative phosphorylation and electron transport; d6
+ * mitochondrion structure–function; d7 anaerobic fermentation (lactate / ethanol); d8 site MCQ; d9
+ * aerobic vs anaerobic energy yield; d10 rice adaptations + respirometers and redox indicators
+ * (DCPIP, methylene blue) with yeast.
+ *
+ * **`t12-1` (Energy)** — The repository extract `biology-9700-learning-outcomes.md` lists **§12.2
+ * only** under Topic 12 (**§12.1 is missing** from the extract). This pack is authored against
+ * **standard 9700 Topic 12.1** (ATP as a universal energy currency, ADP + Pi, phosphorylation
+ * and hydrolysis, and high-level energy transfers in metabolism) until the markdown is backfilled.
+ * Crosswalk: d1–d2 energy currency/ADP–ATP; d3–d4 hydrolysis, phosphorylation, coupling; d5
+ * catabolism vs anabolism; d6 photosynthesis, respiration, and transfers; d7 why ATP; d8–d9 MCQ;
+ * d10 synoptic “energy in metabolism”.
+ */
+export const BIOLOGY_TOPIC12_PRACTICE: Record<string, SubtopicPracticePack> = {
+  "t12-1": {
+    noteId: "t12-1",
+    drills: [
+      {
+        id: "t12-1-d1",
+        noteId: "t12-1",
+        kind: "structured",
+        difficulty: 1,
+        marks: 5,
+        stem: "Define the term adenosine triphosphate (ATP). Explain why ATP is described as a universal energy currency in living cells, and state how ADP and inorganic phosphate (Pi) relate to ATP in metabolic turnover.",
+        modelAnswerPoints: [
+          "ATP is a nucleotide triphosphate: adenine, ribose, and a triphosphate ‘tail’ used to carry transferable chemical energy in cells.",
+          "As a common small molecule, ATP links energy-releasing catabolism to energy-requiring processes by phosphoryl transfer, so most pathways ‘speak’ the same short-term energy ‘currency’.",
+          "Hydrolysis to ADP and Pi (or to AMP and PPi) releases usable free energy; ADP and Pi are rejoined in energy-yielding sequences (e.g. respiration) to reform ATP, keeping rapid turnover.",
+        ],
+        workedSolution: [
+          "ATP (adenosine triphosphate) is the soluble nucleotide in which the nitrogenous base adenine is joined through ribose to a chain of three orthophosphate groups; the bonds between these phosphates are often described as high-energy in the sense that their hydrolysis to ADP and Pi (or, in other contexts, to AMP and pyrophosphate) is strongly exergonic under cellular conditions, releasing free energy the cell can harness.",
+          "Because ATP is a compact, water-soluble carrier that is continuously recycled at high rates, it acts as a universal short-term ‘currency’: energy captured from fuels or light in specialised pathways is converted into ATP, and a wide range of endergonic jobs—muscle contraction, solute transport, macromolecular synthesis, nerve signalling, and conformational work in proteins—are paid for by its hydrolysis to ADP and Pi, which returns substrates for resynthesis in mitochondria, chloroplasts, or the cytoplasm rather than the cell ‘consuming’ ATP once and discarding it.",
+          "In steady metabolism, the absolute mass of ADP and ATP is small: what matters is the flow between ADP + Pi and ATP, driven by exergonic reactions such as respiration, so the pair ADP/ATP and Pi is the core bookkeeping couple that ties energy-liberating and energy-requiring sequences together in exam language.",
+        ],
+        commonMistake:
+          "Calling ATP a long-term energy store in the way starch is; the syllabus point is that it is a short-lived recyclable carrier, not a bulk depot.",
+        tags: ["ATP", "energy-currency", "definitions"],
+      },
+      {
+        id: "t12-1-d2",
+        noteId: "t12-1",
+        kind: "structured",
+        difficulty: 1,
+        marks: 5,
+        stem: "Outline what is meant by phosphorylation and dephosphorylation of adenine nucleotides, and name at least one widely taught pair of products formed when a terminal phosphate is cleaved from ATP under physiological conditions.",
+        modelAnswerPoints: [
+          "Phosphorylation adds a phosphate to an acceptor, here regenerating ATP from ADP and Pi in energy-yielding steps or attaching phosphate to a substrate in kinase reactions.",
+          "Dephosphorylation includes hydrolytic removal of a phosphate, typically producing ADP and Pi (or, from ADP, AMP and Pi; sometimes ATP to AMP + PPi).",
+          "The ADP and Pi (or PPi) accept the released free energy, which is then transduced into work or re-trapped in new ATP.",
+        ],
+        workedSolution: [
+          "In metabolism, ‘phosphorylation’ of adenine nucleotides is the enzymic formation of phosphoanhydride bonds: respiration, photophosphorylation, and substrate-level steps transfer phosphate onto ADP to yield ATP, while substrate phosphorylation is the transfer of a phosphate from a high-energy organic intermediate to ADP, still returning ATP to the common pool.",
+          "Dephosphorylation, for ATP, classically means hydrolysis of a terminal phosphoanhydride bond, catalysed by ATPases or kinases in reverse cycles, to give adenosine diphosphate and inorganic phosphate, although some pathways go straight from ATP to AMP with release of inorganic pyrophosphate that is then cleaved, which is a separate textbook emphasis from the most common two-product split.",
+          "Stating the expected pair explicitly for full credit: ATP -> ADP + Pi is the central couple taught as coupling energy release to transport, movement, and synthesis, while the reverse ADP + Pi -> ATP recharges the pool using energy from food oxidation or, in autotrophs, from light through chloroplast machinery.",
+        ],
+        commonMistake:
+          "Claiming that energy is ‘stored inside’ the adenine ring rather than in the high-phosphate-bond system that is made and broken.",
+        tags: ["phosphorylation", "ADP", "Pi"],
+      },
+      {
+        id: "t12-1-d3",
+        noteId: "t12-1",
+        kind: "structured",
+        difficulty: 2,
+        marks: 5,
+        stem: "Explain how the hydrolysis of ATP to ADP and inorganic phosphate is able to drive thermodynamically unfavourable (endergonic) processes in a cell, using the idea of free energy coupling in one coherent paragraph.",
+        modelAnswerPoints: [
+          "Hydrolysis of ATP to ADP + Pi is exergonic (releases free energy).",
+          "If coupled to a second reaction with positive ΔG, the overall coupled process can be negative if the ATP step supplies enough free energy to ‘pay for’ the unfavourable step.",
+          "Coupling is usually enzymic: conformational change, group transfer, or local cycles transfer the phosphoryl group or the energy to the working step rather than the steps remaining independent.",
+        ],
+        workedSolution: [
+          "The hydrolysis of ATP to ADP and inorganic phosphate is a spontaneous, highly exergonic step under intracellular conditions, so it can decrease the free energy of the system when it is harnessed, rather than simply heating the cell.",
+          "Many biosynthetic, transport, and mechanical steps would be endergonic if attempted alone, but in coupled sequences the enzyme machinery ensures that the favourable collapse of the ATP phosphoanhydride bond is structurally and temporally linked to the unfavourable process—often through a phosphorylated intermediate, a conformational switch in a pump, or a tightly regulated set of half-reactions so that the overall stoichiometry becomes thermodynamically allowed.",
+          "Therefore ATP does not create energy from nothing; it stores part of the free energy that was first captured in earlier exergonic reactions, then releases it in controlled packets at sites where work must be done, which is the standard A-level phrasing of coupling between energy-yielding and energy-requiring change.",
+        ],
+        commonMistake:
+          "Saying the cell ‘uses heat from ATP’ to power reactions—coupling is through coupled chemistry and conformational work, not bulk heating for synthetic pathways at this level.",
+        tags: ["coupling", "exergonic", "endergonic"],
+      },
+      {
+        id: "t12-1-d4",
+        noteId: "t12-1",
+        kind: "structured",
+        difficulty: 2,
+        marks: 5,
+        stem: "Distinguish catabolism and anabolism, and in each case relate the role of ATP in typical pathways as expected at A Level, without going into the detailed steps of a named pathway from Topic 12.2.",
+        modelAnswerPoints: [
+          "Catabolism breaks complex molecules, usually exergonic overall, and a fraction of the free energy is trapped as ATP and reduced coenzymes rather than all lost as heat.",
+          "Anabolism builds large molecules, usually endergonic overall, and is driven by ATP (and often reducing power) from catabolism or light-driven synthesis.",
+        ],
+        workedSolution: [
+          "Catabolism is the set of degradative routes—digestion at tissue level, then cellular respiration in core teaching—that oxidise fuel molecules stepwise, producing smaller units and releasing free energy, of which a substantial share is not wasted but is transferred into ATP, NADH, and similar carriers that can be routed to the electron transport and synthesis machinery, though we avoid naming every enzymic step in this generality question.",
+          "Anabolism is the building of polysaccharides, lipids, proteins, and nucleic acids from precursors, which requires energy input, reducing equivalents, and often activated intermediates, so the cell spends the ATP and NADPH generated elsewhere to make polymerisation, reduction, and group transfers favourable overall.",
+          "Thus ATP is the short-term go-between: catabolic sequences raise the ATP/ADP ratio when fuels are available, and anabolic sequences lower it as they use phosphoryl transfer, allowing the two sides of metabolism to be balanced without each pathway inventing a separate energy store.",
+        ],
+        commonMistake:
+          "Saying catabolism only produces heat, with no link to ATP or carriers that later drive synthesis or transport.",
+        tags: ["catabolism", "anabolism", "metabolism"],
+      },
+      {
+        id: "t12-1-d5",
+        noteId: "t12-1",
+        kind: "structured",
+        difficulty: 2,
+        marks: 6,
+        stem: "In exam terms, why is ATP described as a short-term or immediate energy carrier, whereas glycogen, starch, or triacylglycerols are more appropriate examples of energy storage? Answer with at least two distinct biological reasons, each tied to a different kind of ‘fitness’ of the molecule for that role.",
+        modelAnswerPoints: [
+          "ATP is present only in small pools and turns over rapidly, matching minute-to-minute work without bulky mass.",
+          "Polymers and lipids store large energy per unit used by the cell when mobilised, but cannot themselves power a transport ATPase in one step; they are broken down in slower pathways to recharge ATP/ADP.",
+          "Stability and solubility differ: high-energy triphosphates are reactive and must be confined to regulated enzyme surfaces, whereas starchy or fatty reserves are inert depots in granules or droplets until enzyme cascades are activated.",
+        ],
+        workedSolution: [
+          "The cell’s total adenine nucleotide pool is orders of magnitude smaller than the chemical energy stored in glycogen granules in liver and muscle, or the triacylglycerol droplets in adipocytes, so ATP is not used as a warehouse for weeks of caloric need but as a minute-to-minute packet that can be cycled through thousands of times per day without accumulating mass in the cytoplasm, which is why the syllabus separates ‘currency’ from ‘storage’.",
+          "Fats and polysaccharides release large negative free energy only after many enzymic cuts; they are therefore well suited to long-term, low osmolarity, low reactivity storage, but they do not turn ion pumps, ribosomes, or myosin heads on their own, whereas ATP is kinetically matched to conformational cycles that require single-digit kJ mol^-1 scale transfers many times per second in active cells.",
+          "Another contrast is compartimentalisation: triphosphates are chemically labile, so they are used where synthesis and proofreading of ATP/ADP ratios can occur on membranes and matrices, while neutral lipids in droplets and compact glycogen avoid unwanted side-reactions until hormones activate mobilisation pathways, after which the energy flows back into the ATP/ADP system through respiration.",
+        ],
+        commonMistake:
+          "Asserting that lipids or starch ‘contain ATP’—they are oxidised in pathways that make ATP, but the stores are not literally packets of adenosine triphosphate.",
+        tags: ["storage", "ATP", "compare"],
+      },
+      {
+        id: "t12-1-d6",
+        noteId: "t12-1",
+        kind: "structured",
+        difficulty: 3,
+        marks: 6,
+        stem: "Outline, at the whole-organism and cellular level, how energy from sunlight can end up in the chemical bonds of organic compounds in a photosynthetic eukaryote, and how a heterotroph later transfers part of that energy into ATP, keeping the account qualitative and high-level as Topic 12.1 expects.",
+        modelAnswerPoints: [
+          "Photosynthetic capture converts radiant energy into chemical form in organic molecules, with an ATP/NADPH stage feeding carbon fixation; reduced carbon can build biomass.",
+          "A heterotroph digests/imports organic material and oxidises it in respiration, releasing free energy; much is trapped as ATP for cellular work, not all lost as heat.",
+          "The thread links producers and consumers: chemical bond energy, not light, is what reaches animal mitochondria, yet it originated as solar input fixed by producers.",
+        ],
+        workedSolution: [
+          "In green plants and algae, chloroplast photochemistry and subsequent carbon fixation use absorbed light to raise the free energy of organic skeletons, initially through photophosphorylation and reductant supply to the Calvin cycle, so carbon dioxide and water are built into carbohydrates, lipids, and proteins with higher chemical potential energy than the inorganic starting materials, even though the fine mechanistic details belong to the photosynthesis topic rather than to this energy overview.",
+          "A heterotrophic consumer eats plant material or other animals, hydrolyses biopolymers, and catabolises monomers in glycolysis, the link reaction, the Krebs cycle, and the mitochondrial electron transport chain, which recharges ADP to ATP; this is a second energy transfer, from food molecules into the same universal nucleotide ‘currency’ that then pays for the animal’s synthesis, transport, and behaviour.",
+          "Sitting between these stories is a clear teaching point: sunlight never reaches an animal’s mitochondria directly, but the bond energy in ingested organic molecules is ultimately traceable, through food webs, to photosynthetic primary production, and respiration is the high-yield process that re-packages that energy into ATP for work at the organ and tissue level.",
+        ],
+        commonMistake:
+          "Mixing the claim that ‘animals do photosynthesis for ATP’ with respiration, or that light enters mitochondria, which is not the intended 12.1 story.",
+        tags: ["photosynthesis", "respiration", "energy-flow"],
+      },
+      {
+        id: "t12-1-d7",
+        noteId: "t12-1",
+        kind: "structured",
+        difficulty: 3,
+        marks: 5,
+        stem: "Explain two separate reasons why a common phosphorylated nucleotide such as ATP is a better day-to-day ‘go-between’ for energy delivery inside cells than, for example, trying to use the slow combustion of a fatty acid triplet every time a sodium ion must be pumped across a plasma membrane.",
+        modelAnswerPoints: [
+          "Kinetic match: membrane pumps, motors, and ligases can complete catalytic cycles in milliseconds if supplied with a small transferable phosphate unit, not if each stroke waited for full β-oxidation.",
+          "Regulation: centralised ATP/ADP ratios, compartment-specific kinases, and allosteric control fine-tune rates of fuel oxidation versus usage; bulk lipid oxidation is regulated upstream, not on each work cycle.",
+        ],
+        workedSolution: [
+          "A sodium–potassium ATPase, for illustration, can complete thousands of conformational cycles per second at some tissues if ATP is available; each cycle costs roughly one ATP hydrolysis, which is a fast group-transfer chemistry localised to the pump, whereas the complete mitochondrial oxidation of a fatty acid to carbon dioxide and water supplies thousands of ATP equivalents over minutes to hours, which is a wholly inappropriate timescale to couple to each single ion translocation without an intermediate like ATP/ADP.",
+          "A second, distinct advantage is allosteric control and homoeostasis: the cell can sense global energy charge through ATP, ADP, and AMP, and can tune whole pathways—glycolysis, respiration, biosynthesis—around these ratios, whereas attempting to run every endergonic task directly from a single catabolic reaction would make regulation impossibly coarse, because fatty-acid catabolism is hormonally and nutritionally controlled at an organ and mitochondrial level, not on the microsecond needs of a single transporter on one membrane domain.",
+        ],
+        commonMistake:
+          "Arguing only that ‘ATP is smaller’ without linking size to kinetics, turnover, and regulation, which the question asks you to make explicit.",
+        tags: ["ATP", "kinetics", "regulation"],
+      },
+      {
+        id: "t12-1-d8",
+        noteId: "t12-1",
+        kind: "mcq",
+        difficulty: 2,
+        stem: "Which statement best matches how ATP and ADP are used when discussing energy in metabolism in this course?",
+        options: [
+          { id: "A", text: "ADP and Pi are high-energy products that the cell discards after each ATP is made." },
+          { id: "B", text: "ATP is hydrolysed to release free energy to drive work, and ADP and Pi are recycled in energy-yielding pathways." },
+          { id: "C", text: "ATP is a long-term energy store, while ADP is the only molecule used in photosynthesis." },
+          { id: "D", text: "ADP and ATP are unrelated nucleotides that never interconvert in healthy cells." },
+        ],
+        correctOptionId: "B",
+        explanation:
+          "ATP and ADP form a short-lived, rapidly recycled couple: hydrolysis powers processes; respiration and photophosphorylation regenerate ATP from ADP and Pi.",
+        distractorRationale: {
+          A: "ADP and Pi are acceptors, not high-energy end products; they re-enter the charging pathways.",
+          C: "Long-term energy is stored in fuels such as polysaccharides and lipids; photosynthesis uses ATP, not ‘only ADP’ in that nonsensical sense.",
+          D: "Interconversion of ATP and ADP is the central feature of cell energetics.",
+        },
+        tags: ["MCQ", "ATP-ADP"],
+      },
+      {
+        id: "t12-1-d9",
+        noteId: "t12-1",
+        kind: "mcq",
+        difficulty: 3,
+        stem: "A student says: “Cells create energy by making ATP.” Select the most accurate response for an examiner-style correction.",
+        options: [
+          { id: "A", text: "Energy is not conserved in biology, so the statement is fine." },
+          { id: "B", text: "The cell transduces energy that was already in fuel or light into a chemically labile form (ATP) that can be spent on work; the first law of thermodynamics still applies to living systems." },
+          { id: "C", text: "ATP synthesis proves mitochondria are open systems that violate thermodynamics to grow." },
+          { id: "D", text: "Only plants make ATP, so the statement is never true in animals." },
+        ],
+        correctOptionId: "B",
+        explanation:
+          "Energy is converted and transferred, not ‘created’ from nothing; respiration, fermentation, and photophosphorylation move free energy from one form into the ATP/ADP pool, coupled to the surroundings.",
+        distractorRationale: {
+          A: "The laws of thermodynamics are not suspended in living cells, though they exchange matter and energy with the environment.",
+          C: "Open systems are consistent with, not in violation of, thermodynamics; they exchange energy with the surroundings.",
+          D: "All metabolically active cells, including animals, use ATP; the point is the scientific phrasing, not a kingdom claim.",
+        },
+        tags: ["thermodynamics", "MCQ"],
+      },
+      {
+        id: "t12-1-d10",
+        noteId: "t12-1",
+        kind: "structured",
+        difficulty: 4,
+        marks: 7,
+        stem: "Synthesise the Topic 12.1 view of energy in metabolism: explain how a single, universal adenine nucleotide couple links energy released from catabolism, energy required for anabolism and transport, and the maintenance of a nonequilibrium steady state in an active cell, without writing out individual enzyme names from respiration that belong to 12.2 detail.",
+        modelAnswerPoints: [
+          "Catabolic pathways, fuelled by food or, in some contexts, by stored reserves, exergonically move electrons and phosphate onto carriers and ADP, raising effective ATP/ADP.",
+          "Anabolic, mechanical, and transport work hydrolyse ATP, lowering the ratio locally and setting demand that accelerates catabolism when substrates exist.",
+          "Steady state means continuous turnover: neither unlimited ATP pile-up nor total ATP depletion, because rates are regulated by allosteric control, cellular sensors, and compartmentation.",
+        ],
+        workedSolution: [
+          "At the conceptual level, eukaryotic and prokaryotic cells maintain a high-throughput link between catabolism and work by keeping adenine nucleotides in rapid flux, so the concentration of ATP never approaches the total chemical energy the organism has eaten over its lifetime, but the turnover number per minute is enormous, which is the sense in which a ‘universal’ currency is maintained.",
+          "When a muscle contracts, a bacterium spins its flagellum, or an enterocyte imports glucose against a gradient, the immediate payment is in ATP to ADP + Pi, which nudges the global energy charge downward and, through allosteric activation of fuel-degrading enzymes, raises the rate of catabolism to restore balance if oxygen and nutrients allow, whereas when energy is superabundant, biosynthetic routes, storage, and cell division consume ATP, preventing uncontrolled overheating of purely catabolic futile cycles, though the exam does not need named regulator pairs here.",
+          "This answers the ‘single couple’ part of the question: the same ADP/ATP/AMP reporting system, sensed in cytosol and organelles, coordinates many pathways, so the cell stays far from global thermodynamic equilibrium (dead cells go there), yet locally stays in a homeostatic steady state, which is the high-level 12.1 story before Topic 12.2 itemises the respiratory machinery that actually recharges the pool under aerobic conditions.",
+        ],
+        commonMistake:
+          "Writing the Krebs cycle from memory when the question explicitly asks for a 12.1-level synthesis, not a mini essay on 12.2 steps.",
+        tags: ["synoptic", "steady-state", "12.1"],
+      },
+    ],
+    flashcards: [
+      {
+        id: "t12-1-f1",
+        noteId: "t12-1",
+        difficulty: 1,
+        front: "One-line definition: ATP (exam register).",
+        back: "Nucleoside triphosphate (adenosine + ribose + triphosphate) that couples exergonic fuel oxidation to work by ready phosphoryl transfer; hydrolyses to ADP + Pi to release free energy for cellular jobs.",
+        examPhrasing: "State the role of ATP in cells.",
+        tags: ["definitions"],
+      },
+      {
+        id: "t12-1-f2",
+        noteId: "t12-1",
+        difficulty: 1,
+        front: "What is the core ADP/ATP + Pi ‘cycle’ idea?",
+        back: "Energy-yielding pathways join Pi to ADP to make ATP; work-requiring processes remove the terminal Pi to return ADP and Pi, giving rapid turnover, not a static stockpile of millions of moles in one cell.",
+        examPhrasing: "Explain the relationship between ADP, inorganic phosphate, and ATP in metabolism.",
+        tags: ["ADP", "recycling"],
+      },
+      {
+        id: "t12-1-f3",
+        noteId: "t12-1",
+        difficulty: 2,
+        front: "Exergonic vs endergonic (one line each, exam words).",
+        back: "Exergonic: net release of free energy. Endergonic: net input of free energy; often driven when coupled to ATP hydrolysis.",
+        examPhrasing: "Use the terms exergonic and endergonic in the context of metabolism.",
+        tags: ["thermodynamics"],
+      },
+      {
+        id: "t12-1-f4",
+        noteId: "t12-1",
+        difficulty: 2,
+        front: "Name two classes of work ATP commonly ‘pays for’ in teaching.",
+        back: "Mechanical work, transport work against gradients, and chemical work in polymerisation/activation, among others.",
+        examPhrasing: "Give examples of how ATP is used in cells.",
+        tags: ["work"],
+      },
+      {
+        id: "t12-1-f5",
+        noteId: "t12-1",
+        difficulty: 3,
+        front: "Why is glucose not the direct energy currency in every transporter cycle?",
+        back: "Oxidation of a hexose to CO2 is a slow, many-step, regulated pathway, whereas a single ATP hydrolysis matches the energy and time scale of a pump cycle; glucose stores energy, ATP transfers it in small packets.",
+        examPhrasing: "Distinguish energy storage in fuels from energy transfer by ATP.",
+        confusionPair: "starch (store) vs ATP (currency)",
+        tags: ["compare"],
+      },
+      {
+        id: "t12-1-f6",
+        noteId: "t12-1",
+        difficulty: 3,
+        front: "High-level: photosynthesis vs respiration, energy only.",
+        back: "Photosynthesis increases chemical potential in organic products using light. Respiration oxidises those (or other) organics, releasing much of the free energy into ATP and heat (qualitative, not a full 12.2 map here).",
+        examPhrasing: "Outline how energy in organic molecules relates to light and to respiration.",
+        tags: ["flow"],
+      },
+      {
+        id: "t12-1-f7",
+        noteId: "t12-1",
+        difficulty: 4,
+        front: "What does ‘universal’ mean for ATP, without overstating it?",
+        back: "A shared, soluble intermediate accepted by most ATPases, kinases, and synthetases across pathways and compartments—not that every organism uses the exact same set of organelles, but the nucleotide couple is near-universal in life on Earth in teaching terms.",
+        examPhrasing: "Explain what is meant by ATP as a universal energy currency.",
+        tags: ["language"],
+      },
+      {
+        id: "t12-1-f8",
+        noteId: "t12-1",
+        difficulty: 4,
+        front: "Catabolism — one-sentence, mark-scheme feel.",
+        back: "Breakdown sequences that are overall exergonic, capturing part of the free energy in reduced coenzymes and in ATP, which then powers other processes.",
+        examPhrasing: "Define catabolism in relation to energy.",
+        tags: ["catabolism"],
+      },
+      {
+        id: "t12-1-f9",
+        noteId: "t12-1",
+        difficulty: 5,
+        front: "Anabolism + ATP, one line.",
+        back: "Synthesis is overall endergonic, typically driven by spending ATP (and often NADPH) to form bonds and reduce intermediates, keeping biosynthesis off-equilibrium when nutrients allow.",
+        examPhrasing: "Relate anabolism to energy supply in cells.",
+        tags: ["anabolism"],
+      },
+      {
+        id: "t12-1-f10",
+        noteId: "t12-1",
+        difficulty: 5,
+        front: "Why ‘energy in food’ is not the same as ‘ATP in food’ in exam logic.",
+        back: "Food molecules hold chemical bond energy; digestion and respiration convert a fraction to ATP; you do not literally swallow pre-made ATP in meaningful amounts from most diets at this syllabus layer.",
+        examPhrasing: "Clarify the relationship between energy in organic molecules and ATP.",
+        tags: ["precision"],
+      },
+    ],
+  },
+  "t12-2": {
+    noteId: "t12-2",
+    drills: [
+      {
+        id: "t12-2-d1",
+        noteId: "t12-2",
+        kind: "structured",
+        difficulty: 1,
+        marks: 5,
+        stem: "State where each of the four stages in aerobic respiration of glucose occurs in a eukaryotic cell, naming: glycolysis; the link reaction; the Krebs (citric acid) cycle; and oxidative phosphorylation. Present your answer in a way that a marker can tick each location in turn.",
+        modelAnswerPoints: [
+          "Glycolysis: cytoplasm (cytosol), outside mitochondria but within the cell.",
+          "Link reaction: mitochondrial matrix.",
+          "Krebs cycle: mitochondrial matrix.",
+          "Oxidative phosphorylation: inner mitochondrial membrane (of mitochondria) / cristae region.",
+        ],
+        workedSolution: [
+          "Glycolysis, the 10-enzyme chain that cleaves 6C glucose to two 3C pyruvate molecules, is entirely in the watery cytosol of the cell, where soluble hexokinases, aldolase, and dehydrogenases run without a mitochondrial transporter until pyruvate is ready to cross.",
+          "After pyruvate is imported and decarboxylated to acetyl coenzyme A, both the link reaction and the subsequent Krebs (citric acid) cycle enzymes are located in the mitochondrial matrix, the gel-like compartment rich in its own ribosomes, DNA, and the soluble enzymes of the cycle that regenerate oxaloacetate.",
+          "Oxidative phosphorylation—electron transport coupled to vectorial proton movement and to ATP synthase—uses integral proteins embedded in the inner mitochondrial membrane, highly folded in cristae, so the site for chemiosmotic synthesis is the inner membrane, not the outer membrane, which is more permeable to small solutes via porins, and is therefore the fourth distinct compartment students must name without mixing matrix and membrane.",
+        ],
+        commonMistake:
+          "Placing the Krebs cycle in the cristae lumen, or claiming oxidative phosphorylation happens ‘in the matrix’ with only vague mention of a membrane, which would lose a pair of site marks at minimum.",
+        tags: ["locations", "mitochondria"],
+      },
+      {
+        id: "t12-2-d2",
+        noteId: "t12-2",
+        kind: "structured",
+        difficulty: 1,
+        marks: 6,
+        stem: "Outline glycolysis, including phosphorylation of glucose, cleavage of the six-carbon biphosphate, oxidation of triose phosphates, and the net products that reach pyruvate, as far as the syllabus description requires, without a full list of all intermediates by name beyond those mentioned in the question stem.",
+        modelAnswerPoints: [
+          "Phosphorylation to trap glucose, then to split via fructose 1,6-bisphosphate into two 3C triose phosphates.",
+          "Oxidation of three-carbon intermediates, reducing NAD+ to reduced NAD, with substrate-level ATP formation.",
+          "Net: each glucose yields two 3C pyruvate and a small ATP yield, with reduced NAD carried forward only if the terminal oxidase chain will accept electrons later.",
+        ],
+        workedSolution: [
+          "Glycolysis begins by transferring phosphates from ATP to glucose and later intermediates, which raises the free energy and prevents the hexose from diffusing back out of the cell, and eventually yields fructose 1,6-bisphosphate, a six-carbon diphosphate that is cleaved by aldolase-type chemistry into two different three-carbon monophosphates, each of which is isomerised to a common form that continues down the same oxidation branch.",
+          "Oxidation steps transfer hydride equivalents to NAD+, producing reduced NAD, while substrate-level phosphorylation at the phosphoglycerate kinase and pyruvate kinase steps transfers phosphate from high-energy intermediates to ADP, giving a small, anaerobically available ATP yield for each 3C chain.",
+          "The pair of 3C pyruvate molecules is the end product in the cytoplasm, together with a net 2ATP and 2 reduced NAD from each glucose, although the exact bookkeeping of ATP is sometimes taught with gross versus net figures; the examination emphasis here is the conceptual route from phosphorylated hexose through bisphosphate split to triose oxidations that finish as pyruvate rather than a table of all carbon skeleton names.",
+        ],
+        commonMistake:
+          "Saying that glycolysis itself produces carbon dioxide, which is not the case: decarboxylation is later, in the link reaction and the Krebs cycle, not in the 10 step glycolytic path.",
+        tags: ["glycolysis", "NADH"],
+      },
+      {
+        id: "t12-2-d3",
+        noteId: "t12-2",
+        kind: "structured",
+        difficulty: 2,
+        marks: 6,
+        stem: "Explain the fate of pyruvate in aerobic eukaryotic cells, and describe the link reaction with explicit reference to coenzyme A and the transfer of the two-carbon acetyl fragment into the Krebs cycle, without writing out every coenzyme structure.",
+        modelAnswerPoints: [
+          "When oxygen is available, pyruvate is transported from cytosol into the mitochondrial matrix for oxidative decarboxylation.",
+          "A multienzyme complex removes CO2, oxidising the remainder and attaching the 2C unit to coenzyme A, forming acetyl coenzyme A.",
+          "NAD+ is reduced, and the acetyl group is fed to the cycle by condensing with oxaloacetate, which is a Krebs entry step, though the name ‘Krebs’ starts after acetyl-CoA is made.",
+        ],
+        workedSolution: [
+          "Pyruvate, once inside the matrix, is not a direct substrate of the citric acid cycle: it is first decarboxylated to a two-carbon acetyl unit linked through a thioester to coenzyme A, a carrier with a terminal sulfhydryl that forms a high-energy thioester with acetate, while carbon dioxide is released and NAD+ is reduced, matching the syllabus expectation to bring in oxygen-availability, mitochondrial localisation, and the role of the link reaction in bridging glycolysis to the Krebs cycle.",
+          "Coenzyme A is essential because the activated acetyl group must be in a form that citrate synthase can use to acetylate oxaloacetate to form citrate; the large coenzyme arm keeps the thioester localised to enzyme active sites, whereas free acetate is not the species that condenses, which is a classic distractor in weaker answers.",
+          "Therefore the full statement for examiners: availability of O2 and functional mitochondria allow pyruvate to be fully oxidised through matrix pathways; only under anaerobic conditions do many tissues redirect pyruvate to fermentation products instead, a contrast that the next question in class might press, but here we stay with the acetyl-CoA handoff as the end of the link reaction from the syllabus list.",
+        ],
+        commonMistake:
+          "Claiming that pyruvate ‘enters the Krebs cycle directly’ without the link reaction, or that coenzyme A is optional.",
+        tags: ["link-reaction", "acetyl-CoA"],
+      },
+      {
+        id: "t12-2-d4",
+        noteId: "t12-2",
+        kind: "structured",
+        difficulty: 2,
+        marks: 7,
+        stem: "Outline the Krebs cycle, explaining: (a) the role of oxaloacetate as a four-carbon acceptor, (b) the formation and regeneration of the six-carbon citrate, and (c) that decarboxylation and dehydrogenation with reduction of NAD and FAD are central. Keep to syllabus-level detail on carriers, not a step-by-step organic mechanism.",
+        modelAnswerPoints: [
+          "Acetyl-CoA (2C) condenses with oxaloacetate (4C) to form citrate (6C) via citrate synthase.",
+          "A series of small steps reoxidises the skeleton back to the four-carbon acceptor, releasing two CO2 per turn, so the cycle is one turn per acetyl, not one per glucose, if two acetyl enter from one glucose at steady state in teaching algebra.",
+          "NAD+ and FAD are reduced, feeding electrons toward the ETC, and a substrate-level GTP/ATP step appears once per turn in many textbooks, though the detailed carrier counts are not the focus of the bullet you were asked to outline.",
+        ],
+        workedSolution: [
+          "The citric acid cycle is a set of matrix enzymes that first uses citrate synthase to add the two-carbon acetyl unit to oxaloacetate, so the first stable six-carbon intermediate is citrate, which is then isomerised and decarboxylated twice, removing two CO2 and regenerating a four-carbon α-keto acid pool that is finally converted back to oxaloacetate to start another acetyl capture.",
+          "Thus oxaloacetate is both product and reagent: it is not consumed in net stoichiometry per turn, but is continuously regenerated, which is why the cycle is a catalytic wheel rather than a linear pathway like glycolysis, and is why a single turn oxidises one acetyl-CoA even though a whole glucose will eventually run two acetyl through two turns, which students often muddle when summing decarboxylations to glucose-level counts.",
+          "The oxidation steps that strip hydrogen equivalents reduce NAD+ to reduced NAD in several dehydrogenase steps and FAD in the succinate to fumarate step, and these coenzymes deliver electrons to the electron transport chain in the next topic bullets, so you must not describe the Krebs cycle as ‘making’ most ATP directly, because bulk ATP in aerobic cells comes from chemiosmotic synthesis fed by these carriers, with only one GTP/ATP per turn in many textbook presentations at this level, which the syllabus can mention without you memorising a disputed exact ATP per glucose number.",
+        ],
+        commonMistake:
+          "Stating the Krebs cycle ‘breaks down glucose’; glucose was already split earlier—each turn oxidises a two-carbon acetyl equivalent carried on CoA.",
+        tags: ["Krebs", "oxaloacetate"],
+      },
+      {
+        id: "t12-2-d5",
+        noteId: "t12-2",
+        kind: "structured",
+        difficulty: 3,
+        marks: 8,
+        stem: "Explain oxidative phosphorylation in eukaryotic mitochondria, including: splitting of hydrogen into protons and energetic electrons, passage of electrons through the transport chain, use of the released energy to move protons across the inner membrane, return of protons through ATP synthase to drive ATP formation, and the role of oxygen as the final electron acceptor forming water. You need not name individual electron carriers in the chain.",
+        modelAnswerPoints: [
+          "Reduced coenzymes deliver hydrogen equivalents to the chain, which are split: electrons are passed progressively while protons are translocated to the intermembrane space, building a proton motive force.",
+          "Electrons are passed through a series of membrane complexes, releasing free energy in steps that the cell couples to vectorial H+ transport (details of each carrier are not required).",
+          "Protons re-enter the matrix through ATP synthase, releasing potential energy to phosphorylate ADP; oxygen accepts electrons at the end, combining with protons to form water, preventing the chain stalling and allowing aerobic reoxidation of carriers.",
+        ],
+        workedSolution: [
+          "After glycolysis, the link reaction, and the Krebs cycle, most energy sits in the reduced forms of NADH and FADH2, which do not turn pumps themselves but donate electrons to a sequence of large multiprotein complexes and mobile carriers embedded in the inner mitochondrial membrane, which function as a set of exergonic redox half-reactions, each of which is small enough in free energy to avoid explosive single-step combustion.",
+          "The chemiosmotic model states that, as these electrons are passed down a thermodynamic hill toward oxygen, a fraction of the energy is conserved by ejecting protons from the matrix into the intermembrane space, raising electrochemical potential there so that a proton gradient and membrane potential form across the crista membrane, which is not a heat dump but a temporary battery the cell will spend.",
+          "Protons are allowed to return to the matrix by facilitated diffusion through the stalked F1Fo ATP synthase, whose rotating catalytic subunits use the flux of protons to drive conformational changes that make ATP from ADP and Pi, which is the synthesis half of the name oxidative phosphorylation, distinct from the matrix substrate-level GTP/ATP in the cycle.",
+          "Molecular oxygen is the final electron acceptor at the end of the chain, combining with protons in a controlled exergonic step to water, and without that terminal sink the reduced carriers from earlier stages would back up, halting the Krebs dehydrogenations and, eventually, glycolysis at the NADH bottleneck; anaerobic cells solve this with fermentation instead of with oxygen, which the syllabus next contrasts in yield, but here the focus is the mitochondrial oxygenated route.",
+        ],
+        commonMistake:
+          "Saying that oxygen is ‘consumed in glycolysis’ or that the Krebs cycle uses O2 directly; the immediate O2 job is the terminal reoxidation of the electron transport chain, classically in complex IV, without needing your naming it.",
+        tags: ["ETC", "chemiosmosis", "oxygen"],
+      },
+      {
+        id: "t12-2-d6",
+        noteId: "t12-2",
+        kind: "structured",
+        difficulty: 3,
+        marks: 6,
+        stem: "Describe the relationship between the structure and the function of a mitochondrion, using a diagram in words (outer membrane, inner membrane and cristae, matrix, intermembrane space) and connecting each compartment to a named respiratory or metabolic role the syllabus expects of mitochondria in aerobic cells.",
+        modelAnswerPoints: [
+          "Double outer envelope: smooth outer boundary + highly folded inner membrane increasing surface for ETC/ATP synthase.",
+          "Matrix contains pyruvate decarboxylation, Krebs enzymes, mtDNA, some ribosomes; mitochondrial matrix reoxidation supplies reduced carriers.",
+          "Cristae host oxidative phosphorylation; intermembrane space is proton reservoir for chemiosmosis.",
+        ],
+        workedSolution: [
+          "A mitochondrion is bounded by a smooth outer membrane permeable to many small metabolites through channel proteins, enclosing an intermembrane space that, during respiration, holds a higher proton concentration than the matrix when the chain is running, so the inner membrane, not the outer, is the dielectric that physically separates the two proton pools needed for the proton motive force, while the matrix remains the locus of soluble Krebs and link-enzyme activity.",
+          "The inner membrane is invaginated as sheet-like cristae in highly oxidative tissues, which increases the surface area per organelle, packing more ETC and ATP synthase per mitochondrial volume, which is a tight structure–function link visible on electron micrographs the syllabus invites you to interpret qualitatively.",
+          "The matrix also houses mitochondrial ribosomes, circular DNA, and some protein import machinery, but for respiration the essential teaching link is: pyruvate is converted to acetyl-CoA there, the Krebs cycle runs there, and reduced carriers generated there and imported from the cytosol (from glycolysis) feed the crista membranes where oxygen is finally consumed, explaining why the organelle is the cell’s main aerobic power plant even though glycolysis is extramitochondrial, which the diagram-in-words must narrate, not just label.",
+        ],
+        commonMistake:
+          "Claiming the outer membrane is ‘where the Krebs cycle happens’; students swap outer for inner, losing multiple marks in diagram questions.",
+        tags: ["mitochondria", "ultrastructure"],
+      },
+      {
+        id: "t12-2-d7",
+        noteId: "t12-2",
+        kind: "structured",
+        difficulty: 3,
+        marks: 6,
+        stem: "Outline anaerobic respiration (fermentation) in mammalian cells and in yeast, naming the main products, identifying where glycolysis still occurs, and explaining in principle why the cell must reoxidise reduced coenzyme from glycolysis when the mitochondrial electron acceptor (oxygen) is not available, without demanding every intermediate concentration.",
+        modelAnswerPoints: [
+          "Glycolysis in cytosol still makes pyruvate and reduced NAD, but the chain to oxygen is missing or insufficient.",
+          "Lactate fermentation in vigorous mammalian muscle (and some bacteria): pyruvate is reduced, regenerating NAD+ from reduced NAD, yielding lactate.",
+          "Alcoholic fermentation in yeast: decarboxylation to acetaldehyde, then reduction to ethanol, also regenerates NAD+ so glycolysis can keep a low ATP flow.",
+        ],
+        workedSolution: [
+          "When oxygen delivery cannot keep up with very fast cytosolic NADH production in skeletal muscle, or in red cells with no mitochondria, pyruvate is reduced to lactate by lactate dehydrogenase, using the hydride that would otherwise have accumulated in reduced NAD, which reoxidises NAD+ so the glyceraldehyde-3-phosphate dehydrogenase step of glycolysis can keep running, net producing a small ATP per glucose without stopping at zero flux because of NAD+ exhaustion.",
+          "Brewer’s yeast, when asked to live anaerobically, decarboxylates pyruvate to acetaldehyde, releasing CO2, then reduces the aldehyde to ethanol, reoxidising NAD+ in a parallel trick that keeps glycolysis as the only ATP source, with ethanol and CO2 as excreted by-products, which is why the bubble track in a fermentation lock is a real indicator of the pathway, not a decorative froth in teaching.",
+          "In both systems the yield per glucose is far below aerobic complete oxidation, because the carbon skeleton is not fully combusted, but survival advantage comes from short-term maintenance of a trickle of ATP in hypoxia, not from efficiency, a point you must be ready to develop numerically as ‘qualitative’ when comparing yields in a later part of a paper even though the exact ATP arithmetic is de-emphasised in the syllabus you quoted to me, which says a detailed per-glucose count is not required.",
+        ],
+        commonMistake:
+          "Saying that anaerobic respiration in humans gives ethanol, which is a yeast product, or that lactate is the universal fermentation product in all eukaryotes in every tissue.",
+        tags: ["fermentation", "lactate", "ethanol"],
+      },
+      {
+        id: "t12-2-d8",
+        noteId: "t12-2",
+        kind: "mcq",
+        difficulty: 2,
+        stem: "In a typical aerobic eukaryotic cell, where is the citric acid (Krebs) cycle located?",
+        options: [
+          { id: "A", text: "Cytosol only" },
+          { id: "B", text: "Mitochondrial matrix" },
+          { id: "C", text: "Inner mitochondrial membrane" },
+          { id: "D", text: "Golgi apparatus" },
+        ],
+        correctOptionId: "B",
+        explanation:
+          "Krebs enzymes are soluble in the mitochondrial matrix; the inner membrane hosts electron transport, not the citric acid cycle itself.",
+        distractorRationale: {
+          A: "Glycolysis is cytosolic, not the Krebs cycle in higher eukaryotes.",
+          C: "Oxidative phosphorylation uses the inner membrane, but the Krebs dehydrogenases are matrix enzymes.",
+          D: "The Golgi modifies and sorts proteins, not the citric acid cycle of respiration in standard teaching.",
+        },
+        tags: ["MCQ", "locations"],
+      },
+      {
+        id: "t12-2-d9",
+        noteId: "t12-2",
+        kind: "structured",
+        difficulty: 4,
+        marks: 6,
+        stem: "Explain, qualitatively, why the energy available to the cell as ATP from the complete oxidation of a glucose molecule in well-oxygenated mitochondria is much greater than the energy captured if the same glucose is only fermented to lactate or to ethanol, without being asked in this part for a full ledger of every ATP and without arguing from a number you have memorised for one board year.",
+        modelAnswerPoints: [
+          "Aerobically, much of the chemical energy in the carbon skeleton is still released through the link reaction, Krebs, and the electron transport–coupled synthesis to ATP, with carbon leaving fully as CO2 in steady respiration, while NADH from glycolysis can often be reoxidised through shuttles, depending on the tissue story chosen at A Level.",
+          "In lactate or ethanol fermentation, the organic products are only partially oxidised, carrying away substantial chemical potential that could have been extracted aerobically, and the electron transport path is not used, so the proton gradient and chemiosmotic yield largely vanish, leaving mainly the small glycolytic net ATP and whatever substrate-level GTP/ATP the Krebs would not be operating at full flux without oxygen, which is a teaching nuance, but the key idea is the absence of the oxygen-linked chain.",
+        ],
+        workedSolution: [
+          "Aerobic catabolism, in the syllabus’s intended picture, follows glucose through to carbon dioxide, meaning that, apart from a small fraction in biosynthetic anaplerosis, the carbon is maximally oxidised to the highest-oxidation gaseous product, and the many pairs of reducing equivalents generated along the way feed oxidative phosphorylation, so the number of high-energy phosphates the cell can form per glucose is orders of magnitude above the 2 (net) that glycolysis alone can make per glucose, even without your quoting 30, 32, or 38, which the board explicitly de-emphasises in exact accounting.",
+          "Fermentative fates, by contrast, only strip a smaller fraction of the available electrons per glucose, because the end organic acids or alcohols are still reduced compounds that could have been burned further if O2 and mitochondria were available, so much bond energy is exported from the cell in lactate or ethanol rather than in ATP, and, critically, the proton-pumping, oxygen-finished ETC is offline, which removes the main quantitative advantage of eukaryotic respiration, leaving anaerobic ATP supply as a last-resort rapid but inefficient trick.",
+          "A tight candidate sentence for mark schemes, therefore, contrasts complete oxidation to CO2 with the disposal of two-carbon or three-carbon waste molecules that are still full of per-bond enthalpy, and contrasts continuous reoxidation of all NADH and FADH2 through ETC, versus fermentation’s NAD+ recycling trick that only sustains a thin glycolytic flux in hypoxia, which is the ‘why much greater’ without entering disputed shuttle arithmetic.",
+        ],
+        commonMistake:
+          "Saying that fermentation ‘kills the cell with lactate pH’ as the main yield argument; the mark scheme is about energy bookkeeping, not only acidosis, though acidosis is a real muscle phenomenon.",
+        tags: ["yield", "aerobic", "anaerobic"],
+      },
+      {
+        id: "t12-2-d10",
+        noteId: "t12-2",
+        kind: "structured",
+        difficulty: 4,
+        marks: 9,
+        stem: "For practical work at this level, (a) describe how rice (Oryza) is adapted to grow with its roots in flooded, low-oxygen paddy water, and (b) describe investigations using: (i) a redox indicator with yeast (e.g. DCPIP or methylene blue) to study the effect of temperature and substrate concentration on the rate of respiration, and (ii) a simple respirometer to find how temperature affects the rate of CO2 output or O2 use by a small organism or germinating seeds, in each case including what you would measure and a control or fairness idea examiners like to see, without a full method protocol write-up in tabular form.",
+        modelAnswerPoints: [
+          "Rice: internal aerenchyma air channels in roots for gas diffusion; roots may carry out ethanolic fermentation with ethanol loss to surrounding water, tolerating anoxia; faster stem/leaf growth can help raise shoots toward air, within the limited syllabus list you were given.",
+          "Redox indicators: colour of reduced vs oxidised dye tracks electron transfer; compare rates at more than one temperature and substrate concentration, repeat/trials, use dead yeast or boiled controls where relevant; standardise yeast concentration and dye volume.",
+          "Respirometer: manometric or simple volume/pressure change with soda lime CO2 absorber, or a basic gas syringe in some labs; time-course of water droplet in a capillary, temperature bath control, acclimation time, equal masses of live material.",
+        ],
+        workedSolution: [
+          "Rice in flooded paddy often experiences hypoxic or anoxic root-zone water; the species partially compensates with schizogenous aerenchyma, continuous air spaces that longitudinally connect shoots with roots, allowing O2 and CO2 exchange along internal channels much faster than through waterlogged cortical parenchyma without lacunae, which is a structural adaptation the syllabus text names explicitly, not just a ‘rice likes wet soil’ aphorism.",
+          "In addition, the roots are metabolically able to use alcoholic fermentation, generating ethanol and carbon dioxide, diffusing the ethanol away, which is a toxic product management strategy rather than a high-yield energy strategy, and faster stem and leaf development can help bring photosynthetic and aerated tissue above the water surface, matching the three bullet set you were asked to limit yourself to, though plant physiologists can add many more subtleties, which you should not invent beyond this list in an exam-locked answer that quotes the spec.",
+          "For DCPIP, which is a blue oxidised dye that goes colourless when over-reduced, or methylene blue, which is blue in oxidised and colourless in reduced forms in the usual teaching simplification, you inoculate a yeast suspension, mix with dye, and time decolourisation or use a colorimeter; changing temperature in a water bath and changing glucose (substrate) concentration, while keeping pH, yeast count, and dye concentration equal across tubes, provides fair comparisons, and using boiled-dead yeast shows the colour change requires metabolism, a dead control, which is a standard practical reasoning point.",
+          "For a simple respirometer, placing equal masses of germinating seeds or invertebrates with soda lime in one vessel to absorb CO2, or measuring O2 use without absorption depending on the assembly, in a water bath at several temperatures, with time to equilibrate before timing the meniscus movement, controls for room pressure drift and equalises starting masses; comparing living tissue to an abiotic or boiled control, where ethical for the model organism, is another fairness argument examiners value, and you must say whether you are monitoring oxygen or carbon dioxide, because a constant-volume manometer on soda-lime-corrected O2 is the classic A-level respirometer story even if you only sketch it in prose.",
+        ],
+        commonMistake:
+          "Omitting that redox decolourisation must be read at timed intervals, not as a one-off 'it went clear'; also confusing rice 'air roots' in generic wetlands with the internal aerenchyma mechanism named for rice if you do not use the spec wording.",
+        tags: ["rice", "practicals", "respirometer", "DCPIP"],
+      },
+    ],
+    flashcards: [
+      {
+        id: "t12-2-f1",
+        noteId: "t12-2",
+        difficulty: 1,
+        front: "Four stage locations: glycolysis / link / Krebs / O.P.",
+        back: "Glycolysis: cytoplasm. Link + Krebs: mitochondrial matrix. Oxidative phosphorylation: inner mitochondrial membrane (cristae).",
+        examPhrasing: "State the site of each stage of aerobic respiration in eukaryotes.",
+        tags: ["locations"],
+      },
+      {
+        id: "t12-2-f2",
+        noteId: "t12-2",
+        difficulty: 1,
+        front: "Glycolysis: net to pyruvate in words.",
+        back: "Hexose -> phosphorylation -> F1,6-bisphosphate split to two 3C -> oxidation to pyruvate, small ATP, reduced NAD.",
+        examPhrasing: "Outline glycolysis as far as the syllabus description.",
+        tags: ["glycolysis"],
+      },
+      {
+        id: "t12-2-f3",
+        noteId: "t12-2",
+        difficulty: 2,
+        front: "Link reaction: 2C product name + carrier",
+        back: "Acetyl is transferred onto coenzyme A as acetyl coenzyme A, releasing CO2 from pyruvate, reducing NAD+.",
+        examPhrasing: "Describe the link reaction, including the role of coenzyme A.",
+        tags: ["acetyl-CoA"],
+      },
+      {
+        id: "t12-2-f4",
+        noteId: "t12-2",
+        difficulty: 2,
+        front: "Krebs: what accepts the acetyl 2C?",
+        back: "Oxaloacetate (4C) -> citrate (6C) then cycle regenerates OAA, decarboxylating and dehydrogenating with NADH/FADH2 for ETC.",
+        examPhrasing: "Outline the Krebs cycle, explaining the role of oxaloacetate.",
+        tags: ["Krebs"],
+      },
+      {
+        id: "t12-2-f5",
+        noteId: "t12-2",
+        difficulty: 3,
+        front: "O.P.: three roles of O2, H+, ETC, synthase, one line each.",
+        back: "ETC moves e-; gradient drives ATP synthase; O2 is final e- acceptor -> H2O, allowing chain turnover.",
+        examPhrasing: "Explain how oxidative phosphorylation forms ATP in mitochondria.",
+        tags: ["ETC", "O2"],
+      },
+      {
+        id: "t12-2-f6",
+        noteId: "t12-2",
+        difficulty: 3,
+        front: "Mammals anaerobic vs yeast anaerobic (products).",
+        back: "Mammalian cells -> lactate (+ regenerate NAD+). Yeast -> ethanol + CO2 (+ regenerate NAD+).",
+        examPhrasing: "Outline respiration in anaerobic conditions in mammals and in yeast.",
+        confusionPair: "lactate vs ethanol",
+        tags: ["fermentation"],
+      },
+      {
+        id: "t12-2-f7",
+        noteId: "t12-2",
+        difficulty: 4,
+        front: "Why aerobic >> anaerobic yield (no numbers required).",
+        back: "With O2, full oxidation and ETC reoxidise all carriers; fermentation keeps organic reduced products, skipping most chemiosmotic yield.",
+        examPhrasing: "Explain the greater energy yield in aerobic than anaerobic conditions.",
+        tags: ["yield"],
+      },
+      {
+        id: "t12-2-f8",
+        noteId: "t12-2",
+        difficulty: 4,
+        front: "Rice in flooded paddy: three spec adaptations.",
+        back: "Aerenchyma for internal gas movement; ethanolic fermentation in roots; faster stem/leaf growth to reach air/photosynthetic layers — per syllabus list.",
+        examPhrasing: "Explain how rice is adapted to roots in water",
+        tags: ["rice"],
+      },
+      {
+        id: "t12-2-f9",
+        noteId: "t12-2",
+        difficulty: 5,
+        front: "DCPIP / methylene blue with yeast — what is changing in the indicator?",
+        back: "Redox state (oxidised blue vs reduced colourless in teaching simplification), rate follows respiring yeast activity; vary T and [substrate] with controls and repeats.",
+        examPhrasing: "Describe redox indicator investigations of yeast respiration.",
+        tags: ["practicals"],
+      },
+      {
+        id: "t12-2-f10",
+        noteId: "t12-2",
+        difficulty: 5,
+        front: "Simple respirometer: name two fairness controls.",
+        back: "Equal live mass, constant temperature (water bath) after equilibration, time zero sync, and often soda lime to isolate O2 if design requires it, depending on the assembly taught.",
+        examPhrasing: "Describe a simple respirometer investigation of temperature and respiration rate.",
+        tags: ["respirometer"],
+      },
+    ],
+  },
+};

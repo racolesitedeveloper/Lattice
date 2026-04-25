@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lattice Hero Prototype (dark · variant B)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    /* Plan tokens: dark marketing surface + IBM Plex + sage accent */
+    :root {
+      --bg-landing: #0a0b0a;
+      --bg-landing-warm: #0c0f0d;
+      --glow-hero: #15201b;
+      --text-landing: #e8e6e0;
+      --text-landing-muted: #9c9a95;
+      --border-hair: rgba(255, 255, 255, 0.12);
+      --accent: #3f5d52;
+      --accent-hover: #344f45;
+      --accent-on-dark: #7aab98;
+      --on-accent: #fafaf9;
+      --app-bg: #f8f7f4;
+      --app-line: rgba(0, 0, 0, 0.08);
+      --app-ink: #1a1a1a;
+      --app-muted: #5c5a57;
+      --app-row-fill: #ffffff;
+      --app-hover-fill: #e8efec;
+      --shadow-elev: 0 20px 52px rgba(0, 0, 0, 0.4);
+      --r-lg: 18px;
+      --r-sm: 8px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 24px;
+      --space-6: 32px;
+      --space-8: 64px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      font-family: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: var(--text-landing);
+      background-color: var(--bg-landing);
+      background-image:
+        radial-gradient(1200px 520px at 68% -8%, var(--glow-hero) 0%, var(--bg-landing) 50%),
+        linear-gradient(180deg, var(--bg-landing) 0%, var(--bg-landing-warm) 100%);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: var(--on-accent);
+    }
+
+    .page {
+      max-width: 1240px;
+      margin: 0 auto;
+      min-height: 100vh;
+      padding: var(--space-6) var(--space-6) 48px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    .mast {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border: 1px solid var(--border-hair);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .logo {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .nav a {
+      margin-left: 18px;
+      font-size: 13px;
+      color: var(--text-landing-muted);
+      text-decoration: none;
+    }
+    .nav a:hover { color: var(--text-landing); }
+
+    .grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(0, 1.1fr);
+      align-items: center;
+      column-gap: var(--space-8);
+      row-gap: var(--space-6);
+    }
+
+    .copy { max-width: 560px; }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: 6px 10px;
+      border: 1px solid var(--border-hair);
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--text-landing-muted);
+      letter-spacing: 0.02em;
+    }
+    .kicker .live {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-on-dark);
+    }
+
+    h1 {
+      margin: var(--space-4) 0 14px;
+      font-size: clamp(42px, 6.2vw, 64px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      text-wrap: balance;
+      color: var(--text-landing);
+    }
+
+    .lede {
+      margin: 0;
+      max-width: 48ch;
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--text-landing-muted);
+    }
+
+    .actions {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 500;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .btn--fill {
+      border: 0;
+      background: var(--accent);
+      color: var(--on-accent);
+      transition: background-color 160ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .btn--fill:hover { background: var(--accent-hover); }
+
+    .btn--line {
+      border: 1px solid var(--border-hair);
+      background: transparent;
+      color: var(--text-landing);
+      transition: border-color 160ms ease, background 160ms ease;
+    }
+    .btn--line:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .fineprint {
+      margin-top: 14px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--text-landing-muted);
+    }
+    .fineprint strong { color: var(--text-landing); font-weight: 500; }
+
+    .stage {
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .watermark {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 56px;
+      text-align: center;
+      font-size: clamp(80px, 12vw, 150px);
+      line-height: 0.9;
+      letter-spacing: -0.05em;
+      color: rgba(232, 230, 224, 0.07);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .stack {
+      position: relative;
+      width: 100%;
+      max-width: 580px;
+    }
+
+    .frame {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 100%;
+      max-width: 560px;
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      background: var(--app-bg);
+      color: var(--app-ink);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: var(--shadow-elev);
+      transform: translate(-50%, -50%);
+    }
+
+    .frame--1 {
+      z-index: 1;
+      transform: translate(calc(-50% + 34px), calc(-50% - 24px)) scale(0.96);
+      opacity: 0.64;
+      filter: blur(1.1px);
+    }
+    .frame--2 {
+      z-index: 2;
+      transform: translate(calc(-50% + 16px), calc(-50% - 10px)) scale(0.98);
+      opacity: 0.78;
+      filter: blur(0.5px);
+    }
+    .frame--3 { z-index: 3; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .frame--1 { animation: enter1 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both; animation-delay: 100ms; }
+      .frame--2 { animation: enter2 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both; animation-delay: 50ms; }
+      .frame--3 { animation: enter3 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+    }
+
+    @keyframes enter1 {
+      from { opacity: 0; filter: blur(2px); }
+      to { opacity: 0.64; filter: blur(1.1px); }
+    }
+    @keyframes enter2 {
+      from { opacity: 0; filter: blur(2px); }
+      to { opacity: 0.78; filter: blur(0.5px); }
+    }
+    @keyframes enter3 {
+      from { opacity: 0; filter: blur(1.5px); }
+      to { opacity: 1; filter: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .frame--1, .frame--2, .frame--3 { animation: none !important; }
+    }
+
+    .titlebar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      height: 42px;
+      padding: 0 14px;
+      border-bottom: 1px solid var(--app-line);
+      background: #f0eee8;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #d6d2ca; }
+
+    .shell { display: grid; grid-template-columns: 152px 1fr; min-height: 320px; }
+
+    .rail {
+      border-right: 1px solid var(--app-line);
+      background: #f3f0ea;
+      padding: 10px;
+    }
+    .rail h2 {
+      margin: 8px 6px 6px;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #7a7670;
+    }
+    .item {
+      margin: 2px 0;
+      padding: 8px 10px;
+      font-size: 13px;
+      color: #2a2826;
+      border-radius: var(--r-sm);
+    }
+    .item[aria-current="true"] {
+      background: var(--app-hover-fill);
+      color: #1f2f29;
+      font-weight: 500;
+    }
+
+    .main { padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-3); }
+
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      padding: 10px 12px;
+      font-size: 14px;
+      line-height: 1.4;
+      border: 1px solid var(--app-line);
+      border-radius: 10px;
+      background: var(--app-row-fill);
+    }
+    .row small { color: var(--app-muted); font-size: 12px; }
+
+    .tag {
+      font-size: 12px;
+      color: #234036;
+      background: #e8efec;
+      border: 1px solid #d6e3de;
+      border-radius: 999px;
+      padding: 3px 8px;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 980px) {
+      .grid { grid-template-columns: 1fr; }
+      .stage { min-height: 440px; }
+      .watermark { font-size: clamp(64px, 16vw, 110px); bottom: 32px; }
+      .frame--1, .frame--2 { display: none; }
+      .frame--3 { transform: translate(-50%, -50%); }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="mast">
+      <div class="logo">Lattice</div>
+      <nav class="nav" aria-label="Marketing">
+        <a href="#">Features</a>
+        <a href="#">Pricing</a>
+        <a href="#">Sign in</a>
+      </nav>
+    </header>
+
+    <section class="grid" aria-label="Hero">
+      <div class="copy">
+        <div class="kicker">
+          <span class="live" aria-hidden="true"></span>
+          Cambridge A Level &middot; Physics, Chemistry, Biology
+        </div>
+        <h1>Study smarter. Score higher in A Levels.</h1>
+        <p class="lede">
+          Syllabus-linked notes, focused drills, and flashcards in one calm workspace built for serious exam prep.
+        </p>
+        <div class="actions">
+          <button class="btn btn--fill" type="button">Start free</button>
+          <button class="btn btn--line" type="button">See how it works</button>
+        </div>
+        <p class="fineprint">
+          <strong>$0 limited</strong> for first 3 topics &middot; <strong>$2.99 full</strong> for complete access
+        </p>
+      </div>
+
+      <div class="stage">
+        <div class="watermark" aria-hidden="true">Lattice</div>
+        <div class="stack">
+          <article class="frame frame--1" aria-hidden="true">
+            <div class="titlebar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <div class="shell">
+              <div class="rail">
+                <h2>Study</h2>
+                <div class="item" aria-current="true">Syllabus</div>
+                <div class="item">Notes</div>
+                <div class="item">Practice</div>
+                <div class="item">Mistakes</div>
+              </div>
+              <div class="main">
+                <div class="row"><span>1. Motion and Forces</span><small>14 / 20</small></div>
+                <div class="row"><span>2. Waves</span><small>8 / 16</small></div>
+                <div class="row"><span>3. Electricity</span><small>6 / 18</small></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="frame frame--2" aria-hidden="true">
+            <div class="titlebar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <div class="shell">
+              <div class="rail">
+                <h2>Practice</h2>
+                <div class="item" aria-current="true">Drill</div>
+                <div class="item">Flashcards</div>
+              </div>
+              <div class="main">
+                <div class="row"><span>Q12: Identify limiting reagent&hellip;</span><span class="tag">Chem</span></div>
+                <div class="row"><span>A) 0.20 mol HCl</span><small>Option A</small></div>
+                <div class="row"><span>B) 0.15 mol NaOH</span><small>Option B</small></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="frame frame--3">
+            <div class="titlebar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <div class="shell">
+              <div class="rail">
+                <h2>Lattice</h2>
+                <div class="item">Syllabus</div>
+                <div class="item">Notes</div>
+                <div class="item" aria-current="true">Practice</div>
+                <div class="item">Mistakes &#128274;</div>
+              </div>
+              <div class="main">
+                <div class="row"><span>Biology &middot; Cell membranes</span><span class="tag">Flashcards</span></div>
+                <div class="row"><span>What is facilitated diffusion?</span><small>Tap to flip</small></div>
+                <div class="row"><span>Free tier: first 3 topics unlocked</span><small>$2.99 Full</small></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

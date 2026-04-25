@@ -1,0 +1,361 @@
+{
+  "syllabusCode": "9701",
+  "qualificationTitle": "Cambridge International AS & A Level Chemistry",
+  "examYears": "2025–2027",
+  "sourceUrl": "https://www.cambridgeinternational.org/Images/664563-2025-2027-syllabus.pdf",
+  "copyrightNote": "Topic and subtopic headings follow the public 9701 subject-content structure for exams in 2025–2027. Learning outcomes are not reproduced here — use the official PDF from Cambridge International for authoritative wording.",
+  "asLastTopic": 22,
+  "topics": [
+    {
+      "id": "t1",
+      "number": 1,
+      "title": "Atomic structure",
+      "subtopics": [
+        { "id": "t1-1", "code": "1.1", "title": "Particles in the atom and atomic radius" },
+        { "id": "t1-2", "code": "1.2", "title": "Isotopes" },
+        { "id": "t1-3", "code": "1.3", "title": "Electrons, energy levels and atomic orbitals" },
+        { "id": "t1-4", "code": "1.4", "title": "Ionisation energy" }
+      ]
+    },
+    {
+      "id": "t2",
+      "number": 2,
+      "title": "Atoms, molecules and stoichiometry",
+      "subtopics": [
+        { "id": "t2-1", "code": "2.1", "title": "Relative masses of atoms and molecules" },
+        { "id": "t2-2", "code": "2.2", "title": "The mole and the Avogadro constant" },
+        { "id": "t2-3", "code": "2.3", "title": "Formulas" },
+        { "id": "t2-4", "code": "2.4", "title": "Reacting masses and volumes (of solutions and gases)" }
+      ]
+    },
+    {
+      "id": "t3",
+      "number": 3,
+      "title": "Chemical bonding",
+      "subtopics": [
+        { "id": "t3-1", "code": "3.1", "title": "Electronegativity and bonding" },
+        { "id": "t3-2", "code": "3.2", "title": "Ionic bonding" },
+        { "id": "t3-3", "code": "3.3", "title": "Metallic bonding" },
+        { "id": "t3-4", "code": "3.4", "title": "Covalent bonding and coordinate (dative covalent) bonding" },
+        { "id": "t3-5", "code": "3.5", "title": "Shapes of molecules" },
+        { "id": "t3-6", "code": "3.6", "title": "Intermolecular forces, electronegativity and bond properties" },
+        { "id": "t3-7", "code": "3.7", "title": "Dot-and-cross diagrams" }
+      ]
+    },
+    {
+      "id": "t4",
+      "number": 4,
+      "title": "States of matter",
+      "subtopics": [
+        { "id": "t4-1", "code": "4.1", "title": "The gaseous state: ideal and real gases and pV = nRT" },
+        { "id": "t4-2", "code": "4.2", "title": "Bonding and structure" }
+      ]
+    },
+    {
+      "id": "t5",
+      "number": 5,
+      "title": "Chemical energetics",
+      "subtopics": [
+        { "id": "t5-1", "code": "5.1", "title": "Enthalpy change, ΔH" },
+        { "id": "t5-2", "code": "5.2", "title": "Hess's law" }
+      ]
+    },
+    {
+      "id": "t6",
+      "number": 6,
+      "title": "Electrochemistry",
+      "subtopics": [
+        { "id": "t6-1", "code": "6.1", "title": "Redox processes: electron transfer and changes in oxidation number (oxidation state)" }
+      ]
+    },
+    {
+      "id": "t7",
+      "number": 7,
+      "title": "Equilibria",
+      "subtopics": [
+        { "id": "t7-1", "code": "7.1", "title": "Chemical equilibria: reversible reactions, dynamic equilibrium" },
+        { "id": "t7-2", "code": "7.2", "title": "Brønsted–Lowry theory of acids and bases" }
+      ]
+    },
+    {
+      "id": "t8",
+      "number": 8,
+      "title": "Reaction kinetics",
+      "subtopics": [
+        { "id": "t8-1", "code": "8.1", "title": "Rate of reaction" },
+        { "id": "t8-2", "code": "8.2", "title": "Effect of temperature on reaction rates and the concept of activation energy" },
+        { "id": "t8-3", "code": "8.3", "title": "Homogeneous and heterogeneous catalysts" }
+      ]
+    },
+    {
+      "id": "t9",
+      "number": 9,
+      "title": "The Periodic Table: chemical periodicity",
+      "subtopics": [
+        { "id": "t9-1", "code": "9.1", "title": "Periodicity of physical properties of the elements in Period 3" },
+        { "id": "t9-2", "code": "9.2", "title": "Periodicity of chemical properties of the elements in Period 3" },
+        { "id": "t9-3", "code": "9.3", "title": "Chemical periodicity of other elements" }
+      ]
+    },
+    {
+      "id": "t10",
+      "number": 10,
+      "title": "Group 2",
+      "subtopics": [
+        {
+          "id": "t10-1",
+          "code": "10.1",
+          "title": "Similarities and trends in the properties of the Group 2 metals, magnesium to barium, and their compounds"
+        }
+      ]
+    },
+    {
+      "id": "t11",
+      "number": 11,
+      "title": "Group 17",
+      "subtopics": [
+        { "id": "t11-1", "code": "11.1", "title": "Physical properties of the Group 17 elements" },
+        { "id": "t11-2", "code": "11.2", "title": "The chemical properties of the halogen elements and the hydrogen halides" },
+        { "id": "t11-3", "code": "11.3", "title": "Some reactions of the halide ions" },
+        { "id": "t11-4", "code": "11.4", "title": "The reactions of chlorine" }
+      ]
+    },
+    {
+      "id": "t12",
+      "number": 12,
+      "title": "Nitrogen and sulfur",
+      "subtopics": [{ "id": "t12-1", "code": "12.1", "title": "Nitrogen and sulfur" }]
+    },
+    {
+      "id": "t13",
+      "number": 13,
+      "title": "An introduction to AS Level organic chemistry",
+      "subtopics": [
+        { "id": "t13-1", "code": "13.1", "title": "Formulas, functional groups and the naming of organic compounds" },
+        { "id": "t13-2", "code": "13.2", "title": "Characteristic organic reactions" },
+        { "id": "t13-3", "code": "13.3", "title": "Shapes of organic molecules; σ and π bonds" },
+        { "id": "t13-4", "code": "13.4", "title": "Isomerism: structural isomerism and stereoisomerism" }
+      ]
+    },
+    {
+      "id": "t14",
+      "number": 14,
+      "title": "Hydrocarbons",
+      "subtopics": [
+        { "id": "t14-1", "code": "14.1", "title": "Alkanes" },
+        { "id": "t14-2", "code": "14.2", "title": "Alkenes" }
+      ]
+    },
+    {
+      "id": "t15",
+      "number": 15,
+      "title": "Halogen compounds",
+      "subtopics": [{ "id": "t15-1", "code": "15.1", "title": "Halogenoalkanes" }]
+    },
+    {
+      "id": "t16",
+      "number": 16,
+      "title": "Hydroxy compounds",
+      "subtopics": [{ "id": "t16-1", "code": "16.1", "title": "Alcohols" }]
+    },
+    {
+      "id": "t17",
+      "number": 17,
+      "title": "Carbonyl compounds",
+      "subtopics": [{ "id": "t17-1", "code": "17.1", "title": "Aldehydes and ketones" }]
+    },
+    {
+      "id": "t18",
+      "number": 18,
+      "title": "Carboxylic acids and derivatives",
+      "subtopics": [
+        { "id": "t18-1", "code": "18.1", "title": "Carboxylic acids" },
+        { "id": "t18-2", "code": "18.2", "title": "Esters" }
+      ]
+    },
+    {
+      "id": "t19",
+      "number": 19,
+      "title": "Nitrogen compounds",
+      "subtopics": [
+        { "id": "t19-1", "code": "19.1", "title": "Primary amines" },
+        { "id": "t19-2", "code": "19.2", "title": "Nitriles and hydroxynitriles" }
+      ]
+    },
+    {
+      "id": "t20",
+      "number": 20,
+      "title": "Polymerisation",
+      "subtopics": [{ "id": "t20-1", "code": "20.1", "title": "Addition polymerisation" }]
+    },
+    {
+      "id": "t21",
+      "number": 21,
+      "title": "Organic synthesis",
+      "subtopics": [{ "id": "t21-1", "code": "21.1", "title": "Organic synthesis" }]
+    },
+    {
+      "id": "t22",
+      "number": 22,
+      "title": "Analytical techniques",
+      "subtopics": [
+        { "id": "t22-1", "code": "22.1", "title": "Infrared spectroscopy" },
+        { "id": "t22-2", "code": "22.2", "title": "Mass spectrometry" }
+      ]
+    },
+    {
+      "id": "t23",
+      "number": 23,
+      "title": "Chemical energetics",
+      "subtopics": [
+        { "id": "t23-1", "code": "23.1", "title": "Lattice energy and Born-Haber cycles" },
+        { "id": "t23-2", "code": "23.2", "title": "Enthalpies of solution and hydration" },
+        { "id": "t23-3", "code": "23.3", "title": "Entropy change, ΔS" },
+        { "id": "t23-4", "code": "23.4", "title": "Gibbs free energy change, ΔG" }
+      ]
+    },
+    {
+      "id": "t24",
+      "number": 24,
+      "title": "Electrochemistry",
+      "subtopics": [
+        { "id": "t24-1", "code": "24.1", "title": "Electrolysis" },
+        {
+          "id": "t24-2",
+          "code": "24.2",
+          "title": "Standard electrode potentials, standard cell potentials and the Nernst equation"
+        }
+      ]
+    },
+    {
+      "id": "t25",
+      "number": 25,
+      "title": "Equilibria",
+      "subtopics": [
+        { "id": "t25-1", "code": "25.1", "title": "Acids and bases" },
+        { "id": "t25-2", "code": "25.2", "title": "Partition coefficients" }
+      ]
+    },
+    {
+      "id": "t26",
+      "number": 26,
+      "title": "Reaction kinetics",
+      "subtopics": [
+        { "id": "t26-1", "code": "26.1", "title": "Simple rate equations, orders of reaction and rate constants" },
+        { "id": "t26-2", "code": "26.2", "title": "Homogeneous and heterogeneous catalysts" }
+      ]
+    },
+    {
+      "id": "t27",
+      "number": 27,
+      "title": "Group 2",
+      "subtopics": [
+        {
+          "id": "t27-1",
+          "code": "27.1",
+          "title": "Similarities and trends in the properties of the Group 2 metals, magnesium to barium, and their compounds"
+        }
+      ]
+    },
+    {
+      "id": "t28",
+      "number": 28,
+      "title": "Chemistry of transition elements",
+      "subtopics": [
+        {
+          "id": "t28-1",
+          "code": "28.1",
+          "title": "General physical and chemical properties of the first row of transition elements, titanium to copper"
+        },
+        {
+          "id": "t28-2",
+          "code": "28.2",
+          "title": "General characteristic chemical properties of the first set of transition elements, titanium to copper"
+        },
+        { "id": "t28-3", "code": "28.3", "title": "Colour of complexes" },
+        { "id": "t28-4", "code": "28.4", "title": "Stereoisomerism in transition element complexes" },
+        { "id": "t28-5", "code": "28.5", "title": "Stability constants, Kstab" }
+      ]
+    },
+    {
+      "id": "t29",
+      "number": 29,
+      "title": "An introduction to A Level organic chemistry",
+      "subtopics": [
+        { "id": "t29-1", "code": "29.1", "title": "Formulas, functional groups and the naming of organic compounds" },
+        { "id": "t29-2", "code": "29.2", "title": "Characteristic organic reactions" },
+        { "id": "t29-3", "code": "29.3", "title": "Shapes of aromatic organic molecules; σ and π bonds" },
+        { "id": "t29-4", "code": "29.4", "title": "Isomerism: optical" }
+      ]
+    },
+    {
+      "id": "t30",
+      "number": 30,
+      "title": "Hydrocarbons",
+      "subtopics": [{ "id": "t30-1", "code": "30.1", "title": "Arenes" }]
+    },
+    {
+      "id": "t31",
+      "number": 31,
+      "title": "Halogen compounds",
+      "subtopics": [{ "id": "t31-1", "code": "31.1", "title": "Halogen compounds" }]
+    },
+    {
+      "id": "t32",
+      "number": 32,
+      "title": "Hydroxy compounds",
+      "subtopics": [
+        { "id": "t32-1", "code": "32.1", "title": "Alcohols" },
+        { "id": "t32-2", "code": "32.2", "title": "Phenol" }
+      ]
+    },
+    {
+      "id": "t33",
+      "number": 33,
+      "title": "Carboxylic acids and derivatives",
+      "subtopics": [
+        { "id": "t33-1", "code": "33.1", "title": "Carboxylic acids" },
+        { "id": "t33-2", "code": "33.2", "title": "Esters" },
+        { "id": "t33-3", "code": "33.3", "title": "Acyl chlorides" }
+      ]
+    },
+    {
+      "id": "t34",
+      "number": 34,
+      "title": "Nitrogen compounds",
+      "subtopics": [
+        { "id": "t34-1", "code": "34.1", "title": "Primary and secondary amines" },
+        { "id": "t34-2", "code": "34.2", "title": "Phenylamine and azo compounds" },
+        { "id": "t34-3", "code": "34.3", "title": "Amides" },
+        { "id": "t34-4", "code": "34.4", "title": "Amino acids" }
+      ]
+    },
+    {
+      "id": "t35",
+      "number": 35,
+      "title": "Polymerisation",
+      "subtopics": [
+        { "id": "t35-1", "code": "35.1", "title": "Condensation polymerisation" },
+        { "id": "t35-2", "code": "35.2", "title": "Predicting the type of polymerisation" },
+        { "id": "t35-3", "code": "35.3", "title": "Degradable polymers" }
+      ]
+    },
+    {
+      "id": "t36",
+      "number": 36,
+      "title": "Organic synthesis",
+      "subtopics": [{ "id": "t36-1", "code": "36.1", "title": "Organic synthesis" }]
+    },
+    {
+      "id": "t37",
+      "number": 37,
+      "title": "Analytical techniques",
+      "subtopics": [
+        { "id": "t37-1", "code": "37.1", "title": "Thin-layer chromatography" },
+        { "id": "t37-2", "code": "37.2", "title": "Gas/liquid chromatography" },
+        { "id": "t37-3", "code": "37.3", "title": "Carbon-13 NMR spectroscopy" },
+        { "id": "t37-4", "code": "37.4", "title": "Proton (1H) NMR spectroscopy" }
+      ]
+    }
+  ]
+}

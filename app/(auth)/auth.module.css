@@ -1,0 +1,109 @@
+/* Auth shell ? wraps login + signup pages */
+
+.shell {
+  min-height: 100dvh;
+  background:
+    radial-gradient(760px 420px at 12% -8%, var(--bg-landing-glow) 0%, transparent 52%),
+    radial-gradient(700px 360px at 92% 102%, var(--landing-wash-mid) 0%, transparent 56%),
+    var(--bg-landing);
+  display: flex;
+  flex-direction: column;
+  padding: var(--sp-5) var(--sp-4) var(--sp-6);
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Soft decorative paper panels behind the card */
+.backdropA,
+.backdropB {
+  position: absolute;
+  border: 1px solid var(--border-landing);
+  border-radius: var(--r-lg);
+  background: var(--landing-chrome);
+  pointer-events: none;
+}
+
+.backdropA {
+  width: min(92vw, 560px);
+  height: min(66vh, 470px);
+  top: 18%;
+  left: 50%;
+  transform: translateX(-54%) rotate(-1.1deg);
+}
+
+.backdropB {
+  width: min(90vw, 540px);
+  height: min(64vh, 455px);
+  top: 20%;
+  left: 50%;
+  transform: translateX(-46%) rotate(1.5deg);
+}
+
+.topBar {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  position: relative;
+  z-index: 1;
+}
+
+.brand {
+  text-decoration: none;
+  display: inline-flex;
+}
+
+.backLink {
+  font-size: var(--fs-label);
+  color: var(--text-landing-md);
+  text-decoration: none;
+  padding: 7px 10px;
+  border-radius: var(--r-sm);
+  transition: color 120ms ease, background 120ms ease;
+}
+
+.backLink:hover {
+  color: var(--text-landing);
+  background: var(--landing-chrome-hover);
+}
+
+.stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  padding: var(--sp-6) 0;
+}
+
+@media (max-width: 560px) {
+  .shell {
+    padding: var(--sp-4) var(--sp-3) calc(var(--sp-5) + env(safe-area-inset-bottom));
+  }
+
+  .backdropA,
+  .backdropB {
+    display: none;
+  }
+
+  .stage {
+    align-items: flex-start;
+    padding-top: var(--sp-5);
+    padding-bottom: var(--sp-4);
+  }
+
+  .topBar {
+    max-width: 420px;
+  }
+
+  .backLink {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}

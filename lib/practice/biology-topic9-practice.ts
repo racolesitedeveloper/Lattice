@@ -1,0 +1,340 @@
+import type { SubtopicPracticePack } from "./types";
+
+/**
+ * Topic 9 practice — 9700 9.1 “The gas exchange system” (human).
+ *
+ * Learning-outcome phrasing for Topic 9 was cross-checked against the official Cambridge
+ * International AS & A Level Biology 9700 syllabus for 2025–2027 (PDF), because
+ * `data/syllabus/biology-9700-learning-outcomes.md` does not yet include a Topic 9 section
+ * in this repository.
+ *
+ * Crosswalk (drill id -> syllabus intent, not verbatim):
+ * t9-1: d1 alveolar structure / adaptations; d2 alveolar gas exchange (diffusion, gradients,
+ *       large SA, short path, moist, capillary blood flow); d3–d4 ventilation mechanics
+ *       (diaphragm, external intercostals; relaxation / recoil, forced expiration outline);
+ *       d5 surfactant (surface tension); d6 smoking / respiratory disease at outline;
+ *       d7–d10 consolidate diffusion, pressure–volume, pathology, and exam technique.
+ */
+export const BIOLOGY_TOPIC9_PRACTICE: Record<string, SubtopicPracticePack> = {
+  "t9-1": {
+    noteId: "t9-1",
+    drills: [
+      {
+        id: "t9-1-d1",
+        noteId: "t9-1",
+        kind: "structured",
+        difficulty: 1,
+        marks: 6,
+        stem: "Describe the structure of the gas exchange region in the human lung in relation to a single alveolus, including the alveolar epithelium, associated capillaries, and the overall arrangement that provides a very large surface area.",
+        modelAnswerPoints: [
+          "Gas exchange occurs across the walls of alveoli (air sacs) at the end of the respiratory bronchioles in the alveolar region.",
+          "Each alveolus is wrapped in a dense network of pulmonary capillaries so blood passes close to the air space.",
+          "The respiratory surface is built from very numerous small alveoli, giving a very large total surface area relative to volume.",
+          "The wall between alveolar air and blood includes a very thin interface (thin alveolar epithelium, fused basement membrane, thin capillary endothelium) that shortens the diffusion path.",
+        ],
+        workedSolution: [
+          "In the human lung, the final branches of the conducting airways lead into respiratory regions where the epithelium gives way to clusters of alveoli—microscopic air spaces where oxygen enters the blood and carbon dioxide leaves it.",
+          "A single alveolus is essentially a thin-walled sac lined by squamous alveolar epithelium, and the outer surface of that wall is closely applied to a rich bed of pulmonary capillaries, so that blood flows in very thin layers past the air interface.",
+          "Because the lung contains on the order of hundreds of millions of alveoli, the total area available for gas exchange is enormous compared with a single flat sheet of the same cross-section, which is why the alveolar design is said to increase surface area dramatically.",
+          "For diffusion to be rapid, the liquid layers between air in the alveolus and haemoglobin in red blood cells must be kept short, which is why exam answers stress that the combined alveolar–capillary barrier is only a few micrometres thick at most.",
+        ],
+        commonMistake:
+          "Describing alveoli as ‘thick-walled’ or implying gas exchange across cartilage rings in the trachea instead of the alveolar–capillary interface.",
+        tags: ["alveolus", "structure"],
+      },
+      {
+        id: "t9-1-d2",
+        noteId: "t9-1",
+        kind: "structured",
+        difficulty: 2,
+        marks: 6,
+        stem: "Explain how oxygen and carbon dioxide are exchanged between alveolar air and blood, with reference to diffusion and at least three adaptations of the alveolar region that make exchange efficient (large surface area, short diffusion distance, moist surface, good blood supply).",
+        modelAnswerPoints: [
+          "O2 and CO2 move by diffusion down their own partial pressure gradients between alveolar air and capillary blood.",
+          "A very large alveolar surface area increases the area over which diffusive transfer can occur in parallel.",
+          "A very thin alveolar–capillary barrier gives a short diffusion distance so equilibration is rapid as blood passes the alveolus.",
+          "The surface is moist (water/ surfactant-containing fluid) so O2 can dissolve and diffuse through the water layer; CO2 can diffuse the other way.",
+          "Rapid capillary flow maintains steep gradients (fresh blood, replacement of deoxygenated blood) so net diffusion continues in the right direction while blood is in the exchange region.",
+        ],
+        workedSolution: [
+          "Oxygen in inspired air has a higher partial pressure in the alveolus than in pulmonary arterial blood, so once oxygen dissolves in the surface fluid lining the alveolus it diffuses through the alveolar epithelium, interstitial space and capillary endothelium into plasma and then red blood cells, where it loads onto haemoglobin.",
+          "Carbon dioxide is produced in tissues and delivered to the lungs; in pulmonary capillaries its partial pressure in blood is higher than in alveolar air, so it diffuses out of the blood, through the same thin layers, to be removed in expired air during ventilation.",
+          "The enormous total surface area of the alveolar bed means the lung does not have to rely on a single small patch for uptake; many alveoli work simultaneously, which increases the overall rate of transfer for a given pressure difference.",
+          "The very short path length between alveolar gas and red blood cells keeps diffusion times small because, for a given gradient, the flux per unit time is inversely related to the thickness of the barrier.",
+          "Moisture is important because oxygen must dissolve before crossing membranes; a dry alveolar surface would not support this pathway for respiratory gases.",
+          "Pulmonary capillaries are narrow and receive continuous cardiac output, so as each red cell spends a few seconds in an alveolar capillary, removal of O2 from alveolar air and delivery of CO2 to alveolar air is sustained because blood is constantly renewed along the alveolar wall.",
+        ],
+        commonMistake:
+          "Saying gases move by bulk flow across the alveolar wall, or that only oxygen diffuses: both O2 and CO2 diffuse, each down its own gradient.",
+        tags: ["diffusion", "adaptations"],
+      },
+      {
+        id: "t9-1-d3",
+        noteId: "t9-1",
+        kind: "structured",
+        difficulty: 2,
+        marks: 5,
+        stem: "Describe the main muscular and pressure changes that bring about inspiration in a resting human, naming the principal inspiratory muscles and relating their action to volume and air flow.",
+        modelAnswerPoints: [
+          "The diaphragm is the main inspiratory muscle: it contracts and flattens, increasing the vertical height of the thoracic cavity.",
+          "The external intercostal muscles contract, moving the rib cage up and out and increasing the thoracic volume in other dimensions.",
+          "Thoracic volume increases so intrapulmonary (alveolar) pressure falls temporarily below atmospheric pressure, and air flows into the lungs down the pressure gradient.",
+        ],
+        workedSolution: [
+          "During quiet inspiration, voluntary effort is not required in the way it is in speech, but the motor pattern still recruits the diaphragm, which is a domed sheet of skeletal muscle forming the floor of the thorax.",
+          "When the diaphragm contracts, its central tendon is pulled inferiorly, so the dome flattens and the vertical depth of the thoracic cavity increases, which is the main contribution to the inspiratory increase in volume at rest.",
+          "The external intercostal muscles, running obliquely between adjacent ribs, contract to raise the rib cage: the ‘bucket-handle’ and ‘pump-handle’ components lift the ribs so the cross-sectional area of the thorax enlarges as well as its height.",
+          "Because the lungs are linked to the thoracic wall through the pleural coupling, as thoracic volume rises the alveolar pressure drops to slightly below atmospheric pressure, and this pressure difference is what moves air in through the trachea until alveolar pressure equilibrates again at the end of the inspiration.",
+        ],
+        commonMistake:
+          "Claiming the diaphragm ‘relaxes’ during inspiration, or that air is ‘sucked’ without mentioning the pressure gradient created by increasing thoracic volume.",
+        tags: ["ventilation", "inspiration"],
+      },
+      {
+        id: "t9-1-d4",
+        noteId: "t9-1",
+        kind: "structured",
+        difficulty: 2,
+        marks: 5,
+        stem: "Outline expiration during quiet breathing and describe how forced expiration (e.g. exercise) can involve additional muscles compared with rest.",
+        modelAnswerPoints: [
+          "Quiet expiration is largely passive: inspiratory muscles relax, the rib cage and diaphragm return elastically, thoracic volume decreases, alveolar pressure rises above atmospheric, and air flows out.",
+          "Lung and chest wall elastic recoil contributes to reducing volume; airway resistance is normally low in healthy airways during expiration at rest.",
+          "Forced expiration may recruit internal intercostal and abdominal muscles to raise intrathoracic pressure and push air out more quickly than passive recoil alone.",
+        ],
+        workedSolution: [
+          "At the end of inspiration the diaphragm and external intercostals relax, so the potential energy stored in stretched tissues and the weight of the abdominal contents allow the thoracic cage to return toward its relaxed shape.",
+          "As the thorax becomes smaller, alveolar pressure rises a little above atmospheric pressure, producing a pressure gradient that drives air out of the lungs until a new resting volume (functional residual capacity region) is approached before the next breath if breathing is regular.",
+          "During forced expiration, such as a cough or a rapid blow in exercise, additional muscles become important: contraction of the internal intercostal muscles can depress the rib cage, and contraction of the abdominal wall muscles can push the diaphragm upward, raising intrapulmonary pressure so expiration is more rapid and complete than during quiet breathing.",
+        ],
+        commonMistake:
+          "Stating that external intercostals contract during expiration, or that quiet expiration is mainly driven by active ‘expiratory’ muscle contraction in healthy lungs.",
+        tags: ["ventilation", "expiration"],
+      },
+      {
+        id: "t9-1-d5",
+        noteId: "t9-1",
+        kind: "structured",
+        difficulty: 2,
+        marks: 4,
+        stem: "State what pulmonary surfactant is and explain at outline level how it improves lung function in relation to surface tension in the alveoli.",
+        modelAnswerPoints: [
+          "Surfactant is a mixture containing lipoproteins (notably surfactant-associated proteins and phospholipids) secreted by alveolar cells into the alveolar lining fluid.",
+          "It lowers surface tension at the air–water interface of the alveolar surface.",
+          "Lower surface tension reduces the tendency of small alveoli to collapse and helps keep alveoli open during the breathing cycle, decreasing the work of breathing.",
+        ],
+        workedSolution: [
+          "The inner surface of each alveolus is lined with a thin aqueous film; without surfactant, the high surface tension of pure water would create large retractive forces in small air spaces, making expansion harder and small units unstable.",
+          "Type II alveolar cells secrete surfactant, which intercalates in that surface film and breaks up cohesive forces between water molecules, so the effective surface tension is lower than in plain water.",
+          "In outline terms, this means alveoli are less likely to collapse at low lung volumes, more alveoli remain available for gas exchange, and the inspiratory muscles do not have to work as hard to inflate a stiff, high-tension alveolar population.",
+        ],
+        commonMistake:
+          "Describing surfactant as an enzyme that ‘digests’ gases, or as the main barrier to diffusion—its primary syllabus role here is biophysical, reducing surface tension.",
+        tags: ["surfactant", "surface-tension"],
+      },
+      {
+        id: "t9-1-d6",
+        noteId: "t9-1",
+        kind: "structured",
+        difficulty: 3,
+        marks: 5,
+        stem: "Outline, with reference to cigarette smoke, how long-term smoking can affect the airways and gas exchange in human lungs (you may include effects on cilia, mucus, gaseous components of smoke, and chronic lung disease in outline).",
+        modelAnswerPoints: [
+          "Tar and other particulate components deposit on the airway lining and are associated with chronic irritation, excess mucus, and impaired clearance.",
+          "Chemical irritants in smoke can paralyse cilia in the trachea and bronchi, reducing the mucociliary escalator and encouraging infection and further inflammation.",
+          "Gas-phase components such as carbon monoxide can bind to haemoglobin, reducing oxygen-carrying capacity even when lung mechanics are not yet severely affected.",
+          "Chronic conditions linked to long-term exposure include chronic bronchitis and emphysema, which in combination are often described as chronic obstructive pulmonary disease, reducing alveolar surface area and/or increasing airway resistance.",
+        ],
+        workedSolution: [
+          "Cigarette smoke is not a single agent: it contains tar droplets, many irritant and carcinogenic organic chemicals, and gases including carbon monoxide, all delivered repeatedly with each inhalation onto moist respiratory surfaces.",
+          "The ciliated epithelium of larger airways is normally responsible for moving mucus with trapped particles toward the pharynx; components of smoke disrupt ciliary beat frequency or the epithelial cells themselves, so mucus pools and airways can become inflamed, narrowed by swelling, and more prone to colonisation by pathogens.",
+          "Carbon monoxide competes with oxygen for binding to haemoglobin, forming carboxyhaemoglobin, which reduces the amount of haemoglobin available to transport oxygen, so blood gas–carriage can be impaired in chronic smokers even before major structural damage appears.",
+          "With years of exposure, the lung may develop long-term pathological change: in chronic obstructive conditions, destruction of alveolar walls in emphysema reduces the surface available for diffusion, while chronic mucus and bronchial changes increase resistance to air flow, so both ventilation to alveoli and alveolar gas exchange are compromised in severe disease.",
+        ],
+        commonMistake:
+          "Saying only that smoking ‘gives you cancer’ without linking smoke components to cilia, mucus, CO, and obstructive or destructive lung change expected at AS/A Level outline.",
+        tags: ["smoking", "disease"],
+      },
+      {
+        id: "t9-1-d7",
+        noteId: "t9-1",
+        kind: "mcq",
+        difficulty: 2,
+        stem: "Which change most directly results from an increase in thoracic volume during quiet inspiration, before any appreciable air flow has equilibrated pressures?",
+        options: [
+          { id: "A", text: "Alveolar (intrapulmonary) pressure becomes greater than atmospheric pressure" },
+          { id: "B", text: "Pleural pressure relative to the outside of the chest wall is unchanged" },
+          { id: "C", text: "Alveolar (intrapulmonary) pressure becomes less than atmospheric pressure" },
+          { id: "D", text: "The diaphragm relaxes and domes upward" },
+        ],
+        correctOptionId: "C",
+        explanation:
+          "Boyle’s law for a fixed amount of gas: as lung volume increases at that instant, alveolar pressure falls below atmospheric until air moves in; after flow stops the pressures equalise again.",
+        distractorRationale: {
+          A: "Larger volume at a moment when no air has yet entered must correspond to a pressure drop, not a rise, below atmospheric in the alveoli.",
+          B: "Pleural pressure becomes relatively more negative in many descriptions as the lung is stretched; it does not stay identical in every layer during inspiration.",
+          D: "Diaphragm contraction flattens the diaphragm during inspiration; doming on relaxation is part of passive expiration, not the inspiratory action described.",
+        },
+        tags: ["ventilation", "pressure"],
+      },
+      {
+        id: "t9-1-d8",
+        noteId: "t9-1",
+        kind: "mcq",
+        difficulty: 3,
+        stem: "Which set best lists two principal muscles active during normal quiet inspiration in a healthy person?",
+        options: [
+          { id: "A", text: "Internal intercostal muscles and rectus abdominis" },
+          { id: "B", text: "Diaphragm and external intercostal muscles" },
+          { id: "C", text: "Scalene muscles and sternocleidomastoid (only), with no diaphragm" },
+          { id: "D", text: "Smooth muscle in the bronchiolar wall" },
+        ],
+        correctOptionId: "B",
+        explanation:
+          "Standard syllabus emphasis: diaphragm (primary) plus external intercostals to lift the rib cage; accessory muscles are more prominent in laboured breathing than in quiet rest.",
+        distractorRationale: {
+          A: "These are more important in forced expiration or laboured patterns, not the classic quiet inspiratory pair.",
+          C: "Scalene and sternocleidomastoid can assist in difficult breathing, but the diaphragm is not absent from the normal inspiratory story.",
+          D: "Bronchiolar smooth muscle modulates airway calibre, not the bulk of tidal inspiration volume in the way skeletal inspiratory muscles do.",
+        },
+        tags: ["muscles", "inspiration"],
+      },
+      {
+        id: "t9-1-d9",
+        noteId: "t9-1",
+        kind: "structured",
+        difficulty: 3,
+        marks: 4,
+        stem: "Explain briefly why a large total alveolar surface area and a short diffusion path across the alveolar–capillary wall both help maintain a high rate of net diffusion of oxygen into pulmonary capillary blood during a red cell’s brief transit time past an alveolus.",
+        modelAnswerPoints: [
+          "A larger area increases the total flux of molecules diffusing in parallel for a given partial pressure difference and barrier thickness (Fick’s principle: rate proportional to area).",
+          "A shorter path reduces the time for concentration profiles to equilibrate across the barrier for a given diffusivity.",
+          "Pulmonary capillary transit is short, so the combination supports near-equilibration of alveolar and end-capillary gas tensions in healthy lungs at rest.",
+        ],
+        workedSolution: [
+          "The rate of passive diffusion of oxygen is proportional to the area available and to the partial pressure difference, and inversely proportional to the thickness of the barrier when other factors are held constant, so doubling effective surface area approximately doubles the total oxygen diffusing in per second if gradients are the same across all regions.",
+          "If the water and tissue layers were thicker, the same gradient would produce a smaller diffusive flux per unit area, and a red cell might leave the capillary before its haemoglobin had time to equilibrate with alveolar gas.",
+          "Because healthy alveolar walls are very thin, oxygen crossing the alveolar epithelium, basement membrane and endothelium only has to move through a few micrometres, and because there are so many alveoli working at once, the overall transfer capacity matches cardiac output in exercise as well as at rest, within physiological limits.",
+        ],
+        commonMistake:
+          "Citing only ‘large surface area’ without the thickness argument, or confusing surface area with the concentration gradient, which is maintained by breathing and blood flow, not by area alone.",
+        tags: ["diffusion", "Fick"],
+      },
+      {
+        id: "t9-1-d10",
+        noteId: "t9-1",
+        kind: "mcq",
+        difficulty: 3,
+        stem: "A patient with advanced emphysema has many alveolar walls destroyed and fewer, larger air spaces. Which consequence is the most direct threat to their blood oxygenation, compared with a healthy alveolar region?",
+        options: [
+          { id: "A", text: "Greatly increased total alveolar surface area for gas exchange" },
+          { id: "B", text: "Reduced area for diffusion and loss of alveolar–capillary contact" },
+          { id: "C", text: "Complete cessation of ventilation due to tracheal cartilage loss" },
+          { id: "D", text: "Surfactant becoming unnecessary because surface tension is higher" },
+        ],
+        correctOptionId: "B",
+        explanation:
+          "Emphysema’s hallmark is destruction of alveolar septa, so the surface available for O2/CO2 exchange falls and some capillaries are lost, directly impairing gas exchange and often causing low blood oxygen in severe cases.",
+        distractorRationale: {
+          A: "The disease reduces rather than increases functional exchange surface in the alveolar bed.",
+          C: "Tracheal rings are in the trachea; emphysema is a parenchymal (alveolar) problem; ventilation is reduced by mechanical limitation but not for the reason given.",
+          D: "Surfactant is still important; the pathology does not make loss of area beneficial or remove the need to surface tension in remaining units.",
+        },
+        tags: ["emphysema", "application"],
+      },
+    ],
+    flashcards: [
+      {
+        id: "t9-1-f1",
+        noteId: "t9-1",
+        difficulty: 1,
+        front: "Name the two main skeletal muscle groups that contract during quiet inspiration and state the diaphragm’s change of shape.",
+        back: "Diaphragm and external intercostals. The diaphragm contracts and flattens, increasing the vertical dimension of the thorax.",
+        examPhrasing: "Describe the action of the inspiratory muscles during inspiration.",
+        tags: ["ventilation", "muscles"],
+      },
+      {
+        id: "t9-1-f2",
+        noteId: "t9-1",
+        difficulty: 1,
+        front: "In one sentence, what drives air into the lungs at the start of inspiration?",
+        back: "Thoracic volume increases so alveolar pressure is briefly lower than atmospheric pressure, and air flows down the pressure gradient.",
+        examPhrasing: "Explain how inspiration occurs with reference to pressure changes.",
+        confusionPair: "alveolar vs atmospheric",
+        tags: ["pressure", "Boyle"],
+      },
+      {
+        id: "t9-1-f3",
+        noteId: "t9-1",
+        difficulty: 2,
+        front: "List three structural/functional adaptations of the alveolar region that speed gas exchange, besides a concentration gradient of gases.",
+        back: "Very large total surface area; very short diffusion distance (thin alveolar–capillary barrier); moist surface for gas dissolution; rich capillary network / rapid blood flow to maintain steep gradients (any three of these in strong answers).",
+        examPhrasing: "Explain the adaptations of alveoli for gas exchange.",
+        tags: ["adaptations", "alveolus"],
+      },
+      {
+        id: "t9-1-f4",
+        noteId: "t9-1",
+        difficulty: 2,
+        front: "Oxygen moves from alveolar air to blood, and CO2 the opposite way. What process and what rule govern movement?",
+        back: "Diffusion down a partial pressure gradient; each gas moves independently according to its own pressure difference across the alveolar–capillary wall.",
+        examPhrasing: "Describe gas exchange between alveolar air and capillary blood.",
+        tags: ["diffusion", "gases"],
+      },
+      {
+        id: "t9-1-f5",
+        noteId: "t9-1",
+        difficulty: 2,
+        front: "What is the role of surfactant in the alveoli, in one line of mechanism and one of consequence?",
+        back: "Mechanism: lowers surface tension at the air–water interface. Consequence: stabilises alveoli and reduces the work of inflating the lungs (prevents many small alveoli collapsing as easily).",
+        examPhrasing: "State the function of surfactant in the lungs.",
+        tags: ["surfactant"],
+      },
+      {
+        id: "t9-1-f6",
+        noteId: "t9-1",
+        difficulty: 3,
+        front: "Quiet expiration: active muscle contraction in healthy people, or mainly elastic recoil?",
+        back: "Mainly passive — inspiratory muscles relax, thoracic and lung elastic recoil reduces volume, alveolar pressure rises above atmospheric and air flows out. Forced expiration uses internal intercostals and abdominals.",
+        examPhrasing: "Compare quiet and forced expiration.",
+        tags: ["expiration"],
+      },
+      {
+        id: "t9-1-f7",
+        noteId: "t9-1",
+        difficulty: 3,
+        front: "How can cigarette smoke affect oxygen delivery before severe alveolar destruction?",
+        back: "Carbon monoxide binds to haemoglobin, forming carboxyhaemoglobin and reducing the haemoglobin available to carry oxygen; chronic inflammation and mucus can also obstruct airways.",
+        examPhrasing: "Outline the effects of smoking on the respiratory system.",
+        tags: ["smoking", "CO"],
+      },
+      {
+        id: "t9-1-f8",
+        noteId: "t9-1",
+        difficulty: 3,
+        front: "Why are cilia in the trachea relevant when discussing the effects of tar in smoke?",
+        back: "Cilia normally sweep mucus and trapped particles toward the pharynx; tar and irritants can impair ciliary function, so mucus clearance is reduced and airways are more easily infected and inflamed.",
+        examPhrasing: "Explain how smoking affects the lining of the airways.",
+        tags: ["cilia", "tar"],
+      },
+      {
+        id: "t9-1-f9",
+        noteId: "t9-1",
+        difficulty: 4,
+        front: "Name (outline) the main change in the lung parenchyma in emphysema that reduces gas exchange efficiency.",
+        back: "Destruction of alveolar walls / septa, producing fewer, larger air spaces (bullae), reduced surface area and loss of alveolar–capillary contact.",
+        examPhrasing: "Describe the effects of emphysema on the lungs.",
+        tags: ["emphysema", "COPD"],
+      },
+      {
+        id: "t9-1-f10",
+        noteId: "t9-1",
+        difficulty: 4,
+        front: "Exam trap: saying oxygen is ‘pumped’ across alveolar walls by the heart.",
+        back: "The heart pumps blood, not oxygen across the alveolar–capillary barrier; O2 and CO2 cross that barrier by diffusion down partial pressure gradients, maintained by ventilation and perfusion.",
+        examPhrasing: "Explain the movement of oxygen into pulmonary capillaries from alveolar air.",
+        tags: ["exam-technique", "diffusion"],
+      },
+    ],
+  },
+};
