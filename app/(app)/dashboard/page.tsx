@@ -1,6 +1,8 @@
+import { Suspense } from "react";
 import { createClient } from "@/lib/supabase/server";
 import { getCourseOutline } from "@/lib/course/get-outline";
 import DashboardKpiStrip from "./DashboardKpiStrip";
+import UpgradeSuccessDialog from "./UpgradeSuccessDialog";
 import RecentActivityPanel from "./RecentActivityPanel";
 import StudyHoursGraph from "./StudyHoursGraph";
 import SubjectMasteryOverview from "./SubjectMasteryOverview";
@@ -29,6 +31,9 @@ export default async function DashboardPage() {
 
   return (
     <div className={s.page}>
+      <Suspense fallback={null}>
+        <UpgradeSuccessDialog />
+      </Suspense>
       <main className={s.body}>
         <section className={s.overviewBoard} aria-label="Dashboard overview">
           <header className={s.dashboardToolbar} aria-label="Dashboard controls">

@@ -18,7 +18,7 @@ const fullItems = [
   "Filter and retry mistakes by topic before exams",
 ];
 
-export default function Pricing() {
+export default function Pricing({ isSignedIn = false }: { isSignedIn?: boolean }) {
   return (
     <section id="pricing" className={s.section} aria-labelledby="pricing-heading">
       <div className={s.inner}>
@@ -66,8 +66,8 @@ export default function Pricing() {
               </li>
             </ul>
 
-            <Link href="/signup" className={s.ctaFree}>
-              Get started free
+            <Link href={isSignedIn ? "/dashboard" : "/signup"} className={s.ctaFree}>
+              {isSignedIn ? "Open the app" : "Get started free"}
             </Link>
           </div>
 
@@ -77,6 +77,7 @@ export default function Pricing() {
           {/* Full tier */}
           <div className={s.tierFull}>
             <PricingFullTierBilling
+              isSignedIn={isSignedIn}
               planTitle={
                 <div className={s.fullTierTitleBlock}>
                   <span className={`${s.tierName} ${s.fullTierTitle}`}>Full access</span>

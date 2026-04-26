@@ -9,7 +9,7 @@ import { APP_SECTIONS, type AppSection } from "@/lib/app-sections";
 import BillingActionButton from "@/components/app/BillingActionButton";
 import Logo from "@/components/ui/Logo";
 import ThemeToggle from "@/components/ui/ThemeToggle";
-import { useBillingPlan } from "@/components/app/ProfileProvider";
+import { useBillingPlan, useSessionEmail } from "@/components/app/ProfileProvider";
 import IntentPrefetchLink from "@/components/app/IntentPrefetchLink";
 import s from "@/app/(app)/app.module.css";
 
@@ -70,6 +70,16 @@ function readLastSectionRoutes(): LastSectionRoutes {
   }
 }
 
+function SessionEmailLine() {
+  const email = useSessionEmail();
+  if (!email) return null;
+  return (
+    <p className={s.signedInEmail} title={email}>
+      {email}
+    </p>
+  );
+}
+
 export default function AppSidebar() {
   const plan = useBillingPlan();
   const pathname = usePathname() ?? "";
@@ -125,15 +135,13 @@ export default function AppSidebar() {
 
       <div className={s.bottom}>
         <ThemeToggle />
+        <IntentPrefetchLink href="/" className={s.landingLink}>
+          Marketing site
+        </IntentPrefetchLink>
         {plan === "free" ? (
-          <BillingActionButton
-            action="checkout"
-            interval="monthly"
-            className={s.upgradeBtn}
-            pendingLabel="Opening..."
-          >
+          <IntentPrefetchLink href="/subscribe" className={s.upgradeBtn}>
             Upgrade to Full
-          </BillingActionButton>
+          </IntentPrefetchLink>
         ) : (
           <BillingActionButton
             action="portal"
@@ -143,6 +151,7 @@ export default function AppSidebar() {
             Manage billing
           </BillingActionButton>
         )}
+        <SessionEmailLine />
         <form action={logout}>
           <button type="submit" className={s.signOutBtn}>
             Sign out
@@ -157,15 +166,13 @@ export default function AppSidebar() {
         </summary>
         <div className={s.mobileMorePanel}>
           <ThemeToggle />
+          <IntentPrefetchLink href="/" className={s.landingLink}>
+            Marketing site
+          </IntentPrefetchLink>
           {plan === "free" ? (
-            <BillingActionButton
-              action="checkout"
-              interval="monthly"
-              className={s.upgradeBtn}
-              pendingLabel="Opening..."
-            >
+            <IntentPrefetchLink href="/subscribe" className={s.upgradeBtn}>
               Upgrade to Full
-            </BillingActionButton>
+            </IntentPrefetchLink>
           ) : (
             <BillingActionButton
               action="portal"
@@ -175,6 +182,7 @@ export default function AppSidebar() {
               Manage billing
             </BillingActionButton>
           )}
+          <SessionEmailLine />
           <form action={logout}>
             <button type="submit" className={s.signOutBtn}>
               Sign out

@@ -40,7 +40,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
 
   return (
     <StudyStateBridge initialKv={initialStudyKv}>
-      <ProfileProvider plan={plan}>
+      <ProfileProvider plan={plan} userEmail={user.email ?? null}>
         <div className={s.shell}>
           <AppSidebar />
           <NavigationWarmup />

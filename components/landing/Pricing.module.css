@@ -404,10 +404,12 @@
   text-decoration: none;
 }
 
-button.ctaFull {
+button.ctaFull,
+a.ctaFull {
   width: 100%;
   font-family: inherit;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 /* Ghost/secondary treatment for the free CTA */

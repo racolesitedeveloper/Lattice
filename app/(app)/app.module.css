@@ -143,6 +143,37 @@
   opacity: 0.76;
 }
 
+.landingLink {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border-radius: var(--r-sm);
+  padding: var(--sp-2) var(--sp-3);
+  font-size: var(--fs-label-sm);
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: background 100ms ease, color 100ms ease;
+}
+
+.landingLink:hover {
+  background: color-mix(in srgb, var(--accent) 9%, var(--bg-sidebar));
+  color: var(--text);
+}
+
+.signedInEmail {
+  margin: 0;
+  padding: 0 var(--sp-2);
+  font-size: var(--fs-label-xs);
+  line-height: 1.35;
+  color: var(--text-muted);
+  opacity: 0.85;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .signOutBtn {
   width: 100%;
   background: transparent;
@@ -282,6 +313,14 @@
     border-radius: var(--r-md);
     background: var(--surface);
     box-shadow: var(--shadow-panel);
+  }
+
+  .mobileMorePanel .landingLink {
+    text-align: center;
+  }
+
+  .mobileMorePanel .signedInEmail {
+    text-align: center;
   }
 
   .mobileMorePanel .signOutBtn {

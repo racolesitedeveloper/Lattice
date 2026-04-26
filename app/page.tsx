@@ -1,19 +1,18 @@
-import Hero from "@/components/landing/Hero";
-import SocialProof from "@/components/landing/SocialProof";
-import Features from "@/components/landing/Features";
-import Pricing from "@/components/landing/Pricing";
-import FinalCta from "@/components/landing/FinalCta";
+import LandingExperience from "@/components/landing/LandingExperience";
 import Footer from "@/components/landing/Footer";
+import { createClient } from "@/lib/supabase/server";
 
-export default function Home() {
+export default async function Home() {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  const isSignedIn = Boolean(user);
+
   return (
     <>
       <main>
-        <Hero />
-        <Features />
-        <SocialProof />
-        <Pricing />
-        <FinalCta />
+        <LandingExperience isSignedIn={isSignedIn} />
       </main>
       <Footer />
     </>

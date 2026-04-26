@@ -25,7 +25,9 @@ export function loadPayPalJsSdk(): Promise<NonNullable<Window["paypal"]>> {
       const env = process.env.NEXT_PUBLIC_PAYPAL_ENV ?? "sandbox";
       const host = env === "live" ? "www.paypal.com" : "www.sandbox.paypal.com";
       const script = document.createElement("script");
-      script.src = `https://${host}/sdk/js?client-id=${encodeURIComponent(clientId)}&vault=true&intent=subscription`;
+      // Subscriptions: allow debit/credit (card). Keep PayPal Credit + pay-later off to limit button clutter in tight layouts.
+      const disableFunding = encodeURIComponent("credit,paylater");
+      script.src = `https://${host}/sdk/js?client-id=${encodeURIComponent(clientId)}&vault=true&intent=subscription&disable-funding=${disableFunding}`;
       script.async = true;
       script.onload = () => {
         if (window.paypal) {

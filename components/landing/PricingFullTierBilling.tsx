@@ -1,8 +1,8 @@
 "use client";
 
 import type { ReactNode } from "react";
+import Link from "next/link";
 import { useState } from "react";
-import BillingActionButton from "@/components/app/BillingActionButton";
 import s from "./Pricing.module.css";
 
 /** Shown prices — keep in sync with PayPal plans and landing copy. */
@@ -16,9 +16,11 @@ function yearlySavingsPercentVsMonthly(): number {
 }
 
 export default function PricingFullTierBilling({
+  isSignedIn = false,
   planTitle,
   children,
 }: {
+  isSignedIn?: boolean;
   planTitle: ReactNode;
   children: ReactNode;
 }) {
@@ -89,15 +91,12 @@ export default function PricingFullTierBilling({
       {children}
 
       <div className={s.fullBillingFooter}>
-        <BillingActionButton
-          action="checkout"
-          interval={interval}
+        <Link
+          href={isSignedIn ? "/subscribe" : `/signup?plan=full&interval=${interval}`}
           className={s.ctaFull}
-          pendingLabel="Opening PayPal…"
-          unauthenticatedHref="/signup?plan=full"
         >
           Get full access
-        </BillingActionButton>
+        </Link>
 
         <p className={s.finePrint}>Cancel any time from your account. No hidden fees.</p>
       </div>

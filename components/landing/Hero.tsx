@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import {
   BookOpen,
@@ -9,7 +11,13 @@ import s from "./Hero.module.css";
 import Logo from "@/components/ui/Logo";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 
-export default function Hero() {
+export default function Hero({
+  isSignedIn = false,
+  onRevealPricing,
+}: {
+  isSignedIn?: boolean;
+  onRevealPricing: () => void;
+}) {
   return (
     <div className={s.page}>
       <header className={s.topbar}>
@@ -21,15 +29,30 @@ export default function Hero() {
             <a href="#features" className={s.navLink}>
               Features
             </a>
-            <a href="#pricing" className={s.navLink}>
+            <a
+              href="#pricing"
+              className={s.navLink}
+              onClick={(e) => {
+                e.preventDefault();
+                onRevealPricing();
+              }}
+            >
               Pricing
             </a>
-            <Link href="/login" className={s.navLink}>
-              Sign in
-            </Link>
-            <Link href="/signup" className={s.navCta}>
-              Start free
-            </Link>
+            {isSignedIn ? (
+              <Link href="/dashboard" className={s.navCta}>
+                Open app
+              </Link>
+            ) : (
+              <>
+                <Link href="/login" className={s.navLink}>
+                  Sign in
+                </Link>
+                <Link href="/signup" className={s.navCta}>
+                  Start free
+                </Link>
+              </>
+            )}
             <ThemeToggle className={s.themeToggle} />
           </nav>
         </div>
@@ -62,9 +85,15 @@ export default function Hero() {
               </p>
 
               <div className={s.actions}>
-                <Link href="/signup" className={s.btnPrimary}>
-                  Start free
-                </Link>
+                {isSignedIn ? (
+                  <Link href="/dashboard" className={s.btnPrimary}>
+                    Open app
+                  </Link>
+                ) : (
+                  <button type="button" className={s.btnPrimary} onClick={onRevealPricing}>
+                    Start free
+                  </button>
+                )}
                 <a href="#features" className={s.btnGhost}>
                   See how it works
                 </a>

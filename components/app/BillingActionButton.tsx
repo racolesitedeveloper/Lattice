@@ -17,7 +17,7 @@ export default function BillingActionButton({
 }: {
   action: BillingAction;
   className?: string;
-  children: ReactNode;
+  children?: ReactNode;
   pendingLabel: string;
   interval?: BillingInterval;
   unauthenticatedHref?: string;
@@ -176,12 +176,12 @@ export default function BillingActionButton({
     return (
       <div className={className}>
         {checkoutPhase === "loading_sdk" && (
-          <p className="m-0 text-sm opacity-80" aria-live="polite">
+          <p aria-live="polite">
             {pendingLabel}
           </p>
         )}
         {checkoutPhase === "error" && checkoutError && (
-          <p className="m-0 text-sm opacity-90" role="alert">
+          <p role="alert">
             {checkoutError}
           </p>
         )}
