@@ -26,13 +26,12 @@ export async function POST(request: Request) {
       email: user.email ?? undefined,
       interval,
     });
-    const approvalUrl = subscription.links?.find((link) => link.rel === "approve")?.href;
 
-    if (!approvalUrl) {
-      return NextResponse.json({ error: "PayPal did not return an approval URL." }, { status: 500 });
+    if (!subscription.id) {
+      return NextResponse.json({ error: "PayPal did not return a subscription id." }, { status: 500 });
     }
 
-    return NextResponse.json({ url: approvalUrl });
+    return NextResponse.json({ subscriptionId: subscription.id });
   } catch (error) {
     const message = error instanceof Error ? error.message : "PayPal checkout failed.";
     return NextResponse.json({ error: message }, { status: 500 });

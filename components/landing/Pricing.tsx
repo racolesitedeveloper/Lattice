@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Check, Lock } from "@phosphor-icons/react/ssr";
-import BillingActionButton from "@/components/app/BillingActionButton";
+import PricingFullTierBilling from "@/components/landing/PricingFullTierBilling";
 import s from "./Pricing.module.css";
 
 const freeItems = [
@@ -39,15 +39,15 @@ export default function Pricing() {
 
           {/* Free tier */}
           <div className={s.tierFree}>
-            <div className={s.tierHeader}>
+            <div className={s.tierTitleSlot}>
               <span className={s.tierName}>Free</span>
-              <div className={s.tierPrice}>
-                <span className={s.priceAmount}>$0</span>
-              </div>
-              <p className={s.tierDesc}>
-                Get started with the first three topics of each subject — no card required.
-              </p>
             </div>
+            <div className={s.tierPrice}>
+              <span className={s.priceAmount}>$0</span>
+            </div>
+            <p className={s.tierDesc}>
+              Get started with the first three topics of each subject — no card required.
+            </p>
 
             <ul className={s.featureList} aria-label="Free tier features">
               {freeItems.map((item) => (
@@ -76,65 +76,27 @@ export default function Pricing() {
 
           {/* Full tier */}
           <div className={s.tierFull}>
-            <div className={s.tierHeader}>
-              <div className={s.tierNameRow}>
-                <span className={s.tierName}>Full access</span>
-                <span className={s.badge}>Recommended</span>
-              </div>
+            <PricingFullTierBilling
+              planTitle={
+                <div className={s.fullTierTitleBlock}>
+                  <span className={`${s.tierName} ${s.fullTierTitle}`}>Full access</span>
+                  <span className={s.badge}>Recommended</span>
+                </div>
+              }
+            >
               <p className={s.tierDesc}>
                 Everything, for every topic, across all three subjects. Cancel any time.
               </p>
-            </div>
 
-            <ul className={s.featureList} aria-label="Full access tier features">
-              {fullItems.map((item) => (
-                <li key={item} className={s.featureItem}>
-                  <Check className={s.checkIcon} size={16} weight="bold" aria-hidden />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div className={s.billingChoices} aria-label="Full access billing options">
-              <div className={s.billingChoice}>
-                <div>
-                  <p className={s.billingChoiceLabel}>Monthly</p>
-                  <div className={s.tierPrice}>
-                    <span className={s.priceAmount}>$2.99</span>
-                    <span className={s.pricePer}>/month</span>
-                  </div>
-                </div>
-                <BillingActionButton
-                  action="checkout"
-                  interval="monthly"
-                  className={s.ctaFull}
-                  pendingLabel="Opening PayPal..."
-                  unauthenticatedHref="/signup?plan=full"
-                >
-                  Choose monthly
-                </BillingActionButton>
-              </div>
-              <div className={`${s.billingChoice} ${s.billingChoiceRecommended}`}>
-                <div>
-                  <p className={s.billingChoiceLabel}>Yearly</p>
-                  <div className={s.tierPrice}>
-                    <span className={s.priceAmount}>$29.99</span>
-                    <span className={s.pricePer}>/year</span>
-                  </div>
-                </div>
-                <BillingActionButton
-                  action="checkout"
-                  interval="yearly"
-                  className={s.ctaFull}
-                  pendingLabel="Opening PayPal..."
-                  unauthenticatedHref="/signup?plan=full"
-                >
-                  Choose yearly
-                </BillingActionButton>
-              </div>
-            </div>
-
-            <p className={s.finePrint}>Cancel any time from your account. No hidden fees.</p>
+              <ul className={s.featureList} aria-label="Full access tier features">
+                {fullItems.map((item) => (
+                  <li key={item} className={s.featureItem}>
+                    <Check className={s.checkIcon} size={16} weight="bold" aria-hidden />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </PricingFullTierBilling>
           </div>
 
         </div>
