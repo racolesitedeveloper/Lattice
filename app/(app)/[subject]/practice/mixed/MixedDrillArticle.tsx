@@ -5,6 +5,7 @@ import { CaretLeft, CaretRight, CheckCircle, WarningCircle } from "@phosphor-ico
 import type { DrillQuestion } from "@/lib/practice/types";
 import { archiveMistake } from "@/lib/practice/mistakes";
 import { markRecentActivity } from "@/lib/recent-activity";
+import { studyStorageGetItem, studyStorageSetItem } from "@/lib/study-kv";
 import { renderExamText } from "@/lib/practice/render-exam-text";
 import s from "../practice.module.css";
 import sm from "./mixed.module.css";
@@ -115,7 +116,7 @@ export default function MixedDrillArticle({
     if (typeof window === "undefined") return;
     const timer = window.setTimeout(() => {
       try {
-        const raw = window.localStorage.getItem(storageKey);
+        const raw = studyStorageGetItem(storageKey);
         if (!raw) {
           setHydrated(true);
           return;
@@ -186,7 +187,7 @@ export default function MixedDrillArticle({
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (!hydrated) return;
-    window.localStorage.setItem(
+    studyStorageSetItem(
       storageKey,
       JSON.stringify({
         setSignature,

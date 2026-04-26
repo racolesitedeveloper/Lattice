@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { CalendarBlank, CaretRight, Fire, Gauge, Target } from "@phosphor-icons/react";
 import { readStudyStreak, type StudyStreak } from "@/lib/study-time";
+import { studyStorageGetItem, studyStorageKeys } from "@/lib/study-kv";
 import ExamPeriodForm from "./ExamPeriodForm";
 import s from "./dashboard.module.css";
 
@@ -198,16 +199,13 @@ function readWeakAreas(noteMetaIndex: NoteMetaIndex): WeakArea[] {
   for (const subject of SUBJECTS) bySubject.set(subject.id, new Map());
 
   try {
-    for (let i = 0; i < window.localStorage.length; i += 1) {
-      const key = window.localStorage.key(i);
-      if (!key) continue;
-
+    for (const key of studyStorageKeys()) {
       const match = key.match(/^practice-session:(physics|chemistry|biology):([^:]+)$/);
       if (!match) continue;
 
       const subject = match[1] as SubjectId;
       const noteId = match[2]!;
-      const raw = window.localStorage.getItem(key);
+      const raw = studyStorageGetItem(key);
       if (!raw) continue;
 
       const parsed = JSON.parse(raw) as { drillOutcomes?: Record<string, unknown> };
@@ -255,11 +253,10 @@ function readMasterySummary(): MasterySummary {
   let needsWork = 0;
 
   try {
-    for (let i = 0; i < window.localStorage.length; i += 1) {
-      const key = window.localStorage.key(i);
-      if (!key || !/^(?:practice-session|practice-mixed-session|practice-mistakes-session):/.test(key)) continue;
+    for (const key of studyStorageKeys()) {
+      if (!/^(?:practice-session|practice-mixed-session|practice-mistakes-session):/.test(key)) continue;
 
-      const raw = window.localStorage.getItem(key);
+      const raw = studyStorageGetItem(key);
       if (!raw) continue;
 
       const parsed = JSON.parse(raw) as {

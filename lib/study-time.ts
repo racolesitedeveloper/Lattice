@@ -1,3 +1,5 @@
+import { studyStorageGetItem, studyStorageSetItem } from "@/lib/study-kv";
+
 export type StudyDay = {
   date: string;
   label: string;
@@ -62,7 +64,7 @@ function readWeek(): StudyWeek {
   if (typeof window === "undefined") return { weekStart: currentWeekStart, days: {} };
 
   try {
-    const parsed = JSON.parse(window.localStorage.getItem(STUDY_WEEK_KEY) ?? "{}") as Partial<StudyWeek>;
+    const parsed = JSON.parse(studyStorageGetItem(STUDY_WEEK_KEY) ?? "{}") as Partial<StudyWeek>;
     if (parsed.weekStart !== currentWeekStart || !parsed.days || typeof parsed.days !== "object") {
       const next = { weekStart: currentWeekStart, days: {} };
       writeWeek(next);
@@ -77,18 +79,18 @@ function readWeek(): StudyWeek {
 }
 
 function writeWeek(week: StudyWeek): void {
-  window.localStorage.setItem(STUDY_WEEK_KEY, JSON.stringify(week));
+  studyStorageSetItem(STUDY_WEEK_KEY, JSON.stringify({ ...week, updatedAt: Date.now() }));
 }
 
 function markStudiedDay(date: string): void {
   const dates = readStudiedDays();
   dates.add(date);
-  window.localStorage.setItem(STUDY_DAYS_KEY, JSON.stringify(Array.from(dates).sort()));
+  studyStorageSetItem(STUDY_DAYS_KEY, JSON.stringify(Array.from(dates).sort()));
 }
 
 function readStudiedDays(): Set<string> {
   try {
-    const parsed = JSON.parse(window.localStorage.getItem(STUDY_DAYS_KEY) ?? "[]") as unknown;
+    const parsed = JSON.parse(studyStorageGetItem(STUDY_DAYS_KEY) ?? "[]") as unknown;
     if (!Array.isArray(parsed)) return new Set();
     return new Set(parsed.filter((date): date is string => /^\d{4}-\d{2}-\d{2}$/.test(String(date))));
   } catch {

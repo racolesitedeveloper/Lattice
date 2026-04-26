@@ -6,6 +6,7 @@ import { CaretDown, CaretLeft, CaretRight, CaretUp, LockKey, X } from "@phosphor
 import type { CourseOutline, CourseTopic } from "@/lib/course/types";
 import IntentPrefetchLink from "@/components/app/IntentPrefetchLink";
 import { canAccessNoteId, canAccessTopic, FREE_TOPIC_LIMIT, type BillingPlan } from "@/lib/entitlements";
+import { studyStorageGetItem, studyStorageKeys, studyStorageRemoveItem } from "@/lib/study-kv";
 import s from "./practice-hub.module.css";
 
 function isAsTopic(topicNumber: number, asLastTopic: number): boolean {
@@ -206,7 +207,7 @@ export default function PracticeCourseOutline({
       }> = [];
       for (const [noteId, meta] of subtopicMeta) {
         if (!canAccessNoteId(plan, noteId)) continue;
-        const sessionRaw = window.localStorage.getItem(`practice-session:${subject}:${noteId}`);
+        const sessionRaw = studyStorageGetItem(`practice-session:${subject}:${noteId}`);
         if (!sessionRaw) continue;
         const session = JSON.parse(sessionRaw) as {
           indexByView?: { drills?: number };
@@ -231,10 +232,9 @@ export default function PracticeCourseOutline({
       }
 
       const mixedPrefix = `practice-mixed-session:${subject}:`;
-      for (let i = 0; i < window.localStorage.length; i += 1) {
-        const key = window.localStorage.key(i);
-        if (!key?.startsWith(mixedPrefix)) continue;
-        const mixedRaw = window.localStorage.getItem(key);
+      for (const key of studyStorageKeys()) {
+        if (!key.startsWith(mixedPrefix)) continue;
+        const mixedRaw = studyStorageGetItem(key);
         if (!mixedRaw) continue;
         const parsed = JSON.parse(mixedRaw) as {
           selectedNoteIds?: string[];
@@ -280,7 +280,7 @@ export default function PracticeCourseOutline({
 
   function dismissResume(storageKey: string) {
     try {
-      window.localStorage.removeItem(storageKey);
+      studyStorageRemoveItem(storageKey);
     } catch {
       // ignore
     }

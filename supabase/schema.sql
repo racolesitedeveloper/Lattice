@@ -35,6 +35,7 @@ create table if not exists public.profiles (
     or paypal_billing_interval in ('monthly', 'yearly')
   ),
   paypal_current_period_end timestamptz,
+  study_kv             jsonb not null default '{}'::jsonb,
   updated_at           timestamptz not null default now()
 );
 
@@ -67,6 +68,9 @@ alter table public.profiles
 
 alter table public.profiles
   add column if not exists paypal_current_period_end timestamptz;
+
+alter table public.profiles
+  add column if not exists study_kv jsonb not null default '{}'::jsonb;
 
 create unique index if not exists profiles_paypal_subscription_id_key
   on public.profiles (paypal_subscription_id)

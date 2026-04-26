@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ListChecks } from "@phosphor-icons/react";
+import { studyStorageGetItem, studyStorageKeys } from "@/lib/study-kv";
 import s from "./dashboard.module.css";
 
 type SubjectId = "physics" | "chemistry" | "biology";
@@ -112,13 +113,11 @@ function readMastery(): Mastery[] {
   for (const subject of SUBJECTS) totals.set(subject.id, { correct: 0, needsWork: 0 });
 
   try {
-    for (let i = 0; i < window.localStorage.length; i += 1) {
-      const key = window.localStorage.key(i);
-      if (!key) continue;
+    for (const key of studyStorageKeys()) {
       const subject = subjectFromStorageKey(key);
       if (!subject) continue;
 
-      const raw = window.localStorage.getItem(key);
+      const raw = studyStorageGetItem(key);
       if (!raw) continue;
       const parsed = JSON.parse(raw) as {
         drillOutcomes?: Record<string, unknown>;

@@ -4,6 +4,8 @@ Next.js only loads environment files from the **project root** (the parent of th
 
 **Canonical list of every variable** the app uses: [`env/.env.local.example`](./.env.local.example).
 
+**Vercel → Import .env:** use the same keys in one block as [`env/vercel-import.env.example`](./vercel-import.env.example) (fill locally, paste into Vercel; omit `#` comment lines if your paste fails).
+
 1. Copy the template into the repo root as `.env.local`:
 
    - **From the project root (PowerShell):**  

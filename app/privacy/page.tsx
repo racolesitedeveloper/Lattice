@@ -25,9 +25,10 @@ export default function PrivacyPage() {
         <section className={s.section}>
           <h2>Study data</h2>
           <p>
-            Current practice progress, study time, recent activity, and archived mistakes are stored
-            locally in your browser. Clearing browser storage or switching devices can remove that
-            local study history.
+            When you are signed in, practice progress (including mixed drills), study time, recent
+            activity, and archived mistakes are stored in your Lattice account and sync across your
+            devices. A copy is also kept in your browser for responsiveness; clearing site data on
+            a device may remove that local copy until the next sync.
           </p>
         </section>
 

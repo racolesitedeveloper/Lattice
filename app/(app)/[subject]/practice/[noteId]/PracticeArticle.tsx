@@ -6,6 +6,7 @@ import type { NoteMeta } from "@/lib/notes/types";
 import type { DrillQuestion, Flashcard, SubtopicPracticePack } from "@/lib/practice/types";
 import { archiveMistake } from "@/lib/practice/mistakes";
 import { markRecentActivity } from "@/lib/recent-activity";
+import { studyStorageGetItem, studyStorageSetItem } from "@/lib/study-kv";
 import { renderExamText } from "@/lib/practice/render-exam-text";
 import s from "../practice.module.css";
 
@@ -332,7 +333,7 @@ export default function PracticeArticle({ pack, subject, noteMeta, canArchiveMis
     if (typeof window === "undefined") return;
     const timer = window.setTimeout(() => {
       try {
-        const raw = window.localStorage.getItem(storageKey);
+        const raw = studyStorageGetItem(storageKey);
         if (!raw) {
           setHydrated(true);
           return;
@@ -403,7 +404,7 @@ export default function PracticeArticle({ pack, subject, noteMeta, canArchiveMis
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (!hydrated) return;
-    window.localStorage.setItem(
+    studyStorageSetItem(
       storageKey,
       JSON.stringify({
         view,
@@ -415,7 +416,7 @@ export default function PracticeArticle({ pack, subject, noteMeta, canArchiveMis
         updatedAt: Date.now(),
       }),
     );
-    window.localStorage.setItem(
+    studyStorageSetItem(
       lastSessionKey,
       JSON.stringify({
         noteId: pack.noteId,

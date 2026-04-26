@@ -1,3 +1,9 @@
+import {
+  studyStorageGetItem,
+  studyStorageKeys,
+  studyStorageRemoveItem,
+  studyStorageSetItem,
+} from "@/lib/study-kv";
 import type { DrillQuestion } from "./types";
 
 export type MistakeReason = "mcq-wrong" | "structured-needs-practice";
@@ -56,9 +62,8 @@ export function readAllMistakes(): MistakeRecord[] {
 
   try {
     const records: MistakeRecord[] = [];
-    for (let i = 0; i < window.localStorage.length; i += 1) {
-      const key = window.localStorage.key(i);
-      if (!key?.startsWith("practice-mistakes:")) continue;
+    for (const key of studyStorageKeys()) {
+      if (!key.startsWith("practice-mistakes:")) continue;
       records.push(...readMistakeList(key));
     }
     return mergeMistakeRecords(records).sort((a, b) => b.lastArchivedAt - a.lastArchivedAt);
@@ -74,7 +79,7 @@ export function writeMistakes(subject: string, records: MistakeRecord[]): void {
     ...record,
     subject: normalizedSubject,
   }));
-  window.localStorage.setItem(mistakesStorageKey(normalizedSubject), JSON.stringify(normalizedRecords));
+  studyStorageSetItem(mistakesStorageKey(normalizedSubject), JSON.stringify(normalizedRecords));
   writeAllMistakesForSubject(normalizedSubject, normalizedRecords);
 }
 
@@ -124,7 +129,7 @@ export function removeMistakeEverywhere(id: string): MistakeRecord[] {
   }
 
   const allRecords = readMistakeList(ALL_MISTAKES_KEY).filter((record) => record.id !== id);
-  window.localStorage.setItem(ALL_MISTAKES_KEY, JSON.stringify(allRecords));
+  studyStorageSetItem(ALL_MISTAKES_KEY, JSON.stringify(allRecords));
 
   return readAllMistakes();
 }
@@ -132,20 +137,15 @@ export function removeMistakeEverywhere(id: string): MistakeRecord[] {
 export function clearMistakes(subject: string): void {
   if (typeof window === "undefined") return;
   const normalizedSubject = subject.toLowerCase();
-  window.localStorage.removeItem(mistakesStorageKey(normalizedSubject));
+  studyStorageRemoveItem(mistakesStorageKey(normalizedSubject));
   writeAllMistakesForSubject(normalizedSubject, []);
 }
 
 export function clearAllMistakes(): void {
   if (typeof window === "undefined") return;
 
-  const keys: string[] = [];
-  for (let i = 0; i < window.localStorage.length; i += 1) {
-    const key = window.localStorage.key(i);
-    if (key?.startsWith("practice-mistakes:")) keys.push(key);
-  }
-  for (const key of keys) {
-    window.localStorage.removeItem(key);
+  for (const key of studyStorageKeys()) {
+    if (key.startsWith("practice-mistakes:")) studyStorageRemoveItem(key);
   }
 }
 
@@ -154,7 +154,7 @@ function mistakeId(subject: string, noteId: string, questionId: string): string 
 }
 
 function readMistakeList(key: string): MistakeRecord[] {
-  const raw = window.localStorage.getItem(key);
+  const raw = studyStorageGetItem(key);
   if (!raw) return [];
   const parsed = JSON.parse(raw);
   if (!Array.isArray(parsed)) return [];
@@ -163,7 +163,7 @@ function readMistakeList(key: string): MistakeRecord[] {
 
 function writeAllMistakesForSubject(subject: string, records: MistakeRecord[]): void {
   const others = readMistakeList(ALL_MISTAKES_KEY).filter((record) => record.subject !== subject);
-  window.localStorage.setItem(ALL_MISTAKES_KEY, JSON.stringify([...records, ...others].slice(0, 360)));
+  studyStorageSetItem(ALL_MISTAKES_KEY, JSON.stringify([...records, ...others].slice(0, 360)));
 }
 
 function mergeMistakeRecords(records: MistakeRecord[]): MistakeRecord[] {

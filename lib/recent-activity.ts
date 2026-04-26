@@ -1,5 +1,7 @@
 export type RecentActivityKind = "note" | "drill" | "flashcard";
 
+import { studyStorageGetItem, studyStorageSetItem } from "@/lib/study-kv";
+
 export type RecentActivityItem = {
   kind: RecentActivityKind;
   href: string;
@@ -16,7 +18,7 @@ const RECENT_KEYS: Record<RecentActivityKind, string> = {
 
 export function markRecentActivity(item: Omit<RecentActivityItem, "updatedAt">): void {
   if (typeof window === "undefined") return;
-  window.localStorage.setItem(RECENT_KEYS[item.kind], JSON.stringify({ ...item, updatedAt: Date.now() }));
+  studyStorageSetItem(RECENT_KEYS[item.kind], JSON.stringify({ ...item, updatedAt: Date.now() }));
 }
 
 export function readRecentActivities(): RecentActivityItem[] {
@@ -29,7 +31,7 @@ export function readRecentActivities(): RecentActivityItem[] {
 
 function readRecentActivity(kind: RecentActivityKind): RecentActivityItem | null {
   try {
-    const parsed = JSON.parse(window.localStorage.getItem(RECENT_KEYS[kind]) ?? "null") as Partial<RecentActivityItem> | null;
+    const parsed = JSON.parse(studyStorageGetItem(RECENT_KEYS[kind]) ?? "null") as Partial<RecentActivityItem> | null;
     if (
       !parsed ||
       parsed.kind !== kind ||

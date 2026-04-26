@@ -97,7 +97,7 @@ export default function MistakesClient({ subject }: { subject: string }) {
     return (
       <div className={s.emptyState} aria-busy="true">
         <p className={s.emptyTitle}>Loading mistakes</p>
-        <p className={s.emptyText}>Checking your local practice history.</p>
+        <p className={s.emptyText}>Loading your practice history.</p>
       </div>
     );
   }
