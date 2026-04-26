@@ -56,6 +56,12 @@ export function studyStorageGetItem(key: string): string | null {
   if (!isStudyStorageKey(key)) return window.localStorage.getItem(key);
   if (!initialized) return window.localStorage.getItem(key);
   if (memory.has(key)) return memory.get(key)!;
+  // Heal: key may exist in localStorage but not in memory (e.g. pre-init write, rare races).
+  const fromDisk = window.localStorage.getItem(key);
+  if (fromDisk != null) {
+    memory.set(key, fromDisk);
+    return fromDisk;
+  }
   return null;
 }
 

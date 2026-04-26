@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "@phosphor-icons/react/ssr";
 import UpgradeRequired from "@/components/app/UpgradeRequired";
 import { getCurrentBillingPlan } from "@/lib/billing/current-plan";
-import { canAccessArchive, canAccessNoteId } from "@/lib/entitlements";
+import { canAccessNoteId } from "@/lib/entitlements";
 import { getSubtopicPracticePack } from "@/lib/practice/get-practice";
 import type { DrillQuestion } from "@/lib/practice/types";
 import { resolveNoteMeta } from "@/lib/notes/resolve-meta";
@@ -93,7 +93,7 @@ export default async function MixedPracticePage({
         items={items}
         subject={subj}
         selectedNoteIds={ids}
-        canArchiveMistakes={canAccessArchive(plan)}
+        canArchiveMistakes
       />
     </div>
   );

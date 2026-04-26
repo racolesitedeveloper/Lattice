@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "@phosphor-icons/react/ssr";
 import UpgradeRequired from "@/components/app/UpgradeRequired";
 import { getCurrentBillingPlan } from "@/lib/billing/current-plan";
-import { canAccessArchive, canAccessTopic } from "@/lib/entitlements";
+import { canAccessTopic } from "@/lib/entitlements";
 import { getSubtopicPracticePack } from "@/lib/practice/get-practice";
 import { resolveNoteMeta } from "@/lib/notes/resolve-meta";
 import ns from "../../notes/notes.module.css";
@@ -60,7 +60,7 @@ export default async function PracticeDetailPage({
           pack={pack}
           subject={subj}
           noteMeta={meta}
-          canArchiveMistakes={canAccessArchive(plan)}
+          canArchiveMistakes={canAccess}
         />
       ) : (
         <UpgradeRequired

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { ChartLineUp } from "@phosphor-icons/react";
+import { ChartBar } from "@phosphor-icons/react";
 import { readCurrentWeekStudy, type StudyDay } from "@/lib/study-time";
 import s from "./dashboard.module.css";
 
@@ -21,26 +21,17 @@ export default function StudyHoursGraph() {
   const totalSeconds = days.reduce((sum, day) => sum + day.seconds, 0);
   const maxSeconds = getChartMaxSeconds(Math.max(...days.map((day) => day.seconds), 0));
 
-  const points = useMemo(() => {
-    if (days.length === 0) return [];
-    return days.map((day, i) => {
-      const x = days.length === 1 ? 0 : (i / (days.length - 1)) * 100;
-      const y = 92 - (day.seconds / maxSeconds) * 84;
-      return { x, y, day, i };
-    });
+  const barHeights = useMemo(() => {
+    if (maxSeconds <= 0) return days.map(() => 0);
+    return days.map((day) => Math.min(100, (day.seconds / maxSeconds) * 100));
   }, [days, maxSeconds]);
-
-  const polylinePoints = useMemo(() => {
-    if (points.length === 0) return "";
-    return points.map((p) => `${p.x.toFixed(2)},${p.y.toFixed(2)}`).join(" ");
-  }, [points]);
 
   return (
     <section className={s.studyPanel} aria-labelledby="study-hours-title">
       <div className={s.sectionHead}>
         <div>
           <p className={s.panelLabel}>
-            <ChartLineUp className={s.labelIcon} size={13} weight="bold" aria-hidden />
+            <ChartBar className={s.labelIcon} size={13} weight="bold" aria-hidden />
             Performance trend
           </p>
           <h2 id="study-hours-title" className={s.sectionTitle}>
@@ -52,42 +43,40 @@ export default function StudyHoursGraph() {
         </p>
       </div>
 
-      <div className={s.lineGraph}>
-        <div className={s.lineGraphChart} aria-hidden="true">
-          <span className={s.graphScaleTop}>{formatMinutesDisplay(maxSeconds)}m</span>
-          <span className={s.graphScaleBottom}>0m</span>
-          <svg
-            className={s.lineGraphSvg}
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-            aria-hidden
-          >
-            <polyline points={polylinePoints} />
-            {points.map((p) => {
-              const mins = formatDayMinutes(p.day.seconds);
-              const label = `${p.day.label} ${mins === "0" ? "0 min" : `${mins} min`}`;
-              return (
-                <circle
-                  key={p.day.date}
-                  className={s.graphPoint}
-                  cx={p.x}
-                  cy={p.y}
-                  r={1.65}
-                  role="presentation"
-                >
-                  <title>{label}</title>
-                </circle>
-              );
-            })}
-          </svg>
-        </div>
-        <ul className={s.graphDayAxis} aria-label="Minutes studied each day this week">
-          {points.map((p) => {
-            const m = formatDayMinutes(p.day.seconds);
-            const has = p.day.seconds > 0;
+      <div className={s.weekBarGraph} role="group" aria-labelledby="study-hours-title">
+        <div className={s.weekBarChartArea}>
+          <div className={s.weekBarYAxis} aria-hidden="true">
+            <span className={s.weekBarScaleTop}>{formatMinutesDisplay(maxSeconds)}m</span>
+            <span className={s.weekBarScaleBottom}>0m</span>
+          </div>
+          <ul className={s.weekBarList}>
+          {days.map((day, i) => {
+            const h = barHeights[i] ?? 0;
+            const mins = formatDayMinutes(day.seconds);
+            const label = `${day.label} ${day.seconds <= 0 ? "0 min" : `${mins} min`}`;
             return (
-              <li key={p.day.date} className={s.graphDayCell}>
-                <span className={s.graphDayName}>{p.day.label}</span>
+              <li key={day.date} className={s.weekBarCell} aria-label={label}>
+                <div className={s.weekBarTrack}>
+                  <div
+                    className={s.weekBarFill}
+                    style={{
+                      height: `${h}%`,
+                      minHeight: day.seconds > 0 && h < 1 ? 3 : 0,
+                    }}
+                  />
+                </div>
+              </li>
+            );
+          })}
+          </ul>
+        </div>
+        <ul className={s.graphDayAxis} aria-label="Day totals in minutes">
+          {days.map((day) => {
+            const m = formatDayMinutes(day.seconds);
+            const has = day.seconds > 0;
+            return (
+              <li key={day.date} className={s.graphDayCell}>
+                <span className={s.graphDayName}>{day.label}</span>
                 <span className={has ? s.graphDayMinsOn : s.graphDayMins}>
                   {m}m
                 </span>
