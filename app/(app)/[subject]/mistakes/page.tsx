@@ -5,8 +5,7 @@ import { canAccessArchive } from "@/lib/entitlements";
 import MistakesClient from "./MistakesClient";
 import s from "./mistakes.module.css";
 
-export default async function MistakesPage({ params }: { params: Promise<{ subject: string }> }) {
-  const { subject } = await params;
+export default async function MistakesPage() {
   const plan = await getCurrentBillingPlan();
   const canAccess = canAccessArchive(plan);
 
@@ -18,7 +17,7 @@ export default async function MistakesPage({ params }: { params: Promise<{ subje
       </header>
       <div className={canAccess ? s.body : s.bodyGated}>
         {canAccess ? (
-          <MistakesClient subject={subject.toLowerCase()} />
+          <MistakesClient />
         ) : (
           <UpgradeRequired
             title="Upgrade to use the archive"

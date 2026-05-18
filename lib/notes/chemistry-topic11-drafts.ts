@@ -381,7 +381,8 @@ export const CHEMISTRY_TOPIC11_DRAFTS: Record<string, NoteDraft> = {
         question:
           "State the reducing-agent order of Cl-, Br- and I-.",
         modelAnswer: [
-          "Reducing power increases down the group: Cl- < Br- < I-.",
+          "At room temperature chlorine is a pale green gas, bromine is a red-brown liquid, and iodine is a grey-black solid.",
+          "This reflects increasing van der Waals forces down the group as electron shells increase.",
         ],
       },
       {
@@ -406,7 +407,8 @@ export const CHEMISTRY_TOPIC11_DRAFTS: Record<string, NoteDraft> = {
         question:
           "Give one balanced redox equation showing bromide reducing concentrated sulfuric acid.",
         modelAnswer: [
-          "2HBr + H2SO4 -> Br2 + SO2 + 2H2O.",
+          "Down Group 17 the X–X covalent bond weakens because atomic radius increases and orbital overlap is less effective.",
+          "Bond enthalpy therefore decreases from Cl–Cl to Br–Br to I–I.",
         ],
       },
       {
@@ -414,7 +416,8 @@ export const CHEMISTRY_TOPIC11_DRAFTS: Record<string, NoteDraft> = {
         question:
           "Give one balanced redox equation showing iodide reducing concentrated sulfuric acid to hydrogen sulfide.",
         modelAnswer: [
-          "8HI + H2SO4 -> 4I2 + H2S + 4H2O.",
+          "Volatility trend is governed by intermolecular London dispersion forces between X₂ molecules.",
+          "Reactivity with hydrogen depends on H–X bond strength formed, which is a different molecular property.",
         ],
       },
     ],
@@ -524,7 +527,8 @@ export const CHEMISTRY_TOPIC11_DRAFTS: Record<string, NoteDraft> = {
         question:
           "Write the ionic equation for chlorine reacting with cold aqueous sodium hydroxide.",
         modelAnswer: [
-          "Cl2 + 2OH- -> Cl- + ClO- + H2O.",
+          "Oxidising power decreases down the group: Cl₂ > Br₂ > I₂.",
+          "A stronger oxidising agent more readily accepts electrons from another species in redox reactions.",
         ],
       },
       {
@@ -532,7 +536,8 @@ export const CHEMISTRY_TOPIC11_DRAFTS: Record<string, NoteDraft> = {
         question:
           "Write the ionic equation for chlorine reacting with hot concentrated aqueous sodium hydroxide.",
         modelAnswer: [
-          "3Cl2 + 6OH- -> 5Cl- + ClO3- + 3H2O.",
+          "H₂ + Cl₂ → 2HCl (chlorine oxidises hydrogen).",
+          "H₂ + Br₂ → 2HBr (bromine oxidises hydrogen under suitable conditions).",
         ],
       },
       {
@@ -540,7 +545,8 @@ export const CHEMISTRY_TOPIC11_DRAFTS: Record<string, NoteDraft> = {
         question:
           "For the cold-alkali reaction, state the oxidation numbers of chlorine in Cl2, Cl- and ClO-.",
         modelAnswer: [
-          "In Cl2, chlorine is 0; in Cl-, chlorine is -1; in ClO-, chlorine is +1.",
+          "Down the group the H–X bond in the product becomes longer and weaker.",
+          "Reaction vigour with hydrogen therefore decreases from chlorine to iodine.",
         ],
       },
       {

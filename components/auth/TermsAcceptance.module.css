@@ -1,0 +1,46 @@
+.label {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--sp-3);
+  align-items: start;
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  margin: 2px 0 0;
+  accent-color: var(--accent);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.checkbox:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.text {
+  font-size: var(--fs-label-sm);
+  line-height: var(--lh-relaxed);
+  color: var(--text-muted);
+}
+
+.link {
+  color: var(--text);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.link:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 560px) {
+  .checkbox {
+    width: 20px;
+    height: 20px;
+    margin-top: 3px;
+  }
+}

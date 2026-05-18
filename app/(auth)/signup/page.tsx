@@ -1,9 +1,10 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import Link from "next/link";
 import { signup } from "@/app/actions/auth";
 import GoogleSignInButton from "@/components/auth/GoogleSignInButton";
+import TermsAcceptance from "@/components/auth/TermsAcceptance";
 import PasswordField from "@/components/ui/PasswordField";
 import s from "./signup.module.css";
 
@@ -11,6 +12,7 @@ const initialState = null;
 
 export default function SignupPage() {
   const [state, action, pending] = useActionState(signup, initialState);
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
 
   return (
     <div className={s.card}>
@@ -49,6 +51,12 @@ export default function SignupPage() {
           />
         </div>
 
+        <TermsAcceptance
+          checked={acceptedTerms}
+          onChange={setAcceptedTerms}
+          disabled={pending}
+        />
+
         {state?.error && (
           <p className={s.error} role="alert">
             {state.error}
@@ -58,14 +66,18 @@ export default function SignupPage() {
         <button
           type="submit"
           className={s.submit}
-          disabled={pending}
-          aria-disabled={pending}
+          disabled={pending || !acceptedTerms}
+          aria-disabled={pending || !acceptedTerms}
         >
           {pending ? "Creating account..." : "Create account"}
         </button>
       </form>
 
-      <GoogleSignInButton label="Sign up with Google" />
+      <GoogleSignInButton
+        label="Sign up with Google"
+        disabled={!acceptedTerms}
+        disabledHint="Accept the Terms of Service and Privacy Policy above to continue with Google."
+      />
 
       <div className={s.trustStrip}>
         <p className={s.trustHeading}>Start with the free plan</p>
@@ -74,13 +86,6 @@ export default function SignupPage() {
           Upgrade to unlock Mistakes and full coverage.
         </p>
       </div>
-
-      <p className={s.terms}>
-        By creating an account you agree to our{" "}
-        <Link href="/terms" className={s.termsLink}>Terms</Link>{" "}
-        and{" "}
-        <Link href="/privacy" className={s.termsLink}>Privacy Policy</Link>.
-      </p>
 
       <div className={s.rule} aria-hidden="true" />
 

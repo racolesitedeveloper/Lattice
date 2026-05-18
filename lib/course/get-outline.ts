@@ -1,3 +1,4 @@
+import { cache } from "react";
 import type { CourseOutline } from "./types";
 
 const OUTLINE_LOADERS: Record<string, () => Promise<CourseOutline>> = {
@@ -6,7 +7,17 @@ const OUTLINE_LOADERS: Record<string, () => Promise<CourseOutline>> = {
   biology: async () => (await import("@/data/courses/biology-9700.json")).default as CourseOutline,
 };
 
-export async function getCourseOutline(subject: string): Promise<CourseOutline | null> {
-  const load = OUTLINE_LOADERS[subject.toLowerCase()];
-  return load ? load() : null;
-}
+const outlineMemoryCache = new Map<string, CourseOutline>();
+
+export const getCourseOutline = cache(async (subject: string): Promise<CourseOutline | null> => {
+  const key = subject.toLowerCase();
+  const cached = outlineMemoryCache.get(key);
+  if (cached) return cached;
+
+  const load = OUTLINE_LOADERS[key];
+  if (!load) return null;
+
+  const outline = await load();
+  outlineMemoryCache.set(key, outline);
+  return outline;
+});

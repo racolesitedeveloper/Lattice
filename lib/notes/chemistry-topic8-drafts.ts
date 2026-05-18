@@ -128,7 +128,9 @@ export const CHEMISTRY_TOPIC8_DRAFTS: Record<string, NoteDraft> = {
         question:
           "A product concentration rises from 0.10 mol dm⁻3 to 0.34 mol dm⁻3 in 40 s. Calculate the average rate of product formation.",
         modelAnswer: [
-          "rate = Δ[product]/Δt = (0.34 - 0.10) / 40 = 0.24/40 = 0.0060 mol dm⁻3 s⁻1.",
+          "Average rate = Δ[product] / Δt = (0.34 - 0.10) / 40.",
+          "Δ[product] = 0.24 mol dm⁻3 over 40 s.",
+          "Rate = 0.24 / 40 = 0.0060 mol dm⁻3 s⁻1.",
         ],
       },
       {

@@ -388,7 +388,7 @@ export const PHYSICS_TOPIC19_DRAFTS: Record<string, NoteDraft> = {
           "3.3/9.0 = exp(−1.6/RC). Take natural logs:",
           "ln(3.3/9.0) = -1.6/RC.",
           "RC = -1.6 / ln(3.3/9.0) = 1.59 s.",
-          "R = (RC)/C = 1.59/(22 x 10⁻⁶) = 7.23 x 10⁴ ohm.",
+          "R = (RC)/C = 1.59/(22 x 10⁻⁶) = 7.23 x 10⁴ Ω.",
           "So resistance is about 72 kΩ.",
         ],
       },

@@ -5,7 +5,7 @@ import type { SubtopicPracticePack } from "./types";
  *
  * **`t17-1` (17.1 Variation)** — Crosswalk to `data/syllabus/biology-9700-learning-outcomes.md` §17.1:
  * d1 genetic / environmental / combined phenotypic variation with examples; d2 discontinuous vs continuous from definitions and data patterns;
- * d3 genetic basis (few genes vs polygenic + environment); d4–d6 t-test (H0, decision rule, biological interpretation, limitations of non-significance);
+ * d3 genetic basis (few genes vs polygenic + environment); d4–d5 t-test procedure and numeric calculation; d6 limitations of non-significance;
  * d7–d10 consolidation (classification, assumptions, MCQs).
  *
  * **`t17-2` (17.2 Natural and artificial selection)** — Crosswalk to §17.2:
@@ -116,22 +116,27 @@ export const BIOLOGY_TOPIC17_PRACTICE: Record<string, SubtopicPracticePack> = {
         noteId: "t17-1",
         kind: "structured",
         difficulty: 3,
-        marks: 5,
-        stem: "In an investigation of mean seed mass from two plant lines, the calculated value of t is 2.85 and the critical value of t at the relevant degrees of freedom and p = 0.05 is 2.02. State the usual null hypothesis, explain your statistical decision, and state one appropriate biological conclusion about the lines’ seeds under the conditions tested.",
+        marks: 7,
+        stem:
+          "Two independent samples of leaf width (mm) are compared.\nLine A: n1 = 12, mean = 42.0, standard deviation s1 = 3.0.\nLine B: n2 = 10, mean = 38.5, standard deviation s2 = 2.5.\nUse t = |x̄1 − x̄2| / √(s1²/n1 + s2²/n2).\nThe critical value of t at the appropriate degrees of freedom and p = 0.05 is 2.10.\n(a) Calculate the value of t.\n(b) State the null hypothesis and your statistical conclusion.\n(c) Give one brief biological conclusion.",
         modelAnswerPoints: [
-          "H0: no significant difference between the mean seed masses of the two lines (wording may vary but must be clear).",
-          "Calculated t exceeds critical t → reject H0 at p = 0.05.",
-          "Conclude a statistically significant difference in mean seed mass; biologically, one line tends to produce heavier (or lighter) seeds on average than the other in this experiment.",
+          "H0: no significant difference between the population mean leaf widths of the two lines.",
+          "Difference in means = 42.0 − 38.5 = 3.5 mm.",
+          "s1²/n1 = 9.0/12 = 0.75; s2²/n2 = 6.25/10 = 0.625; denominator = √(1.375) = 1.17 (approx).",
+          "t = 3.5 / 1.17 = 2.99 (accept 2.9–3.0).",
+          "Calculated t > critical t (2.10) → reject H0 at p = 0.05.",
+          "Biological conclusion: line A has significantly wider leaves on average than line B under the conditions tested.",
         ],
         workedSolution: [
-          "The null hypothesis for this two-sample comparison is that there is no significant difference between the mean seed masses of the two plant lines in the populations being sampled, meaning any observed sample difference should be attributable to chance variation if H0 is true.",
-          "Because the calculated t statistic, 2.85, is larger than the two-tailed critical value 2.02 at the stated degrees of freedom and 5% significance, the data fall in the rejection region for that null hypothesis, so you reject H0.",
-          "The correct statistical sentence is therefore that there is a significant difference between the sample means at p = 0.05, implying that the observed gap is unlikely to be explained only by random sampling error under the assumptions of the test.",
-          "Biologically, you can conclude that, under the growth and measurement conditions of the investigation, one line has a higher average seed mass than the other, though you should not automatically extrapolate to every environment without further evidence, and you should not claim the test proves a specific genetic mechanism unless that was separately demonstrated.",
+          "State H0 as no significant difference between the two population means for leaf width.",
+          "Compute the difference in sample means: 42.0 − 38.5 = 3.5 mm.",
+          "Substitute into the two-sample t formula: t = 3.5 / √(3.0²/12 + 2.5²/10) = 3.5 / √(0.75 + 0.625) = 3.5 / 1.17 ≈ 2.99.",
+          "Because 2.99 > 2.10, reject H0 at the 5% level: the observed difference in means is unlikely to be due to chance alone.",
+          "Biologically, line A tends to produce wider leaves than line B in this investigation, without claiming proof of a specific gene unless that was tested separately.",
         ],
         commonMistake:
-          "Rejecting or failing to reject without comparing the two t values on the same tail convention, or saying ‘prove’ the alternative hypothesis rather than ‘support’ it.",
-        tags: ["t-test", "interpretation"],
+          "Using pooled variance when the question gives separate s1 and s2 for independent samples, or forgetting to compare calculated t with the critical value.",
+        tags: ["t-test", "calculation", "statistics"],
       },
       {
         id: "t17-1-d6",

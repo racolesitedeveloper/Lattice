@@ -21,7 +21,6 @@ export const PHYSICS_TOPIC7_PRACTICE: Record<string, SubtopicPracticePack> = {
           "Wavelength is a spatial period: the shortest distance between points oscillating in phase.",
         distractorRationale: {
           B: "Maximum displacement is amplitude, not wavelength.",
-          C: "Correct definition for wavelength in progressive waves.",
           D: "Time for one oscillation is period.",
         },
         tags: ["progressive-waves", "definitions", "wavelength"],
@@ -29,24 +28,24 @@ export const PHYSICS_TOPIC7_PRACTICE: Record<string, SubtopicPracticePack> = {
       {
         id: "t7-1-d2",
         noteId: "t7-1",
-        kind: "mcq",
+        kind: "structured",
         difficulty: 2,
+        marks: 5,
         stem:
-          "A wave has frequency 50 Hz and wavelength 0.80 m. What is the wave speed?",
-        options: [
-          { id: "A", text: "40 m s^-1" },
-          { id: "B", text: "62.5 m s^-1" },
-          { id: "C", text: "49.2 m s^-1" },
-          { id: "D", text: "0.016 m s^-1" },
+          "On a CRO display, one complete cycle of a signal occupies 4.0 horizontal divisions and the peak-to-peak height is 6.0 vertical divisions.\nTime-base setting is 2.0 ms div⁻¹ and y-gain is 0.50 V div⁻¹.\nDetermine (a) the period, (b) the frequency, and (c) the peak voltage.",
+        modelAnswerPoints: [
+          "(a) Period T = (4.0 divisions)(2.0 ms div⁻¹) = 8.0 ms = 8.0 × 10⁻³ s.",
+          "(b) Frequency f = 1/T = 1/(8.0 × 10⁻³ s) = 125 Hz.",
+          "(c) Peak-to-peak voltage V_pp = (6.0 divisions)(0.50 V div⁻¹) = 3.0 V.",
+          "Peak voltage V_0 = V_pp / 2 = 3.0 V / 2 = 1.5 V.",
         ],
-        correctOptionId: "A",
-        explanation: "Use v = f lambda = 50 x 0.80 = 40 m s^-1.",
-        distractorRationale: {
-          B: "This corresponds to incorrect division by wavelength.",
-          C: "This comes from mixing with g-style constants.",
-          D: "This is inverse-style arithmetic (lambda/f).",
-        },
-        tags: ["wave-equation", "calculation", "units"],
+        workedSolution: [
+          "Horizontal scale gives time: multiply divisions by time-base setting for period.",
+          "Frequency is the reciprocal of period in seconds.",
+          "Vertical scale gives peak-to-peak voltage from divisions times y-gain; amplitude is half of peak-to-peak for a symmetric trace.",
+        ],
+        commonMistake: "Using peak-to-peak voltage as the peak amplitude without dividing by 2.",
+        tags: ["cro", "time-base", "y-gain", "frequency-amplitude"],
       },
       {
         id: "t7-1-d3",
@@ -65,7 +64,6 @@ export const PHYSICS_TOPIC7_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation:
           "Progressive waves transfer energy through the medium while particles execute oscillatory motion around fixed equilibrium positions.",
         distractorRationale: {
-          B: "Correct distinction between energy transfer and local oscillation.",
           C: "Bulk matter transport does not occur in ideal wave propagation.",
           D: "Particles do oscillate; they are not fixed.",
         },
@@ -340,7 +338,6 @@ export const PHYSICS_TOPIC7_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation:
           "Sound in air propagates by compressions and rarefactions with particle oscillation parallel to propagation.",
         distractorRationale: {
-          B: "Correct: standard example of a longitudinal mechanical wave.",
           C: "Light is electromagnetic and transverse.",
           D: "String waves are transverse under normal conditions.",
         },
@@ -364,7 +361,6 @@ export const PHYSICS_TOPIC7_PRACTICE: Record<string, SubtopicPracticePack> = {
           "The defining feature of a transverse wave is displacement perpendicular to propagation direction.",
         distractorRationale: {
           B: "Oscillation has a definite direction, not random orientation.",
-          C: "Correct definition of transverse behaviour.",
           D: "Circular motion is not a required property.",
         },
         tags: ["transverse", "definitions", "particle-motion"],
@@ -387,7 +383,6 @@ export const PHYSICS_TOPIC7_PRACTICE: Record<string, SubtopicPracticePack> = {
           "Real surface water waves involve complex particle paths, with both up-down and back-forth components.",
         distractorRationale: {
           B: "Not purely longitudinal at the surface.",
-          C: "Best approximation statement for surface waves.",
           D: "Water waves require a medium, so they are mechanical.",
         },
         tags: ["wave-models", "surface-waves", "conceptual-accuracy"],
@@ -658,7 +653,6 @@ export const PHYSICS_TOPIC7_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation:
           "Doppler effect is a perceived frequency change caused by relative motion between source and observer in a medium.",
         distractorRationale: {
-          B: "Correct definition of Doppler effect.",
           C: "Diffraction affects spread, not the Doppler definition.",
           D: "Harmonics are unrelated to Doppler mechanism.",
         },
@@ -681,7 +675,6 @@ export const PHYSICS_TOPIC7_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation:
           "Moving source compresses wavefronts ahead of it, reducing wavelength there and increasing observed frequency.",
         distractorRationale: {
-          B: "Correct for approaching source with stationary observer.",
           C: "Wave speed in medium is near constant, but observed frequency can still change.",
           D: "Behind source wavelengths are stretched, giving lower frequency.",
         },
@@ -705,7 +698,6 @@ export const PHYSICS_TOPIC7_PRACTICE: Record<string, SubtopicPracticePack> = {
           "For moving source toward stationary observer: f' = f v/(v - u_s) = 600 x 340/320 = 637.5 Hz.",
         distractorRationale: {
           B: "No-shift value ignores relative motion.",
-          C: "Correct substitution gives about 638 Hz.",
           D: "This arises from using the wrong denominator or observer formula.",
         },
         tags: ["doppler-formula", "moving-source", "numerical"],
@@ -977,7 +969,6 @@ export const PHYSICS_TOPIC7_PRACTICE: Record<string, SubtopicPracticePack> = {
         distractorRationale: {
           B: "Microwaves are much longer wavelength than UV or gamma.",
           C: "UV is shorter than visible but longer than X-rays and gamma.",
-          D: "Correct high-frequency extreme.",
         },
         tags: ["em-spectrum", "ordering", "basics"],
       },
@@ -999,7 +990,6 @@ export const PHYSICS_TOPIC7_PRACTICE: Record<string, SubtopicPracticePack> = {
           "In vacuum all electromagnetic waves propagate at c = 3.00 x 10^8 m s^-1.",
         distractorRationale: {
           B: "Frequency varies across the spectrum.",
-          C: "Correct invariant property in vacuum.",
           D: "Photon energy depends on frequency.",
         },
         tags: ["vacuum-speed", "em-properties"],
@@ -1022,7 +1012,6 @@ export const PHYSICS_TOPIC7_PRACTICE: Record<string, SubtopicPracticePack> = {
           "Visible frequencies are roughly 4.0 x 10^14 to 7.5 x 10^14 Hz, so 9.0 x 10^14 Hz is ultraviolet.",
         distractorRationale: {
           B: "Upper visible range is lower than 9.0 x 10^14 Hz.",
-          C: "Correct region above visible.",
           D: "Microwaves are far lower frequency.",
         },
         tags: ["frequency-ranges", "classification"],
@@ -1294,7 +1283,6 @@ export const PHYSICS_TOPIC7_PRACTICE: Record<string, SubtopicPracticePack> = {
           "Only transverse waves can have oscillations restricted to one plane, which is what polarisation does.",
         distractorRationale: {
           B: "Longitudinal waves cannot be plane-polarised.",
-          C: "Correct statement for polarisation.",
           D: "Sound in air is longitudinal and not polarisable.",
         },
         tags: ["polarisation", "transverse-waves"],
@@ -1316,7 +1304,6 @@ export const PHYSICS_TOPIC7_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation:
           "An ideal polariser transmits one component from randomly oriented planes, giving I = I0/2 for unpolarised incident light.",
         distractorRationale: {
-          B: "Correct intensity change for first ideal polariser.",
           C: "Polariser cannot increase intensity.",
           D: "Quarter occurs with two polarisers at specific relative angle after first halving.",
         },
@@ -1340,7 +1327,6 @@ export const PHYSICS_TOPIC7_PRACTICE: Record<string, SubtopicPracticePack> = {
           "After first polariser, light is plane-polarised. A second analyser at 90 degrees blocks that plane completely.",
         distractorRationale: {
           B: "Quarter would occur at 45 degrees between axes, not 90 degrees.",
-          C: "Correct for crossed ideal polarisers.",
           D: "No transmission increase through crossed pair.",
         },
         tags: ["crossed-polarisers", "intensity", "conceptual"],

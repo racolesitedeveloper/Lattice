@@ -1,33 +1,17 @@
 import { redirect } from "next/navigation";
-import { cache } from "react";
-import { createClient } from "@/lib/supabase/server";
+import { Suspense } from "react";
+import { getAuthProfile, getAuthUser } from "@/lib/auth/session";
+import AppDeferredWidgets from "@/components/app/AppDeferredWidgets";
 import ProfileProvider from "@/components/app/ProfileProvider";
 import AppSidebar from "@/components/app/AppSidebar";
-import NavigationWarmup from "@/components/app/NavigationWarmup";
+import NavigationLoadingGate from "@/components/app/NavigationLoadingGate";
 import StudyStateBridge from "@/components/app/StudyStateBridge";
-import StudyTimeTracker from "@/components/app/StudyTimeTracker";
 import { normalizeBillingPlan } from "@/lib/entitlements";
 import s from "./app.module.css";
 
-const getAppSessionProfile = cache(async () => {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) return { user: null, profile: null };
-
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("onboarding_completed, plan, study_kv")
-    .eq("id", user.id)
-    .single();
-
-  return { user, profile };
-});
-
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
-  const { user, profile } = await getAppSessionProfile();
+  const user = await getAuthUser();
+  const profile = await getAuthProfile();
   if (!user) redirect("/login");
 
   if (!profile?.onboarding_completed) redirect("/onboarding");
@@ -43,9 +27,12 @@ export default async function AppLayout({ children }: { children: React.ReactNod
       <ProfileProvider plan={plan} userEmail={user.email ?? null}>
         <div className={s.shell}>
           <AppSidebar />
-          <NavigationWarmup />
-          <StudyTimeTracker />
-          <div className={s.main}>{children}</div>
+          <AppDeferredWidgets />
+          <div className={s.main}>
+            <Suspense fallback={null}>
+              <NavigationLoadingGate>{children}</NavigationLoadingGate>
+            </Suspense>
+          </div>
         </div>
       </ProfileProvider>
     </StudyStateBridge>

@@ -21,7 +21,6 @@ export const PHYSICS_TOPIC23_PRACTICE: Record<string, SubtopicPracticePack> = {
           "Mass defect is the difference between the sum of separate nucleon masses and the actual mass of the bound nucleus.",
         distractorRationale: {
           B: "Proton and neutron have different masses, but this is not mass defect.",
-          C: "Correct definition linked to nuclear binding.",
           D: "Mass defect applies to all nuclei, not only beta decay processes.",
         },
         tags: ["mass-defect", "definitions", "nuclear-structure"],
@@ -42,7 +41,6 @@ export const PHYSICS_TOPIC23_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation:
           "Einstein's mass-energy relation gives nuclear binding energy as E_b = Delta m c^2.",
         distractorRationale: {
-          B: "Correct mass-energy conversion relation.",
           C: "This has no physical meaning in this context.",
           D: "mgh is gravitational potential energy, unrelated to binding energy.",
         },
@@ -69,7 +67,6 @@ export const PHYSICS_TOPIC23_PRACTICE: Record<string, SubtopicPracticePack> = {
           "Binding energy per nucleon is X = 64/16 = 4.0 MeV and Y = 112/28 = 4.0 MeV, so stability per nucleon is equal.",
         distractorRationale: {
           B: "Incorrect: larger total does not guarantee larger per nucleon.",
-          C: "Correct: equal binding energy per nucleon implies equal stability per nucleon.",
           D: "Charge alone is not the stability criterion used here.",
         },
         tags: ["binding-energy-per-nucleon", "stability", "comparison"],
@@ -340,7 +337,6 @@ export const PHYSICS_TOPIC23_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation:
           "Radioactive decay is a spontaneous and random process in unstable nuclei, unaffected by normal physical conditions.",
         distractorRationale: {
-          B: "Correct statement of randomness and spontaneity.",
           C: "Fusion is a different nuclear process.",
           D: "Decay does not require external triggering.",
         },
@@ -361,7 +357,6 @@ export const PHYSICS_TOPIC23_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "From activity A = lambda N, lambda must have units of per second.",
         distractorRationale: {
-          B: "Correct unit for a probability rate per nucleus.",
           C: "Bq is unit of activity, not decay constant.",
         },
         tags: ["decay-constant", "units", "activity"],
@@ -384,7 +379,6 @@ export const PHYSICS_TOPIC23_PRACTICE: Record<string, SubtopicPracticePack> = {
           "24 h corresponds to 3 half-lives, so remaining fraction is (1/2)^3 = 1/8.",
         distractorRationale: {
           B: "Decay is exponential, not linear in time.",
-          C: "Correct use of repeated halving.",
           D: "Would correspond to 4 half-lives (32 h).",
         },
         tags: ["half-life", "exponential-decay", "fractions"],

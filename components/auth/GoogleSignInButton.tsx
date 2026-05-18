@@ -6,6 +6,8 @@ import s from "./GoogleSignInButton.module.css";
 
 type Props = {
   label?: string;
+  disabled?: boolean;
+  disabledHint?: string;
 };
 
 /** Brand-standard multicolor “G” (24×24 viewBox). */
@@ -37,11 +39,16 @@ function GoogleIcon() {
   );
 }
 
-export default function GoogleSignInButton({ label = "Continue with Google" }: Props) {
+export default function GoogleSignInButton({
+  label = "Continue with Google",
+  disabled = false,
+  disabledHint,
+}: Props) {
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   async function onClick() {
+    if (disabled) return;
     setError(null);
     setPending(true);
     const supabase = createClient();
@@ -69,7 +76,15 @@ export default function GoogleSignInButton({ label = "Continue with Google" }: P
         or
         <span className={s.orLine} />
       </p>
-      <button type="button" className={s.google} onClick={onClick} disabled={pending} aria-busy={pending}>
+      <button
+        type="button"
+        className={s.google}
+        onClick={onClick}
+        disabled={pending || disabled}
+        aria-busy={pending}
+        aria-disabled={pending || disabled}
+        title={disabled && disabledHint ? disabledHint : undefined}
+      >
         <span className={s.googleIcon} aria-hidden>
           <GoogleIcon />
         </span>

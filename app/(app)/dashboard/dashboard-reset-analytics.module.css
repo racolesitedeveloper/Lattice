@@ -1,0 +1,138 @@
+.trigger {
+  margin: 0;
+  padding: 4px var(--sp-2);
+  border: none;
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: var(--fs-label-sm);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: color 120ms ease, background 120ms ease;
+}
+
+.trigger:hover {
+  color: var(--text);
+  background: color-mix(in srgb, var(--hover-fill) 65%, transparent);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  outline-offset: 2px;
+}
+
+.dialog {
+  margin: auto;
+  width: min(100% - var(--sp-6), 440px);
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-panel);
+  color: var(--text);
+  overflow: hidden;
+}
+
+.dialog::backdrop {
+  background: color-mix(in srgb, #0a0c0a 45%, transparent);
+  backdrop-filter: blur(2px);
+}
+
+.inner {
+  padding: var(--sp-5);
+}
+
+.title {
+  margin: 0 0 var(--sp-3);
+  font-size: var(--fs-body-lg);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.body {
+  margin: 0;
+  font-size: var(--fs-label);
+  line-height: var(--lh-relaxed);
+  color: var(--text-muted);
+}
+
+.body ul {
+  margin: var(--sp-3) 0 var(--sp-3);
+  padding-left: 1.15rem;
+}
+
+.body li {
+  margin-bottom: var(--sp-2);
+}
+
+.body li:last-child {
+  margin-bottom: 0;
+}
+
+.warning {
+  margin: var(--sp-4) 0 0;
+  padding: var(--sp-3);
+  border-radius: var(--r-sm);
+  border: 1px solid var(--danger-border);
+  background: var(--danger-bg);
+  color: var(--text);
+  font-size: var(--fs-label-sm);
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--sp-2);
+  margin-top: var(--sp-5);
+}
+
+.btn {
+  min-height: 40px;
+  padding: 0 var(--sp-4);
+  border-radius: var(--r-sm);
+  font-family: inherit;
+  font-size: var(--fs-label);
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 120ms ease,
+    border-color 120ms ease,
+    color 120ms ease,
+    opacity 120ms ease;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.cancelBtn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+}
+
+.cancelBtn:hover:not(:disabled) {
+  background: var(--hover-fill);
+}
+
+.dangerBtn {
+  border: 1px solid var(--danger-border);
+  background: color-mix(in srgb, var(--danger-bg) 88%, var(--danger));
+  color: var(--danger);
+}
+
+.dangerBtn:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--danger-bg) 65%, var(--danger));
+}
+
+.dangerBtn:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--danger) 55%, transparent);
+  outline-offset: 2px;
+}

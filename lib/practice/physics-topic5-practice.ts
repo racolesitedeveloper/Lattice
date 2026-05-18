@@ -21,7 +21,6 @@ export const PHYSICS_TOPIC5_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation:
           "Friction does negative work on the trolley, reducing mechanical energy while transferring energy to thermal stores in surfaces and surroundings.",
         distractorRationale: {
-          B: "Correct: total energy is conserved, but mechanical energy decreases.",
           C: "No height change is described, so gravitational potential energy is not the main store.",
           D: "Energy is not created; it is transferred or transformed.",
         },
@@ -45,7 +44,6 @@ export const PHYSICS_TOPIC5_PRACTICE: Record<string, SubtopicPracticePack> = {
           "Use P = Fv for force parallel to velocity. F = P / v = 1200 / 0.50 = 2400 N.",
         distractorRationale: {
           B: "This treats power numerically as force and ignores division by speed.",
-          C: "Correct substitution with SI units gives 2400 N.",
           D: "This overestimates by mismanaging decimal division.",
         },
         tags: ["power", "p-equals-fv", "steady-speed"],
@@ -67,7 +65,6 @@ export const PHYSICS_TOPIC5_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation:
           "Efficiency = useful output / input = 630 / 900 = 0.70. This is equivalent to 70%.",
         distractorRationale: {
-          B: "Correct decimal form of efficiency.",
           C: "Efficiency cannot exceed 1 for real machines.",
           D: "Numerically equivalent but question asks in decimal form.",
         },
@@ -360,7 +357,6 @@ export const PHYSICS_TOPIC5_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "The standard AS/A Level relation is E_k = (1/2)mv^2.",
         distractorRationale: {
-          B: "Correct formula with the required factor of 1/2.",
           C: "This is gravitational potential-energy change near Earth.",
           D: "Dimensionally incorrect for energy.",
         },
@@ -383,7 +379,6 @@ export const PHYSICS_TOPIC5_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation: "Delta E_p = mgh = 2.0 x 9.81 x 3.0 = 58.86 J.",
         distractorRationale: {
           B: "Uses m = 1 kg effectively, missing mass factor.",
-          C: "Correct substitution and arithmetic.",
           D: "Likely from multiplying by 5 instead of 3 or other over-scaling.",
         },
         tags: ["gravitational-potential-energy", "calculation"],
@@ -406,7 +401,6 @@ export const PHYSICS_TOPIC5_PRACTICE: Record<string, SubtopicPracticePack> = {
           "From mgh = (1/2)mv^2, mass cancels to give v = sqrt(2gh).",
         distractorRationale: {
           B: "Missing factor of 2 from energy equation rearrangement.",
-          C: "Correct derivation from conservation of mechanical energy.",
           D: "At impact (ideal), KE gain equals mgh, not half of it.",
         },
         tags: ["free-fall", "energy-conversion", "derive-speed"],

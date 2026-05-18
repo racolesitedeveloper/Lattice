@@ -5,13 +5,15 @@
   "scripts": {
     "dev": "next dev",
     "dev:lan": "node scripts/dev-lan.mjs",
-    "dev:clean": "node -e \"require('fs').rmSync('.next',{recursive:true,force:true})\" && next dev",
+    "dev:clean": "node scripts/dev-clean.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "fetch:9702-syllabus-pdf": "node scripts/fetch-9702-syllabus-pdf.mjs",
     "fetch:9701-syllabus-pdf": "node scripts/fetch-9701-syllabus-pdf.mjs",
-    "fetch:9700-syllabus-pdf": "node scripts/fetch-9700-syllabus-pdf.mjs"
+    "fetch:9700-syllabus-pdf": "node scripts/fetch-9700-syllabus-pdf.mjs",
+    "fetch:hero-loop": "node scripts/fetch-hero-loop.mjs",
+    "test:analytics": "npx tsx --test lib/exam-session.test.ts lib/study-analytics.test.ts lib/study-kv-merge.test.ts"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",

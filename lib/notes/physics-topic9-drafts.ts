@@ -218,7 +218,7 @@ export const PHYSICS_TOPIC9_DRAFTS: Record<string, NoteDraft> = {
         id: "t9-2-ex3",
         title: "Choosing equivalent power form",
         problem: [
-          "A resistor has resistance 15 ohm and current 0.40 A. Calculate power dissipated using a suitable formula, then verify with an equivalent form.",
+          "A resistor has resistance 15 Ω and current 0.40 A. Calculate power dissipated using a suitable formula, then verify with an equivalent form.",
         ],
         solution: [
           "Given I and R directly, use P = I²R.",
@@ -279,7 +279,7 @@ export const PHYSICS_TOPIC9_DRAFTS: Record<string, NoteDraft> = {
         id: "resistance-ohms-law-core",
         title: "Resistance and Ohm's law",
         paragraphs: [
-          "Resistance of a component is defined by the ratio R = V/I for that component at a stated condition. SI unit: ohm (ohm), where 1 ohm = 1 V A⁻¹.",
+          "Resistance of a component is defined by the ratio R = V/I for that component at a stated condition. SI unit: ohm (Ω), where 1 Ω = 1 V A⁻¹.",
           "Ohm's law states that current through a metallic conductor is directly proportional to p.d. across it, provided physical conditions such as temperature remain constant.",
           "For ohmic conductors at constant temperature, V = IR and the I-V graph is a straight line through the origin (for I plotted against V, constant gradient 1/R).",
         ],
@@ -308,7 +308,7 @@ export const PHYSICS_TOPIC9_DRAFTS: Record<string, NoteDraft> = {
         title: "Resistivity and the relation R = rho L/A",
         paragraphs: [
           "Resistivity rho is a material property that links resistance to geometry: R = rho L/A for a uniform conductor of length L and cross-sectional area A.",
-          "Rearrangements are rho = RA/L and A = rho L/R. Resistivity unit is ohm m.",
+          "Rearrangements are rho = RA/L and A = rho L/R. Resistivity unit is Ω m.",
           "For a given material at fixed temperature, increasing length increases resistance proportionally, while increasing cross-sectional area reduces resistance inversely.",
           "The equation applies to uniform conductors; if area or material changes along length, piecewise or integral treatment is needed beyond basic AS problems.",
         ],
@@ -334,21 +334,21 @@ export const PHYSICS_TOPIC9_DRAFTS: Record<string, NoteDraft> = {
         ],
         solution: [
           "Use R = V/I.",
-          "R = 9.0/0.30 = 30 ohm.",
-          "Resistance is 30 ohm.",
+          "R = 9.0/0.30 = 30 Ω.",
+          "Resistance is 30 Ω.",
         ],
       },
       {
         id: "t9-3-ex2",
         title: "Using resistivity relation for a wire",
         problem: [
-          "A wire has resistivity 1.7 x 10⁻⁸ ohm m, length 2.0 m, and cross-sectional area 3.0 x 10⁻⁷ m². Find its resistance.",
+          "A wire has resistivity 1.7 x 10⁻⁸ Ω m, length 2.0 m, and cross-sectional area 3.0 x 10⁻⁷ m². Find its resistance.",
         ],
         solution: [
           "Use R = rho L/A.",
           "R = (1.7 x 10⁻⁸ x 2.0) / (3.0 x 10⁻⁷).",
-          "R = 1.13 x 10⁻¹ ohm.",
-          "Resistance is 0.11 ohm (2 s.f.).",
+          "R = 1.13 x 10⁻¹ Ω.",
+          "Resistance is 0.11 Ω (2 s.f.).",
         ],
       },
       {
@@ -358,9 +358,9 @@ export const PHYSICS_TOPIC9_DRAFTS: Record<string, NoteDraft> = {
           "A filament lamp has p.d. changed from 2.0 V to 6.0 V. Current changes from 0.40 A to 0.90 A. Show that resistance has increased and explain physically.",
         ],
         solution: [
-          "Initial resistance R1 = V/I = 2.0/0.40 = 5.0 ohm.",
-          "Later resistance R2 = 6.0/0.90 = 6.7 ohm (2 s.f.).",
-          "Resistance has increased from 5.0 ohm to about 6.7 ohm.",
+          "Initial resistance R1 = V/I = 2.0/0.40 = 5.0 Ω.",
+          "Later resistance R2 = 6.0/0.90 = 6.7 Ω (2 s.f.).",
+          "Resistance has increased from 5.0 Ω to about 6.7 Ω.",
           "As current increases, filament temperature rises; increased lattice vibrations increase electron scattering, so resistance rises.",
         ],
       },
@@ -378,7 +378,7 @@ export const PHYSICS_TOPIC9_DRAFTS: Record<string, NoteDraft> = {
         id: "t9-3-st2",
         question:
           "A component has V = 4.5 V and I = 0.15 A. Find its resistance.",
-        modelAnswer: ["R = V/I = 4.5/0.15 = 30 ohm."],
+        modelAnswer: ["R = V/I = 4.5/0.15 = 30 Ω."],
       },
       {
         id: "t9-3-st3",
@@ -402,10 +402,10 @@ export const PHYSICS_TOPIC9_DRAFTS: Record<string, NoteDraft> = {
       {
         id: "t9-3-st5",
         question:
-          "A uniform wire has resistance 8.0 ohm, length 1.6 m and area 2.0 x 10⁻⁷ m². Calculate resistivity.",
+          "A uniform wire has resistance 8.0 Ω, length 1.6 m and area 2.0 x 10⁻⁷ m². Calculate resistivity.",
         modelAnswer: [
           "Use rho = RA/L.",
-          "rho = (8.0 x 2.0 x 10⁻⁷)/1.6 = 1.0 x 10⁻⁶ ohm m.",
+          "rho = (8.0 x 2.0 x 10⁻⁷)/1.6 = 1.0 x 10⁻⁶ Ω m.",
         ],
       },
     ],

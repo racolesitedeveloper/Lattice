@@ -10,13 +10,9 @@ import type { SubtopicPracticePack } from "./types";
  * aerobic vs anaerobic energy yield; d10 rice adaptations + respirometers and redox indicators
  * (DCPIP, methylene blue) with yeast.
  *
- * **`t12-1` (Energy)** — The repository extract `biology-9700-learning-outcomes.md` lists **§12.2
- * only** under Topic 12 (**§12.1 is missing** from the extract). This pack is authored against
- * **standard 9700 Topic 12.1** (ATP as a universal energy currency, ADP + Pi, phosphorylation
- * and hydrolysis, and high-level energy transfers in metabolism) until the markdown is backfilled.
- * Crosswalk: d1–d2 energy currency/ADP–ATP; d3–d4 hydrolysis, phosphorylation, coupling; d5
- * catabolism vs anabolism; d6 photosynthesis, respiration, and transfers; d7 why ATP; d8–d9 MCQ;
- * d10 synoptic “energy in metabolism”.
+ * **`t12-1` (Energy)** — Crosswalk to `biology-9700-learning-outcomes.md` §12.1: d1–d2 need for energy / ATP
+ * features; d3 ATP synthesis routes; d4 substrate energy values; d5–d6 RQ definition and calculation; d7
+ * respirometer RQ practical; d8–d10 consolidation and MCQs.
  */
 export const BIOLOGY_TOPIC12_PRACTICE: Record<string, SubtopicPracticePack> = {
   "t12-1": {

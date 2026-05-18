@@ -122,8 +122,8 @@ export const CHEMISTRY_TOPIC33_DRAFTS: Record<string, NoteDraft> = {
         question:
           "Which two carboxylic acids in this topic can be further oxidised readily, and what is the common oxidation product?",
         modelAnswer: [
-          "Methanoic acid and ethanedioic acid are readily oxidised further.",
-          "Both give carbon dioxide (with water also formed where hydrogen is present).",
+          "CH₃COCl + CH₃CH₂OH → CH₃COOCH₂CH₃ + HCl.",
+          "Acyl chloride reacts vigorously with alcohol to form an ester and hydrogen chloride.",
         ],
       },
       {
@@ -131,9 +131,8 @@ export const CHEMISTRY_TOPIC33_DRAFTS: Record<string, NoteDraft> = {
         question:
           "Explain the acidity order carboxylic acids > phenols > alcohols in terms of conjugate-base stability.",
         modelAnswer: [
-          "Carboxylate conjugate bases are most stabilised by resonance over two oxygen atoms, so carboxylic acids are strongest.",
-          "Phenoxide ions are resonance-stabilised but less effectively, so phenols are intermediate.",
-          "Alkoxide ions are least stabilised because charge is more localised, so alcohols are weakest acids.",
+          "CH₃CH₂COCl + NH₃ → CH₃CH₂CONH₂ + HCl.",
+          "Acyl chloride reacts with ammonia to form a primary amide and HCl.",
         ],
       },
       {

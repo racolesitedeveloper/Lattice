@@ -21,7 +21,6 @@ export const PHYSICS_TOPIC17_PRACTICE: Record<string, SubtopicPracticePack> = {
           "In SHM, acceleration (or restoring force) is directly proportional to displacement from equilibrium and opposite in direction.",
         distractorRationale: {
           B: "Direction relative to velocity is not the defining condition.",
-          C: "Correct SHM condition.",
           D: "Displacement varies sinusoidally, not linearly, with time.",
         },
         tags: ["shm", "definition", "restoring-force"],
@@ -41,7 +40,6 @@ export const PHYSICS_TOPIC17_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Angular frequency and period are related by w = 2pi/T, so T = 2pi/w.",
         distractorRationale: {
-          B: "Correct rearrangement of w = 2pi/T.",
           C: "This is reciprocal of the correct relation.",
           D: "Missing factor 2pi.",
         },
@@ -63,7 +61,6 @@ export const PHYSICS_TOPIC17_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation: "Since a = -w^2x, acceleration is in antiphase with displacement.",
         distractorRationale: {
           B: "pi/2 rad applies between displacement and velocity.",
-          C: "Correct antiphase relation.",
           D: "Equivalent to -pi/2 for cyclic phase, not displacement-acceleration pair.",
         },
         tags: ["phase", "acceleration", "shm-relations"],
@@ -334,7 +331,6 @@ export const PHYSICS_TOPIC17_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Speed is maximum at equilibrium, so kinetic energy is maximum there.",
         distractorRationale: {
-          B: "Correct: v is largest at x = 0.",
           C: "At extremes, speed is zero so KE is zero.",
           D: "Total energy is constant, but KE and PE vary during the cycle.",
         },
@@ -356,7 +352,6 @@ export const PHYSICS_TOPIC17_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation: "At amplitude x = A, all energy is elastic potential, E = (1/2)kA^2.",
         distractorRationale: {
           B: "Missing square on amplitude.",
-          C: "Correct expression for total energy.",
           D: "Kinetic energy requires v^2 and is not total energy at all times.",
         },
         tags: ["total-energy", "spring", "equations"],
@@ -377,7 +372,6 @@ export const PHYSICS_TOPIC17_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation: "Without dissipative forces, energy continually exchanges between KE and PE while total remains constant.",
         distractorRationale: {
           B: "They are equal only at specific displacements, not always.",
-          C: "Correct conservation statement.",
           D: "At equilibrium, KE is maximal, so total is not zero.",
         },
         tags: ["energy-conservation", "shm", "conceptual"],
@@ -650,7 +644,6 @@ export const PHYSICS_TOPIC17_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation: "Damping removes mechanical energy from the oscillator, causing amplitude decay.",
         distractorRationale: {
           B: "Constant amplitude requires negligible damping.",
-          C: "Correct effect of dissipative forces.",
           D: "No such general behavior applies to simple damping.",
         },
         tags: ["damping", "amplitude", "energy-loss"],
@@ -691,7 +684,6 @@ export const PHYSICS_TOPIC17_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Damping reduces peak amplitude and widens the frequency response around resonance.",
         distractorRationale: {
-          B: "Correct trend for damped driven systems.",
           C: "Damping strongly affects amplitude response.",
           D: "Resonance remains near natural frequency, not generally doubled.",
         },

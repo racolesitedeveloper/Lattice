@@ -137,7 +137,8 @@ export const CHEMISTRY_TOPIC13_DRAFTS: Record<string, NoteDraft> = {
         question:
           "A molecule has molecular formula C4H8O2 and is known to be a straight-chain carboxylic acid. Give its systematic name.",
         modelAnswer: [
-          "A straight-chain C4 carboxylic acid is butanoic acid.",
+          "Ethyl propanoate is the ester from ethanol and propanoic acid: CH₃CH₂COOCH₂CH₃.",
+          "Name as alkyl alkanoate: ethyl from the alcohol residue, propanoate from the acid chain.",
         ],
       },
       {

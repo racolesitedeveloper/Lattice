@@ -7,12 +7,9 @@ import type { SubtopicPracticePack } from "./types";
  * d1–d3 penicillin / bacterial cell wall vs viruses; d4–d7 resistance, consequences, mitigation;
  * d8–d10 consolidate mechanism and exam technique (MCQs + discussion).
  *
- * **`t10-1` (Infectious diseases)** — The repository extract `biology-9700-learning-outcomes.md` lists **§10.2
- * only** under Topic 10 (**§10.1 is missing** from the extract). This pack is authored against **standard
- * 9700 Topic 10.1** (pathogens, transmission, named diseases and agents, HIV outline, social/economic
- * discussion). Crosswalk: d1 definitions; d2 transmission routes; d3 cholera / Vibrio; d4 TB /
- * Mycobacterium; d5 malaria / Plasmodium; d6 HIV; d7 social/economic factors; d8–d10 application /
- * comparison / MCQs.
+ * **`t10-1` (Infectious diseases)** — Crosswalk to `biology-9700-learning-outcomes.md` §10.1: d1 pathogens /
+ * transmissibility; d2 named pathogens (cholera, malaria, TB, HIV); d3 transmission; d4–d6 disease detail;
+ * d7 prevention/control factors; d8–d10 application / comparison / MCQs.
  */
 export const BIOLOGY_TOPIC10_PRACTICE: Record<string, SubtopicPracticePack> = {
   "t10-1": {

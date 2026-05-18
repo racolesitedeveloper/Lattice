@@ -113,8 +113,8 @@ export const CHEMISTRY_TOPIC19_DRAFTS: Record<string, NoteDraft> = {
         question:
           "Why is ammonia used in ethanol and heated under pressure rather than simply using dilute aqueous ammonia at room temperature?",
         modelAnswer: [
-          "Ethanolic, heated, pressurised conditions promote nucleophilic substitution of halogenoalkanes and keep NH3 available in the reaction mixture.",
-          "Mild aqueous conditions are much less effective for the required preparation route.",
+          "CH₃CH₂Cl + 2NH₃ → CH₃CH₂NH₂ + NH₄Cl under ethanol solvent, heat, and pressure.",
+          "The halogenoalkane undergoes nucleophilic substitution by ammonia to form a primary amine.",
         ],
       },
       {
@@ -122,7 +122,8 @@ export const CHEMISTRY_TOPIC19_DRAFTS: Record<string, NoteDraft> = {
         question:
           "Explain briefly why excess ammonia improves yield of primary amine.",
         modelAnswer: [
-          "Excess NH3 reduces further substitution of the first-formed amine by making NH3 the more likely nucleophile in collisions with halogenoalkane, so over-alkylation is suppressed.",
+          "The carbon chain length is unchanged: three carbons in 1-chloropropane and three in propylamine.",
+          "Only the functional group at the end of the chain is replaced (Cl → NH₂).",
         ],
       },
       {

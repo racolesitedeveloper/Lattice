@@ -1,45 +1,30 @@
 import Link from "next/link";
+import LegalDocument from "@/components/legal/LegalDocument";
+import { getLegalOperator } from "@/lib/legal/operator";
+import { getPrivacySections, PRIVACY_EFFECTIVE_DATE } from "@/lib/legal/privacy";
 import s from "../legal.module.css";
 
 export const metadata = {
-  title: "Privacy Policy - Lattice",
+  title: "Privacy Policy — Lattice",
+  description:
+    "How Lattice collects, uses, and protects personal data under Botswana's Data Protection Act 18 of 2024.",
 };
 
 export default function PrivacyPage() {
+  const operator = getLegalOperator();
+  const sections = getPrivacySections(operator);
+
   return (
     <main className={s.page}>
-      <article className={s.article}>
-        <Link href="/" className={s.backLink}>
-          Back to Lattice
-        </Link>
-        <h1 className={s.heading}>Privacy Policy</h1>
-
-        <section className={s.section}>
-          <h2>What we collect</h2>
-          <p>
-            Lattice stores account details needed to sign you in, your billing plan, and onboarding
-            preferences such as selected subjects and exam period.
-          </p>
-        </section>
-
-        <section className={s.section}>
-          <h2>Study data</h2>
-          <p>
-            When you are signed in, practice progress (including mixed drills), study time, recent
-            activity, and archived mistakes are stored in your Lattice account and sync across your
-            devices. A copy is also kept in your browser for responsiveness; clearing site data on
-            a device may remove that local copy until the next sync.
-          </p>
-        </section>
-
-        <section className={s.section}>
-          <h2>Payments</h2>
-          <p>
-            Payments are handled by PayPal. Lattice stores PayPal identifiers and subscription status
-            so the app can unlock the correct plan.
-          </p>
-        </section>
-      </article>
+      <Link href="/" className={s.backLink}>
+        Back to Lattice
+      </Link>
+      <LegalDocument
+        title="Privacy Policy"
+        effectiveDate={PRIVACY_EFFECTIVE_DATE}
+        intro={`${operator.tradingName} is committed to protecting your privacy. This Policy describes our practices as a data controller under Botswana law and how you can exercise your rights.`}
+        sections={sections}
+      />
     </main>
   );
 }

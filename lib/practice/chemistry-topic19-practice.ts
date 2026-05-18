@@ -167,7 +167,6 @@ export const CHEMISTRY_TOPIC19_PRACTICE: Record<string, SubtopicPracticePack> = 
           "Ammonia's lone pair attacks the partially positive carbon of the C-Br bond; NH4+ is not the nucleophile here.",
         distractorRationale: {
           A: "Ammonium has no lone pair available for nucleophilic attack in the same way.",
-          B: "Neutral NH3 supplies the lone pair that attacks the carbon bearing halogen.",
           C: "Bromine leaves as Br-; a positive bromine electrophile is not the syllabus story for this substitution.",
           D: "Hydroxide is not the stated reagent for this preparation route.",
         },

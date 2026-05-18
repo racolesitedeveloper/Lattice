@@ -3,22 +3,16 @@ import type { SubtopicPracticePack } from "./types";
 /**
  * 9700 Topic 14 — subtopics `t14-1` (14.1 Homeostasis in mammals) and `t14-2` (14.2 Homeostasis in plants).
  *
- * **`t14-1` — partial LO extract** — `data/syllabus/biology-9700-learning-outcomes.md` lists **14.1 as
- * “continued” only** (glucagon/cAMP signalling; insulin/glucagon negative feedback; glucose test strips).
- * Earlier 14.1 outcomes are **not present** in that markdown extract. This pack therefore **adds standard
- * opening 9700 mammalian homeostasis material** (definition, thermoregulation, osmoregulation with ADH and a
- * kidney outline) so the session matches typical pre-“continued” expectations, while **prioritising** the
- * bullets that *are* in the file. Nephron ultrafiltration detail is **not** required here unless your
- * teaching notes extend Topic 14.1 that far.
- *
- * **`t14-1` crosswalk (file bullets + expanded scope)**:
- * - Homeostasis / internal environment → t14-1-d1, t14-1-f1
- * - Thermoregulation (behavioural/physiological outline) → t14-1-d2, t14-1-f2
- * - Osmoregulation: ADH, collecting duct water permeability → t14-1-d3, t14-1-f3
- * - Negative feedback: blood glucose; insulin (muscle, liver); glucagon (liver) → t14-1-d4, t14-1-d5, t14-1-f4, t14-1-f5
- * - Glucagon cell signalling: receptor, G-protein, adenylyl cyclase, cAMP, PKA, cascade, amplification, glycogen breakdown → t14-1-d6, t14-1-d7, t14-1-f6
- * - Glucose test strips / biosensors: glucose oxidase, peroxidase → t14-1-d8, t14-1-f7
+ * **`t14-1` crosswalk** (`biology-9700-learning-outcomes.md` §14.1 and §14.1 continued):
+ * - Homeostasis definition / internal environment (§14.1 LO 1) → t14-1-d1, t14-1-f1
+ * - Principles: stimuli, receptors, coordination, effectors, negative feedback (§14.1 LO 2) → woven into d1, d4
+ * - ADH / aquaporins / collecting duct osmoregulation (§14.1 LO 8) → t14-1-d3, t14-1-f3
+ * - Insulin and glucagon negative feedback (§14.1 continued LO 10) → t14-1-d4, t14-1-d5, t14-1-f4, t14-1-f5
+ * - Glucagon cAMP cascade (§14.1 continued LO 9) → t14-1-d6, t14-1-d7, t14-1-f6
+ * - Glucose test strips / biosensors (§14.1 continued LO 11) → t14-1-d8, t14-1-f7
  * - Application / MCQ consolidation → t14-1-d9, t14-1-d10, t14-1-f8–f10
+ * - t14-1-d2 thermoregulation is teaching enrichment (not a numbered §14.1 bullet in the syllabus extract).
+ * - §14.1 LO 3–7 (urea, kidney macrostructure, nephron parts, ultrafiltration, PCT structure) — add dedicated drills when revising this pack.
  *
  * **`t14-2` crosswalk** (`biology-9700-learning-outcomes.md` 14.2):
  * - Stomata: environmental response; CO_2 uptake vs water loss → t14-2-d1, t14-2-f1

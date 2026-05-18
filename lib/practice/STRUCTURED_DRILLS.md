@@ -65,13 +65,7 @@ Use the right file for the course you are authoring:
 | Physics 9702 | `data/syllabus/physics-9702-learning-outcomes.md` | `data/courses/physics-9702.json` |
 | Biology 9700 | `data/syllabus/biology-9700-learning-outcomes.md` | `data/courses/biology-9700.json` |
 
-**Biology 9700 — extract gap (`t10-1`)** — The internal learning-outcomes file currently lists **§10.2 only** under Topic 10; **§10.1 (Infectious diseases)** bullets are **not present** in that extract. The **`t10-1`** practice pack in `lib/practice/biology-topic10-practice.ts` is therefore authored from **standard 9700 Topic 10.1** until the markdown extract is backfilled; use the pack’s header comment for the drill crosswalk, not a §10.1 slice in `biology-9700-learning-outcomes.md`.
-
-**Biology 9700 — extract gap (`t12-1`)** — The repository extract `biology-9700-learning-outcomes.md` currently lists **§12.2 only** under Topic 12 (**§12.1 (Energy) is not present** in that extract). The **`t12-1`** practice pack in `lib/practice/biology-topic12-practice.ts` is therefore authored from **standard 9700 Topic 12.1** (ATP as a universal energy currency, ADP/ATP interconversion, high-level energy transfers in metabolism) until the markdown is backfilled; use the pack’s header comment, not a §12.1 slice in `biology-9700-learning-outcomes.md`.
-
-**Biology 9700 — extract gap (`t11-1`)** — Topic 11 in the extract jumps to **§11.2**; **§11.1 (The immune system)** bullets are not present. The **`t11-1`** pack in `lib/practice/biology-topic11-practice.ts` is authored from **standard 9700 Topic 11.1** until the markdown is backfilled.
-
-**Biology 9700 — extract gap (`t14-1`)** — The extract shows **§14.1** only as a **“continued”** block (glucagon/cAMP cascade, insulin/glucagon feedback, biosensors). The **`t14-1`** pack in `lib/practice/biology-topic14-practice.ts` adds typical **14.1** framing (e.g. homeostasis, thermoregulation, ADH/osmoregulation outline) **plus** those bullets; confirm wording against the official PDF when teaching.
+**Biology 9700 — coverage source** — `biology-9700-learning-outcomes.md` now includes **§9.1**, **§10.1**, **§11.1**, **§12.1**, and the full **§14.1** block (opening outcomes plus **§14.1 continued**). When authoring or revising packs for `t9-1`, `t10-1`, `t11-1`, `t12-1`, or `t14-1`, crosswalk drills to those subtopic slices in the markdown file (and the pack header comment). Confirm A Level–only wording against the official PDF where bold markers may be lost in the extract.
 
 **Chemistry (topics 1–10 in active development)** — When building or revising packs, **satisfy the “Locked standard” section above** first. In addition, keep a healthy **question-type mix** so students do not only see one format: in practice, most subtopics will include **several** clearly **definitional** stems (`Define …`, `State what is meant by …`, etc.) and **enough** calculation / application stems to meet every **quantitative** outcome. Prefer stems that **mirror the subsection** the course JSON lists for that `noteId` (e.g. 2.1, 3.1, 5.1). For definitional items, `modelAnswerPoints` must list **each** distinct mark-bearing idea; `workedSolution` must read as a **coherent** exam answer, not a keyword list.
 
@@ -102,6 +96,6 @@ For `McqDrillQuestion`, put **`distractorRationale` only on wrong options** (key
 
 **Chemistry** `chemistry-topic1-practice.ts` … `chemistry-topic10-practice.ts` and **any new chemistry topics** should be kept aligned with the **locked standard** (full LO coverage, definitions + calculations as required, high-detail `workedSolution`).
 
-**Biology** `biology-topic1-practice.ts` … `biology-topic19-practice.ts` (9700 — full course outline in the app) should meet the same **locked standard**; see the **Biology 9700 — extract gap** notes above for `t9-1`, `t10-1`, `t11-1`, `t12-1`, `t14-1`, and any other subtopics where the internal LO markdown is incomplete.
+**Biology** `biology-topic1-practice.ts` … `biology-topic19-practice.ts` (9700 — full course outline in the app) should meet the same **locked standard**; use `biology-9700-learning-outcomes.md` for LO crosswalks (including `t9-1`, `t10-1`, `t11-1`, `t12-1`, `t14-1`).
 
 **Physics** (`physics-topic*-practice.ts`): apply the same **contract** on every **new** or **heavily edited** file; bring legacy items up to this bar when you touch a pack, not in drive-by rewrites of unrelated subtopics.

@@ -21,11 +21,29 @@
   overflow-y: auto;
 }
 
+.sidebarHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-4);
+  min-width: 0;
+}
+
+.sidebarHead .brand {
+  margin-bottom: 0;
+  flex: 1;
+  min-width: 0;
+}
+
+.mobileTray {
+  display: none;
+}
+
 .brand {
   display: inline-flex;
   text-decoration: none;
   padding: var(--sp-1) var(--sp-2);
-  margin-bottom: var(--sp-4);
 }
 
 .navBlock {
@@ -244,9 +262,22 @@
     border-top: 1px solid color-mix(in srgb, var(--accent) 10%, var(--border));
     background: color-mix(in srgb, var(--bg-sidebar) 92%, var(--surface));
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 56px;
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: var(--sp-1);
     overflow: visible;
+  }
+
+  .sidebarHead {
+    display: none;
+  }
+
+  .mobileTray {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    grid-column: 2;
+    justify-self: end;
+    align-self: center;
   }
 
   .brand,
@@ -281,6 +312,7 @@
     position: relative;
     display: block;
     min-width: 0;
+    flex-shrink: 0;
   }
 
   .mobileMoreSummary {

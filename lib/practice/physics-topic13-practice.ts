@@ -41,7 +41,6 @@ export const PHYSICS_TOPIC13_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation: "Since g = F/m and also acceleration of free fall, both N kg^-1 and m s^-2 are equivalent.",
         distractorRationale: {
           B: "This is valid, but not the only valid equivalent form.",
-          C: "Correct: both unit forms represent the same quantity.",
           D: "J kg^-1 is the unit of gravitational potential.",
         },
         tags: ["units", "equivalence"],
@@ -61,7 +60,6 @@ export const PHYSICS_TOPIC13_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "From g = GM/r^2, increasing distance from Earth's centre causes a small decrease in g.",
         distractorRationale: {
-          B: "Correct trend for increasing altitude.",
           C: "This is opposite to the inverse-square relation.",
           D: "g changes systematically with distance, not randomly.",
         },
@@ -346,7 +344,6 @@ export const PHYSICS_TOPIC13_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation: "From inverse-square law, F proportional 1/r^2, so doubling r gives one quarter force.",
         distractorRationale: {
           B: "This assumes inverse-first-power instead of inverse-square.",
-          C: "Correct inverse-square scaling.",
           D: "Opposite trend to attractive force-distance relation.",
         },
         tags: ["inverse-square", "ratio"],
@@ -367,7 +364,6 @@ export const PHYSICS_TOPIC13_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation: "By Newton's third law, interaction forces are equal and opposite.",
         distractorRationale: {
           B: "Magnitude is equal despite different accelerations.",
-          C: "Correct action-reaction pair statement.",
           D: "Both bodies exert and experience gravitational force.",
         },
         tags: ["newton-third-law", "interaction"],
@@ -495,22 +491,25 @@ export const PHYSICS_TOPIC13_PRACTICE: Record<string, SubtopicPracticePack> = {
         id: "t13-2-d10",
         noteId: "t13-2",
         kind: "structured",
-        difficulty: 5,
-        marks: 7,
-        stem: "A binary system has masses m and 2m separated by distance r.\n(a) Write the gravitational force magnitude.\n(b) Determine ratio of accelerations of m and 2m.\n(c) Explain briefly how momentum conservation is consistent with your result.",
+        difficulty: 4,
+        marks: 5,
+        stem:
+          "Describe the orbit of a geostationary satellite and state two practical uses of such an orbit.",
         modelAnswerPoints: [
-          "Force magnitude is F = G(m)(2m)/r^2 = 2Gm^2/r^2.",
-          "Acceleration of m: a_m = F/m = 2Gm/r^2.",
-          "Acceleration of 2m: a_2m = F/(2m) = Gm/r^2.",
-          "So a_m : a_2m = 2 : 1.",
-          "Equal and opposite interaction forces over same time give equal and opposite momentum changes.",
+          "Orbital period is 24 hours, matching Earth's rotation.",
+          "Satellite remains above the same point on the Earth's surface (fixed longitude).",
+          "Orbit is directly above the Equator, from west to east.",
+          "Uses include weather monitoring and telecommunications relay (accept TV broadcast / global comms).",
+          "Altitude is much greater than for low-Earth orbits so one satellite can cover a large region.",
         ],
         workedSolution: [
-          "Use force expression once, then divide by each mass for accelerations.",
-          "Connect with impulse-momentum idea to explain consistency.",
+          "Geostationary means the satellite's angular speed matches Earth's spin, so ground observers see it stationary overhead.",
+          "The equatorial, prograde orbit is required so the satellite tracks the rotating Earth rather than drifting north-south.",
+          "Because the satellite stays fixed relative to Earth, dish antennas need no tracking and continuous coverage is possible.",
         ],
-        commonMistake: "Giving acceleration ratio as 1:2 because of mass ratio confusion.",
-        tags: ["binary-systems", "ratio", "momentum-link"],
+        commonMistake:
+          "Stating that the satellite is stationary in space rather than co-rotating with Earth at the same angular rate.",
+        tags: ["geostationary-orbit", "satellites", "applications"],
       },
     ],
     flashcards: [
@@ -647,7 +646,6 @@ export const PHYSICS_TOPIC13_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Gravitational interaction is attractive, so field direction is toward the mass.",
         distractorRationale: {
-          B: "Correct direction for attractive field.",
           C: "Tangential direction is velocity direction in orbit, not field direction.",
           D: "Field direction is radial, not globally upward.",
         },
@@ -669,7 +667,6 @@ export const PHYSICS_TOPIC13_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation: "Because g proportional 1/r^2, doubling distance reduces g by factor 4.",
         distractorRationale: {
           B: "This corresponds to inverse-first-power relation.",
-          C: "Correct inverse-square scaling.",
           D: "Field strength clearly depends on distance.",
         },
         tags: ["scaling", "inverse-square"],
@@ -966,7 +963,6 @@ export const PHYSICS_TOPIC13_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Field is the negative gradient of potential; in 1D radial form g = -dV/dr.",
         distractorRationale: {
-          B: "Correct calculus relation between potential and field.",
           C: "Sign is wrong for conservative attractive field.",
           D: "Dimensionally inconsistent.",
         },

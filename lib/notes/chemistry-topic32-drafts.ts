@@ -231,8 +231,8 @@ export const CHEMISTRY_TOPIC32_DRAFTS: Record<string, NoteDraft> = {
         question:
           "State the reagents and temperature condition for converting phenylamine into benzenediazonium salt, then into phenol.",
         modelAnswer: [
-          "Use HNO₂ (or NaNO₂ with dilute acid) below 10 °C to form the diazonium salt from phenylamine.",
-          "Then warm with water to hydrolyse the diazonium salt and produce phenol.",
+          "Ethyl propanoate: ester from ethanol + propanoic acid, structure CH₃CH₂COOCH₂CH₃.",
+          "Systematic name: alkyl (ethyl) alkanoate (propanoate).",
         ],
       },
       {
@@ -240,8 +240,8 @@ export const CHEMISTRY_TOPIC32_DRAFTS: Record<string, NoteDraft> = {
         question:
           "Write one equation showing phenol acting as an acid with (a) NaOH(aq) and (b) Na(s).",
         modelAnswer: [
-          "(a) C₆H₅OH + NaOH → C₆H₅ONa + H₂O.",
-          "(b) 2C₆H₅OH + 2Na → 2C₆H₅ONa + H₂.",
+          "Esterification: CH₃CH₂COOH + CH₃CH₂OH ⇌ CH₃CH₂COOCH₂CH₃ + H₂O with acid catalyst and heat.",
+          "Reaction is reversible; remove water or use excess reagent to improve yield.",
         ],
       },
       {

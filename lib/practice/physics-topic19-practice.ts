@@ -41,7 +41,6 @@ export const PHYSICS_TOPIC19_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation: "Capacitance is measured in farads, F.",
         distractorRationale: {
           B: "Coulomb is charge unit, not capacitance.",
-          C: "Farad is the SI unit for capacitance.",
           D: "Ohm is resistance unit.",
         },
         tags: ["units", "farad", "definitions"],
@@ -61,7 +60,6 @@ export const PHYSICS_TOPIC19_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "From Q = CV, at the same V the larger C stores larger Q.",
         distractorRationale: {
-          B: "Correct because Q is directly proportional to C for fixed V.",
           C: "Equal charge would require equal capacitance at fixed V.",
           D: "Given capacitance already includes geometry effects.",
         },
@@ -319,7 +317,6 @@ export const PHYSICS_TOPIC19_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation: "The standard capacitor energy expression is E = (1/2)CV^2.",
         distractorRationale: {
           B: "QV misses factor of one half.",
-          C: "Correct stored-energy equation.",
           D: "Dimensionally incorrect for energy.",
         },
         tags: ["energy", "formula-recall", "capacitor"],
@@ -339,7 +336,6 @@ export const PHYSICS_TOPIC19_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Equivalent form is E = (1/2)QV.",
         distractorRationale: {
-          B: "Correct equivalent expression.",
           C: "This has units of capacitance, not energy.",
           D: "This has units of inverse capacitance.",
         },
@@ -360,7 +356,6 @@ export const PHYSICS_TOPIC19_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "From E = (1/2)CV^2, doubling V multiplies E by 4.",
         distractorRationale: {
-          B: "Correct because E is proportional to V^2 at fixed C.",
           C: "Opposite trend.",
         },
         tags: ["scaling", "v-squared", "reasoning"],
@@ -617,7 +612,6 @@ export const PHYSICS_TOPIC19_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "In RC discharge, charge follows Q = Q0 exp(-t/RC).",
         distractorRationale: {
-          B: "Correct exponential decay quantity.",
           C: "Resistance is circuit component value, not decaying state variable.",
           D: "Time constant RC is constant for fixed R and C.",
         },
@@ -638,7 +632,6 @@ export const PHYSICS_TOPIC19_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Time constant is tau = RC.",
         distractorRationale: {
-          B: "Correct time constant expression.",
           C: "Inverse gives frequency-like dimension.",
         },
         tags: ["time-constant", "formula", "units"],
@@ -658,7 +651,6 @@ export const PHYSICS_TOPIC19_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "V = V0 exp(-t/RC), so at t = RC, V/V0 = e^-1 about 0.37.",
         distractorRationale: {
-          B: "Correct value e^-1.",
           C: "0.63 corresponds to charging fraction reached after one tau.",
           D: "Would require about 2.3 tau.",
         },

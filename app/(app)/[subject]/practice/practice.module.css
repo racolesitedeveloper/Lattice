@@ -618,6 +618,37 @@
   color: var(--text);
 }
 
+.answerTechnique {
+  margin-top: var(--sp-3);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--border);
+}
+
+.answerTechniqueLabel {
+  margin: 0 0 var(--sp-2);
+  font-size: var(--fs-label-sm);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: color-mix(in srgb, var(--text) 70%, transparent);
+}
+
+.answerTechniqueList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: var(--sp-1);
+}
+
+.answerTechniqueRow {
+  margin: 0;
+  font-size: var(--fs-body);
+  line-height: var(--lh-relaxed);
+  color: color-mix(in srgb, var(--text) 88%, transparent);
+  padding-left: var(--sp-2);
+  border-left: 2px solid color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
 .mistakeBody {
   margin: 0;
   font-size: var(--fs-body);

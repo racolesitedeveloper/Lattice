@@ -4,8 +4,8 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { Trash } from "@phosphor-icons/react";
 import {
-  clearMistakes,
-  readMistakes,
+  clearAllMistakes,
+  readAllMistakes,
   removeMistakeEverywhere,
   type MistakeRecord,
 } from "@/lib/practice/mistakes";
@@ -21,7 +21,7 @@ const SUBJECT_LABELS: Record<string, string> = {
 
 const SUBJECT_ORDER = ["physics", "chemistry", "biology"] as const;
 
-export default function MistakesClient({ subject }: { subject: string }) {
+export default function MistakesClient() {
   const [records, setRecords] = useState<MistakeRecord[]>([]);
   const [hydrated, setHydrated] = useState(false);
   const [expandedIds, setExpandedIds] = useState<Set<string>>(() => new Set());
@@ -37,11 +37,11 @@ export default function MistakesClient({ subject }: { subject: string }) {
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
-      setRecords(readMistakes(subject));
+      setRecords(readAllMistakes());
       setHydrated(true);
     }, 0);
     return () => window.clearTimeout(timer);
-  }, [subject]);
+  }, []);
 
   useEffect(() => {
     if (!hydrated || records.length === 0) return;
@@ -76,11 +76,11 @@ export default function MistakesClient({ subject }: { subject: string }) {
 
   function remove(id: string) {
     removeMistakeEverywhere(id);
-    setRecords(readMistakes(subject));
+    setRecords(readAllMistakes());
   }
 
   function clearAll() {
-    clearMistakes(subject);
+    clearAllMistakes();
     setRecords([]);
   }
 
@@ -108,7 +108,7 @@ export default function MistakesClient({ subject }: { subject: string }) {
         <p className={s.emptyTitle}>No archived mistakes yet</p>
         <p className={s.emptyText}>
           When you miss an MCQ or choose “I need more practice” on a structured question,
-          it will appear here for this subject.
+          it will appear here.
         </p>
       </div>
     );

@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { CaretDown, CaretLeft, CaretRight, CaretUp, LockKey, X } from "@phosphor-icons/react";
+import { CaretDown, CaretRight, CaretUp, LockKey, X } from "@phosphor-icons/react";
 import type { CourseOutline, CourseTopic } from "@/lib/course/types";
 import IntentPrefetchLink from "@/components/app/IntentPrefetchLink";
 import { canAccessNoteId, canAccessTopic, FREE_TOPIC_LIMIT, type BillingPlan } from "@/lib/entitlements";
@@ -162,9 +162,6 @@ export default function PracticeCourseOutline({
     }>
   >([]);
   const [showAllResumes, setShowAllResumes] = useState(false);
-  const resumeStripRef = useRef<HTMLDivElement | null>(null);
-  const [resumeMoreLeft, setResumeMoreLeft] = useState(false);
-  const [resumeMoreRight, setResumeMoreRight] = useState(false);
   const asLast = outline.asLastTopic;
   const availableSetIds = useMemo(() => new Set(publishedNoteIds), [publishedNoteIds]);
   const availableSubtopics = useMemo(
@@ -346,56 +343,6 @@ export default function PracticeCourseOutline({
   }, [resumes, showAllResumes]);
 
   const moreResumeCount = resumes.length > 1 ? resumes.length - 1 : 0;
-  const useResumeScroll = visibleResumes.length > 1;
-  const visibleResumeKeys = useMemo(
-    () => visibleResumes.map((r) => r.storageKey).join("|"),
-    [visibleResumes],
-  );
-
-  useLayoutEffect(() => {
-    if (!useResumeScroll) {
-      const timer = window.setTimeout(() => {
-        setResumeMoreLeft(false);
-        setResumeMoreRight(false);
-      }, 0);
-      return () => window.clearTimeout(timer);
-    }
-    const el = resumeStripRef.current;
-    if (!el) return;
-
-    function update() {
-      const nav = resumeStripRef.current;
-      if (!nav) return;
-      const max = nav.scrollWidth - nav.clientWidth;
-      const eps = 2;
-      if (max <= eps) {
-        setResumeMoreLeft(false);
-        setResumeMoreRight(false);
-        return;
-      }
-      setResumeMoreLeft(nav.scrollLeft > eps);
-      setResumeMoreRight(nav.scrollLeft < max - eps);
-    }
-
-    const frame = window.requestAnimationFrame(update);
-    el.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-    const ro = new ResizeObserver(update);
-    ro.observe(el);
-    return () => {
-      window.cancelAnimationFrame(frame);
-      el.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
-      ro.disconnect();
-    };
-  }, [useResumeScroll, visibleResumeKeys]);
-
-  function scrollResumeStrip(dir: -1 | 1) {
-    const el = resumeStripRef.current;
-    if (!el) return;
-    const delta = Math.max(140, Math.floor(el.clientWidth * 0.45)) * dir;
-    el.scrollBy({ left: delta, behavior: "smooth" });
-  }
 
   return (
     <div className={s.hub}>
@@ -494,92 +441,45 @@ export default function PracticeCourseOutline({
               </button>
             ) : null}
           </div>
-          {useResumeScroll ? (
-            <div className={s.resumeScrollShell}>
-              <span
-                className={`${s.resumeScrollFade} ${s.resumeScrollFadeLeft} ${resumeMoreLeft ? s.resumeScrollFadeOn : ""}`}
-                aria-hidden
-              />
-              <span
-                className={`${s.resumeScrollFade} ${s.resumeScrollFadeRight} ${resumeMoreRight ? s.resumeScrollFadeOn : ""}`}
-                aria-hidden
-              />
-              <button
-                type="button"
-                className={`${s.resumeScrollNudge} ${s.resumeScrollNudgeLeft} ${resumeMoreLeft ? s.resumeScrollNudgeOn : ""}`}
-                disabled={!resumeMoreLeft}
-                aria-label="Scroll drills left"
-                onClick={() => scrollResumeStrip(-1)}
-              >
-                <CaretLeft size={15} weight="regular" aria-hidden />
-              </button>
-              <button
-                type="button"
-                className={`${s.resumeScrollNudge} ${s.resumeScrollNudgeRight} ${resumeMoreRight ? s.resumeScrollNudgeOn : ""}`}
-                disabled={!resumeMoreRight}
-                aria-label="Scroll drills right"
-                onClick={() => scrollResumeStrip(1)}
-              >
-                <CaretRight size={15} weight="regular" aria-hidden />
-              </button>
-              <div
-                ref={resumeStripRef}
-                className={`${s.resumeCardsRow} ${s.resumeCardsRowScroll}`}
-                role="group"
-                aria-label="Unfinished drills — scroll sideways to see more"
-              >
-                {visibleResumes.map((item) => (
-                  <div key={item.storageKey} className={s.resumeCard}>
-                    <p className={s.resumeMeta}>
-                      {item.kind === "mixed" ? "Mixed drill" : "Resume drills"} ·{" "}
-                      <span className={s.resumePosition}>
-                        Q{item.position}/{item.total}
-                      </span>
-                    </p>
-                    <p className={s.resumeTitle}>{item.title}</p>
-                    <p className={s.resumeTopic}>{item.subtitle}</p>
-                    <IntentPrefetchLink href={item.href} className={s.resumeContinueBtn}>
-                      Continue
-                    </IntentPrefetchLink>
-                    <button
-                      type="button"
-                      className={s.resumeDismiss}
-                      onClick={() => dismissResume(item.storageKey)}
-                      aria-label="Remove from in-progress list"
+          <ul className={s.resumeList} aria-label="Unfinished drills">
+            {visibleResumes.map((item) => (
+              <li key={item.storageKey} className={s.resumeRow}>
+                <IntentPrefetchLink href={item.href} className={s.resumeRowLink}>
+                  <span className={s.resumeKind}>
+                    {item.kind === "mixed" ? "Mixed" : "Drill"}
+                  </span>
+                  <span className={s.resumeCopy}>
+                    <strong className={s.resumeTitle}>{item.title}</strong>
+                    <span className={s.resumeTopic}>{item.subtitle}</span>
+                  </span>
+                  <span className={s.resumeAside}>
+                    <span
+                      className={s.resumeProgress}
+                      aria-label={`Question ${item.position} of ${item.total}`}
                     >
-                      <X size={14} weight="regular" aria-hidden />
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ) : (
-            <div className={s.resumeCardsRow}>
-              {visibleResumes.map((item) => (
-                <div key={item.storageKey} className={s.resumeCard}>
-                  <p className={s.resumeMeta}>
-                    {item.kind === "mixed" ? "Mixed drill" : "Resume drills"} ·{" "}
-                    <span className={s.resumePosition}>
-                      Q{item.position}/{item.total}
+                      Q{item.position}
+                      <span className={s.resumeProgressSep} aria-hidden>
+                        /
+                      </span>
+                      {item.total}
                     </span>
-                  </p>
-                  <p className={s.resumeTitle}>{item.title}</p>
-                  <p className={s.resumeTopic}>{item.subtitle}</p>
-                  <IntentPrefetchLink href={item.href} className={s.resumeContinueBtn}>
-                    Continue
-                  </IntentPrefetchLink>
-                  <button
-                    type="button"
-                    className={s.resumeDismiss}
-                    onClick={() => dismissResume(item.storageKey)}
-                    aria-label="Remove from in-progress list"
-                  >
-                    <X size={14} weight="regular" aria-hidden />
-                  </button>
-                </div>
-              ))}
-            </div>
-          )}
+                    <span className={s.resumeContinue}>
+                      Continue
+                      <CaretRight size={13} weight="bold" aria-hidden />
+                    </span>
+                  </span>
+                </IntentPrefetchLink>
+                <button
+                  type="button"
+                  className={s.resumeDismiss}
+                  onClick={() => dismissResume(item.storageKey)}
+                  aria-label={`Remove ${item.title} from in-progress list`}
+                >
+                  <X size={14} weight="regular" aria-hidden />
+                </button>
+              </li>
+            ))}
+          </ul>
         </section>
       ) : null}
       <section className={s.mixedSection}>

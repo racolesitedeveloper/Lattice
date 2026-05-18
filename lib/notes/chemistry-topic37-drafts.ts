@@ -130,7 +130,10 @@ export const CHEMISTRY_TOPIC37_DRAFTS: Record<string, NoteDraft> = {
         id: "t37-1-st4",
         question:
           "A spot travels 2.4 cm and solvent front travels 5.0 cm. Calculate Rf.",
-        modelAnswer: ["Rf = 2.4 / 5.0 = 0.48."],
+        modelAnswer: [
+          "Rf = distance moved by component ÷ distance moved by solvent front.",
+          "Rf = 2.4 cm ÷ 5.0 cm = 0.48 (dimensionless, must be less than 1).",
+        ],
       },
       {
         id: "t37-1-st5",
@@ -405,7 +408,8 @@ export const CHEMISTRY_TOPIC37_DRAFTS: Record<string, NoteDraft> = {
         question:
           "Predict the number of ¹³C peaks for ethane, CH₃CH₃.",
         modelAnswer: [
-          "Ethane gives one ¹³C peak because the two carbons are equivalent.",
+          "Lower Rf means the component spends less time in the mobile phase relative to adsorption on the stationary phase.",
+          "More polar analytes often have lower Rf on silica unless the solvent polarity is increased.",
         ],
       },
       {

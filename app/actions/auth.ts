@@ -54,6 +54,10 @@ export async function signup(
     return { error: "Enter your email and password." };
   }
 
+  if (!acceptedTerms(formData)) {
+    return { error: "Accept the Terms of Service and Privacy Policy to continue." };
+  }
+
   const supabase = await createClient();
 
   const { error } = await supabase.auth.signUp({
@@ -77,4 +81,9 @@ function stringField(formData: FormData, name: string, options?: { trim?: boolea
   const value = formData.get(name);
   if (typeof value !== "string") return "";
   return options?.trim ? value.trim() : value;
+}
+
+function acceptedTerms(formData: FormData): boolean {
+  const value = formData.get("accept_terms");
+  return value === "yes" || value === "on";
 }

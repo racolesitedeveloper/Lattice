@@ -41,7 +41,6 @@ export const PHYSICS_TOPIC18_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation:
           "Closer field lines indicate stronger electric field; crossing is impossible because field direction is unique at each point.",
         distractorRationale: {
-          B: "Correct interpretation of line density in field diagrams.",
           C: "Field lines run from positive to negative, not vice versa.",
           D: "Field lines are conceptual direction maps, not literal particle tracks.",
         },
@@ -332,7 +331,6 @@ export const PHYSICS_TOPIC18_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "For parallel plates with uniform field, potential gradient gives E = V/d.",
         distractorRationale: {
-          B: "Correct relation between p.d. and plate separation.",
           C: "This is reciprocal and has wrong units.",
           D: "Addition has no physical meaning for field strength.",
         },
@@ -375,7 +373,6 @@ export const PHYSICS_TOPIC18_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation: "Electric force is F = qE; for q negative, force and acceleration are opposite the field.",
         distractorRationale: {
           B: "Field exerts force regardless of initial speed.",
-          C: "Correct sign-based direction for electron force.",
           D: "Electric force in uniform electrostatic field is collinear with E.",
         },
         tags: ["charge-sign", "motion", "uniform-field"],
@@ -643,7 +640,6 @@ export const PHYSICS_TOPIC18_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Electrostatic force between point charges follows inverse-square separation dependence.",
         distractorRationale: {
-          B: "Correct Coulomb-law form in vacuum.",
           C: "This inverts the proportionalities incorrectly.",
           D: "Missing 1/(4pi epsilon0) factor and wrong constant form.",
         },
@@ -666,7 +662,6 @@ export const PHYSICS_TOPIC18_PRACTICE: Record<string, SubtopicPracticePack> = {
         distractorRationale: {
           B: "This incorrectly assumes direct proportionality with r.",
           C: "This assumes inverse first power instead of inverse square.",
-          D: "Correct inverse-square scaling.",
         },
         tags: ["inverse-square", "proportionality", "coulomb-law"],
       },
@@ -685,7 +680,6 @@ export const PHYSICS_TOPIC18_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Opposite charges attract, and Coulomb magnitude still obeys inverse-square law.",
         distractorRationale: {
-          B: "Correct direction and distance dependence.",
           C: "Net system charge does not imply zero mutual force.",
           D: "Repulsion applies only to like charges.",
         },
@@ -955,7 +949,6 @@ export const PHYSICS_TOPIC18_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Point-charge field follows inverse-square dependence with distance.",
         distractorRationale: {
-          B: "Correct expression for field magnitude in vacuum.",
           C: "This inverts physical proportionalities.",
           D: "Missing the 1/(4pi epsilon0) factor.",
         },
@@ -977,7 +970,6 @@ export const PHYSICS_TOPIC18_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation: "Field lines emerge outward from positive charges.",
         distractorRationale: {
           B: "Tangential direction would apply to circular motion vectors, not electrostatic fields.",
-          C: "Correct radial direction from a positive point source.",
           D: "Field can be non-zero and constant in magnitude on a sphere of fixed r.",
         },
         tags: ["direction", "field-lines", "positive-charge"],
@@ -998,7 +990,6 @@ export const PHYSICS_TOPIC18_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation: "Because E proportional 1/r^2, tripling r gives E/9.",
         distractorRationale: {
           B: "Not consistent with inverse-square dependence.",
-          C: "Correct scaling from r -> 3r.",
           D: "This reverses the proportionality.",
         },
         tags: ["scaling", "inverse-square", "quick-check"],
@@ -1265,7 +1256,6 @@ export const PHYSICS_TOPIC18_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Electric potential is electric potential energy per unit charge relative to a reference.",
         distractorRationale: {
-          B: "Correct scalar definition of potential.",
           C: "This mixes work and distance, related to force not potential directly.",
           D: "This is reciprocal resistance, unrelated to potential definition.",
         },

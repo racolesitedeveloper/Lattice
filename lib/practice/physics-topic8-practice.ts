@@ -20,7 +20,6 @@ export const PHYSICS_TOPIC8_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation:
           "Stationary waves form when two coherent waves of the same frequency and similar amplitude superpose while traveling oppositely.",
         distractorRationale: {
-          B: "Correct condition for persistent nodes and antinodes.",
           C: "Waves in the same direction produce another progressive wave pattern.",
           D: "Different frequencies do not produce stable stationary nodes.",
         },
@@ -42,7 +41,6 @@ export const PHYSICS_TOPIC8_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation:
           "Node-to-node spacing in a stationary wave is half a wavelength, while node-to-nearest-antinode is quarter wavelength.",
         distractorRationale: {
-          B: "Correct spacing between adjacent nodes or adjacent antinodes.",
           C: "A full wavelength spans every second node, not adjacent ones.",
           D: "This is too large by a factor of four.",
         },
@@ -342,7 +340,6 @@ export const PHYSICS_TOPIC8_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation:
           "Diffraction is the spreading of waves as they pass through apertures or around obstacles.",
         distractorRationale: {
-          B: "Correct definition for wave behavior at openings/edges.",
           C: "Reflection changes direction at a boundary, not spreading from an aperture.",
           D: "Absorption reduces amplitude but is not diffraction.",
         },
@@ -364,7 +361,6 @@ export const PHYSICS_TOPIC8_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation:
           "Strong diffraction occurs when aperture size is comparable to wavelength. If a >> lambda, spreading is small.",
         distractorRationale: {
-          B: "Correct criterion for significant spreading.",
           C: "Wavelength strongly affects diffraction angle.",
           D: "No aperture means no transmitted wave pattern.",
         },
@@ -679,7 +675,6 @@ export const PHYSICS_TOPIC8_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation:
           "Stable fringes require coherence: same frequency and fixed phase relationship over time.",
         distractorRationale: {
-          B: "Correct criterion for a non-drifting pattern.",
           C: "Independent bulbs are not coherent and produce no stable fringes.",
           D: "Equal amplitude alone is insufficient without phase stability.",
         },
@@ -703,7 +698,6 @@ export const PHYSICS_TOPIC8_PRACTICE: Record<string, SubtopicPracticePack> = {
           "Use w = lambda D/a = (6.0 x 10^-7 x 2.0)/(3.0 x 10^-4) = 4.0 x 10^-3 m = 4.0 mm.",
         distractorRationale: {
           B: "This underestimates by factor of two from arithmetic error.",
-          C: "Correct substitution with SI units.",
           D: "This is a tenfold underestimate from unit conversion mistake.",
         },
         tags: ["young-double-slit", "fringe-spacing", "calculation"],
@@ -994,7 +988,6 @@ export const PHYSICS_TOPIC8_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation:
           "For normal incidence and principal maxima from adjacent slits, path difference is d sin theta = m lambda.",
         distractorRationale: {
-          B: "Correct grating condition.",
           C: "Cosine form is not the principal maximum condition.",
         },
         tags: ["equation", "principal-maxima", "notation"],
@@ -1017,7 +1010,6 @@ export const PHYSICS_TOPIC8_PRACTICE: Record<string, SubtopicPracticePack> = {
           "d = 1/(500 x 10^3) = 2.0 x 10^-6 m. Since sin theta <= 1, m <= d/lambda = 2.0 x 10^-6 / 6.0 x 10^-7 = 3.33, so highest integer order is 3.",
         distractorRationale: {
           B: "Second order exists but is not the highest possible.",
-          C: "Correct highest complete integer order.",
           D: "Fourth order would require sin theta > 1, impossible.",
         },
         tags: ["order-limit", "grating-spacing", "constraints"],

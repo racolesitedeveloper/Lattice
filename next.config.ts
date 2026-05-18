@@ -13,9 +13,10 @@ const nextConfig: NextConfig = {
   devIndicators: false,
   ...(devLanHosts.length > 0 ? { allowedDevOrigins: devLanHosts } : {}),
   experimental: {
-    // Reuse recent dynamic navigations client-side (default dynamic stale is 0).
+    optimizePackageImports: ["@phosphor-icons/react", "@phosphor-icons/react/ssr"],
+    // Cache client router payloads briefly so back-navigation stays instant.
     staleTimes: {
-      dynamic: 30,
+      dynamic: 60,
       static: 300,
     },
   },

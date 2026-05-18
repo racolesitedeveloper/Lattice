@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
-import { LockKey, X } from "@phosphor-icons/react";
+import { LockKey, MagnifyingGlass, X } from "@phosphor-icons/react";
 import type { CourseOutline, CourseTopic } from "@/lib/course/types";
 import IntentPrefetchLink from "@/components/app/IntentPrefetchLink";
 import { canAccessTopic, FREE_TOPIC_LIMIT, type BillingPlan } from "@/lib/entitlements";
@@ -61,6 +61,39 @@ function TopicBlock({ topics, subject, plan }: { topics: CourseTopic[]; subject:
   );
 }
 
+function normalizeNotesSearchQuery(raw: string): string {
+  return raw.trim().toLowerCase().replace(/\s+/g, " ");
+}
+
+/** Filter topics: topic title / number hits show all subtopics; else only matching subtopics. */
+function filterTopicsForNotesSearch(topics: CourseTopic[], q: string): CourseTopic[] {
+  if (!q) return topics;
+
+  const out: CourseTopic[] = [];
+  for (const topic of topics) {
+    const numStr = String(topic.number);
+    const topicMatches =
+      topic.title.toLowerCase().includes(q) || numStr.includes(q) || `topic ${numStr}`.includes(q);
+
+    if (topicMatches) {
+      out.push(topic);
+      continue;
+    }
+
+    const subtopics = topic.subtopics.filter(
+      (st) =>
+        st.title.toLowerCase().includes(q) ||
+        st.code.toLowerCase().includes(q) ||
+        st.id.toLowerCase().includes(q),
+    );
+    if (subtopics.length > 0) {
+      out.push({ ...topic, subtopics });
+    }
+  }
+
+  return out;
+}
+
 export default function NotesCourseOutline({
   outline,
   subject,
@@ -71,6 +104,8 @@ export default function NotesCourseOutline({
   plan: BillingPlan;
 }) {
   const pathname = usePathname();
+  const searchFieldId = useId();
+  const [query, setQuery] = useState("");
   const [level, setLevel] = useState<LevelFilter>("all");
   const attributionKey = `${pathname}:${outline.syllabusCode}`;
   const [dismissedAttributionKey, setDismissedAttributionKey] = useState<string | null>(null);
@@ -78,8 +113,26 @@ export default function NotesCourseOutline({
   const asLast = outline.asLastTopic;
   const safeSourceUrl = safeExternalUrl(outline.sourceUrl);
 
-  const asTopics = outline.topics.filter((t) => isAsTopic(t.number, asLast));
-  const a2Topics = outline.topics.filter((t) => !isAsTopic(t.number, asLast));
+  const normalizedQuery = normalizeNotesSearchQuery(query);
+
+  const { asTopicsFiltered, a2TopicsFiltered } = useMemo(() => {
+    const asTopics = outline.topics.filter((t) => isAsTopic(t.number, asLast));
+    const a2Topics = outline.topics.filter((t) => !isAsTopic(t.number, asLast));
+
+    return {
+      asTopicsFiltered: filterTopicsForNotesSearch(asTopics, normalizedQuery),
+      a2TopicsFiltered: filterTopicsForNotesSearch(a2Topics, normalizedQuery),
+    };
+  }, [asLast, normalizedQuery, outline.topics]);
+
+  const hasFilteredResults =
+    asTopicsFiltered.length > 0 || a2TopicsFiltered.length > 0;
+
+  const noHitsForActiveLevel =
+    Boolean(normalizedQuery) &&
+    ((level === "all" && !hasFilteredResults) ||
+      (level === "as" && asTopicsFiltered.length === 0) ||
+      (level === "a2" && a2TopicsFiltered.length === 0));
 
   function dismissAttribution() {
     setDismissedAttributionKey(attributionKey);
@@ -109,6 +162,30 @@ export default function NotesCourseOutline({
           </p>
         </div>
       )}
+
+      <div className={s.searchWrap}>
+        <label className={s.srOnly} htmlFor={searchFieldId}>
+          Search topics and subtopics
+        </label>
+        <div className={s.searchInner}>
+          <MagnifyingGlass className={s.searchIcon} size={18} weight="regular" aria-hidden />
+          <input
+            id={searchFieldId}
+            type="search"
+            className={s.searchInput}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search topics and subtopics…"
+            autoComplete="off"
+            spellCheck={false}
+          />
+          {query ? (
+            <button type="button" className={s.searchClear} onClick={() => setQuery("")} aria-label="Clear search">
+              <X size={14} weight="regular" aria-hidden />
+            </button>
+          ) : null}
+        </div>
+      </div>
 
       <div
         className={s.levelToggle}
@@ -148,20 +225,30 @@ export default function NotesCourseOutline({
         {plan === "free" ? ` Free access includes Topics 1-${FREE_TOPIC_LIMIT}.` : ""}
       </p>
 
+      {noHitsForActiveLevel ? (
+        <p className={s.searchEmpty} role="status">
+          No topics or notes match &ldquo;{query.trim()}&rdquo;. Try fewer words or a subtopic code.
+        </p>
+      ) : null}
+
       {level === "all" && (
         <div className={s.levelSections}>
-          <section className={s.levelSection} aria-labelledby="notes-as-heading">
-            <h2 id="notes-as-heading" className={s.sectionTitle}>
-              AS Level
-            </h2>
-            <TopicBlock topics={asTopics} subject={subject} plan={plan} />
-          </section>
-          <section className={s.levelSection} aria-labelledby="notes-a2-heading">
-            <h2 id="notes-a2-heading" className={s.sectionTitle}>
-              A Level
-            </h2>
-            <TopicBlock topics={a2Topics} subject={subject} plan={plan} />
-          </section>
+          {(normalizedQuery === "" || asTopicsFiltered.length > 0) && (
+            <section className={s.levelSection} aria-labelledby="notes-as-heading">
+              <h2 id="notes-as-heading" className={s.sectionTitle}>
+                AS Level
+              </h2>
+              <TopicBlock topics={asTopicsFiltered} subject={subject} plan={plan} />
+            </section>
+          )}
+          {(normalizedQuery === "" || a2TopicsFiltered.length > 0) && (
+            <section className={s.levelSection} aria-labelledby="notes-a2-heading">
+              <h2 id="notes-a2-heading" className={s.sectionTitle}>
+                A Level
+              </h2>
+              <TopicBlock topics={a2TopicsFiltered} subject={subject} plan={plan} />
+            </section>
+          )}
         </div>
       )}
 
@@ -170,7 +257,7 @@ export default function NotesCourseOutline({
           <h2 id="notes-as-only-heading" className={s.srOnly}>
             AS Level topics
           </h2>
-          <TopicBlock topics={asTopics} subject={subject} plan={plan} />
+          <TopicBlock topics={asTopicsFiltered} subject={subject} plan={plan} />
         </section>
       )}
 
@@ -179,7 +266,7 @@ export default function NotesCourseOutline({
           <h2 id="notes-a2-only-heading" className={s.srOnly}>
             A Level topics
           </h2>
-          <TopicBlock topics={a2Topics} subject={subject} plan={plan} />
+          <TopicBlock topics={a2TopicsFiltered} subject={subject} plan={plan} />
         </section>
       )}
     </div>

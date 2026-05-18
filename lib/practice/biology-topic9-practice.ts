@@ -3,12 +3,7 @@ import type { SubtopicPracticePack } from "./types";
 /**
  * Topic 9 practice — 9700 9.1 “The gas exchange system” (human).
  *
- * Learning-outcome phrasing for Topic 9 was cross-checked against the official Cambridge
- * International AS & A Level Biology 9700 syllabus for 2025–2027 (PDF), because
- * `data/syllabus/biology-9700-learning-outcomes.md` does not yet include a Topic 9 section
- * in this repository.
- *
- * Crosswalk (drill id -> syllabus intent, not verbatim):
+ * Crosswalk to `data/syllabus/biology-9700-learning-outcomes.md` §9.1 (drill id → syllabus intent):
  * t9-1: d1 alveolar structure / adaptations; d2 alveolar gas exchange (diffusion, gradients,
  *       large SA, short path, moist, capillary blood flow); d3–d4 ventilation mechanics
  *       (diaphragm, external intercostals; relaxation / recoil, forced expiration outline);

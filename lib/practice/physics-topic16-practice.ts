@@ -43,7 +43,6 @@ export const PHYSICS_TOPIC16_PRACTICE: Record<string, SubtopicPracticePack> = {
           "For an ideal gas, intermolecular potential energy is negligible, so internal energy depends on temperature.",
         distractorRationale: {
           B: "Volume change alone does not fix internal energy without temperature information.",
-          C: "Correct because average molecular kinetic energy is proportional to T.",
           D: "Geometry does not set internal energy directly.",
         },
         tags: ["ideal-gas", "temperature", "internal-energy"],
@@ -65,7 +64,6 @@ export const PHYSICS_TOPIC16_PRACTICE: Record<string, SubtopicPracticePack> = {
           "At constant temperature in a phase change, supplied energy mainly increases intermolecular potential energy.",
         distractorRationale: {
           B: "Constant temperature does not imply constant internal energy during phase change.",
-          C: "Correct: intermolecular separation increases, raising potential-energy component.",
           D: "Average kinetic energy is tied to temperature, which stays constant.",
         },
         tags: ["phase-change", "potential-energy", "internal-energy-change"],
@@ -358,7 +356,6 @@ export const PHYSICS_TOPIC16_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "DeltaU = Q - W = 500 - 200 = +300 J.",
         distractorRationale: {
-          B: "Correct application of first-law sign convention.",
           C: "Would result from reversing sign of Q or W.",
           D: "Combines both sign and arithmetic errors.",
         },

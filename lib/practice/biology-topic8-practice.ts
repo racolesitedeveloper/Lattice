@@ -23,7 +23,7 @@ import type { SubtopicPracticePack } from "./types";
  * d4 O2 dissociation curve (adult Hb);
  * d5 pO2 lungs vs respiring tissues;
  * d6 Bohr shift: describe + importance;
- * d7–d10 deepen / MCQ.
+ * d7–d8 structured application; d9–d10 MCQ.
  *
  * t8-3 — 8.3 The heart
  * d1 external + internal heart structure;
@@ -31,7 +31,7 @@ import type { SubtopicPracticePack } from "./types";
  * d3 cardiac cycle, BP, systole/diastole, valves;
  * d4 valve opening/closing vs pressure;
  * d5–d6 SAN, AVN, bundle of His, Purkyne tissue;
- * d7–d10 application / MCQ.
+ * d7–d8 structured application; d9–d10 MCQ.
  */
 export const BIOLOGY_TOPIC8_PRACTICE: Record<string, SubtopicPracticePack> = {
   "t8-1": {
@@ -484,46 +484,50 @@ export const BIOLOGY_TOPIC8_PRACTICE: Record<string, SubtopicPracticePack> = {
       {
         id: "t8-2-d7",
         noteId: "t8-2",
-        kind: "mcq",
+        kind: "structured",
         difficulty: 2,
-        stem: "Where is the enzyme that most rapidly equilibrates CO2 and water to carbonic acid in circulating blood most concentrated, and what is a direct chemical consequence in that same compartment as venous load rises?",
-        options: [
-          { id: "A", text: "In erythrocytes, supporting rapid formation of hydrogencarbonate that can leave the cell" },
-          { id: "B", text: "In the alveolar Type I cell, where surfactant is also synthesised" },
-          { id: "C", text: "In plasma, because plasma has a higher pH than RBC" },
-          { id: "D", text: "In the sarcoplasmic reticulum of skeletal muscle only" },
+        marks: 5,
+        stem:
+          "State where carbonic anhydrase is most concentrated in circulating blood and explain how this location supports rapid conversion of CO2 to hydrogencarbonate during venous transport.",
+        modelAnswerPoints: [
+          "Carbonic anhydrase is concentrated in red blood cells (erythrocytes).",
+          "CO2 diffuses into RBCs and is converted to carbonic acid, then hydrogencarbonate and H+.",
+          "Much hydrogencarbonate moves to plasma via the chloride shift while haemoglobin buffers H+.",
+          "This speeds CO2 removal from tissues and increases blood CO2 carrying capacity.",
         ],
-        correctOptionId: "A",
-        explanation:
-          "Carbonic anhydrase is packed in the red blood cell and drives quick CO2 to bicarbonate in the RBC, after which a major portion of the hydrogencarbonate is exchanged with plasma, consistent with the chloride shift pattern.",
-        distractorRationale: {
-          B: "The principal carbonic anhydrase pool relevant to whole-blood transport is not alveolar epithelium; gas exchange in alveoli is not via this same enzyme in type I for bulk blood chemistry as stated.",
-          C: "There is a little isozyme in some plasma contexts, but the syllabus and textbook picture emphasises RBC carbonic anhydrase as the workhorse, not plasma pH 'because of no enzyme' as the false positive.",
-          D: "Sarcoplasm is not the location for whole-blood global CO2 carriage pattern as asked.",
-        },
+        workedSolution: [
+          "The enzyme carbonic anhydrase is packed inside erythrocytes, not primarily in alveolar epithelium or bulk plasma.",
+          "As CO2 enters red cells it is hydrated quickly to carbonic acid, which dissociates to hydrogencarbonate and hydrogen ions.",
+          "Hydrogencarbonate can leave the cell in exchange for chloride ions, while haemoglobin binds protons, so large amounts of CO2 are carried as bicarbonate in plasma.",
+          "Localising the enzyme in RBCs therefore makes venous blood an efficient CO2 sink from respiring tissues.",
+        ],
+        commonMistake:
+          "Stating that carbonic anhydrase acts mainly in plasma or that CO2 is carried only as dissolved gas.",
         tags: ["carbonic-anhydrase", "RBC"],
       },
       {
         id: "t8-2-d8",
         noteId: "t8-2",
-        kind: "mcq",
+        kind: "structured",
         difficulty: 2,
-        stem: "Compared with a healthy alveolar capillary, mixed venous blood just entering the lungs typically has a higher pCO2 and a lower pH. How does the oxygen–haemoglobin relationship change at a given pO2 when the curve is shifted in this 'venous' direction?",
-        options: [
-          { id: "A", text: "The dissociation curve is shifted to the right, so saturation is lower at the same pO2 (Bohr-type shift)" },
-          { id: "B", text: "The dissociation curve is shifted to the left, so saturation is higher at the same pO2" },
-          { id: "C", text: "The curve is unchanged, because pO2 is the only variable that alters Hb" },
-          { id: "D", text: "The curve inverts, so S-shaped kinetics are lost entirely" },
+        marks: 5,
+        stem:
+          "Mixed venous blood entering the pulmonary capillaries has higher pCO2 and lower pH than arterial blood leaving the lungs. Explain how this affects the position of the adult haemoglobin oxygen dissociation curve and the loading of oxygen in the lungs.",
+        modelAnswerPoints: [
+          "Higher pCO2 and lower pH shift the curve to the right (Bohr effect).",
+          "At a given pO2, saturation is lower on the right-shifted curve, favouring O2 unloading in tissues.",
+          "In the lungs, CO2 diffuses out and pH rises, shifting the curve back left.",
+          "Left shift at alveolar pO2 increases affinity and aids oxygen loading onto haemoglobin.",
         ],
-        correctOptionId: "A",
-        explanation:
-          "A higher pCO2 and lower pH move the oxyhaemoglobin curve rightward, reducing saturation at a given pO2 and promoting oxygen unloading in tissues, while removal of CO2 in the lung will shift the curve back leftward, aiding loading (qualitative, not a numeric calculation in this item).",
-        distractorRationale: {
-          B: "A leftward shift is associated with lower CO2 / higher pH, more like arterial blood, not the venous high-CO2 side before gas exchange in the alveolar capillary inflow.",
-          C: "pH and CO2 are well-known allosteric modulators in addition to pO2 for haem.",
-          D: "The curve is not 'inverted'; it remains sigmoid, though displaced on axes.",
-        },
-        tags: ["bohr", "venous-blood"],
+        workedSolution: [
+          "Elevated carbon dioxide and reduced pH in venous blood promote the deoxy form of haemoglobin, which appears as a rightward shift of the dissociation curve.",
+          "That shift helps release oxygen to respiring tissues because, at the same partial pressure of oxygen, a smaller fraction remains bound to haemoglobin.",
+          "When blood reaches the alveoli, loss of CO2 and rise in pH reverse the shift, moving the curve leftward again.",
+          "The left-shifted curve at high alveolar pO2 means haemoglobin picks up oxygen efficiently before blood returns to the systemic circulation.",
+        ],
+        commonMistake:
+          "Saying the curve shifts left in tissues or confusing the Bohr shift with temperature-only effects.",
+        tags: ["bohr", "venous-blood", "dissociation-curve"],
       },
       {
         id: "t8-2-d9",
@@ -794,45 +798,49 @@ export const BIOLOGY_TOPIC8_PRACTICE: Record<string, SubtopicPracticePack> = {
       {
         id: "t8-3-d7",
         noteId: "t8-3",
-        kind: "mcq",
+        kind: "structured",
         difficulty: 1,
-        stem: "Which heart chamber in a healthy heart has the thickest myocardial wall, reflecting its role ejecting blood into the systemic circuit?",
-        options: [
-          { id: "A", text: "Left ventricle" },
-          { id: "B", text: "Right atrium" },
-          { id: "C", text: "Right ventricle (thicker than the left, because pressure is always higher in the lungs in every statement)" },
-          { id: "D", text: "Left atrium" },
+        marks: 4,
+        stem:
+          "Explain why the left ventricle has a thicker myocardial wall than the right ventricle in a healthy human heart.",
+        modelAnswerPoints: [
+          "Left ventricle pumps blood into the systemic circulation (aorta) at high pressure.",
+          "Right ventricle pumps blood to the lungs at lower pressure.",
+          "Thicker muscle generates greater pressure during systole.",
+          "Wall thickness matches the workload required of each chamber.",
         ],
-        correctOptionId: "A",
-        explanation:
-          "The left ventricle has the heaviest wall, because the systemic afterload is the highest: it must develop enough pressure to open the aortic valve and sustain systemic perfusion, unlike the right ventricle, which ejects to the lower pressure pulmonary path.",
-        distractorRationale: {
-          B: "The atrial wall is not the thickest, because the atria are low-pressure conduits and reservoirs.",
-          C: "The left ventricle, not the right, is the thicker, because the systemic pressure work is on the left side, even though the same stroke work must be ejected in series through both lungs and body in one minute output logic.",
-          D: "The left atrium is not the main pressure pump: the left ventricle is, so its wall is thicker than the atrium.",
-        },
+        workedSolution: [
+          "The left ventricle must generate enough pressure to overcome the high resistance of the systemic arteries and open the aortic valve, so its wall is heavily muscled.",
+          "The right ventricle ejects blood into the pulmonary circulation, which operates at much lower pressure than the systemic circuit.",
+          "Because pressure work is greater on the left side, the left ventricular myocardium is thicker than the right ventricular wall.",
+          "Atria have thinner walls than either ventricle because they act mainly as receiving chambers rather than pressure pumps.",
+        ],
+        commonMistake:
+          "Claiming the right ventricle is thicker because it pumps to the lungs, or ignoring that atria are not the main pressure pumps.",
         tags: ["ventricle", "wall-thickness"],
       },
       {
         id: "t8-3-d8",
         noteId: "t8-3",
-        kind: "mcq",
+        kind: "structured",
         difficulty: 2,
-        stem: "During ventricular ejection, which valves are open in the normal heart so that flow goes from the ventricles to the aorta and pulmonary trunk?",
-        options: [
-          { id: "A", text: "Aortic and pulmonary semilunar (outflow) valves" },
-          { id: "B", text: "Tricuspid and mitral (atrioventricular) valves" },
-          { id: "C", text: "All four named valves, AV and semilunar, are wide open" },
-          { id: "D", text: "None; both sides are in diastole during the whole stroke" },
+        marks: 4,
+        stem:
+          "During ventricular ejection in the normal cardiac cycle, state which heart valves are open and which are closed, and explain briefly why blood flows into the aorta and pulmonary trunk rather than back into the atria.",
+        modelAnswerPoints: [
+          "Semilunar valves (aortic and pulmonary) open during ventricular ejection.",
+          "Atrioventricular valves (mitral and tricuspid) close.",
+          "Ventricular pressure exceeds arterial pressure, forcing blood into outflow vessels.",
+          "Closed AV valves prevent backflow into atria.",
         ],
-        correctOptionId: "A",
-        explanation:
-          "Ejection of blood from the ventricles to the aorta and pulmonary trunk requires the semilunar valves to be open when ventricular pressure exceeds the artery diastolic pressure, while the mitral and tricuspid are closed in that part of the cycle.",
-        distractorRationale: {
-          B: "The AV cusps are inflow: they are closed for much of ejection, not the main ejection orifice in this phase.",
-          C: "You cannot eject to great arteries and receive from atria in the same ventricle at the same time if both sets were open, because the pressure story would be inconsistent; semilunars and AV cusps are not both open in normal mid-ejection in that sense.",
-          D: "Ejection is a systolic ventricular phase, not diastole for the outflow.",
-        },
+        workedSolution: [
+          "When ventricular muscle contracts, pressure in the ventricles rises above pressure in the aorta and pulmonary trunk.",
+          "The aortic and pulmonary semilunar valves are pushed open and blood is ejected into the arteries.",
+          "At the same time, the mitral and tricuspid valves are closed because ventricular pressure is higher than atrial pressure, so blood cannot return to the atria.",
+          "This one-way valve arrangement ensures forward flow through the pulmonary and systemic circuits during systole.",
+        ],
+        commonMistake:
+          "Stating that all four valves are open during ejection, or that semilunar valves close during systole.",
         tags: ["valves", "ejection"],
       },
       {

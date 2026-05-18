@@ -1,8 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ListChecks } from "@phosphor-icons/react";
+import {
+  masteryTotalsForSubject,
+  parsePracticeStorageEntries,
+  type StudySubjectId,
+} from "@/lib/study-analytics";
 import { studyStorageGetItem, studyStorageKeys } from "@/lib/study-kv";
+import { useStudyStorageRefresh } from "@/lib/use-study-storage-refresh";
 import s from "./dashboard.module.css";
 
 type SubjectId = "physics" | "chemistry" | "biology";
@@ -26,11 +32,9 @@ export default function SubjectMasteryOverview() {
   const [rows, setRows] = useState<Mastery[]>(() => emptyRows());
   const [hydrated, setHydrated] = useState(false);
 
-  useEffect(() => {
-    window.queueMicrotask(() => {
-      setRows(readMastery());
-      setHydrated(true);
-    });
+  useStudyStorageRefresh(() => {
+    setRows(readMastery());
+    setHydrated(true);
   }, []);
 
   return (
@@ -109,52 +113,20 @@ function emptyRows(): Mastery[] {
 function readMastery(): Mastery[] {
   if (typeof window === "undefined") return emptyRows();
 
-  const totals = new Map<SubjectId, { correct: number; needsWork: number }>();
-  for (const subject of SUBJECTS) totals.set(subject.id, { correct: 0, needsWork: 0 });
-
   try {
-    for (const key of studyStorageKeys()) {
-      const subject = subjectFromStorageKey(key);
-      if (!subject) continue;
-
-      const raw = studyStorageGetItem(key);
-      if (!raw) continue;
-      const parsed = JSON.parse(raw) as {
-        drillOutcomes?: Record<string, unknown>;
-        outcomes?: Record<string, unknown>;
+    const records = parsePracticeStorageEntries(studyStorageKeys(), studyStorageGetItem);
+    return SUBJECTS.map((subject) => {
+      const total = masteryTotalsForSubject(records, subject.id as StudySubjectId);
+      return {
+        subject: subject.id,
+        label: subject.label,
+        correct: total.correct,
+        needsWork: total.needsWork,
+        answered: total.answered,
+        accuracy: total.accuracy,
       };
-      const outcomeSource = key.startsWith("practice-session:")
-        ? parsed.drillOutcomes
-        : parsed.outcomes;
-      if (!outcomeSource || typeof outcomeSource !== "object") continue;
-
-      const total = totals.get(subject)!;
-      for (const value of Object.values(outcomeSource)) {
-        if (value === "correct") total.correct += 1;
-        if (value === "needs-work") total.needsWork += 1;
-      }
-    }
+    });
   } catch {
     return emptyRows();
   }
-
-  return SUBJECTS.map((subject) => {
-    const total = totals.get(subject.id)!;
-    const answered = total.correct + total.needsWork;
-    return {
-      subject: subject.id,
-      label: subject.label,
-      correct: total.correct,
-      needsWork: total.needsWork,
-      answered,
-      accuracy: answered > 0 ? Math.round((total.correct / answered) * 100) : null,
-    };
-  });
-}
-
-function subjectFromStorageKey(key: string): SubjectId | null {
-  const match = /^(?:practice-session|practice-mixed-session|practice-mistakes-session):(physics|chemistry|biology):/.exec(
-    key,
-  );
-  return (match?.[1] as SubjectId | undefined) ?? null;
 }

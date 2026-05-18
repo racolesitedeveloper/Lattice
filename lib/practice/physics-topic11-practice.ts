@@ -19,7 +19,6 @@ export const PHYSICS_TOPIC11_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "An alpha particle is a helium-4 nucleus, containing two protons and two neutrons.",
         distractorRationale: {
-          B: "Correct composition of an alpha particle.",
           C: "This describes gamma radiation.",
           D: "Alpha particles have significant mass and charge +2e.",
         },
@@ -28,23 +27,27 @@ export const PHYSICS_TOPIC11_PRACTICE: Record<string, SubtopicPracticePack> = {
       {
         id: "t11-1-d2",
         noteId: "t11-1",
-        kind: "mcq",
+        kind: "structured",
         difficulty: 2,
-        stem: "A radioactive sample has activity 960 Bq. After one half-life, what is the activity?",
-        options: [
-          { id: "A", text: "1920 Bq" },
-          { id: "B", text: "960 Bq" },
-          { id: "C", text: "480 Bq" },
-          { id: "D", text: "240 Bq" },
+        marks: 4,
+        stem:
+          "Describe the alpha-particle scattering experiment and explain what the observations suggest about the structure of the atom.",
+        modelAnswerPoints: [
+          "Fast alpha particles are directed at a thin gold foil and their paths are detected (e.g. by fluorescence on a screen).",
+          "Most alpha particles pass through with little deflection, showing most of the atom is empty space.",
+          "A small fraction are scattered through large angles, including some back-scattering.",
+          "Large-angle scattering requires a massive, positively charged nucleus occupying a very small volume.",
+          "Electrons occupy the space outside this nucleus in the nuclear model.",
         ],
-        correctOptionId: "C",
-        explanation: "By definition, activity halves over one half-life: 960 / 2 = 480 Bq.",
-        distractorRationale: {
-          B: "No decay would keep activity unchanged, which is incorrect after one half-life.",
-          C: "Correct halving of activity.",
-          D: "This corresponds to two half-lives, not one.",
-        },
-        tags: ["activity", "half-life", "radioactive-decay"],
+        workedSolution: [
+          "In the experiment, most alphas travel straight through the foil because they miss the tiny nucleus.",
+          "Occasional close approaches to a dense positive nucleus produce strong electrostatic repulsion and large deflections.",
+          "The combined evidence rules out a uniform positive charge spread through the atom (plum-pudding model).",
+          "Instead, mass and positive charge are concentrated in a small nucleus with electrons at larger distances.",
+        ],
+        commonMistake:
+          "Stating that alpha particles are absorbed by electrons without mentioning the role of the massive nucleus in large-angle scattering.",
+        tags: ["rutherford-scattering", "nuclear-model", "experimental-evidence"],
       },
       {
         id: "t11-1-d3",
@@ -337,7 +340,6 @@ export const PHYSICS_TOPIC11_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation: "Electrons are leptons; protons and neutrons are baryons made of quarks.",
         distractorRationale: {
           B: "Neutrons are baryons, not leptons.",
-          C: "Correct lepton example.",
           D: "Pions are mesons.",
         },
         tags: ["leptons", "particle-classification", "standard-model-basics"],
@@ -345,22 +347,25 @@ export const PHYSICS_TOPIC11_PRACTICE: Record<string, SubtopicPracticePack> = {
       {
         id: "t11-2-d2",
         noteId: "t11-2",
-        kind: "mcq",
+        kind: "structured",
         difficulty: 2,
-        stem: "What is the quark composition of a proton?",
-        options: [
-          { id: "A", text: "udd" },
-          { id: "B", text: "uud" },
-          { id: "C", text: "uuu" },
-          { id: "D", text: "ddu" },
+        marks: 4,
+        stem:
+          "In beta-minus decay a neutron becomes a proton, and in beta-plus decay a proton becomes a neutron.\nFor each process, state how the quark composition of the nucleon changes.",
+        modelAnswerPoints: [
+          "Beta-minus: one down quark changes to an up quark inside the nucleon (udd to uud overall for neutron to proton).",
+          "Beta-plus: one up quark changes to a down quark (uud to udd overall for proton to neutron).",
+          "Emitted lepton and antilepton/neutrino conserve lepton number; quark change accounts for nucleon identity change.",
+          "Charge of nucleon increases by +e in beta-minus and decreases by +e in beta-plus, consistent with d to u and u to d respectively.",
         ],
-        correctOptionId: "B",
-        explanation: "A proton contains two up quarks and one down quark (uud).",
-        distractorRationale: {
-          B: "Correct proton quark content.",
-          C: "Would give charge +2e, not +1e.",
-        },
-        tags: ["quarks", "proton-structure", "charge-calculation"],
+        workedSolution: [
+          "Beta-minus converts n (udd) to p (uud) by d to u, raising nucleon charge from 0 to +1e.",
+          "Beta-plus converts p (uud) to n (udd) by u to d, lowering nucleon charge from +1e to 0.",
+          "The weak interaction changes quark flavour; the emitted e- and antineutrino (or e+ and neutrino) carry the remaining quantum numbers.",
+        ],
+        commonMistake:
+          "Describing beta decay as emission of a quark from the nucleus rather than a flavour change within a nucleon.",
+        tags: ["beta-decay", "quark-flavour", "nucleon-composition"],
       },
       {
         id: "t11-2-d3",
@@ -379,7 +384,6 @@ export const PHYSICS_TOPIC11_PRACTICE: Record<string, SubtopicPracticePack> = {
           "Two photons are produced to conserve both energy and momentum when the pair annihilates near rest.",
         distractorRationale: {
           B: "Single-photon outcome cannot satisfy momentum conservation in this context.",
-          C: "Correct standard annihilation channel.",
           D: "This pair requires much higher energy than electron rest-mass annihilation releases.",
         },
         tags: ["antimatter", "annihilation", "conservation-laws"],

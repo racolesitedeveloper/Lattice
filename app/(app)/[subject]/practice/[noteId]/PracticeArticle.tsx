@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { CheckCircle, WarningCircle } from "@phosphor-icons/react";
 import type { NoteMeta } from "@/lib/notes/types";
 import type { DrillQuestion, Flashcard, SubtopicPracticePack } from "@/lib/practice/types";
@@ -8,6 +9,10 @@ import { archiveMistake } from "@/lib/practice/mistakes";
 import { markRecentActivity } from "@/lib/recent-activity";
 import { studyStorageGetItem, studyStorageSetItem } from "@/lib/study-kv";
 import { renderExamText } from "@/lib/practice/render-exam-text";
+import {
+  splitExamTechniqueFromModelAnswer,
+  structuredRevealSections,
+} from "@/lib/practice/structured-reveal-sections";
 import s from "../practice.module.css";
 
 type Props = {
@@ -43,6 +48,16 @@ function DrillCard({
   const [submitted, setSubmitted] = useState(false);
   const [revealed, setRevealed] = useState(false);
   const [reflection, setReflection] = useState<"had-this" | "more-practice" | null>(null);
+
+  const structuredSections =
+    q.kind === "structured"
+      ? structuredRevealSections(q.workedSolution, q.modelAnswerPoints)
+      : null;
+
+  const modelAnswerSplit =
+    structuredSections !== null
+      ? splitExamTechniqueFromModelAnswer(structuredSections.modelAnswerLines)
+      : null;
 
   function revealStructured() {
     if (!revealed) {
@@ -146,7 +161,7 @@ function DrillCard({
                 Show model answer and mark scheme
               </button>
             </div>
-          ) : (
+          ) : structuredSections && modelAnswerSplit ? (
             <div className={s.answerStack}>
               <section className={s.answerSection}>
                 <h3 className={s.answerSectionLabel}>
@@ -154,29 +169,43 @@ function DrillCard({
                   Model answer
                 </h3>
                 <ol className={s.stepsList}>
-                  {q.workedSolution.map((p, i) => (
+                  {modelAnswerSplit.coreModelAnswerLines.map((line, i) => (
                     <li key={i} className={s.stepRow}>
                       <span className={s.stepNum}>{i + 1}</span>
-                      <span className={s.stepBody}>{renderExamText(p)}</span>
+                      <span className={s.stepBody}>{renderExamText(line)}</span>
                     </li>
                   ))}
                 </ol>
+                {modelAnswerSplit.techniqueLines.length > 0 ? (
+                  <div className={s.answerTechnique}>
+                    <p className={s.answerTechniqueLabel}>Exam technique</p>
+                    <ul className={s.answerTechniqueList}>
+                      {modelAnswerSplit.techniqueLines.map((line, i) => (
+                        <li key={i} className={s.answerTechniqueRow}>
+                          {renderExamText(line)}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
               </section>
 
-              <section className={s.answerSection}>
-                <h3 className={s.answerSectionLabel}>
-                  <span className={s.answerSectionIndex}>2</span>
-                  Mark scheme
-                </h3>
-                <ul className={s.markList}>
-                  {q.modelAnswerPoints.map((p, i) => (
-                    <li key={i} className={s.markRow}>
-                      <span className={s.markBullet} aria-hidden />
-                      <span>{renderExamText(p)}</span>
-                    </li>
-                  ))}
-                </ul>
-              </section>
+              {structuredSections.secondaryLines.length > 0 ? (
+                <section className={s.answerSection}>
+                  <h3 className={s.answerSectionLabel}>
+                    <span className={s.answerSectionIndex}>2</span>
+                    {structuredSections.secondaryHeading}
+                  </h3>
+                  <ul className={s.markList}>
+                    {structuredSections.secondaryLines.map((line, i) => (
+                      <li key={i} className={s.markRow}>
+                        <span className={s.markBullet} aria-hidden />
+                        <span>{renderExamText(line)}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ) : null}
 
               <section className={`${s.answerSection} ${s.answerSectionMistake}`}>
                 <h3 className={s.answerSectionLabel}>
@@ -224,7 +253,7 @@ function DrillCard({
                 )}
               </section>
             </div>
-          )}
+          ) : null}
         </div>
       )}
     </div>
@@ -296,6 +325,8 @@ function FlashcardCard({
 }
 
 export default function PracticeArticle({ pack, subject, noteMeta, canArchiveMistakes }: Props) {
+  const searchParams = useSearchParams();
+  const preferFlashcards = searchParams.get("view") === "flashcards";
   const storageKey = `practice-session:${subject}:${pack.noteId}`;
   const lastSessionKey = `practice-last-session:${subject}`;
   const [hydrated, setHydrated] = useState(false);
@@ -335,6 +366,7 @@ export default function PracticeArticle({ pack, subject, noteMeta, canArchiveMis
       try {
         const raw = studyStorageGetItem(storageKey);
         if (!raw) {
+          if (preferFlashcards) setView("flashcards");
           setHydrated(true);
           return;
         }
@@ -349,7 +381,9 @@ export default function PracticeArticle({ pack, subject, noteMeta, canArchiveMis
         const drillIds = new Set(pack.drills.map((q) => q.id));
         const flashIds = new Set(pack.flashcards.map((q) => q.id));
 
-        setView(parsed.view === "flashcards" ? "flashcards" : "drills");
+        setView(
+          preferFlashcards || parsed.view === "flashcards" ? "flashcards" : "drills",
+        );
         setIndexByView({
           drills: Math.max(
             0,
@@ -393,7 +427,7 @@ export default function PracticeArticle({ pack, subject, noteMeta, canArchiveMis
       }
     }, 0);
     return () => window.clearTimeout(timer);
-  }, [pack.drills, pack.flashcards, storageKey]);
+  }, [pack.drills, pack.flashcards, storageKey, preferFlashcards]);
 
   useEffect(() => {
     if (!resumeNotice) return;
@@ -426,7 +460,10 @@ export default function PracticeArticle({ pack, subject, noteMeta, canArchiveMis
     );
     markRecentActivity({
       kind: view === "drills" ? "drill" : "flashcard",
-      href: `/${subject}/practice/${pack.noteId}`,
+      href:
+        view === "flashcards"
+          ? `/${subject}/practice/${pack.noteId}?view=flashcards`
+          : `/${subject}/practice/${pack.noteId}`,
       title: noteMeta.subtopicTitle,
       subtitle: view === "drills" ? `Drill set · ${noteMeta.topicTitle}` : `Flashcard deck · ${noteMeta.topicTitle}`,
     });

@@ -1,23 +1,20 @@
 "use client";
 
 import { useCallback, useEffect } from "react";
-import Features from "@/components/landing/Features";
 import FinalCta from "@/components/landing/FinalCta";
 import Hero from "@/components/landing/Hero";
+import LandingStory from "@/components/landing/LandingStory";
 import Pricing from "@/components/landing/Pricing";
-import SocialProof from "@/components/landing/SocialProof";
-
-function scrollPricingIntoView() {
-  requestAnimationFrame(() => {
-    document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth", block: "start" });
-  });
-}
+import { navigateToSection } from "@/lib/landing/scroll-to-section";
 
 export default function LandingExperience({ isSignedIn = false }: { isSignedIn?: boolean }) {
   useEffect(() => {
     const applyHash = () => {
-      if (window.location.hash === "#pricing") {
-        scrollPricingIntoView();
+      const hash = window.location.hash;
+      if (hash === "#pricing") {
+        navigateToSection("pricing");
+      } else if (hash === "#revision-path") {
+        navigateToSection("revision-path");
       }
     };
     applyHash();
@@ -26,17 +23,21 @@ export default function LandingExperience({ isSignedIn = false }: { isSignedIn?:
   }, []);
 
   const onRevealPricing = useCallback(() => {
-    if (window.location.hash !== "#pricing") {
-      window.history.pushState(null, "", "#pricing");
-    }
-    scrollPricingIntoView();
+    navigateToSection("pricing");
+  }, []);
+
+  const onScrollToRevisionPath = useCallback(() => {
+    navigateToSection("revision-path");
   }, []);
 
   return (
     <>
-      <Hero isSignedIn={isSignedIn} onRevealPricing={onRevealPricing} />
-      <Features />
-      <SocialProof />
+      <Hero
+        isSignedIn={isSignedIn}
+        onRevealPricing={onRevealPricing}
+        onScrollToRevisionPath={onScrollToRevisionPath}
+      />
+      <LandingStory />
       <Pricing isSignedIn={isSignedIn} />
       <FinalCta isSignedIn={isSignedIn} />
     </>

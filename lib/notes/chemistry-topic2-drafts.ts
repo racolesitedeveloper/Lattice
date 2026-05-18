@@ -247,7 +247,8 @@ export const CHEMISTRY_TOPIC2_DRAFTS: Record<string, NoteDraft> = {
         question:
           "Write equations linking amount of substance n, number of entities N and Avogadro constant L.",
         modelAnswer: [
-          "n = N / L and rearranged N = nL.",
+          "n = N / L, where n is amount in mol, N is number of particles, and L is the Avogadro constant (6.02 × 10²³ mol⁻¹).",
+          "Rearranging gives N = nL when amount of substance is known.",
         ],
       },
       {
@@ -255,7 +256,8 @@ export const CHEMISTRY_TOPIC2_DRAFTS: Record<string, NoteDraft> = {
         question:
           "Find the number of molecules in 0.0100 mol of NH₃.",
         modelAnswer: [
-          "N = nL = 0.0100 x 6.02 x 10²³ = 6.02 x 10²¹ molecules.",
+          "Substitute n = 0.0100 mol and L = 6.02 × 10²³ mol⁻¹.",
+          "N = 0.0100 × 6.02 × 10²³ = 6.02 × 10²¹ molecules.",
         ],
       },
       {
@@ -271,7 +273,8 @@ export const CHEMISTRY_TOPIC2_DRAFTS: Record<string, NoteDraft> = {
         question:
           "State the molar mass of Na₂CO₃ using Na = 23.0, C = 12.0, O = 16.0.",
         modelAnswer: [
-          "M(Na₂CO₃) = 2 x 23.0 + 12.0 + 3 x 16.0 = 106.0 g mol⁻¹.",
+          "M(Na₂CO₃) = (2 × 23.0) + 12.0 + (3 × 16.0) = 106.0 g mol⁻¹.",
+          "Use this molar mass to convert between mass and amount of substance in calculations.",
         ],
       },
     ],
@@ -412,7 +415,8 @@ export const CHEMISTRY_TOPIC2_DRAFTS: Record<string, NoteDraft> = {
         question:
           "Write the net ionic equation for the reaction between hydrochloric acid and sodium hydroxide.",
         modelAnswer: [
-          "H+(aq) + OH-(aq) -> H₂O(l).",
+          "Hydrogencarbonate ion is HCO₃⁻ (one hydrogen, one carbon, three oxygen atoms, net charge −1).",
+          "It is a common amphiprotic anion in neutralisation and buffer contexts.",
         ],
       },
       {
@@ -552,7 +556,8 @@ export const CHEMISTRY_TOPIC2_DRAFTS: Record<string, NoteDraft> = {
         question:
           "State the formula for percentage yield.",
         modelAnswer: [
-          "percentage yield = (actual yield / theoretical yield) x 100%.",
+          "Percentage yield = (actual mass of product obtained ÷ theoretical maximum mass) × 100%.",
+          "Values below 100% indicate side reactions, incomplete reaction, or practical losses during isolation.",
         ],
       },
       {

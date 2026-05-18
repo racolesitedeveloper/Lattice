@@ -1,6 +1,8 @@
 import type { NoteDraft } from "./types";
 
-/** Full teaching notes for 9701 Topic 1 — subtopics 1.1-1.4. */
+/** Full teaching notes for 9701 Topic 1 — subtopics 1.1-1.4.
+ *  Style: dense syllabus narrative (see chemistry-topic2-drafts) plus scannable blocks
+ *  (tables, equations, steps, bullets, callouts) for revision — original copy only. */
 export const CHEMISTRY_TOPIC1_DRAFTS: Record<string, NoteDraft> = {
   "t1-1": {
     noteId: "t1-1",
@@ -9,52 +11,142 @@ export const CHEMISTRY_TOPIC1_DRAFTS: Record<string, NoteDraft> = {
         id: "atom-structure-core",
         title: "Particles in the atom and internal structure",
         paragraphs: [
-          "An atom consists of a very small, dense nucleus containing protons and neutrons, surrounded by electrons in shells in the mostly empty space around the nucleus. If the nucleus were enlarged to the size of a pea, the electron cloud would be many metres away on that scale, which is why atoms are described as mostly empty space.",
-          "Protons carry charge +1 and neutrons carry charge 0. Electrons carry charge -1. Relative masses are proton 1, neutron 1, electron 1/1836 (approximately 0.0005). Because electrons have very small mass compared with nucleons, almost all atomic mass is concentrated in the nucleus.",
-          "The atom is electrically neutral when the number of electrons equals the number of protons. Any change in electron number gives an ion; the nucleus itself does not change in ordinary chemical processes.",
+          "An atom consists of a very small, dense nucleus containing protons and neutrons, surrounded by electrons occupying shells (or energy levels) in the largely empty space around the nucleus. The nucleus is typically of order 10⁻¹⁵ m across, while the chemically relevant size of the whole atom is set by the outer electron distribution and is roughly 10⁻¹⁰ m. If the nucleus were enlarged to the size of a pea, the outer electron region would still be metres away on the same scale, which is why textbooks stress that an atom is mostly empty space rather than a uniformly dense sphere.",
+          "Protons carry relative charge +1 and neutrons carry 0. Electrons carry −1. Relative masses are assigned as proton 1, neutron 1, electron about 1/1836 (often quoted as approximately 0.0005). Because electrons contribute almost no mass compared with nucleons, essentially all of the atom's mass sits in the nucleus, yet almost all of the atom's volume is associated with where electrons are found. Examiners like this contrast: mass is nuclear, but size is electronic.",
+          "The atom is electrically neutral when the number of electrons equals the number of protons. Chemical change involves rearrangement of electrons between species; the nucleus is unchanged in ordinary chemical reactions, so proton number is fixed while electron number can change to give cations or anions. Nuclear chemistry (radioactivity) is treated elsewhere: for Topic 1 you should keep nuclear change separate from ion formation.",
+          "When you describe subatomic structure in written answers, be explicit about location (nucleus versus shells), charge sign, and the neutrality condition. Vague statements such as 'atoms contain charges' lose marks because they do not distinguish protons from electrons or identify where each particle type is found.",
+        ],
+        blocks: [
+          {
+            type: "table",
+            caption: "Subatomic particles: relative charge and mass",
+            columns: ["Particle", "Location", "Relative charge", "Relative mass"],
+            rows: [
+              ["Proton", "Nucleus", "+1", "1"],
+              ["Neutron", "Nucleus", "0", "1"],
+              ["Electron", "Shells / energy levels", "-1", "1/1836 (very small)"],
+            ],
+          },
+          {
+            type: "callout",
+            tone: "exam",
+            title: "Atom versus ion",
+            paragraphs: [
+              "A neutral atom has equal numbers of protons and electrons. An ion forms when electrons are gained or lost; ordinary chemical ion formation does not change the number of protons in the nucleus.",
+            ],
+          },
         ],
       },
       {
         id: "number-terms",
         title: "Atomic number, nucleon number and reading nuclide data",
         paragraphs: [
-          "Atomic number (proton number), Z, is the number of protons in the nucleus. This identifies the element. Nucleon number (mass number), A, is the total number of protons and neutrons in the nucleus.",
-          "For a neutral atom: electrons = Z. For an ion: electrons = Z - charge (taking positive charge for cations and negative charge for anions). Neutrons are found from A - Z.",
-          "In calculations, always separate clearly: protons define element identity, electrons define ionic charge, and neutrons contribute to nucleon number. Confusing A with Z is one of the most common early errors in atomic structure questions.",
+          "Atomic number (proton number), Z, counts protons in the nucleus. It identifies the element because each element has a unique value of Z in the Periodic Table. Nucleon number (mass number), A, counts all nucleons: protons plus neutrons. The symbol X in nuclide notation is therefore fixed once Z is known, even if A changes between isotopes.",
+          "For a neutral atom, electron number equals Z. For an ion, adjust electron count from Z using the magnitude and sign of charge: a positive charge n+ means n electrons removed, so electrons = Z − n; a negative charge n− means n electrons gained, so electrons = Z + n. Neutron number follows from N = A − Z and does not depend on ionic charge, because neutrons and protons together still make up the nucleus described by that nuclide.",
+          "Examination questions often present ions with the same A but different chemistry (isoelectronic species) or isotopes with the same Z but different A. In both cases the discipline is the same: read Z first for element identity, then use charge rules for electrons, then use A and Z together for neutrons.",
+          "A frequent slip is to treat A as if it were proton number, or to subtract ionic charge from A when counting neutrons. Ionic charge is an electron imbalance; nucleon number is unaffected unless the question explicitly involves nuclear change, which is outside ordinary ionic chemistry.",
+          "When writing structured definitions, separate the three counts (protons, neutrons, electrons) even if the question only asks for one of them: showing all three signals clear thinking and often earns method credit in longer items.",
+        ],
+        blocks: [
+          {
+            type: "equation",
+            text: "neutrons = A − Z",
+          },
+          {
+            type: "table",
+            caption: "Particle accounting in atoms and ions",
+            columns: ["Case", "Protons", "Electrons", "Neutrons"],
+            rows: [
+              ["Neutral atom", "Z", "Z", "A − Z"],
+              ["Positive ion, n+", "Z", "Z − n", "A − Z"],
+              ["Negative ion, n−", "Z", "Z + n", "A − Z"],
+            ],
+          },
+          {
+            type: "callout",
+            tone: "warning",
+            title: "Common mistake",
+            paragraphs: [
+              "Do not subtract charge from nucleon number. Ionic charge is caused by electrons being lost or gained; neutron number is still found from A − Z.",
+            ],
+          },
         ],
       },
       {
         id: "mass-charge-distribution",
         title: "Distribution of mass and charge in an atom",
         paragraphs: [
-          "Positive charge is concentrated in the nucleus because protons are located there. Negative charge is distributed in the electron cloud around the nucleus. Neutrons contribute mass but no charge.",
-          "Almost all mass is in the nucleus (protons and neutrons), while electrons contribute very little to total mass. This is why atomic size is not determined by where most of the mass is; atomic radius is set by the extent of electron distribution.",
-          "This separation between where charge is and where mass is explains why electric and magnetic field experiments can distinguish subatomic particles by charge and mass behavior.",
+          "Positive charge is concentrated in the nucleus because only protons carry positive charge among the nucleons. Negative charge is carried by electrons, which occupy shells around the nucleus. Neutrons contribute substantially to mass but contribute zero to charge, which is why neutron number affects A and density-type arguments but not the sign balance of the ion.",
+          "Nearly all atomic mass is nuclear, yet nearly all atomic volume is associated with the electron cloud. Atomic radius and ionic radius are therefore properties of electron distribution, not of nuclear diameter. Students sometimes argue that 'the atom is small because the nucleus is small'; for chemical size the correct idea is that outer electrons set the radius even though they contribute little mass.",
+          "This separation between mass localisation and charge distribution is exactly why techniques such as deflection in electric and magnetic fields can separate species by q/m: charge controls electric force, while mass controls acceleration for a given force. A neutron beam is electrically neutral overall, so it is not steered by an electric field in the simple particle-beam sense used at this level.",
+          "In longer descriptive questions, link observations to the model: mention nuclear concentration of mass and positive charge, delocalised negative charge in shells, and the mostly empty space between nucleus and outer electrons. That package of ideas matches mark-scheme 'describe the atom' expectations.",
+        ],
+        blocks: [
+          {
+            type: "bullets",
+            items: [
+              "Mass concentrated in the nucleus (protons and neutrons); electrons contribute negligible mass.",
+              "Positive charge due to protons in the nucleus; electrons in shells account for negative charge around the nucleus.",
+              "Atomic radius follows the electron cloud (volume), not where most mass sits — a common distinction in ‘describe the atom’ questions.",
+            ],
+          },
         ],
       },
       {
         id: "beam-behaviour-electric-field",
         title: "Behaviour of proton, neutron and electron beams in an electric field",
         paragraphs: [
-          "In a uniform electric field, charged particles experience force F = qE. For particles moving at the same initial velocity through the same field region, direction of deflection depends on sign of charge, and amount of deflection depends on charge-to-mass ratio.",
-          "Protons (+1) and electrons (-1) deflect in opposite directions. Neutrons (0) are undeflected because they experience no electric force.",
-          "Electrons deflect much more than protons under the same conditions because their mass is far smaller, giving much larger acceleration for similar force magnitude. Proton deflection is in the opposite direction but much smaller in magnitude.",
+          "In a uniform electric field of strength E, a particle with charge q experiences a force F = qE parallel to the field direction if q is positive, and opposite if q is negative. Using Newton's second law in the form a = F/m, the magnitude of acceleration for a given |q| is inversely proportional to mass. That single pair of relationships is enough to rank deflections for the three beams treated in this topic.",
+          "Protons and electrons have charges of equal magnitude but opposite sign, so they accelerate in opposite directions. Neutrons are uncharged, so q = 0, F = 0 and the neutron path is straight (undeflected) in the ideal uniform-field model used at A Level.",
+          "Because the electron mass is orders of magnitude smaller than the proton mass, an electron with the same initial speed as a proton in the same field reaches a much larger acceleration and therefore shows a much larger deflection over the same path length. Proton deflection is therefore 'weak' compared with electron deflection, not because the field treats protons gently, but because inertia is large.",
+          "When you explain beam observations, mention both direction (sign of q) and relative curvature (magnitude of a). Many mark schemes award one mark for charge reasoning and a second for mass reasoning; giving only one of the two is incomplete.",
+          "Be careful with language: neutrons are not 'too heavy to deflect'; they do not deflect in an electric field because they are uncharged. Mass-only arguments belong to magnetic-field contexts or to comparing charged species, not to explaining straight neutron paths in E.",
+        ],
+        blocks: [
+          {
+            type: "equation",
+            text: "F = qE    and    a = F/m",
+          },
+          {
+            type: "table",
+            caption: "Expected observations",
+            columns: ["Particle", "Charge", "Path in electric field", "Reason"],
+            rows: [
+              ["Electron", "-1", "Strongly deflected", "Very small mass gives large acceleration"],
+              ["Proton", "+1", "Weakly deflected opposite way", "Same magnitude charge but much greater mass"],
+              ["Neutron", "0", "Undeflected", "No electric force because q = 0"],
+            ],
+          },
         ],
       },
       {
         id: "atomic-ionic-radius-trends",
         title: "Atomic radius and ionic radius trends",
         paragraphs: [
-          "Across a period, atomic radius generally decreases. Proton number increases, but added electrons enter the same principal shell, so shielding does not increase enough to offset increased nuclear attraction. Electrons are pulled closer to the nucleus.",
-          "Down a group, atomic radius increases because each step adds a new electron shell, placing outer electrons further from the nucleus and increasing shielding.",
-          "For cations, ionic radius is smaller than the parent atom because one or more outer electrons are removed; in many cases an entire shell is lost and electron-electron repulsion is reduced. For anions, ionic radius is larger than the parent atom because added electrons increase repulsion in the valence shell.",
-          "Across an isoelectronic series (same number of electrons), ionic radius decreases as nuclear charge increases because the same electron cloud is attracted more strongly by more protons.",
+          "Across a period, atomic radius generally decreases from left to right. Proton number increases while successive elements add electrons into the same principal shell, so inner shielding does not rise strongly enough to cancel the rising nuclear charge felt by valence electrons. The outer electron cloud is drawn inward, so atoms become smaller despite having more electrons overall.",
+          "Down a group, atomic radius increases. Each new period begins with occupation of a higher principal quantum number n for the group's outer electrons. Outer electrons are on average further from the nucleus, and additional inner shells increase shielding, so the valence electron is held less tightly even though Z has increased.",
+          "For monatomic ions derived from main-group atoms, cations are smaller than their parent atoms because electrons are removed, often from the outer shell entirely, reducing electron-electron repulsion and sometimes removing a whole shell from the valence picture. Anions are larger than their parent atoms because extra electrons are added into the same valence shell, increasing repulsion and slightly expanding the electron cloud even though nuclear charge is unchanged from the neutral atom.",
+          "Isoelectronic species contain the same total number of electrons (for example O²⁻, F⁻, Na⁺, Mg²⁺ all with 10 electrons). Along such a series, ionic radius decreases as nuclear charge increases because the same electron count is attracted by progressively more protons. Isoelectronic comparisons are a standard examination device; always check electron count before comparing radii.",
+          "When explaining any radius trend, structure the answer: state the observed direction, then give a linked account using nuclear charge, distance and shielding (and repulsion for ions). A trend statement alone, with no mechanism, rarely reaches top band.",
+        ],
+        blocks: [
+          {
+            type: "table",
+            caption: "Radius trends: what changes and why",
+            columns: ["Trend", "Outer electron environment", "Typical radius change"],
+            rows: [
+              ["Across a period", "Same principal shell; Z increases", "Atomic radius decreases"],
+              ["Down a group", "New shell; more shielding", "Atomic radius increases"],
+              ["Cation vs parent atom", "Fewer electrons; often fewer shells", "Ionic radius smaller"],
+              ["Anion vs parent atom", "More electrons in same valence shell", "Ionic radius larger"],
+            ],
+          },
         ],
       },
     ],
     examinerPitfalls: {
       intro:
-        "Examiners reward precise particle accounting and clear trend explanations. Marks are lost when candidates state trends without linking them to nuclear attraction, shielding and shell structure.",
+        "This subtopic is foundational: marks come from precise language and from separating nuclear ideas from electronic ideas. Examiners reward explicit particle accounting, correct use of Z and A, and radius explanations that combine nuclear charge, shell occupancy, shielding and (where relevant) repulsion in ions.",
       items: [
         "Using nucleon number as if it were proton number when counting electrons in ions.",
         "Saying atoms are dense throughout; only the nucleus is dense, while most atomic volume is empty space.",
@@ -152,42 +244,172 @@ export const CHEMISTRY_TOPIC1_DRAFTS: Record<string, NoteDraft> = {
         id: "isotope-definition",
         title: "Definition and notation of isotopes",
         paragraphs: [
-          "Isotopes are atoms of the same element with the same number of protons but different numbers of neutrons. Because proton number is unchanged, isotopes have the same atomic number, Z, but different nucleon number, A.",
-          "Nuclide notation places A as a left superscript and Z as a left subscript next to the element symbol X (for example ⁴²₂₀Ca). For chlorine isotopes this is ³⁵₁₇Cl and ³⁷₁₇Cl.",
-          "In chemistry calculations and equations, isotope notation is used when mass differences are relevant (for example in mass spectrometry), but the element identity is always determined by Z.",
+          "Isotopes are atoms of the same element with the same number of protons but different numbers of neutrons. They therefore share the same atomic number Z, but differ in nucleon number A because A counts protons plus neutrons. Changing neutron number changes mass properties and nuclear behaviour, but it does not change which element you have: that is fixed by Z alone.",
+          "Nuclide notation writes A as a left superscript and Z as a left subscript beside the element symbol X, for example ⁴²₂₀Ca. The left subscript is redundant if the symbol is already given (because the symbol implies Z), but examinations still require full notation when asked. For chlorine, the two major stable isotopes are commonly written ³⁵₁₇Cl and ³⁷₁₇Cl.",
+          "Relative isotopic mass and mass spectrometry (developed later in the course) depend on the fact that isotopes have different masses. In ordinary chemical equations you usually write element symbols without isotopic labels unless the question is specifically about isotopes, separation of isotopes, or mass-spectral peaks.",
+          "When you define isotopes in an exam, use the words proton number and neutron number. Definitions framed only in terms of 'different mass' are weaker because they do not state which subatomic particle count changes.",
+        ],
+        blocks: [
+          {
+            type: "equation",
+            text: "A = Z + N",
+          },
+          {
+            type: "table",
+            caption: "Nuclide symbols: what each number means",
+            columns: ["Symbol part", "Meaning", "Exam-use wording"],
+            rows: [
+              ["Z (left subscript)", "Proton (atomic) number", "Identifies the element"],
+              ["A (left superscript)", "Nucleon (mass) number", "Total protons + neutrons"],
+              ["N", "Neutron number", "Found from A − Z"],
+            ],
+          },
+          {
+            type: "callout",
+            tone: "exam",
+            title: "Mark-scheme adjacent definition",
+            items: [
+              "Same proton number.",
+              "Different neutron number.",
+              "Same atomic number (Z), different nucleon number (A).",
+            ],
+          },
+          {
+            type: "callout",
+            tone: "warning",
+            title: "Common definition error",
+            paragraphs: [
+              "Do not define isotopes using electron number or ionic charge. The required definition is only in terms of protons and neutrons.",
+            ],
+          },
         ],
       },
       {
         id: "chemical-properties-same",
         title: "Why isotopes have the same chemical properties",
         paragraphs: [
-          "Chemical properties are determined mainly by electronic configuration, especially valence-shell electrons. Isotopes of an element have the same proton number and therefore, for neutral atoms, the same electron arrangement.",
-          "Since bond formation and reactivity depend on electron arrangement rather than neutron number, isotopes of the same element show the same chemical behavior in ordinary reactions.",
-          "Any isotope effects in reaction rate are usually small and not the focus of this syllabus point; the required understanding is that standard chemical properties are effectively the same.",
+          "Chemical reactivity and bonding are controlled primarily by electron arrangement, particularly valence electrons, because covalent and ionic interactions involve electrostatic attraction and repulsion between nuclei and electrons and between electrons themselves. Isotopes of an element have the same Z, so neutral atoms of each isotope contain the same number of electrons and the same ground-state configuration.",
+          "That means the same types of bonds form, the same common ion charges appear (for example Cl forming Cl⁻), and the same overall reaction pathways are followed in typical laboratory chemistry. Any kinetic isotope effect (slightly different rates due to mass) is a subtle physical chemistry point and is not what this syllabus item is testing unless a question explicitly introduces it.",
+          "When you compare two isotopes in an explanation item, start from Z, move to electron configuration for the neutral atom, then link to bonding. If the question involves ions, be explicit about how many electrons are gained or lost; the isotope label on the nucleus does not change the electron-counting rules.",
+          "In longer answers, avoid implying that neutrons 'take part' in covalent bond formation in the same way as valence electrons. Neutrons influence mass and some physical properties, but ordinary chemical change is an electronic rearrangement at constant Z.",
+        ],
+        blocks: [
+          {
+            type: "table",
+            caption: "What stays the same and what changes between isotopes",
+            columns: ["Feature", "Same or different?", "Consequence"],
+            rows: [
+              ["Proton number (Z)", "Same", "Same element identity"],
+              ["Electron arrangement (neutral atoms)", "Same", "Same bonding pattern and reactivity"],
+              ["Neutron number", "Different", "Mass changes, not core chemical identity"],
+            ],
+          },
+          {
+            type: "steps",
+            title: "How to answer \"same chemical properties\" questions",
+            items: [
+              "State that isotopes have the same proton number.",
+              "Link this to the same electron configuration (for neutral atoms).",
+              "Conclude that valence-electron behaviour in bonding is the same.",
+              "State that ordinary chemical properties are therefore the same.",
+            ],
+          },
+          {
+            type: "callout",
+            tone: "warning",
+            title: "Avoid this statement",
+            paragraphs: [
+              "Different mass means different chemical properties is not accepted as the main explanation at this level.",
+            ],
+          },
         ],
       },
       {
         id: "physical-properties-different",
         title: "Why isotopes have different physical properties",
         paragraphs: [
-          "Isotopes differ in neutron number, so their masses differ. Differences in mass can change physical properties that depend on particle mass, such as density, diffusion rate and some phase-change temperatures.",
-          "For a given amount of substance, the heavier isotope contributes greater mass. If packing and bonding are similar, samples enriched in heavier isotopes have higher density.",
-          "The syllabus limits this explanation to differences in mass and density: same electronic structure explains same chemistry, different nuclear mass explains physical differences.",
+          "Because isotopes differ in neutron number, atoms of different isotopes have different masses. Many physical properties depend on mass even when the electronic structure is essentially unchanged: molar mass enters density, moments of inertia enter rotation, and reduced mass enters vibrational frequencies in molecules. At this level the syllabus stresses density and related 'heavier particle moves differently' arguments rather than a full catalogue of isotope effects.",
+          "For gases at the same temperature and pressure, equal amounts in moles occupy essentially the same volume, but the sample mass differs if the molar mass differs. Density, mass per unit volume, therefore changes when the isotopic composition changes. Similar reasoning applies to effusion and diffusion rates in qualitative questions: lighter molecules or atoms on average move faster at a given temperature.",
+          "When you contrast physical and chemical behaviour, keep the logic parallel: same electron arrangement implies the same chemical identity for reaction pathways; different nucleon composition implies different mass and therefore potentially different physical behaviour. Do not claim that all physical properties are identical between isotopes.",
+          "In structured questions, tie the physical property named in the stem to mass explicitly. For example, compare ¹H₂ and ²H₂ by molecular mass at constant T and p, then relate to density or mean speed, rather than discussing electronic configuration again.",
+        ],
+        blocks: [
+          {
+            type: "equation",
+            text: "density = mass / volume",
+          },
+          {
+            type: "table",
+            caption: "Mass-based physical effects of isotopic differences",
+            columns: ["Property (mass-related)", "Expected isotope trend", "Reason"],
+            rows: [
+              ["Density", "Heavier-isotope sample can be denser", "Greater mass in comparable volume"],
+              [
+                "Rate of diffusion (gas)",
+                "Heavier isotopic molecules diffuse more slowly",
+                "Higher particle mass lowers average speed at given conditions",
+              ],
+              ["Relative molecular mass of isotopic molecule", "Different", "Atomic isotopic masses differ"],
+            ],
+          },
         ],
       },
       {
         id: "link-to-relative-atomic-mass",
         title: "Isotopes and weighted average ideas",
         paragraphs: [
-          "Natural elements are often mixtures of isotopes. The relative atomic mass, Aᵣ, is the weighted mean of isotopic masses according to isotopic abundances.",
-          "This is why Aᵣ values in the Periodic Table are often non-integer (for example chlorine approximately 35.5): they reflect a mixture, not one single isotope.",
-          "Although full Aᵣ calculations are developed later, isotope understanding from this section underpins those calculations.",
+          "Natural samples of many elements contain mixtures of isotopes in nearly fixed proportions. The Periodic Table value Aᵣ is therefore a weighted mean: each isotope contributes in proportion to its abundance, not as a simple average of mass numbers. That is why chlorine's Aᵣ is about 35.5 even though no chlorine atom has nucleon number 35.5: the value describes a bulk sample, not a single nuclide.",
+          "The weighted-mean idea is the bridge between isotope-level chemistry in Topic 1 and quantitative work on isotopic abundances and mass spectra in later topics. When you interpret a mass spectrum, peak heights (or integrated intensities) relate to relative abundance; when you interpret Aᵣ, you are summarising those abundances in one number on the carbon-12 relative scale developed in Topic 2.",
+          "Always convert percentage abundances to fractions before multiplying unless you incorporate the factor of 100 consistently in one line of working. Examiners penalise 'average of 35 and 37' reasoning for chlorine because it ignores the unequal abundances.",
+          "If a question gives relative isotopic masses rather than integers, carry those values through the weighting exactly as stated: do not silently round isotopic masses before weighting unless the data justify it.",
+        ],
+        blocks: [
+          {
+            type: "equation",
+            text: "Aᵣ = Σ (isotopic mass × fractional abundance)",
+          },
+          {
+            type: "steps",
+            title: "Weighted-mean method (percentage abundances)",
+            items: [
+              "Convert each percentage abundance to a fraction by dividing by 100.",
+              "Multiply each isotopic mass by its fractional abundance.",
+              "Add all contributions.",
+              "Report Aᵣ to a sensible number of significant figures for the data given.",
+            ],
+          },
+          {
+            type: "table",
+            caption: "Illustrative isotope weighting (chlorine-style pattern)",
+            columns: ["Isotope mass", "Abundance / %", "Contribution to Aᵣ"],
+            rows: [
+              ["35", "75", "35 × 0.75 = 26.25"],
+              ["37", "25", "37 × 0.25 = 9.25"],
+              ["Total", "100", "Aᵣ = 35.50"],
+            ],
+          },
+          {
+            type: "callout",
+            tone: "exam",
+            title: "Why Aᵣ is often non-integer",
+            paragraphs: [
+              "A non-integer Aᵣ does not mean fractional atoms; it means the sample contains a mixture of isotopes and Aᵣ is a weighted average.",
+            ],
+          },
+          {
+            type: "callout",
+            tone: "warning",
+            title: "Frequent calculation slip",
+            paragraphs: [
+              "Do not divide by the number of isotopes unless abundances are equal. Use abundance weighting explicitly.",
+            ],
+          },
         ],
       },
     ],
     examinerPitfalls: {
       intro:
-        "Isotope questions are usually direct, but accuracy of language matters. Cambridge mark schemes distinguish clearly between proton number, nucleon number and electron arrangement.",
+        "Isotope marks are often lost through loose definitions or through mixing up which properties follow from electrons versus from nuclear composition. Examiners expect clear separation of Z, A and electron count, and they expect physical versus chemical contrasts to be argued with the correct underlying cause.",
       items: [
         "Defining isotopes as atoms with same mass but different charge; correct definition is same proton number, different neutron number.",
         "Saying isotopes have different chemical properties because their masses differ; chemistry is governed by electron arrangement.",
@@ -271,7 +493,9 @@ export const CHEMISTRY_TOPIC1_DRAFTS: Record<string, NoteDraft> = {
         question:
           "For isotope ⁶⁴₂₉Cu, state numbers of protons, neutrons and electrons in the neutral atom.",
         modelAnswer: [
-          "Protons = 29, neutrons = 64 - 29 = 35, electrons = 29.",
+          "Protons = 29 (subscript in ⁶⁴₂₉Cu).",
+          "Neutrons = 64 - 29 = 35.",
+          "Electrons in neutral atom = 29 (equals proton number).",
         ],
       },
     ],
@@ -284,60 +508,170 @@ export const CHEMISTRY_TOPIC1_DRAFTS: Record<string, NoteDraft> = {
         id: "shells-subshells-orbitals",
         title: "Shells, sub-shells, orbitals and ground state",
         paragraphs: [
-          "A shell is a main energy level labelled by principal quantum number n (n = 1, 2, 3, ...). Within each shell are sub-shells (s, p, d) made of orbitals.",
-          "An orbital is a region of space where there is a high probability of finding an electron. Each orbital holds a maximum of two electrons with opposite spins.",
-          "Ground state means the lowest-energy electron arrangement for an atom or ion. In this section, configurations are always treated in the ground state for elements H to Kr.",
+          "A shell is a principal energy level labelled by n = 1, 2, 3, … . Each shell contains one or more sub-shells labelled s, p, d (and higher sub-shells exist for heavier elements, but this topic focuses on the rules needed up to the 4p region). A sub-shell is a set of orbitals that share the same n and sub-shell letter and have the same energy in the hydrogen-like picture; in many-electron atoms they are still grouped usefully by the same labels.",
+          "An orbital is a region in space (often pictured as a boundary surface) where there is a high probability of finding an electron. Each orbital can hold at most two electrons, and if two are present they must differ in spin direction (Pauli exclusion principle). This 'two per orbital' rule is what makes electron counting predictable once you know how many orbitals each sub-shell has.",
+          "Ground state means the lowest total energy arrangement for a given species under normal conditions. Examination questions specify electronic configuration without extra wording; that defaults to ground state unless you are explicitly told otherwise. Excited-state configurations appear in atomic spectroscopy contexts later, but not as the default in Topic 1 drilling.",
+          "When you read or write a configuration, mentally parse it in the hierarchy shell → sub-shell → orbital occupancy. That discipline prevents common mistakes such as confusing 3p with 3d or treating all electrons in a shell as equivalent for removal arguments.",
+        ],
+        blocks: [
+          {
+            type: "bullets",
+            items: [
+              "Shell n → sub-shells (s, p, d in range of this topic) → orbitals (≤2 e⁻ each).",
+              "Ground state = lowest-energy arrangement unless the question says otherwise.",
+            ],
+          },
+          {
+            type: "callout",
+            tone: "exam",
+            title: "Ground-state wording",
+            paragraphs: [
+              "When asked for an electronic configuration unless stated otherwise, give the lowest-energy arrangement (ground state), not an excited arrangement.",
+            ],
+          },
         ],
       },
       {
         id: "orbital-capacities",
         title: "Number of orbitals and electron capacities",
         paragraphs: [
-          "The s sub-shell contains 1 orbital and holds up to 2 electrons. The p sub-shell contains 3 orbitals and holds up to 6 electrons. The d sub-shell contains 5 orbitals and holds up to 10 electrons.",
-          "For shell n = 1, only 1s exists. For n = 2, sub-shells are 2s and 2p. For n = 3, sub-shells are 3s, 3p and 3d.",
-          "Electrons fill lower-energy orbitals before higher-energy orbitals (Aufbau principle), with Pauli exclusion and Hund's rule also governing how orbitals are populated.",
+          "The s sub-shell has a single orbital and therefore a maximum of two electrons. The p sub-shell has three mutually perpendicular orbitals (pₓ, pᵧ, p_z in a Cartesian choice of axes) and therefore a maximum of six electrons. The d sub-shell has five orbitals and a maximum of ten electrons. These capacity rules are used constantly when checking whether a proposed configuration obeys Pauli exclusion.",
+          "Which sub-shells exist for a given n follows the pattern used in this course: n = 1 only 1s; n = 2 has 2s and 2p; n = 3 has 3s, 3p and 3d. You do not occupy 2d, because the first d sub-shell that appears in the Aufbau filling order for neutral atoms in this range is 3d.",
+          "The Aufbau principle is the statement that electrons occupy available orbitals so as to give the lowest overall energy arrangement, subject to Pauli exclusion and Hund's rule. In examinations, 'build up' configurations by filling in the syllabus order rather than by guessing orbital energies case by case.",
+          "When you count electrons in ions, the capacity rules do not change: you still cannot place more than two electrons in any one orbital. What changes is the total electron count and therefore how far along the filling order you proceed.",
+        ],
+        blocks: [
+          {
+            type: "table",
+            caption: "Orbital counts and electron capacities by sub-shell",
+            columns: ["Sub-shell", "Number of orbitals", "Maximum electrons"],
+            rows: [
+              ["s", "1", "2"],
+              ["p", "3", "6"],
+              ["d", "5", "10"],
+            ],
+          },
+          {
+            type: "table",
+            caption: "Allowed sub-shells in first three shells",
+            columns: ["Shell", "Sub-shells present", "Total orbital count"],
+            rows: [
+              ["n = 1", "1s", "1"],
+              ["n = 2", "2s, 2p", "4"],
+              ["n = 3", "3s, 3p, 3d", "9"],
+            ],
+          },
+          {
+            type: "callout",
+            tone: "exam",
+            title: "Hund's rule reminder",
+            paragraphs: [
+              "In degenerate orbitals (for example p or d in the same sub-shell), place electrons singly with parallel spin before pairing.",
+            ],
+          },
         ],
       },
       {
         id: "energy-order",
         title: "Order of sub-shell energies (first three shells, 4s and 4p)",
         paragraphs: [
-          "Required order of increasing energy: 1s < 2s < 2p < 3s < 3p < 4s < 3d < 4p.",
-          "This explains why 4s fills before 3d in neutral atoms from K onward. The energy difference is small and can shift in ions, but for writing ground-state configurations in this topic, use the stated order.",
-          "The arrangement reflects attraction to nucleus and electron-electron repulsion effects. As sub-shells fill, repulsions can alter relative energies slightly, which is why chemistry of transition ions requires care later.",
+          "For the purposes of writing configurations in this syllabus, sub-shell energies increase in the fixed order 1s < 2s < 2p < 3s < 3p < 4s < 3d < 4p. This ordering already encodes the chemically important fact that 4s is occupied before 3d as neutral atoms are built from potassium onwards, even though 3d has the lower principal quantum number.",
+          "The 4s/3d inversion is a classic examination trap: filling order for neutral atoms is not always identical to removal order when forming positive ions. In first-row transition metals, once both 3d and 4s are occupied, 4s electrons are often removed first on ionisation because the orbital energies reorder as the nuclear charge and d occupancy change the effective potential.",
+          "Relative sub-shell energies arise from a balance of nuclear attraction, shielding and electron-electron repulsion. You are not required to compute those energies numerically at A Level; you are required to apply the given ordering reliably and to justify ionisation and configuration questions using the rules your teacher and specification use for 4s and 3d.",
+          "If a question asks for an 'electron-in-box' diagram for a transition-metal atom in its ground state, still fill 4s before 3d for the neutral atom unless the question states a different experimental context.",
+        ],
+        blocks: [
+          {
+            type: "equation",
+            text: "1s < 2s < 2p < 3s < 3p < 4s < 3d < 4p",
+          },
+          {
+            type: "callout",
+            tone: "exam",
+            title: "4s versus 3d in ions",
+            paragraphs: [
+              "Filling order and removal order are different ideas: 4s fills before 3d in many neutral atoms, but for first-row transition-metal cations electrons are removed from 4s before 3d.",
+            ],
+          },
         ],
       },
       {
         id: "configuration-writing",
         title: "Electronic configurations of atoms and ions",
         paragraphs: [
-          "You should write configurations in full form (for example Fe: 1s² 2s² 2p⁶ 3s² 3p⁶ 3d⁶ 4s²) or shorthand noble-gas form ([Ar] 3d⁶ 4s²). Both are acceptable when clearly written.",
-          "For ions, add or remove electrons from the highest-energy occupied sub-shell in the species being formed. For transition-metal cations, electrons are removed from 4s before 3d, so Fe²⁺ is [Ar] 3d⁶, not [Ar] 3d⁴ 4s².",
-          "Always check total electron count against atomic number and charge; this prevents most configuration errors.",
+          "You may write configurations in full (listing all occupied sub-shells from 1s upward) or by noble-gas shorthand (core in square brackets plus valence sub-shells). Both are acceptable if completely unambiguous. For example, bromine is [Ar] 3d¹⁰ 4s² 4p⁵; do not drop the d block just because argon ends at 3p⁶.",
+          "For main-group monatomic ions, electron gain or loss is usually clear from the group number and charge: Group 2 loses two s electrons first; Group 16 non-metals often gain electrons into p orbitals until a noble-gas configuration is reached. For transition metals, the examination expectation for first-row species is explicit: remove 4s electrons before 3d when forming common cations such as Fe²⁺, Fe³⁺, Cu²⁺.",
+          "Always finish by checking electron total equals atomic number minus cation charge plus anion charge. A quick checksum catches transposed subscripts, missed d electrons, and the common error of writing 4p³ when 4p⁵ is intended.",
+          "When a question asks for both an atom and its ion, write them as two separate final lines rather than embedding a long explanation between half-finished configurations. Clarity improves marking reliability.",
+          "If asked for an excited-state configuration, label it as such; otherwise assume ground state and use the syllabus sub-shell order without inventing alternative occupancies 'because they look symmetric'.",
+        ],
+        blocks: [
+          {
+            type: "steps",
+            title: "Steps for writing electronic configurations",
+            items: [
+              "Find total electrons from atomic number and charge.",
+              "Fill sub-shells in the required energy order up to the correct electron total.",
+              "Apply Pauli exclusion and Hund's rule while placing electrons.",
+              "For cations, remove electrons from the highest-energy occupied sub-shell in that species (4s before 3d for first-row transition metals).",
+              "Check total electrons and rewrite in shorthand form if required.",
+            ],
+          },
+          {
+            type: "table",
+            caption: "Neutral atom versus common cation (first-row transition metal)",
+            columns: ["Species", "Shorthand configuration", "Removal note"],
+            rows: [
+              ["Fe", "[Ar] 3d⁶ 4s²", "4s fills before 3d in the neutral atom"],
+              ["Fe²⁺", "[Ar] 3d⁶", "Remove two 4s electrons before 3d when forming Fe²⁺"],
+            ],
+          },
         ],
       },
       {
         id: "electrons-in-boxes",
         title: "Electrons-in-boxes notation and pairing",
         paragraphs: [
-          "Electrons-in-boxes notation shows each orbital as a box and each electron as an arrow. Opposite arrows in one box represent paired electrons with opposite spin.",
-          "For degenerate orbitals in a p or d sub-shell, place one electron in each orbital before pairing (Hund's rule). This minimises electron-electron repulsion and gives lower energy.",
-          "This notation is useful for identifying unpaired electrons and for linking configuration to properties such as magnetism and free-radical behavior.",
+          "Electrons-in-boxes notation represents each orbital as a box and each electron as an arrow. A pair of opposite arrows in one box denotes two electrons occupying the same spatial orbital with paired spins. Single arrows in separate boxes denote unpaired electrons in degenerate orbitals at the same sub-shell energy.",
+          "Hund's rule of maximum multiplicity states that for degenerate orbitals the lowest-energy arrangement puts electrons singly into separate orbitals with parallel spins before any pairing occurs. That arrangement reduces electron-electron repulsion because electrons in different spatial orbitals are on average further apart.",
+          "The notation is not just bookkeeping: it is the standard way to show whether a species is likely to be paramagnetic, whether a half-filled sub-shell is present, and whether a species qualifies as a radical under the definition used in organic chemistry introductions.",
+          "In examination diagrams, arrows must be drawn clearly inside the correct box count: three boxes for p, five for d. Partially erased or ambiguous diagrams lose marks even when the written configuration is correct.",
+        ],
+        blocks: [
+          {
+            type: "bullets",
+            items: [
+              "One box = one orbital; two arrows in one box = opposite spins (Pauli).",
+              "Before pairing in a degenerate set (same sub-shell): put one electron in each orbital first (Hund).",
+              "In exam diagrams, pairing all three 2p electrons in one box loses marks; spread singly across three boxes first.",
+            ],
+          },
         ],
       },
       {
         id: "orbital-shapes-and-radicals",
         title: "Orbital shapes and free radicals",
         paragraphs: [
-          "An s orbital is spherical around the nucleus. A p orbital is dumb-bell shaped with two lobes separated by a nodal plane through the nucleus.",
-          "A free radical is a species containing one or more unpaired electrons. Because unpaired electrons are highly reactive, radicals often undergo rapid reactions such as substitution or polymerisation initiation.",
-          "Being able to identify unpaired electrons from configuration or boxes notation is therefore both a structural and reactivity skill.",
+          "The s orbital has spherical symmetry about the nucleus: equal electron probability in all directions at a given distance, once angular averaging is understood at the qualitative level required here. A p orbital has directional character: two lobes separated by a planar node through the nucleus, giving a dumb-bell picture along an axis.",
+          "These shapes matter when you visualise overlap in covalent bonding later: head-on overlap along an internuclear axis is commonly associated with σ frameworks built from s and p combinations, while π ideas appear when p lobes overlap sideways. Topic 1 expects naming and sketching in words rather than full quantum-mechanical detail.",
+          "A free radical is defined as a species with one or more unpaired electrons. That definition is electronic: it does not say 'anything reactive is a radical'. Many reactive intermediates are not radicals, and some radicals persist longer than intuition suggests if delocalisation stabilises the spin density.",
+          "Reactivity of radicals is explained by the tendency to pair electrons to lower energy: addition to π bonds, abstraction of hydrogen atoms, and initiation of polymerisation chains are typical contexts you will meet later. Here, focus on identifying unpaired electrons from 2p³, 3p² and similar configurations and from incomplete box filling.",
+        ],
+        blocks: [
+          {
+            type: "bullets",
+            items: [
+              "s orbital: spherical about the nucleus.",
+              "p orbital: dumb-bell; nodal plane through the nucleus between lobes.",
+              "Radical: ≥1 unpaired e⁻ (state this in definitions, not only 'very reactive').",
+            ],
+          },
         ],
       },
     ],
     examinerPitfalls: {
       intro:
-        "Configuration marks depend on exact ordering, electron counts and clear notation. Small slips in sub-shell order or electron removal sequence often lose full marks.",
+        "Electronic-structure questions are detail-sensitive: the difference between [Ar] 3d⁶ 4s² and [Ar] 3d⁴ 4s² is not a cosmetic slip for iron. Examiners reward correct sub-shell ordering for neutral atoms, correct removal order for transition-metal ions, and correct application of Hund's rule in diagrams.",
       items: [
         "Writing 3d before 4s in neutral atom filling for K and Ca region.",
         "Removing 3d electrons before 4s when forming first-row transition-metal cations.",
@@ -398,7 +732,8 @@ export const CHEMISTRY_TOPIC1_DRAFTS: Record<string, NoteDraft> = {
         question:
           "Give the required order of increasing sub-shell energy up to 4p (including 4s and 3d).",
         modelAnswer: [
-          "1s < 2s < 2p < 3s < 3p < 4s < 3d < 4p.",
+          "Order of increasing sub-shell energy: 1s < 2s < 2p < 3s < 3p < 4s < 3d < 4p.",
+          "4s is filled before 3d when building atoms in order of increasing atomic number.",
         ],
       },
       {
@@ -406,7 +741,8 @@ export const CHEMISTRY_TOPIC1_DRAFTS: Record<string, NoteDraft> = {
         question:
           "Write the shorthand electronic configuration of Ca²⁺.",
         modelAnswer: [
-          "Ca has [Ar] 4s². Ca²⁺ has lost two 4s electrons, so Ca²⁺ is [Ar].",
+          "Calcium atom: 1s² 2s² 2p⁶ 3s² 3p⁶ 4s².",
+          "Ca²⁺ has lost two 4s electrons, so Ca²⁺ is [Ar] or 1s² 2s² 2p⁶ 3s² 3p⁶.",
         ],
       },
       {
@@ -435,60 +771,235 @@ export const CHEMISTRY_TOPIC1_DRAFTS: Record<string, NoteDraft> = {
         id: "definition-first-ie",
         title: "First ionisation energy and equation conventions",
         paragraphs: [
-          "First ionisation energy, IE₁, is the energy required to remove one electron from each atom in one mole of gaseous atoms to form one mole of gaseous 1+ ions.",
-          "Standard equation form uses gaseous species, for example: Na(g) → Na⁺(g) + e⁻.",
-          "Second and subsequent ionisation energies remove electrons from gaseous ions, for example: Mg⁺(g) → Mg²⁺(g) + e⁻. Ionisation energies are always positive because energy must be supplied to overcome attraction between nucleus and electron.",
+          "First ionisation energy, IE₁, is defined as the energy required to remove one electron from each atom in one mole of gaseous atoms to form one mole of gaseous singly charged ions. The definition is deliberately macroscopic (per mole) to match thermochemical data tabulated in kJ mol⁻¹, but the underlying picture is always one electron leaving one atomic centre at a time in the thought experiment the equation represents.",
+          "Standard symbol equations use (g) on every atom and ion shown, and include a free electron as e⁻ on the product side. For example, Na(g) → Na⁺(g) + e⁻. Second ionisation energy uses the gaseous singly charged ion as the reactant: Mg⁺(g) → Mg²⁺(g) + e⁻. Third ionisation begins from Mg²⁺(g), and so on. Each line removes exactly one electron; never fold two ionisation steps into one equation in this notation.",
+          "Ionisation energies are endothermic quantities: energy must be supplied to work against attraction between nucleus and electron, so values quoted are positive when described as 'energy required'. If you compare two species, higher IE means the electron is harder to remove.",
+          "Common presentation errors include writing aqueous ions, omitting (g), starting from a molecular species for IE₁ without justification, or removing two electrons at once. These are not minor stylistic slips: they show misunderstanding of the definition boundary conditions.",
+        ],
+        blocks: [
+          {
+            type: "equation",
+            text: "X(g) → X⁺(g) + e⁻",
+          },
+          {
+            type: "equation",
+            text: "X⁺(g) → X²⁺(g) + e⁻",
+          },
+          {
+            type: "steps",
+            title: "Checklist for correct ionisation-energy equations",
+            items: [
+              "Start with one gaseous species on the left: atom for IE₁, cation for IE₂ and beyond.",
+              "Remove exactly one electron only in each equation line.",
+              "Write all species as gaseous, including ions: (g).",
+              "Use charge balance to check: total charge on both sides must match.",
+              "State energy units as kJ mol⁻¹ when quoting numerical values.",
+            ],
+          },
+          {
+            type: "table",
+            caption: "Examples of accepted gaseous equations",
+            columns: ["Ionisation energy", "Equation"],
+            rows: [
+              ["First IE of sodium", "Na(g) → Na⁺(g) + e⁻"],
+              ["Second IE of magnesium", "Mg⁺(g) → Mg²⁺(g) + e⁻"],
+              ["Third IE of aluminium", "Al²⁺(g) → Al³⁺(g) + e⁻"],
+            ],
+          },
+          {
+            type: "callout",
+            tone: "warning",
+            title: "Examiner trigger errors",
+            items: [
+              "Do not write aqueous ions in ionisation-energy equations.",
+              "Do not remove two electrons in a single IE equation line.",
+              "Do not start IE₁ from molecules such as Cl₂(g).",
+            ],
+          },
         ],
       },
       {
         id: "core-attraction-model",
         title: "Why ionisation energy has the trends it does",
         paragraphs: [
-          "Ionisation energy reflects electrostatic attraction between nucleus and the electron being removed. Stronger attraction means higher ionisation energy.",
-          "Across a period, first ionisation energy generally increases because nuclear charge rises while the outer electron remains in the same principal shell, so shielding does not increase enough to offset stronger attraction.",
-          "Down a group, first ionisation energy generally decreases because outer electrons are further from nucleus and more shielded by additional inner shells, reducing attraction despite higher nuclear charge.",
+          "Ionisation energy measures how strongly the outermost electron is bound, which is controlled mainly by electrostatic attraction to the nucleus moderated by electron-electron repulsion and shielding. A simple mental model is that higher effective nuclear attraction on the electron being removed raises IE, while increased distance or shielding lowers IE.",
+          "Across a period, nuclear charge increases by one proton per step while added electrons enter the same principal shell for the main trend argument. Inner shells do not multiply as they do down a group, so shielding does not rise rapidly enough to cancel the rising Z. First IE therefore tends to increase from left to right, with the well-known exceptions handled in the next section.",
+          "Down a group, each new period adds another occupied inner shell between nucleus and valence shell. Outer electrons are on average further from the nucleus and experience more shielding from core electrons. Even though Z increases down the group, these geometric and screening effects dominate for first ionisation, so IE generally decreases.",
+          "When you compare two specific atoms, avoid vague 'size' arguments alone. Link size to distance of the removed electron from the nucleus, link nuclear charge to proton count, and link shielding to inner electron shells and sub-shells. That triad is what mark schemes encode when they ask for 'reasons for trend'.",
+        ],
+        blocks: [
+          {
+            type: "equation",
+            text: "Attraction ∝ (nuclear charge) / distance²",
+          },
+          {
+            type: "table",
+            caption: "Core model for first-ionisation-energy trends",
+            columns: ["Change", "Dominant effect", "Net effect on IE₁"],
+            rows: [
+              ["Across a period", "Higher nuclear charge; outer electron still in same main shell", "Generally increases"],
+              ["Across a period", "Shielding increases only slightly", "Increase reinforced"],
+              ["Down a group", "Outer electron in higher shell (greater distance)", "Generally decreases"],
+              ["Down a group", "More inner-shell shielding", "Decrease reinforced"],
+            ],
+          },
         ],
       },
       {
         id: "anomalies-across-period",
         title: "Explaining periodic anomalies",
         paragraphs: [
-          "Not all points rise smoothly across a period. Two classic dips occur where sub-shell structure and spin pairing matter.",
-          "From Be to B (and Mg to Al), IE falls because electron removed from B or Al is in a higher-energy p sub-shell, which is less strongly attracted than an s electron at similar shell level.",
-          "From N to O (and P to S), IE falls because O or S has one paired p orbital electron, and electron-electron repulsion in a paired orbital makes removal slightly easier than from the half-filled arrangement in N or P.",
+          "Across a period the general first-IE trend is upward, but not monotonic at every step. Cambridge expects you to explain two dips in Period 2 (Be → B and N → O) and to recognise the same patterns again in Period 3 (Mg → Al and P → S). Examiners reward sub-shell arguments and pairing arguments, not memorised graphs without reasoning.",
+          "From beryllium to boron, the outer electron removed from boron is in a 2p orbital, whereas beryllium's outer electron is in 2s. The p sub-shell lies higher in energy than the s sub-shell within the same shell, so less energy is required to remove a boron outer electron despite the increase in Z. Magnesium to aluminium repeats the same s → p pattern in n = 3.",
+          "From nitrogen to oxygen, nitrogen has a half-filled 2p configuration (three unpaired electrons in three separate orbitals), which is particularly stable. Oxygen adds a fourth 2p electron that must pair in an already occupied orbital, increasing electron-electron repulsion and making one electron slightly easier to remove. Phosphorus to sulfur is the Period 3 analogue with 3p³ versus 3p⁴.",
+          "When you answer anomaly questions, name the two elements, state which electron is removed in each case (sub-shell and occupancy), and compare attraction and repulsion effects explicitly. A generic 'down the group' style answer is wrong for across-period anomalies.",
+        ],
+        blocks: [
+          {
+            type: "table",
+            caption: "Period anomalies required at this level",
+            columns: ["Pair", "Observed change in IE₁", "Electronic reason"],
+            rows: [
+              [
+                "Be → B",
+                "Falls",
+                "Electron removed from 2p in B rather than 2s in Be; 2p is higher in energy and less strongly attracted.",
+              ],
+              [
+                "N → O",
+                "Falls",
+                "O has one paired 2p electron; electron-electron repulsion in that orbital makes removal easier than from N (2p³ half-filled).",
+              ],
+              [
+                "Mg → Al",
+                "Falls",
+                "Electron removed from 3p in Al rather than 3s in Mg; 3p is higher in energy and less strongly attracted.",
+              ],
+              [
+                "P → S",
+                "Falls",
+                "S has one paired 3p electron; repulsion in the paired orbital lowers energy needed for removal.",
+              ],
+            ],
+          },
+          {
+            type: "equation",
+            text: "Half-filled p³ arrangement has no paired-electron repulsion within a p orbital.",
+          },
+          {
+            type: "bullets",
+            items: [
+              "Period 3 repeats the same ideas: Mg → Al (s vs p removal), P → S (half-filled vs paired p).",
+            ],
+          },
         ],
       },
       {
         id: "successive-ie-and-shells",
         title: "Successive ionisation energies and shell structure",
         paragraphs: [
-          "For any element, successive ionisation energies increase because electrons are removed from an increasingly positive ion.",
-          "A very large jump between one ionisation energy and the next indicates that the next electron would come from an inner shell closer to the nucleus.",
-          "This jump pattern lets you infer valence electron number: if a big jump occurs after the third electron is removed, the atom had three outer-shell electrons.",
+          "Successive ionisation energies IE₁, IE₂, IE₃, … measure removal from gaseous species with increasing positive charge. Each step is harder than the last because the same nucleus binds fewer remaining electrons more tightly overall, so values generally climb along the series for a single element.",
+          "Within that climb, the pattern is not uniform: when the next electron to be removed comes from a new, inner principal shell, there is a disproportionately large increase because inner-shell electrons are much closer to the nucleus and experience much stronger effective attraction after valence electrons have been stripped away.",
+          "Therefore the position of the first very large jump counts how many electrons occupied the outer shell in the neutral atom. If the jump occurs after IE₄, there were four valence electrons removed relatively 'easily' compared with the fifth removal from a core shell.",
+          "When interpreting numerical tables, quote the two successive values that bracket the jump and describe qualitatively how much larger the step is than earlier steps. That numerical gesture convinces a marker you are looking at data, not reciting a template.",
+        ],
+        blocks: [
+          {
+            type: "steps",
+            title: "How to read successive-ionisation data",
+            items: [
+              "Check that values rise overall from IE₁ onward.",
+              "Locate the first very large jump in value.",
+              "Count electrons removed before that jump; this equals outer-shell electron number.",
+              "Conclude that the next electron would be removed from an inner shell.",
+            ],
+          },
+          {
+            type: "equation",
+            text: "Large jump after IEₙ ⇒ element has n valence electrons",
+          },
         ],
       },
       {
         id: "deducing-position-from-ie-data",
         title: "Using successive IE data to deduce configuration and Periodic Table position",
         paragraphs: [
-          "From successive IE data, first locate the major jump to determine number of valence electrons and therefore likely group (for main-group elements in this level).",
-          "Then use magnitude trends and context to infer period and likely element range. For example, a huge jump after IE₂ suggests Group 2; after IE₁ suggests Group 1.",
-          "This method directly links ionisation data to electronic configuration and position in the Periodic Table.",
+          "Successive ionisation data is used as evidence for valence electron count and therefore for main-group number in the modern 1–18 numbering: one valence electron corresponds to Group 1 if the first huge jump follows IE₁, two valence electrons to Group 2 if it follows IE₂, and similarly up to the jump after IE₇ for Group 17 valence counts before core removal begins.",
+          "The method is powerful but not magic: several elements could share a similar valence count within one period, and transition-metal patterns need d-electron detail beyond the simple jump-counting template. At this stage, examination questions usually supply enough values that the jump is unambiguous and main-group focused.",
+          "Always combine jump logic with a sanity check on IE₁ magnitude if the question gives it: alkali metals have relatively low first ionisation energies compared with noble gases in the same period, for example. That comparative language strengthens 'deduce identity' items without claiming impossible precision.",
+          "When writing your conclusion, state valence electron number, state likely group, and (if asked) suggest a narrow list of elements consistent with any extra data such as relative IE magnitudes or other properties given in the stem.",
+        ],
+        blocks: [
+          {
+            type: "steps",
+            title: "Deduction workflow from successive IE values",
+            items: [
+              "Find the major jump and infer valence-electron number.",
+              "Map valence-electron number to main-group position (Groups 1, 2, 13–18).",
+              "Use absolute size of IE₁ with context to estimate whether the atom is higher or lower in the group.",
+              "State a justified candidate element range, not an unsupported single guess.",
+            ],
+          },
+          {
+            type: "table",
+            caption: "Quick group deductions from jump position",
+            columns: ["Major jump occurs after", "Valence electrons", "Likely main group"],
+            rows: [
+              ["IE₁", "1", "Group 1"],
+              ["IE₂", "2", "Group 2"],
+              ["IE₃", "3", "Group 13"],
+              ["IE₄", "4", "Group 14"],
+              ["IE₅", "5", "Group 15"],
+              ["IE₆", "6", "Group 16"],
+              ["IE₇", "7", "Group 17"],
+            ],
+          },
+          {
+            type: "callout",
+            tone: "warning",
+            title: "Do not over-claim",
+            paragraphs: [
+              "Successive IE data alone often gives group confidently; exact period or exact element may need additional context (for example known period or comparison data).",
+            ],
+          },
         ],
       },
       {
         id: "factor-summary",
         title: "Factors affecting ionisation energy",
         paragraphs: [
-          "Required factors are nuclear charge, atomic or ionic radius, shielding by inner shells and sub-shells, and spin-pair repulsion.",
-          "Higher nuclear charge tends to increase IE. Greater distance (larger radius) and greater shielding tend to decrease IE. Paired electrons in the same orbital experience repulsion, making electron removal easier and IE slightly lower.",
-          "High-quality explanations combine these factors rather than naming only one.",
+          "Syllabus checklists usually collect nuclear charge, atomic or ionic radius (distance of the electron from nucleus), shielding by inner shells and sub-shells, and spin-pair repulsion in the same orbital. Sub-shell type also matters in anomalies: removing a higher-energy sub-shell electron lowers IE compared with removing an s electron from the same n.",
+          "Nuclear charge raises IE when comparing species where the electron being removed starts from a similar distance and similar shielding environment. Increased distance or increased shielding reduces attraction and lowers IE. Spin-pair repulsion is a finer effect: it destabilises paired occupancy relative to half-filled arrangements and lowers IE slightly for the next electron added.",
+          "In comparisons, decide which factors genuinely differ between the species. If Z increases across a period but the removed electron stays in the same shell, nuclear charge and shielding arguments dominate. If you compare Na and Na⁺, electron count and shell occupancy differ: do not apply the neutral-atom template blindly to ions unless the question matches.",
+          "Examination answers should read as short arguments, not lists. Two well-linked factors with correct directions of effect usually beat five factors named without mechanism.",
+        ],
+        blocks: [
+          {
+            type: "table",
+            caption: "Factor-by-factor effect on ionisation energy",
+            columns: ["Factor", "Increase in factor causes...", "Reason"],
+            rows: [
+              ["Nuclear charge", "IE increases", "Stronger attraction between nucleus and electron."],
+              ["Distance of electron from nucleus (radius)", "IE decreases", "Attraction falls with increased distance."],
+              ["Shielding by inner electrons", "IE decreases", "Outer electron feels reduced effective nuclear attraction."],
+              ["Spin-pair repulsion in same orbital", "IE decreases slightly", "Repulsion makes one electron easier to remove."],
+              [
+                "Higher-energy sub-shell occupancy (p vs s in same shell)",
+                "IE decreases",
+                "Electron starts at higher energy and is less tightly held.",
+              ],
+            ],
+          },
+          {
+            type: "equation",
+            text: "Effective attraction = nuclear attraction − shielding effects",
+          },
         ],
       },
     ],
     examinerPitfalls: {
       intro:
-        "Ionisation-energy questions often require explanation, not just trend statements. Top-band answers use shell, sub-shell and repulsion arguments with precise gaseous equations.",
+        "Ionisation energy is a definition-heavy, explanation-heavy topic. Examiners penalise sloppy equations and reward structured arguments that move from electron configuration to attraction, shielding, distance and repulsion as appropriate. Anomalies must be tied to sub-shell changes or pairing, not to hand-waving about 'stability' without electronic detail.",
       items: [
         "Writing ionisation equations with aqueous species or molecules instead of gaseous atoms/ions.",
         "Stating trends without cause, for example 'IE increases across because atoms get smaller' without linking to nuclear charge and shielding.",
@@ -556,7 +1067,8 @@ export const CHEMISTRY_TOPIC1_DRAFTS: Record<string, NoteDraft> = {
         question:
           "Write the equation for the third ionisation energy of aluminium.",
         modelAnswer: [
-          "Al²⁺(g) → Al³⁺(g) + e⁻.",
+          "Al2+(g) -> Al3+(g) + e-.",
+          "Third ionisation removes the electron from the 3p sub-shell after two 3p electrons were already removed in earlier steps (overall from Al+ to Al3+ context as defined by question).",
         ],
       },
       {

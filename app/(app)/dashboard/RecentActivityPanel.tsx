@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ArrowClockwise, CaretRight } from "@phosphor-icons/react";
 import { readRecentActivities, type RecentActivityItem } from "@/lib/recent-activity";
+import { useStudyStorageRefresh } from "@/lib/use-study-storage-refresh";
 import s from "./dashboard.module.css";
 
 const KIND_LABEL: Record<RecentActivityItem["kind"], string> = {
@@ -16,11 +17,9 @@ export default function RecentActivityPanel() {
   const [items, setItems] = useState<RecentActivityItem[]>([]);
   const [hydrated, setHydrated] = useState(false);
 
-  useEffect(() => {
-    window.queueMicrotask(() => {
-      setItems(readRecentActivities());
-      setHydrated(true);
-    });
+  useStudyStorageRefresh(() => {
+    setItems(readRecentActivities());
+    setHydrated(true);
   }, []);
 
   return (

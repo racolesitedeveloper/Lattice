@@ -112,8 +112,8 @@ export const CHEMISTRY_TOPIC34_DRAFTS: Record<string, NoteDraft> = {
         question:
           "Name the required reduction routes from (a) amides and (b) nitriles to amines.",
         modelAnswer: [
-          "(a) Amides are reduced to amines using LiAlH₄.",
-          "(b) Nitriles are reduced to amines using LiAlH₄ or H₂/Ni.",
+          "Step 1: nucleophilic addition of CN⁻ to the carbonyl carbon of ethanal.",
+          "Step 2: protonation of the alkoxide intermediate gives 2-hydroxypropanenitrile (product of HCN addition).",
         ],
       },
       {
@@ -121,8 +121,8 @@ export const CHEMISTRY_TOPIC34_DRAFTS: Record<string, NoteDraft> = {
         question:
           "Describe the condensation reaction of ammonia with an acyl chloride at room temperature.",
         modelAnswer: [
-          "Ammonia reacts with the acyl chloride to form a primary amide and HCl.",
-          "The reaction occurs at room temperature and is often carried out with excess ammonia to neutralise HCl.",
+          "LiAlH₄ reduces the nitrile to a primary amine: 2-hydroxypropanenitrile → 2-hydroxypropylamine (after aqueous work-up).",
+          "State that LiAlH₄ is used in dry ether and water is added only after the reduction step.",
         ],
       },
       {

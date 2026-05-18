@@ -19,7 +19,6 @@ export const PHYSICS_TOPIC20_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Magnetic field direction is defined as the direction of force on an isolated north pole.",
         distractorRationale: {
-          B: "This is the standard definition of magnetic field direction.",
           C: "Electron flow is a current concept and does not define field-line direction.",
           D: "Electric and magnetic fields are different vector fields.",
         },
@@ -41,7 +40,6 @@ export const PHYSICS_TOPIC20_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation: "The magnetic field around a straight wire forms concentric circles around the conductor.",
         distractorRationale: {
           B: "Radial patterns are associated with point-source electric fields.",
-          C: "Correct topology for a long straight conductor.",
           D: "Field exists outside the wire and is not uniform only inside.",
         },
         tags: ["field-patterns", "straight-wire", "right-hand-rule"],
@@ -61,7 +59,6 @@ export const PHYSICS_TOPIC20_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Magnetic flux density magnitude directly indicates magnetic field strength.",
         distractorRationale: {
-          B: "Larger B means greater magnetic force on suitable moving charges/currents.",
           C: "Derived-unit status does not affect direct numerical comparison.",
           D: "Magnetic field strength can be compared independently.",
         },
@@ -323,7 +320,6 @@ export const PHYSICS_TOPIC20_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation: "From F = BIL sin(theta), force is maximum when theta = 90 degrees.",
         distractorRationale: {
           B: "At 45 degrees, force is lower by a sin(45) factor.",
-          C: "Perpendicular orientation gives sin(theta) = 1.",
           D: "Angle dependence is explicit in the sine factor.",
         },
         tags: ["force-on-conductor", "angles", "equation"],
@@ -343,7 +339,6 @@ export const PHYSICS_TOPIC20_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Fleming's left-hand rule links field, current, and force directions for motors.",
         distractorRationale: {
-          B: "Correct directional rule for motor effect.",
           C: "Lenz's law predicts induced-current direction, not motor-force direction.",
           D: "This is not a standard rule in this syllabus context.",
         },
@@ -364,7 +359,6 @@ export const PHYSICS_TOPIC20_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "F = BIL = 0.50 x 3.0 x 0.12 = 0.18 N.",
         distractorRationale: {
-          B: "Correct substitution with right-angle condition.",
           C: "Decimal-place error from multiplying by 10.",
           D: "Would correspond to using L = 0.48 m incorrectly.",
         },
@@ -625,7 +619,6 @@ export const PHYSICS_TOPIC20_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "The magnetic part of Lorentz force is perpendicular to both v and B.",
         distractorRationale: {
-          B: "Correct geometry of magnetic force direction.",
           C: "Force along B would not produce observed circular deflection.",
           D: "Magnetic and electric forces are distinct and not generally opposite.",
         },
@@ -646,7 +639,6 @@ export const PHYSICS_TOPIC20_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "At 90 degrees, F = Bqv sin(theta) gives F = Bqv.",
         distractorRationale: {
-          B: "Correct magnetic-force expression at right angles.",
           C: "Division by B is dimensionally incorrect here.",
           D: "Inverse form is physically and dimensionally wrong.",
         },
@@ -667,7 +659,6 @@ export const PHYSICS_TOPIC20_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Opposite charge signs reverse force direction; radius r = mv/(qB) is larger for proton due to greater mass magnitude ratio.",
         distractorRationale: {
-          B: "Correct sign and radius-mass reasoning.",
           C: "Particles do not interact to cancel forces in this setup.",
           D: "Lower mass gives smaller radius at same |q|, v, and B.",
         },
@@ -758,20 +749,22 @@ export const PHYSICS_TOPIC20_PRACTICE: Record<string, SubtopicPracticePack> = {
         kind: "structured",
         difficulty: 4,
         marks: 6,
-        stem: "A particle enters a uniform magnetic field at angle to field lines and follows a helical path. Explain why this occurs.",
+        stem:
+          "A Hall probe has thickness t = 2.0 mm, carrier number density n = 8.0 x 10^28 m^-3, and carries current I = 3.5 A perpendicular to a uniform field B = 0.12 T.\nCharge per carrier q = 1.60 x 10^-19 C.\n(a) Derive the expression V_H = BI/(ntq).\n(b) Calculate the Hall voltage.",
         modelAnswerPoints: [
-          "Velocity has components parallel and perpendicular to field.",
-          "Perpendicular component experiences magnetic force and causes circular motion.",
-          "Parallel component experiences no magnetic force and remains constant.",
-          "Combined motions produce a helix.",
-          "Pitch depends on parallel speed and circular period.",
+          "Charge carriers experience magnetic force F = Bqv; at equilibrium this balances electric force qE_H with E_H = V_H/t.",
+          "Current I = nAvq with cross-sectional area A = tw, giving v = I/(ntwq) and hence V_H = BI/(ntq) when width cancels.",
+          "Convert t = 2.0 x 10^-3 m.",
+          "V_H = (0.12 x 3.5)/(8.0 x 10^28 x 2.0 x 10^-3 x 1.60 x 10^-19).",
+          "V_H = 1.6 x 10^-6 V (about 1.6 microvolt).",
         ],
         workedSolution: [
-          "Resolve velocity into components first.",
-          "Treat each component response separately, then superpose motions.",
+          "The Hall voltage appears when magnetic deflection of carriers builds up a transverse electric field until magnetic and electric forces on carriers balance.",
+          "Relating drift speed to current density gives V_H proportional to B and I and inversely proportional to n, t, and q.",
+          "Substituting the values yields a microvolt-scale Hall voltage typical for a metal-like carrier density.",
         ],
-        commonMistake: "Assuming entire speed is unchanged directionally in a straight line.",
-        tags: ["helical-motion", "velocity-components", "explanation"],
+        commonMistake: "Using thickness in millimetres without converting to metres in the denominator.",
+        tags: ["hall-voltage", "derivation", "magnetic-flux-density"],
       },
       {
         id: "t20-3-d9",
@@ -928,7 +921,6 @@ export const PHYSICS_TOPIC20_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Thumb indicates current direction, curled fingers indicate magnetic field direction.",
         distractorRationale: {
-          B: "Correct rule for straight-wire field direction.",
           C: "Lenz's law is for induced current direction.",
           D: "Kirchhoff's laws are circuit current/voltage laws.",
         },
@@ -949,7 +941,6 @@ export const PHYSICS_TOPIC20_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Field strength around a long straight wire decreases inversely with radial distance.",
         distractorRationale: {
-          B: "Correct inverse-distance dependence.",
           C: "Quadratic increase is opposite to observed decay.",
           D: "Only an ideal solenoid center approximates uniform B over region.",
         },
@@ -970,7 +961,6 @@ export const PHYSICS_TOPIC20_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Inside a long solenoid, fields from turns combine to form near-uniform axial field.",
         distractorRationale: {
-          B: "Correct idealized internal field description.",
           C: "Resultant does not cancel; superposition reinforces axial component.",
           D: "Radial pattern is not solenoid internal behavior.",
         },
@@ -1021,19 +1011,22 @@ export const PHYSICS_TOPIC20_PRACTICE: Record<string, SubtopicPracticePack> = {
         kind: "structured",
         difficulty: 2,
         marks: 4,
-        stem: "Explain why a solenoid behaves like a bar magnet.",
+        stem:
+          "Explain why inserting a ferrous (iron) core into a current-carrying solenoid increases the magnetic flux density inside the coil.",
         modelAnswerPoints: [
-          "Current loops in solenoid create magnetic dipole contributions.",
-          "Fields superpose to produce distinct north and south ends.",
-          "Inside field is approximately uniform and strong.",
-          "Outside pattern resembles bar-magnet field lines.",
+          "The solenoid's field magnetizes the ferrous core, aligning magnetic domains.",
+          "The core itself becomes a strong magnet with field in the same direction as the solenoid field.",
+          "The core's field adds to the field due to the solenoid current alone.",
+          "Resulting flux density inside is much larger than for an air-cored solenoid with the same current.",
         ],
         workedSolution: [
-          "Describe superposition from many turns to justify macroscopic magnet behavior.",
-          "Identify end polarity using current direction rules.",
+          "Ferrous materials have high permeability: they respond strongly to an applied field by internal magnetization.",
+          "The magnetized core produces an additional B contribution that reinforces the field from the coil turns.",
+          "This is why electromagnets for lifting or relays use iron cores rather than air gaps.",
         ],
-        commonMistake: "Saying solenoid produces electric field only.",
-        tags: ["solenoid", "bar-magnet-analogy", "superposition"],
+        commonMistake:
+          "Claiming the core blocks the field; the core enhances B by becoming an induced magnet, not by shielding.",
+        tags: ["ferrous-core", "solenoid", "permeability"],
       },
       {
         id: "t20-4-d7",
@@ -1231,7 +1224,6 @@ export const PHYSICS_TOPIC20_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Faraday's law states induced emf is associated with rate of change of flux linkage.",
         distractorRationale: {
-          B: "This is the direct condition for electromagnetic induction.",
           C: "Length alone does not induce emf without changing flux conditions.",
           D: "Conductor mass is irrelevant to induction law.",
         },
@@ -1252,7 +1244,6 @@ export const PHYSICS_TOPIC20_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Lenz's law states induced current direction opposes the change causing it.",
         distractorRationale: {
-          B: "Correct directional principle for induction.",
           C: "Right-hand grip rule gives field around known current, not induced-current direction.",
           D: "Newton's laws do not set induced-current direction.",
         },
@@ -1273,7 +1264,6 @@ export const PHYSICS_TOPIC20_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "E = N Delta(phi)/Delta(t) = 200 x (3.0 x 10^-4)/0.020 = 3.0 V.",
         distractorRationale: {
-          B: "Correct use of flux-linkage rate formula.",
           C: "Factor-of-10 error from decimal misplacement.",
           D: "Factor-of-100 error from compounding mistakes.",
         },

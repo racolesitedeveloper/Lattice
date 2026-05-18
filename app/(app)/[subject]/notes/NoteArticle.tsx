@@ -6,7 +6,14 @@ import {
   Lightbulb,
   Warning,
 } from "@phosphor-icons/react/ssr";
-import type { NoteDraft, NoteMeta, NoteSection, SelfTestItem, WorkedExample } from "@/lib/notes/types";
+import type {
+  NoteContentBlock,
+  NoteDraft,
+  NoteMeta,
+  NoteSection,
+  SelfTestItem,
+  WorkedExample,
+} from "@/lib/notes/types";
 import a from "./note.module.css";
 import NoteArticleShell from "./NoteArticleShell";
 
@@ -19,14 +26,18 @@ type Props = {
 };
 
 function SectionBody({ sec }: { sec: NoteSection }) {
+  const hasBlocks = sec.blocks && sec.blocks.length > 0;
+
   return (
     <>
-      {sec.paragraphs.map((p, i) => (
-        <p key={i} className={a.bodyP}>
-          {p}
-        </p>
-      ))}
-      {sec.bullets && sec.bullets.length > 0 ? (
+      {hasBlocks
+        ? sec.blocks!.map((block, i) => <NoteBlock key={`${block.type}-${i}`} block={block} />)
+        : sec.paragraphs.map((p, i) => (
+            <p key={i} className={a.bodyP}>
+              {p}
+            </p>
+          ))}
+      {!hasBlocks && sec.bullets && sec.bullets.length > 0 ? (
         <ul className={a.bodyList}>
           {sec.bullets.map((item, i) => (
             <li key={i}>{item}</li>
@@ -34,6 +45,107 @@ function SectionBody({ sec }: { sec: NoteSection }) {
         </ul>
       ) : null}
     </>
+  );
+}
+
+function NoteBlock({ block }: { block: NoteContentBlock }) {
+  if (block.type === "paragraph") {
+    return <p className={a.bodyP}>{block.text}</p>;
+  }
+
+  if (block.type === "bullets") {
+    return (
+      <ul className={a.bodyList}>
+        {block.items.map((item, i) => (
+          <li key={i}>{item}</li>
+        ))}
+      </ul>
+    );
+  }
+
+  if (block.type === "steps") {
+    return (
+      <div className={a.stepBlock}>
+        {block.title ? <p className={a.blockTitle}>{block.title}</p> : null}
+        <ol className={a.stepList}>
+          {block.items.map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
+        </ol>
+      </div>
+    );
+  }
+
+  if (block.type === "table") {
+    return (
+      <figure className={a.noteTableWrap}>
+        {block.caption ? <figcaption className={a.noteTableCaption}>{block.caption}</figcaption> : null}
+        <div className={a.noteTableScroller}>
+          <table className={a.noteTable}>
+            <thead>
+              <tr>
+                {block.columns.map((col) => (
+                  <th key={col} scope="col">
+                    {col}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {block.rows.map((row, i) => (
+                <tr key={i}>
+                  {row.map((cell, j) => (
+                    <td key={`${i}-${j}`}>{cell}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </figure>
+    );
+  }
+
+  if (block.type === "equation") {
+    return <div className={a.equationBlock}>{block.text}</div>;
+  }
+
+  if (block.type === "callout") {
+    const toneClass =
+      block.tone === "warning" ? a.calloutWarning : block.tone === "exam" ? a.calloutExam : "";
+    return (
+      <aside className={`${a.noteCallout} ${toneClass}`}>
+        {block.title ? <p className={a.calloutTitle}>{block.title}</p> : null}
+        {block.paragraphs?.map((p, i) => (
+          <p key={i} className={a.calloutP}>
+            {p}
+          </p>
+        ))}
+        {block.items && block.items.length > 0 ? (
+          <ul className={a.calloutList}>
+            {block.items.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        ) : null}
+      </aside>
+    );
+  }
+
+  return (
+    <figure className={a.diagramPanel}>
+      <div className={a.diagramCanvas} aria-hidden>
+        {block.labels.map((label) => (
+          <span key={label} className={a.diagramChip}>
+            {label}
+          </span>
+        ))}
+      </div>
+      <figcaption>
+        <strong>{block.title}</strong>
+        {block.caption ? <span>{block.caption}</span> : null}
+      </figcaption>
+    </figure>
   );
 }
 

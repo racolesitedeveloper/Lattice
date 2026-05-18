@@ -67,20 +67,21 @@ export const PHYSICS_TOPIC10_PRACTICE: Record<string, SubtopicPracticePack> = {
         noteId: "t10-1",
         kind: "structured",
         difficulty: 2,
-        marks: 3,
-        stem: "Describe why crocodile-clip leads should be firmly attached to clean metal contacts in a school circuit experiment.",
+        marks: 4,
+        stem:
+          "State the circuit symbol and a typical use for each of the following: (i) fixed resistor, (ii) variable resistor, (iii) fuse, (iv) thermistor (NTC).",
         modelAnswerPoints: [
-          "Poor contact adds unwanted contact resistance.",
-          "Unstable contacts cause fluctuating current/voltage readings.",
-          "Clean and firm connections improve reliability and repeatability.",
+          "Fixed resistor: rectangular box symbol; limits or divides current at fixed value.",
+          "Variable resistor: rectangle with diagonal arrow; adjusts resistance in a circuit (e.g. dimmer, control input).",
+          "Fuse: rectangle with wire through centre line; protects circuit by melting when current exceeds rating.",
+          "NTC thermistor: rectangle with slanted line and minus sign at slant; resistance decreases as temperature rises.",
         ],
         workedSolution: [
-          "Oxidized or loose contacts behave as extra variable resistors.",
-          "This changes circuit conditions during measurement and increases uncertainty.",
-          "Good contact control is part of valid practical technique.",
+          "Each component has a standard symbol that must be drawn consistently in circuit diagrams.",
+          "The function follows from behaviour: fixed R sets ratio, variable R allows tuning, fuse breaks on overload, NTC senses temperature via resistance change.",
         ],
-        commonMistake: "Treating contact quality as irrelevant because ideal wires are assumed in theory.",
-        tags: ["practical-technique", "contact-resistance", "uncertainty"],
+        commonMistake: "Confusing the thermistor symbol with that of an LDR or drawing a variable resistor without the adjustment arrow.",
+        tags: ["circuit-symbols", "components", "diagrams"],
       },
       {
         id: "t10-1-d5",
@@ -741,22 +742,26 @@ export const PHYSICS_TOPIC10_PRACTICE: Record<string, SubtopicPracticePack> = {
       {
         id: "t10-3-d8",
         noteId: "t10-3",
-        kind: "mcq",
+        kind: "structured",
         difficulty: 4,
-        stem: "Which change increases the output voltage across the lower resistor R2 in an unloaded divider?",
-        options: [
-          { id: "A", text: "Increase R1 only" },
-          { id: "B", text: "Decrease R2 only" },
-          { id: "C", text: "Increase R2 only" },
-          { id: "D", text: "Decrease supply voltage only" },
+        marks: 5,
+        stem:
+          "Explain how a potentiometer can be used to compare an unknown e.m.f. E_x with a standard cell of known e.m.f. E_s using a galvanometer in a null method.",
+        modelAnswerPoints: [
+          "A uniform resistance wire (or slide wire) is connected across the standard cell so a potential gradient is set up along the wire.",
+          "The unknown e.m.f. is connected so its p.d. opposes part of the wire p.d. through the galvanometer branch.",
+          "The contact is adjusted until the galvanometer reads zero (null deflection).",
+          "At balance, no current flows through the galvanometer branch and E_x is equal to the p.d. across the chosen length of wire.",
+          "Comparing balance lengths gives E_x/E_s = l_x/l_s for the same wire.",
         ],
-        correctOptionId: "C",
-        explanation: "V_out = V_in x R2/(R1+R2), so increasing R2 increases the output fraction.",
-        distractorRationale: {
-          B: "Decreasing R2 lowers output fraction.",
-          D: "Lower supply reduces output directly.",
-        },
-        tags: ["parameter-change", "divider-ratio", "analysis"],
+        workedSolution: [
+          "The potentiometer does not measure current directly; it compares potential differences by finding a balance point.",
+          "When the galvanometer shows zero, the unknown e.m.f. exactly equals the p.d. tapped off the wire at that position.",
+          "Because the wire p.d. is proportional to length at balance, the unknown e.m.f. can be found from the known standard e.m.f. and the two balance lengths.",
+        ],
+        commonMistake:
+          "Saying the galvanometer measures the e.m.f. directly at balance instead of indicating equal opposing p.d.s.",
+        tags: ["potentiometer", "null-method", "galvanometer"],
       },
       {
         id: "t10-3-d9",

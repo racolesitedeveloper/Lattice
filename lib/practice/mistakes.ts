@@ -47,7 +47,7 @@ export function readMistakes(subject: string): MistakeRecord[] {
   try {
     const subjectRecords = readMistakeList(mistakesStorageKey(normalizedSubject));
     const allRecords = readMistakeList(ALL_MISTAKES_KEY).filter(
-      (record) => record.subject === normalizedSubject,
+      (record) => record.subject.toLowerCase() === normalizedSubject,
     );
     return mergeMistakeRecords([...subjectRecords, ...allRecords]).sort(
       (a, b) => b.lastArchivedAt - a.lastArchivedAt,
@@ -85,16 +85,25 @@ export function writeMistakes(subject: string, records: MistakeRecord[]): void {
 
 export function archiveMistake(input: ArchiveMistakeInput): MistakeRecord[] {
   const subject = input.subject.toLowerCase();
+  const noteId = input.noteId.trim().replace(/\u2011/g, "-").toLowerCase();
   const now = Date.now();
-  const id = mistakeId(subject, input.noteId, input.question.id);
+  const id = mistakeId(subject, noteId, input.question.id);
   const records = readMistakes(subject);
   const existing = records.find((record) => record.id === id);
+
+  const question: DrillQuestion =
+    typeof input.question.noteId === "string"
+      ? {
+          ...input.question,
+          noteId: input.question.noteId.trim().replace(/\u2011/g, "-").toLowerCase(),
+        }
+      : input.question;
 
   const nextRecord: MistakeRecord = {
     id,
     subject,
-    noteId: input.noteId,
-    question: input.question,
+    noteId,
+    question,
     reason: input.reason,
     selectedOptionId: input.selectedOptionId,
     topicTitle: input.topicTitle,
@@ -153,16 +162,45 @@ function mistakeId(subject: string, noteId: string, questionId: string): string 
   return `${subject}:${noteId}:${questionId}`;
 }
 
+/** Align legacy rows (mixed-case subject/noteId or id mismatch) before merge/write. */
+function normalizeStoredMistakeRecord(record: MistakeRecord): MistakeRecord {
+  const subject = record.subject.trim().toLowerCase();
+  const noteId = record.noteId.trim().replace(/\u2011/g, "-").toLowerCase();
+  const canonicalId = mistakeId(subject, noteId, record.question.id);
+  const q = record.question;
+  const normalizedQuestion =
+    "noteId" in q && typeof q.noteId === "string"
+      ? ({
+          ...q,
+          noteId: q.noteId.trim().replace(/\u2011/g, "-").toLowerCase(),
+        } as DrillQuestion)
+      : q;
+  return {
+    ...record,
+    subject,
+    noteId,
+    id: canonicalId,
+    question: normalizedQuestion,
+  };
+}
+
 function readMistakeList(key: string): MistakeRecord[] {
   const raw = studyStorageGetItem(key);
   if (!raw) return [];
-  const parsed = JSON.parse(raw);
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    return [];
+  }
   if (!Array.isArray(parsed)) return [];
-  return parsed.filter(isMistakeRecord);
+  return parsed.filter(isMistakeRecord).map(normalizeStoredMistakeRecord);
 }
 
 function writeAllMistakesForSubject(subject: string, records: MistakeRecord[]): void {
-  const others = readMistakeList(ALL_MISTAKES_KEY).filter((record) => record.subject !== subject);
+  const others = readMistakeList(ALL_MISTAKES_KEY).filter(
+    (record) => record.subject.toLowerCase() !== subject,
+  );
   studyStorageSetItem(ALL_MISTAKES_KEY, JSON.stringify([...records, ...others].slice(0, 360)));
 }
 

@@ -49,6 +49,78 @@
   gap: 0;
 }
 
+.searchWrap {
+  margin: 0 0 var(--sp-4);
+}
+
+.searchInner {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-height: 44px;
+  padding: 0 var(--sp-3);
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: border-color 140ms ease;
+}
+
+.searchInner:focus-within {
+  border-color: color-mix(in srgb, var(--accent) 32%, var(--border));
+}
+
+.searchIcon {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  opacity: 0.76;
+}
+
+.searchInput {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: inherit;
+  font-size: var(--fs-body);
+  color: var(--text);
+  padding: var(--sp-2) 0;
+}
+
+.searchInput::placeholder {
+  color: var(--text-muted);
+}
+
+.searchClear {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition:
+    color 120ms ease,
+    background 120ms ease;
+}
+
+.searchClear:hover {
+  color: var(--text);
+  background: var(--hover-fill);
+}
+
+.searchEmpty {
+  margin: 0 0 var(--sp-4);
+  font-size: var(--fs-body);
+  color: var(--text-muted);
+  line-height: var(--lh-relaxed);
+}
+
 .levelToggle {
   display: inline-flex;
   align-self: flex-start;
@@ -332,6 +404,10 @@
 @media (max-width: 760px) {
   .notesMain {
     padding: var(--sp-3);
+  }
+
+  .searchWrap {
+    margin-bottom: var(--sp-3);
   }
 
   .levelToggle {

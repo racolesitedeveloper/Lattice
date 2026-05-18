@@ -1,3 +1,4 @@
+import { DAY_MS, localDateKey, parseLocalDate, startOfWeek } from "@/lib/calendar";
 import { studyStorageGetItem, studyStorageSetItem } from "@/lib/study-kv";
 
 export type StudyDay = {
@@ -18,8 +19,6 @@ type StudyWeek = {
 
 const STUDY_WEEK_KEY = "lattice.study-time.week:v1";
 const STUDY_DAYS_KEY = "lattice.study-days:v1";
-const DAY_MS = 86_400_000;
-
 export function addStudySeconds(seconds: number): void {
   if (typeof window === "undefined" || seconds <= 0) return;
   const today = localDateKey(new Date());
@@ -108,29 +107,6 @@ function sanitizeDays(days: Record<string, unknown>): Record<string, number> {
   return out;
 }
 
-function startOfWeek(date: Date): Date {
-  const day = date.getDay();
-  const diff = day === 0 ? -6 : 1 - day;
-  const start = new Date(date);
-  start.setHours(0, 0, 0, 0);
-  start.setDate(start.getDate() + diff);
-  return start;
-}
-
 function startOfToday(): Date {
-  const date = new Date();
-  date.setHours(0, 0, 0, 0);
-  return date;
-}
-
-function localDateKey(date: Date): string {
-  const y = date.getFullYear();
-  const m = String(date.getMonth() + 1).padStart(2, "0");
-  const d = String(date.getDate()).padStart(2, "0");
-  return `${y}-${m}-${d}`;
-}
-
-function parseLocalDate(key: string): Date {
-  const [year, month, day] = key.split("-").map(Number);
-  return new Date(year ?? 1970, (month ?? 1) - 1, day ?? 1);
+  return parseLocalDate(localDateKey(new Date()));
 }

@@ -51,6 +51,22 @@ async function refreshSupabaseSession(request: NextRequest, response: NextRespon
 
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js)$).*)",
+    "/",
+    "/dashboard",
+    "/dashboard/:path*",
+    "/onboarding",
+    "/onboarding/:path*",
+    "/subscribe",
+    "/subscribe/:path*",
+    "/pick",
+    "/pick/:path*",
+    "/login",
+    "/signup",
+    "/forgot-password",
+    "/auth/:path*",
+    "/api/:path*",
+    "/physics/:path*",
+    "/chemistry/:path*",
+    "/biology/:path*",
   ],
 };

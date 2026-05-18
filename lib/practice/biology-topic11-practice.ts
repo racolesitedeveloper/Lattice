@@ -7,12 +7,9 @@ import type { SubtopicPracticePack } from "./types";
  * d1–d2 antibody structure and functions; d3 hybridoma; d4–d5 monoclonal use in diagnosis and treatment;
  * d6 active/passive vs natural/artificial immunity; d7 vaccines; d8 vaccination programmes; d9–d10 exam consolidation (MCQ).
  *
- * **`t11-1` (The immune system)** — **Extract gap:** `biology-9700-learning-outcomes.md` jumps from “Topic 10” to
- * **§11.2** under “Topic 11” with **no §11.1 bullet list** in the repository. This pack is authored from **standard
- * Cambridge 9700 AS & A Level 11.1** (innate vs adaptive; phagocytosis; antigen presentation; B and T lymphocytes;
- * plasma and memory cells; primary vs secondary response; **HIV/AIDS outline** as commonly examined with immunity).
- * Crosswalk: d1 non-specific / specific; d2 phagocytosis; d3 antigen presentation; d4 B cells / plasma / memory;
- * d5 T-helper vs cytotoxic; d6 primary/secondary; d7 HIV; d8–d10 application and MCQs.
+ * **`t11-1` (The immune system)** — Crosswalk to `biology-9700-learning-outcomes.md` §11.1: d1 phagocytes; d2
+ * antigens (self vs non-self); d3 primary response (macrophages, B/plasma, T-helper/killer); d4 memory / secondary;
+ * d5–d10 application, HIV link, and MCQs (HIV detail also ties to §10.1 where relevant).
  */
 export const BIOLOGY_TOPIC11_PRACTICE: Record<string, SubtopicPracticePack> = {
   "t11-1": {

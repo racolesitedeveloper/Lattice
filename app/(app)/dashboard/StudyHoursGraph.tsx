@@ -1,30 +1,23 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 import { ChartBar } from "@phosphor-icons/react";
 import { readCurrentWeekStudy, type StudyDay } from "@/lib/study-time";
+import { useStudyStorageRefresh } from "@/lib/use-study-storage-refresh";
 import s from "./dashboard.module.css";
 
 export default function StudyHoursGraph() {
   const [days, setDays] = useState<StudyDay[]>([]);
 
-  useEffect(() => {
-    function refresh() {
-      setDays(readCurrentWeekStudy());
-    }
-
-    refresh();
-    const interval = window.setInterval(refresh, 30_000);
-    return () => window.clearInterval(interval);
+  useStudyStorageRefresh(() => {
+    setDays(readCurrentWeekStudy());
   }, []);
 
   const totalSeconds = days.reduce((sum, day) => sum + day.seconds, 0);
   const maxSeconds = getChartMaxSeconds(Math.max(...days.map((day) => day.seconds), 0));
 
-  const barHeights = useMemo(() => {
-    if (maxSeconds <= 0) return days.map(() => 0);
-    return days.map((day) => Math.min(100, (day.seconds / maxSeconds) * 100));
-  }, [days, maxSeconds]);
+  const barHeights =
+    maxSeconds <= 0 ? days.map(() => 0) : days.map((day) => Math.min(100, (day.seconds / maxSeconds) * 100));
 
   return (
     <section className={s.studyPanel} aria-labelledby="study-hours-title">

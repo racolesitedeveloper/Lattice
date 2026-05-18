@@ -5,9 +5,11 @@
  * syncs to profiles.study_kv via server action (debounced).
  */
 
+import { mergeStudyWeekJson } from "@/lib/study-kv-merge";
+
 const FLUSH_MS = 1500;
 
-const DAY_MS = 86_400_000;
+export const STUDY_STORAGE_CHANGED_EVENT = "lattice:study-storage-changed";
 
 let memory = new Map<string, string>();
 let initialized = false;
@@ -28,6 +30,7 @@ export function isStudyStorageKey(key: string): boolean {
     key.startsWith("practice-mistakes:") ||
     key === "lattice.study-time.week:v1" ||
     key === "lattice.study-days:v1" ||
+    key === "lattice.exam-schedule:v1" ||
     key.startsWith("lattice.recent.")
   );
 }
@@ -86,6 +89,7 @@ export function studyStorageSetItem(key: string, value: string): void {
     /* noop */
   }
   scheduleFlushToServer();
+  notifyStudyStorageChanged();
 }
 
 export function studyStorageRemoveItem(key: string): void {
@@ -105,6 +109,47 @@ export function studyStorageRemoveItem(key: string): void {
     /* noop */
   }
   scheduleFlushToServer();
+  notifyStudyStorageChanged();
+}
+
+/**
+ * Clears every synced study/analytics key (drill progress, mistakes, weekly hours,
+ * study-day streak markers, exam timetable entries, recent-activity shortcuts).
+ * Does not change account, subscription, onboarding, or theme preferences.
+ */
+export function clearAllStudyAnalytics(): void {
+  if (typeof window === "undefined") return;
+
+  const keys = new Set<string>();
+  if (initialized) {
+    for (const k of memory.keys()) keys.add(k);
+  }
+  for (let i = 0; i < window.localStorage.length; i += 1) {
+    const k = window.localStorage.key(i);
+    if (k && isStudyStorageKey(k)) keys.add(k);
+  }
+
+  if (!initialized) {
+    for (const k of keys) {
+      try {
+        window.localStorage.removeItem(k);
+      } catch {
+        /* noop */
+      }
+    }
+    return;
+  }
+
+  for (const k of keys) {
+    memory.delete(k);
+    try {
+      window.localStorage.removeItem(k);
+    } catch {
+      /* noop */
+    }
+  }
+  scheduleFlushToServer();
+  notifyStudyStorageChanged();
 }
 
 /** Keys currently tracked (after init, matches local study mirror). */
@@ -137,7 +182,7 @@ function normalizeServerRecord(input: Record<string, unknown> | null | undefined
   for (const [k, v] of Object.entries(input)) {
     if (!isStudyStorageKey(k)) continue;
     if (typeof v === "string") out[k] = v;
-    else if (v != null) out[k] = String(v);
+    else if (v != null) out[k] = JSON.stringify(v);
   }
   return out;
 }
@@ -175,6 +220,11 @@ function mergeStudyKeyValues(
   return out;
 }
 
+function notifyStudyStorageChanged(): void {
+  if (typeof window === "undefined") return;
+  window.dispatchEvent(new CustomEvent(STUDY_STORAGE_CHANGED_EVENT));
+}
+
 function mergeStudyValueForKey(key: string, a: string, b: string): string {
   if (key === "lattice.study-time.week:v1") return mergeStudyWeekJson(a, b);
   if (key === "lattice.study-days:v1") return mergeStudyDaysJson(a, b);
@@ -193,65 +243,6 @@ function pickByUpdatedAt(a: string, b: string): string {
     /* prefer local */
   }
   return b;
-}
-
-function mergeStudyWeekJson(a: string, b: string): string {
-  const curStart = localDateKey(startOfWeek(new Date()));
-  try {
-    const ja = JSON.parse(a) as {
-      weekStart?: string;
-      days?: Record<string, number>;
-      updatedAt?: number;
-    };
-    const jb = JSON.parse(b) as {
-      weekStart?: string;
-      days?: Record<string, number>;
-      updatedAt?: number;
-    };
-    const ua = typeof ja.updatedAt === "number" ? ja.updatedAt : -1;
-    const ub = typeof jb.updatedAt === "number" ? jb.updatedAt : -1;
-    if (ua >= 0 && ub >= 0 && ua !== ub) {
-      const win = ua >= ub ? ja : jb;
-      return JSON.stringify({
-        weekStart: curStart,
-        days: normalizeWeekDays(win.days, curStart),
-        updatedAt: Math.max(ua, ub, Date.now()),
-      });
-    }
-  } catch {
-    /* fall through */
-  }
-
-  const days: Record<string, number> = {};
-  for (const raw of [a, b]) {
-    try {
-      const w = JSON.parse(raw) as { weekStart?: string; days?: Record<string, unknown> };
-      if (w.weekStart !== curStart || !w.days || typeof w.days !== "object") continue;
-      for (const [d, s] of Object.entries(w.days)) {
-        if (!/^\d{4}-\d{2}-\d{2}$/.test(d) || typeof s !== "number" || !Number.isFinite(s)) continue;
-        const sec = Math.max(0, s);
-        days[d] = Math.max(days[d] ?? 0, sec);
-      }
-    } catch {
-      /* ignore */
-    }
-  }
-  return JSON.stringify({ weekStart: curStart, days, updatedAt: Date.now() });
-}
-
-function normalizeWeekDays(
-  days: Record<string, number> | undefined,
-  weekStart: string,
-): Record<string, number> {
-  const start = parseLocalDate(weekStart);
-  const out: Record<string, number> = {};
-  for (let i = 0; i < 7; i += 1) {
-    const d = new Date(start.getTime() + i * DAY_MS);
-    const key = localDateKey(d);
-    const v = days?.[key];
-    if (typeof v === "number" && Number.isFinite(v)) out[key] = Math.max(0, v);
-  }
-  return out;
 }
 
 function mergeStudyDaysJson(a: string, b: string): string {
@@ -288,25 +279,4 @@ function mergeMistakeListsJson(a: string, b: string): string {
     if (!prev || (r.lastArchivedAt ?? 0) > (prev.lastArchivedAt ?? 0)) merged.set(r.id, rec);
   }
   return JSON.stringify(Array.from(merged.values()));
-}
-
-function startOfWeek(date: Date): Date {
-  const day = date.getDay();
-  const diff = day === 0 ? -6 : 1 - day;
-  const start = new Date(date);
-  start.setHours(0, 0, 0, 0);
-  start.setDate(start.getDate() + diff);
-  return start;
-}
-
-function localDateKey(date: Date): string {
-  const y = date.getFullYear();
-  const m = String(date.getMonth() + 1).padStart(2, "0");
-  const d = String(date.getDate()).padStart(2, "0");
-  return `${y}-${m}-${d}`;
-}
-
-function parseLocalDate(key: string): Date {
-  const [year, month, day] = key.split("-").map(Number);
-  return new Date(year ?? 1970, (month ?? 1) - 1, day ?? 1);
 }

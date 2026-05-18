@@ -103,8 +103,8 @@ export const CHEMISTRY_TOPIC28_DRAFTS: Record<string, NoteDraft> = {
         id: "t28-1-st2",
         question: "Describe the shapes of the 3dxy and 3dz² orbitals.",
         modelAnswer: [
-          "A 3dxy orbital has four lobes in the xy plane positioned between the x and y axes.",
-          "A 3dz² orbital has two lobes along the z-axis and a ring (torus) around the center in the xy plane.",
+          "Kstab is the stability constant for a complex ion at equilibrium: Kstab = [complex] / ([metal ion][ligand]ⁿ).",
+          "A larger Kstab indicates a more stable complex relative to free metal ion and ligand.",
         ],
       },
       {

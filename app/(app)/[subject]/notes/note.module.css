@@ -145,6 +145,16 @@
     padding: var(--sp-3);
     border-radius: var(--r-md);
   }
+
+  .diagramCanvas {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    padding: var(--sp-3);
+  }
+
+  .noteTable {
+    min-width: 460px;
+  }
 }
 
 .articleHeader {
@@ -547,6 +557,150 @@
   margin-bottom: 0;
 }
 
+.blockTitle {
+  margin: 0 0 var(--sp-2);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.stepBlock {
+  margin: var(--sp-3) 0;
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.stepList {
+  margin: 0;
+  padding-left: 1.35rem;
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-relaxed);
+  color: var(--text);
+}
+
+.stepList li {
+  padding-left: var(--sp-1);
+  margin-bottom: var(--sp-2);
+}
+
+.stepList li:last-child {
+  margin-bottom: 0;
+}
+
+.stepList li::marker {
+  color: var(--accent);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.noteTableWrap {
+  margin: var(--sp-3) 0;
+}
+
+.noteTableCaption {
+  margin: 0 0 var(--sp-2);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.noteTableScroller {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+}
+
+.noteTable {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  font-size: var(--fs-body);
+  line-height: var(--lh-relaxed);
+  color: var(--text);
+}
+
+.noteTable th,
+.noteTable td {
+  padding: var(--sp-2) var(--sp-3);
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+}
+
+.noteTable th {
+  color: var(--text-muted);
+  font-size: var(--fs-label-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--hover-fill);
+}
+
+.noteTable tr:last-child td {
+  border-bottom: none;
+}
+
+.noteCallout {
+  margin: var(--sp-3) 0;
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-md);
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--border));
+  border-left: 4px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
+}
+
+.calloutExam {
+  border-color: color-mix(in srgb, var(--accent) 28%, var(--border));
+  background: color-mix(in srgb, var(--accent) 9%, var(--surface));
+}
+
+.calloutWarning {
+  border-color: color-mix(in srgb, var(--danger) 22%, var(--border));
+  border-left-color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 7%, var(--surface));
+}
+
+.calloutTitle {
+  margin: 0 0 var(--sp-2);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.calloutP {
+  margin: 0 0 var(--sp-2);
+  font-size: var(--fs-body);
+  line-height: var(--lh-relaxed);
+  color: var(--text);
+}
+
+.calloutP:last-child {
+  margin-bottom: 0;
+}
+
+.calloutList {
+  margin: 0;
+  padding-left: 1.2rem;
+  font-size: var(--fs-body);
+  line-height: var(--lh-relaxed);
+  color: var(--text);
+}
+
+.calloutList li {
+  margin-bottom: var(--sp-1);
+}
+
+.calloutList li:last-child {
+  margin-bottom: 0;
+}
+
 .equationBlock {
   margin: var(--sp-3) 0;
   padding: var(--sp-3) var(--sp-4);
@@ -563,6 +717,61 @@
 
 .equationBlock + .equationBlock {
   margin-top: var(--sp-2);
+}
+
+.diagramPanel {
+  margin: var(--sp-3) 0;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.diagramCanvas {
+  min-height: 180px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--border) 52%, transparent) 1px, transparent 1px),
+    linear-gradient(0deg, color-mix(in srgb, var(--border) 40%, transparent) 1px, transparent 1px),
+    color-mix(in srgb, var(--bg) 62%, var(--surface));
+  background-size: 42px 42px;
+}
+
+.diagramChip {
+  justify-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  min-width: min(150px, 100%);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-pill);
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--border));
+  background: var(--surface);
+  color: var(--text);
+  font-size: var(--fs-label-sm);
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 1px 0 var(--hover-fill);
+}
+
+.diagramPanel figcaption {
+  display: grid;
+  gap: 2px;
+  padding: var(--sp-3) var(--sp-4);
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: var(--fs-label-sm);
+  line-height: var(--lh-relaxed);
+}
+
+.diagramPanel figcaption strong {
+  color: var(--text);
+  font-weight: 600;
 }
 
 .aside {

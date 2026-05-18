@@ -6,7 +6,7 @@ import UpgradeRequired from "@/components/app/UpgradeRequired";
 import { getCurrentBillingPlan } from "@/lib/billing/current-plan";
 import { canAccessNoteId, canAccessTopic } from "@/lib/entitlements";
 import { getNoteDraft } from "@/lib/notes/get-draft";
-import { getAdjacentNoteIds, resolveNoteMeta } from "@/lib/notes/resolve-meta";
+import { getNotePageContext } from "@/lib/notes/note-page-data";
 import type { NoteMeta } from "@/lib/notes/types";
 import s from "../../topics/topics.module.css";
 import ns from "../notes.module.css";
@@ -45,12 +45,13 @@ export default async function NoteDetailPage({
   params: Promise<{ subject: string; noteId: string }>;
 }) {
   const { subject, noteId } = await params;
-  const plan = await getCurrentBillingPlan();
-  const meta = await resolveNoteMeta(subject, noteId);
-  const draft = await getNoteDraft(subject, noteId);
+  const [plan, { meta, prev, next }, draft] = await Promise.all([
+    getCurrentBillingPlan(),
+    getNotePageContext(subject, noteId),
+    getNoteDraft(subject, noteId),
+  ]);
   if (!meta && !draft) notFound();
   const canAccess = meta ? canAccessTopic(plan, meta.topicNumber) : canAccessNoteId(plan, noteId);
-  const { prev, next } = await getAdjacentNoteIds(subject, noteId);
   const resolvedMeta = meta ?? buildFallbackMeta(subject, noteId);
 
   return (

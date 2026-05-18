@@ -20,7 +20,6 @@ export const PHYSICS_TOPIC24_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation: "Ultrasound is defined as sound waves with frequencies above human hearing (20 kHz).",
         distractorRationale: {
           B: "This is the approximate audible range for humans.",
-          C: "Correct definition of ultrasound.",
           D: "Diagnostic ultrasound often uses MHz frequencies, but the definition is above 20 kHz.",
         },
         tags: ["ultrasound", "definition", "frequency"],
@@ -40,7 +39,6 @@ export const PHYSICS_TOPIC24_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Gel removes air between probe and skin. Air causes large reflection because of acoustic-impedance mismatch.",
         distractorRationale: {
-          B: "Correct: transmission improves when air gaps are removed.",
           C: "X-ray absorption is unrelated to ultrasound gel.",
           D: "Gel has no physiological flow-control purpose.",
         },
@@ -63,7 +61,6 @@ export const PHYSICS_TOPIC24_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation:
           "Depth = vt/2 = 1540 x 130 x 10^-6 / 2 = 0.100 m. Divide by 2 because time includes outward and return paths.",
         distractorRationale: {
-          B: "Correct use of pulse-echo distance relation.",
           C: "This comes from forgetting to divide by 2.",
           D: "This includes both a missing divide-by-2 and arithmetic slip.",
         },
@@ -331,7 +328,6 @@ export const PHYSICS_TOPIC24_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "X-rays are electromagnetic waves with very short wavelength and high photon energy.",
         distractorRationale: {
-          B: "Correct wave type and frequency description.",
           C: "Alpha particles are nuclei, not photons.",
           D: "X-rays have much higher energy than visible light.",
         },
@@ -361,23 +357,26 @@ export const PHYSICS_TOPIC24_PRACTICE: Record<string, SubtopicPracticePack> = {
       {
         id: "t24-2-d3",
         noteId: "t24-2",
-        kind: "mcq",
+        kind: "structured",
         difficulty: 3,
-        stem: "Which tissue generally appears whiter on a radiograph?",
-        options: [
-          { id: "A", text: "Lung tissue (air-rich)" },
-          { id: "B", text: "Soft muscle tissue" },
-          { id: "C", text: "Adipose tissue" },
-          { id: "D", text: "Bone" },
+        marks: 5,
+        stem:
+          "Explain how computed tomography (CT) uses X-rays to produce a three-dimensional image of an internal structure.",
+        modelAnswerPoints: [
+          "Multiple X-ray images are taken of the same body section from different angles around the patient.",
+          "Each projection shows how X-rays are attenuated along many paths through the section.",
+          "Computer processing combines these projections to reconstruct a two-dimensional slice image of that section.",
+          "The patient (or scanner) is moved and the process is repeated for many adjacent sections.",
+          "Stacking the 2D section images builds a 3D representation of internal structure.",
         ],
-        correctOptionId: "D",
-        explanation: "Bone attenuates X-rays strongly, so fewer photons reach detector and the region appears lighter.",
-        distractorRationale: {
-          B: "Soft tissue has moderate attenuation and appears grey.",
-          C: "Fat attenuates less than bone.",
-          D: "Correct: strong attenuation by high-density, higher-Z tissue.",
-        },
-        tags: ["attenuation", "image-contrast", "radiograph"],
+        workedSolution: [
+          "A single radiograph is a projection; CT adds angular information by imaging the same slice from many directions.",
+          "Reconstruction algorithms use the different attenuation along each path to assign values to voxels in the slice.",
+          "Repeating for successive slices along the body axis produces a full 3D data set that can be viewed in any plane.",
+        ],
+        commonMistake:
+          "Describing CT as simply taking one very bright X-ray photograph rather than many angled projections combined computationally.",
+        tags: ["computed-tomography", "3d-imaging", "x-ray-attenuation"],
       },
       {
         id: "t24-2-d4",
@@ -641,7 +640,6 @@ export const PHYSICS_TOPIC24_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "PET is Positron Emission Tomography, based on positron-emitting tracers and coincidence detection.",
         distractorRationale: {
-          B: "Correct expansion.",
           C: "Not the medical acronym used in imaging.",
           D: "PET uses positrons from nuclear decay, not positional electron mapping.",
         },
@@ -662,7 +660,6 @@ export const PHYSICS_TOPIC24_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Electron-positron annihilation produces two 511 keV gamma photons traveling approximately 180 degrees apart.",
         distractorRationale: {
-          B: "Correct PET annihilation signature used for coincidence detection.",
           C: "These are nuclear particles not produced by annihilation.",
           D: "Energy and radiation type are incorrect.",
         },
@@ -683,7 +680,6 @@ export const PHYSICS_TOPIC24_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "PET tracers participate in physiological processes, so uptake patterns map tissue function, not just structure.",
         distractorRationale: {
-          B: "Correct functional-imaging principle.",
           C: "Ultrasound is a separate modality.",
           D: "Electrical resistance is not PET signal basis.",
         },

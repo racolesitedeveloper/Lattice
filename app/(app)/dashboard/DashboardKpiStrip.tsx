@@ -1,10 +1,22 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { CalendarBlank, CaretRight, Fire, Gauge, Target } from "@phosphor-icons/react";
+import { useState } from "react";
+import { CalendarBlank, CaretRight, Gauge, Target } from "@phosphor-icons/react";
 import { readStudyStreak, type StudyStreak } from "@/lib/study-time";
+import {
+  globalMasteryTotals,
+  parsePracticeStorageEntries,
+  weakAreaCandidatesBySubject,
+  type StudySubjectId,
+} from "@/lib/study-analytics";
 import { studyStorageGetItem, studyStorageKeys } from "@/lib/study-kv";
+import { useStudyStorageRefresh } from "@/lib/use-study-storage-refresh";
 import ExamPeriodForm from "./ExamPeriodForm";
+import ExamScheduleDialog from "./ExamScheduleDialog";
+import {
+  getNextUpcomingExam,
+  readExamSchedule,
+} from "@/lib/exam-schedule";
 import s from "./dashboard.module.css";
 
 type CountdownSummary = {
@@ -38,6 +50,30 @@ const SUBJECTS: Array<{ id: SubjectId; label: string }> = [
   { id: "biology", label: "Biology" },
 ];
 
+function masteryStatus(accuracy: number | null): string {
+  if (accuracy === null) return "No graded answers yet — drills unlock this summary.";
+  if (accuracy >= 80) return "Strong accuracy across graded drills.";
+  if (accuracy >= 60) return "Building — mix repair sets with recall.";
+  return "Below 60% — prioritise repair on weak subtopics.";
+}
+
+function accuracyBand(accuracy: number | null): "empty" | "low" | "mid" | "high" {
+  if (accuracy === null) return "empty";
+  if (accuracy >= 80) return "high";
+  if (accuracy >= 60) return "mid";
+  return "low";
+}
+
+function countdownLabel(c: { days: number; formattedDate: string }): string {
+  if (c.days <= 0) return "Session window is open";
+  return `${c.days} ${c.days === 1 ? "day" : "days"} to window`;
+}
+
+function getRunwayUrgency(days: number): number {
+  if (days <= 0) return 100;
+  return Math.max(8, Math.min(100, Math.round(((180 - Math.min(days, 180)) / 180) * 100)));
+}
+
 export default function DashboardKpiStrip({
   countdown,
   noteMetaIndex,
@@ -51,47 +87,86 @@ export default function DashboardKpiStrip({
   const [mastery, setMastery] = useState<MasterySummary>({ answered: 0, accuracy: null });
   const [weakAreas, setWeakAreas] = useState<WeakArea[]>([]);
   const [hydrated, setHydrated] = useState(false);
+  const [scheduleOpen, setScheduleOpen] = useState(false);
+  const [nextExam, setNextExam] = useState<ReturnType<typeof getNextUpcomingExam>>(null);
 
-  useEffect(() => {
-    function refresh() {
-      setStreak(readStudyStreak());
-      setMastery(readMasterySummary());
-      setWeakAreas(readWeakAreas(noteMetaIndex));
-      setHydrated(true);
-    }
-
-    window.queueMicrotask(refresh);
-    const interval = window.setInterval(refresh, 30_000);
-    return () => window.clearInterval(interval);
+  useStudyStorageRefresh(() => {
+    setStreak(readStudyStreak());
+    setMastery(readMasterySummary());
+    setWeakAreas(readWeakAreas(noteMetaIndex));
+    setNextExam(getNextUpcomingExam(readExamSchedule()));
+    setHydrated(true);
   }, [noteMetaIndex]);
+
+  const runwayDays = nextExam ? nextExam.daysUntil : countdown?.days;
+  const runwayUnit = nextExam
+    ? nextExam.daysUntil === 0
+      ? "today"
+      : nextExam.daysUntil === 1
+        ? "day to next paper"
+        : "days to next paper"
+    : countdown
+      ? countdown.days === 0
+        ? "window open"
+        : "days to window"
+      : "—";
+
+  const runwayDetail = nextExam
+    ? `Next: ${nextExam.label}`
+    : countdown
+      ? `${countdown.formattedDate} · ${countdownLabel(countdown)}`
+      : "Tap to add your papers";
+
+  const sessionLabel = countdown?.formattedDate ?? null;
 
   return (
     <section className={s.overviewShell} aria-label="Dashboard summary">
-      <div className={s.overviewRunway}>
+      <button
+        type="button"
+        className={s.runwayButton}
+        onClick={() => setScheduleOpen(true)}
+        aria-haspopup="dialog"
+        aria-label="Open exam countdown — add subject, paper, and date for each exam"
+      >
         <div className={s.runwayTop}>
           <div className={s.runwayIntro}>
             <p className={s.kpiLabel}>
-              <CalendarBlank className={s.labelIcon} size={13} weight="bold" aria-hidden />
-              Session runway
+              <span className={s.runwayLabelMain}>
+                <CalendarBlank className={s.labelIcon} size={13} weight="bold" aria-hidden />
+                Exam countdown
+              </span>
+              <span className={s.runwayHint} aria-hidden>
+                Open timetable
+                <CaretRight className={s.runwayHintIcon} size={12} weight="bold" />
+              </span>
             </p>
-            <p className={s.runwayWindow}>
-              {countdown ? `${countdown.formattedDate} · ${countdownLabel(countdown)}` : "Set your target series below"}
-            </p>
+            <p className={s.runwayWindow}>{runwayDetail}</p>
           </div>
           <div className={s.runwayHero}>
-            <strong className={s.kpiValue}>{countdown ? countdown.days : "—"}</strong>
-            <span className={s.runwayUnit}>
-              {countdown ? (countdown.days === 0 ? "window open" : "days to window") : "—"}
-            </span>
+            <strong className={s.kpiValue}>
+              {runwayDays !== undefined && runwayDays !== null ? runwayDays : "—"}
+            </strong>
+            <span className={s.runwayUnit}>{runwayUnit}</span>
           </div>
         </div>
         <div className={s.runwayTrack} aria-hidden>
           <span
             className={s.runwayFill}
-            style={{ width: `${countdown ? getRunwayUrgency(countdown.days) : 0}%` }}
+            style={{
+              width: `${runwayDays !== undefined && runwayDays !== null ? getRunwayUrgency(runwayDays) : 0}%`,
+            }}
           />
         </div>
-      </div>
+      </button>
+
+      <ExamScheduleDialog
+        open={scheduleOpen}
+        onClose={() => {
+          setScheduleOpen(false);
+          setNextExam(getNextUpcomingExam(readExamSchedule()));
+        }}
+        sessionLabel={sessionLabel}
+      />
 
       <div className={s.overviewBody}>
         <div className={s.overviewWeak}>
@@ -147,26 +222,48 @@ export default function DashboardKpiStrip({
         </div>
 
         <div className={s.overviewSignal}>
-          <header className={s.signalHead}>
+          <header className={s.signalHeader}>
             <p className={s.kpiLabel}>
               <Gauge className={s.labelIcon} size={13} weight="bold" aria-hidden />
-              Study signal
+              Practice summary
             </p>
-            <span className={s.signalStatus}>{masteryStatus(mastery.accuracy)}</span>
+            <p className={s.signalSub}>Graded drill answers and study days</p>
           </header>
-          <div className={s.signalGrid}>
-            <div className={s.signalMetric}>
-              <span>Drill accuracy</span>
-              <strong>{hydrated && mastery.accuracy !== null ? `${mastery.accuracy}%` : "—"}</strong>
-              <em>{mastery.answered > 0 ? `${mastery.answered} answers` : "No drills yet"}</em>
-            </div>
-            <div className={s.signalMetric}>
-              <span className={s.signalMetricLabel}>
-                <Fire className={s.metricIcon} size={12} weight={streak.studiedToday ? "fill" : "bold"} aria-hidden />
-                Streak
+          <p className={s.signalNote} data-band={accuracyBand(mastery.accuracy)}>
+            {masteryStatus(mastery.accuracy)}
+          </p>
+          <div className={s.signalList} role="list">
+            <div
+              className={s.signalRow}
+              role="listitem"
+              data-band={accuracyBand(mastery.accuracy) === "low" ? "low" : "ok"}
+            >
+              <span className={s.signalRail} aria-hidden />
+              <span className={s.signalBody}>
+                <span className={s.signalTitle}>Drill accuracy</span>
+                <span className={s.signalMeta}>
+                  {mastery.answered > 0
+                    ? `${mastery.answered} graded answer${mastery.answered === 1 ? "" : "s"}`
+                    : "No graded answers yet"}
+                </span>
               </span>
-              <strong>{hydrated ? `${streak.count}d` : "—"}</strong>
-              <em>{streak.studiedToday ? "Logged today" : "Not logged today"}</em>
+              <span className={s.signalScore} aria-label="Drill accuracy">
+                <span className={s.signalValue}>
+                  {hydrated && mastery.accuracy !== null ? `${mastery.accuracy}%` : "—"}
+                </span>
+              </span>
+            </div>
+            <div className={s.signalRow} role="listitem">
+              <span className={s.signalRail} aria-hidden />
+              <span className={s.signalBody}>
+                <span className={s.signalTitle}>Study streak</span>
+                <span className={s.signalMeta}>
+                  {streak.studiedToday ? "Logged today" : "Not logged today"}
+                </span>
+              </span>
+              <span className={s.signalScore} aria-label="Study streak length">
+                <span className={s.signalValue}>{hydrated ? `${streak.count}d` : "—"}</span>
+              </span>
             </div>
           </div>
         </div>
@@ -187,111 +284,42 @@ export default function DashboardKpiStrip({
   );
 }
 
-function countdownLabel(c: { days: number; formattedDate: string }): string {
-  if (c.days <= 0) return "Session window is open";
-  return `${c.days} ${c.days === 1 ? "day" : "days"} to window`;
-}
-
 function readWeakAreas(noteMetaIndex: NoteMetaIndex): WeakArea[] {
   if (typeof window === "undefined") return [];
 
-  const bySubject = new Map<SubjectId, Map<string, { correct: number; needsWork: number }>>();
-  for (const subject of SUBJECTS) bySubject.set(subject.id, new Map());
-
   try {
-    for (const key of studyStorageKeys()) {
-      const match = key.match(/^practice-session:(physics|chemistry|biology):([^:]+)$/);
-      if (!match) continue;
+    const records = parsePracticeStorageEntries(studyStorageKeys(), studyStorageGetItem);
+    const weakestBySubject = weakAreaCandidatesBySubject(records);
 
-      const subject = match[1] as SubjectId;
-      const noteId = match[2]!;
-      const raw = studyStorageGetItem(key);
-      if (!raw) continue;
+    return SUBJECTS.flatMap((subject) => {
+      const weakest = weakestBySubject.get(subject.id as StudySubjectId);
+      if (!weakest) return [];
 
-      const parsed = JSON.parse(raw) as { drillOutcomes?: Record<string, unknown> };
-      if (!parsed.drillOutcomes || typeof parsed.drillOutcomes !== "object") continue;
-
-      const total = bySubject.get(subject)!.get(noteId) ?? { correct: 0, needsWork: 0 };
-      for (const value of Object.values(parsed.drillOutcomes)) {
-        if (value === "correct") total.correct += 1;
-        if (value === "needs-work") total.needsWork += 1;
-      }
-      bySubject.get(subject)!.set(noteId, total);
-    }
+      const meta = noteMetaIndex[subject.id]?.[weakest.noteId];
+      return {
+        subject: subject.id,
+        label: meta?.subtopicTitle ?? weakest.noteId,
+        topicTitle: meta?.topicTitle ?? null,
+        href: `/${subject.id}/practice/${weakest.noteId}`,
+        accuracy: weakest.accuracy,
+        needsWork: weakest.needsWork,
+      };
+    });
   } catch {
     return [];
   }
-
-  return SUBJECTS.flatMap((subject) => {
-    const weakest = Array.from(bySubject.get(subject.id)!.entries())
-      .map(([noteId, total]) => {
-        const answered = total.correct + total.needsWork;
-        const accuracy = answered > 0 ? Math.round((total.correct / answered) * 100) : 100;
-        return { noteId, ...total, answered, accuracy };
-      })
-      .filter((area) => area.answered > 0)
-      .sort((a, b) => a.accuracy - b.accuracy || b.needsWork - a.needsWork)[0];
-
-    if (!weakest) return [];
-
-    const meta = noteMetaIndex[subject.id]?.[weakest.noteId];
-    return {
-      subject: subject.id,
-      label: meta?.subtopicTitle ?? weakest.noteId,
-      topicTitle: meta?.topicTitle ?? null,
-      href: `/${subject.id}/practice/${weakest.noteId}`,
-      accuracy: weakest.accuracy,
-      needsWork: weakest.needsWork,
-    };
-  });
 }
 
 function readMasterySummary(): MasterySummary {
   if (typeof window === "undefined") return { answered: 0, accuracy: null };
 
-  let correct = 0;
-  let needsWork = 0;
-
   try {
-    for (const key of studyStorageKeys()) {
-      if (!/^(?:practice-session|practice-mixed-session|practice-mistakes-session):/.test(key)) continue;
-
-      const raw = studyStorageGetItem(key);
-      if (!raw) continue;
-
-      const parsed = JSON.parse(raw) as {
-        drillOutcomes?: Record<string, unknown>;
-        outcomes?: Record<string, unknown>;
-      };
-      const outcomeSource = key.startsWith("practice-session:") ? parsed.drillOutcomes : parsed.outcomes;
-      if (!outcomeSource || typeof outcomeSource !== "object") continue;
-
-      for (const value of Object.values(outcomeSource)) {
-        if (value === "correct") correct += 1;
-        if (value === "needs-work") needsWork += 1;
-      }
-    }
+    const records = parsePracticeStorageEntries(studyStorageKeys(), studyStorageGetItem);
+    const totals = globalMasteryTotals(records);
+    return { answered: totals.answered, accuracy: totals.accuracy };
   } catch {
     return { answered: 0, accuracy: null };
   }
-
-  const answered = correct + needsWork;
-  return {
-    answered,
-    accuracy: answered > 0 ? Math.round((correct / answered) * 100) : null,
-  };
-}
-
-function masteryStatus(accuracy: number | null): string {
-  if (accuracy === null) return "Start drills to unlock accuracy";
-  if (accuracy >= 80) return "Strong exam signal";
-  if (accuracy >= 60) return "Building toward readiness";
-  return "Needs targeted repair";
-}
-
-function getRunwayUrgency(days: number): number {
-  if (days <= 0) return 100;
-  return Math.max(8, Math.min(100, Math.round(((180 - Math.min(days, 180)) / 180) * 100)));
 }
 
 function subjectShortLabel(subject: SubjectId): string {

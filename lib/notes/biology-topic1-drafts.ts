@@ -9,45 +9,181 @@ export const BIOLOGY_TOPIC1_DRAFTS: Record<string, NoteDraft> = {
         id: "temporary-preparations",
         title: "Temporary preparations for light microscopy",
         paragraphs: [
-          "A temporary preparation is a fresh specimen mounted so that cells can be observed quickly with a light microscope. Typical material includes onion epidermis, Elodea leaf, cheek epithelium or pond samples. The aim is to obtain a thin, undamaged sample so that light passes through and cell boundaries are clear.",
-          "A standard method is: place a small drop of water or stain on a clean slide, transfer a very thin specimen into the drop, lower a coverslip at an angle to reduce air bubbles, and remove excess liquid with filter paper. Stains such as iodine solution (plant material) or methylene blue (animal cells) can increase contrast so structures are easier to see.",
-          "Good practical technique matters in Cambridge practical papers. Avoid thick samples, folded tissue, excess stain and cracked coverslips. Begin focusing with low power objective, use coarse focus first, then fine focus only at higher power.",
+          "Structured revision blocks below expand this section with tables, diagrams, and exam points.",
+        ],
+        blocks: [
+          {
+            type: "paragraph",
+            text: "A temporary preparation is a fresh specimen mounted on a slide for immediate observation with a light microscope. The preparation must be thin enough for light to pass through and clear enough for cell boundaries or stained structures to be seen.",
+          },
+          {
+            type: "steps",
+            title: "Temporary slide method",
+            items: [
+              "Place a drop of water or suitable stain on a clean glass slide.",
+              "Transfer a very thin specimen into the drop without folding or crushing it.",
+              "Lower a coverslip from one edge using a mounted needle so air is pushed out rather than trapped.",
+              "Blot excess liquid with filter paper and begin focusing on low power before moving to higher power.",
+            ],
+          },
+          {
+            type: "table",
+            caption: "Common stains and why they are used",
+            columns: ["Specimen", "Suitable stain", "Purpose"],
+            rows: [
+              ["Onion epidermis / plant tissue", "Iodine solution", "Increases contrast and can stain starch-containing regions"],
+              ["Cheek epithelium", "Methylene blue", "Makes nucleus and other acidic cell material more visible"],
+              ["Fresh pond sample", "Often unstained", "Keeps living organisms observable for movement"],
+            ],
+          },
+          {
+            type: "callout",
+            tone: "exam",
+            title: "Practical marking point",
+            paragraphs: [
+              "When asked for a method, include how bubbles are avoided, how contrast is improved, and why the sample must be thin. Those details distinguish a practical answer from a vague instruction to 'put it under the microscope'.",
+            ],
+          },
         ],
       },
       {
         id: "biological-drawing",
         title: "Drawing cells from microscope views and photomicrographs",
         paragraphs: [
-          "Biological drawings are communication tools, not sketches. Draw what is visible, not what is expected. Use a sharp pencil, clear continuous lines, no shading, and labels that are ruled and horizontal. Include a title and either a scale bar or magnification statement if required.",
-          "When drawing from a microscope field or photomicrograph, judge proportions first: overall cell outline, relative nucleus size, wall thickness, and arrangement of visible organelles. Examiners credit accuracy of shape and proportion more than decorative detail.",
-          "If the source image is an electron micrograph, represent ultrastructure that is genuinely visible (for example cristae, thylakoids, nuclear envelope) and avoid adding features that are not present in that image.",
+          "Structured revision blocks below expand this section with tables, diagrams, and exam points.",
+        ],
+        blocks: [
+          {
+            type: "paragraph",
+            text: "A biological drawing records observed structure. It is not an artistic sketch and should not include features that are expected from memory but absent from the specimen or micrograph.",
+          },
+          {
+            type: "table",
+            caption: "Rules for biological drawings",
+            columns: ["Feature", "Expected standard"],
+            rows: [
+              ["Lines", "Single, clear, unbroken pencil lines; no sketching"],
+              ["Shading", "Do not shade; use outlines only"],
+              ["Labels", "Horizontal ruled label lines that touch the labelled structure"],
+              ["Proportion", "Maintain relative size and position of visible structures"],
+              ["Scale", "Add magnification or scale bar when required by the question"],
+            ],
+          },
+          {
+            type: "diagram",
+            title: "Original schematic: labelled biological drawing layout",
+            caption:
+              "Labels sit to one side, lines do not cross, and each line touches the structure being identified.",
+            labels: ["title", "clear outline", "ruled labels"],
+          },
+          {
+            type: "callout",
+            tone: "warning",
+            title: "Do not draw from memory",
+            paragraphs: [
+              "If a nucleus, chloroplast or cell wall is not visible in the source image, do not add it. Cambridge practical marking rewards observation, not idealised textbook diagrams.",
+            ],
+          },
         ],
       },
       {
         id: "magnification-and-size",
         title: "Magnification and actual size calculations",
         paragraphs: [
-          "Magnification is how many times larger an image is than the actual specimen. Use M = image size / actual size and rearrange as needed. If two values are known, the third follows directly by algebra.",
-          "Always use consistent units before substitution. For cell biology, mm, μm and nm are common. Useful conversions: 1 mm = 1000 μm and 1 μm = 1000 nm (so 1 mm = 10⁶ nm).",
-          "The same calculation methods apply to drawings, photomicrographs, scanning electron micrographs (SEM) and transmission electron micrographs (TEM). Electron micrographs often have large stated magnifications, so unit conversion errors are a frequent source of lost marks.",
+          "Structured revision blocks below expand this section with tables, diagrams, and exam points.",
+        ],
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Magnification compares image size with actual size. It is a ratio, so the same length units must be used before division.",
+          },
+          {
+            type: "equation",
+            text: "magnification = image size ÷ actual size",
+          },
+          {
+            type: "table",
+            caption: "Unit conversions used in microscopy",
+            columns: ["Conversion", "Equivalent"],
+            rows: [
+              ["1 mm", "1000 μm"],
+              ["1 μm", "1000 nm"],
+              ["1 mm", "1 000 000 nm"],
+            ],
+          },
+          {
+            type: "steps",
+            title: "Calculation routine",
+            items: [
+              "Measure the image size carefully using the units given or requested.",
+              "Convert image size and actual size into the same unit.",
+              "Substitute into M = image size ÷ actual size, or rearrange first if actual size is required.",
+              "Give the final biological size in a sensible unit, usually μm for cells or nm for very small structures.",
+            ],
+          },
         ],
       },
       {
         id: "graticule-and-micrometer",
         title: "Using eyepiece graticule and stage micrometer",
         paragraphs: [
-          "An eyepiece graticule has arbitrary divisions, so it must be calibrated against a stage micrometer at each objective lens. A stage micrometer is a slide with a precise scale (commonly 1 mm divided into 100 divisions, so each division is 0.01 mm = 10 μm).",
-          "Calibration procedure: focus both scales, align zero marks, count how many eyepiece divisions match a known stage-micrometer distance, then compute the value of one eyepiece division in μm (or nm for very small structures). Repeat calibration when objective magnification changes.",
-          "After calibration, measure the specimen in eyepiece divisions and convert to actual size. Report in sensible units: cells often in μm, larger tissues in mm, viruses in nm.",
+          "Structured revision blocks below expand this section with tables, diagrams, and exam points.",
+        ],
+        blocks: [
+          {
+            type: "paragraph",
+            text: "An eyepiece graticule is useful only after calibration because its divisions are arbitrary. A stage micrometer provides the known reference scale.",
+          },
+          {
+            type: "steps",
+            title: "Calibrating an eyepiece graticule",
+            items: [
+              "Place the stage micrometer on the stage and focus it at the selected objective lens.",
+              "Align the zero mark of the eyepiece graticule with the zero mark of the stage micrometer.",
+              "Find a point where divisions line up again and record the stage distance represented.",
+              "Divide the known stage distance by the number of eyepiece divisions to find the value of one eyepiece division.",
+              "Repeat the calibration if the objective lens is changed.",
+            ],
+          },
+          {
+            type: "callout",
+            tone: "warning",
+            title: "Objective lens changes the calibration",
+            paragraphs: [
+              "The same eyepiece division represents a different actual length when objective magnification changes. Do not reuse one calibration across all objectives.",
+            ],
+          },
         ],
       },
       {
         id: "magnification-vs-resolution",
         title: "Magnification and resolution in light and electron microscopes",
         paragraphs: [
-          "Magnification is enlargement. Resolution is the ability to distinguish two close points as separate. High magnification without sufficient resolution gives a larger but not clearer image.",
-          "Light microscopes typically resolve down to about 200 nm, limited by the wavelength of visible light. Electron microscopes use electron beams with much shorter effective wavelength, so resolution is much higher and ultrastructural detail becomes visible.",
-          "SEM gives detailed 3-D surface views; TEM gives high-resolution 2-D internal ultrastructure. Both can achieve much greater magnification and resolution than light microscopy, but specimens are dead and preparation is complex.",
+          "Structured revision blocks below expand this section with tables, diagrams, and exam points.",
+        ],
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Magnification is enlargement; resolution is the ability to distinguish two close points as separate. Increasing magnification without improving resolution only makes a blurred image larger.",
+          },
+          {
+            type: "table",
+            caption: "Microscope comparison for exam answers",
+            columns: ["Type", "Best used for", "Resolution/detail", "Key limitation"],
+            rows: [
+              ["Light microscope", "Living or stained cells, general cell shape", "Limited by visible light; about 200 nm", "Cannot resolve many ultrastructures"],
+              ["TEM", "Internal ultrastructure in thin sections", "Very high resolution", "Specimen is dead; image is 2-D"],
+              ["SEM", "Detailed surface features", "High resolution surface detail", "Specimen is dead; preparation is complex"],
+            ],
+          },
+          {
+            type: "callout",
+            tone: "exam",
+            title: "Choosing the right word",
+            paragraphs: [
+              "If a question asks why ribosomes or membranes can be distinguished, discuss resolution. If it asks how many times larger an image appears, discuss magnification.",
+            ],
+          },
         ],
       },
     ],

@@ -111,23 +111,26 @@ export const PHYSICS_TOPIC6_PRACTICE: Record<string, SubtopicPracticePack> = {
       {
         id: "t6-1-d6",
         noteId: "t6-1",
-        kind: "mcq",
+        kind: "structured",
         difficulty: 3,
-        stem: "Which statement about Young modulus is correct?",
-        options: [
-          { id: "A", text: "It is the gradient of stress-strain graph in linear elastic region." },
-          { id: "B", text: "It has no unit because strain has no unit." },
-          { id: "C", text: "It decreases with increasing area of the same material sample." },
-          { id: "D", text: "It equals extension divided by force." },
+        marks: 5,
+        stem:
+          "Describe an experiment to determine the Young modulus of a metal wire using a long wire, loads, and a marker on a second reference wire or scale.",
+        modelAnswerPoints: [
+          "Measure original length L and diameter (or cross-sectional area A) of the test wire.",
+          "Apply known loads and measure extension (e.g. with vernier scale reading position of a marker).",
+          "Plot force against extension (or stress against strain) and take gradient in the linear elastic region.",
+          "Use E = (F/A)/(extension/L) or gradient of stress-strain graph to find Young modulus.",
+          "Repeat with several loads and take averages; keep wire within elastic limit.",
         ],
-        correctOptionId: "A",
-        explanation: "E = stress/strain, so on a stress-strain graph the linear gradient is E.",
-        distractorRationale: {
-          B: "E has unit of stress, Pa, because strain is dimensionless.",
-          C: "E is a material property and does not depend on specimen dimensions.",
-          D: "Extension/force is compliance, not Young modulus.",
-        },
-        tags: ["young-modulus", "graphs", "material-property"],
+        workedSolution: [
+          "The experiment compares extension produced by each load to the original dimensions of the wire.",
+          "From F/A and extension/L, Young modulus is obtained without measuring E directly in one step.",
+          "A reference wire or optical lever reduces parallax when reading small extensions.",
+        ],
+        commonMistake:
+          "Using a single load-extension pair without checking linearity or exceeding the elastic limit.",
+        tags: ["young-modulus-experiment", "wire-extension", "practical"],
       },
       {
         id: "t6-1-d7",

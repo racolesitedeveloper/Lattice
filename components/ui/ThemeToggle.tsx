@@ -30,10 +30,39 @@ function subscribeToTheme(callback: () => void) {
   };
 }
 
-export default function ThemeToggle({ className }: { className?: string }) {
+type Props = {
+  className?: string;
+  /** Icon-only control — default for app chrome (Linear / system-settings pattern). */
+  variant?: "default" | "icon";
+};
+
+export default function ThemeToggle({ className, variant = "default" }: Props) {
   const theme = useSyncExternalStore(subscribeToTheme, getThemeSnapshot, () => "light");
 
   const nextTheme: Theme = theme === "dark" ? "light" : "dark";
+
+  const icon =
+    theme === "dark" ? <Sun size={18} weight="regular" /> : <Moon size={18} weight="regular" />;
+
+  if (variant === "icon") {
+    return (
+      <button
+        type="button"
+        className={`${s.toggleIcon} ${className ?? ""}`}
+        aria-label={`Switch to ${nextTheme} mode`}
+        aria-pressed={theme === "dark"}
+        suppressHydrationWarning
+        onClick={() => {
+          applyTheme(nextTheme);
+        }}
+      >
+        <span className={s.toggleIconGlyph} aria-hidden="true">
+          {icon}
+        </span>
+      </button>
+    );
+  }
+
   const label = theme === "dark" ? "Light" : "Dark";
 
   return (

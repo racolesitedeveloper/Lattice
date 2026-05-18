@@ -30,17 +30,35 @@
   letter-spacing: -0.02em;
 }
 
+.meta {
+  margin: 0;
+  font-size: var(--fs-label);
+  color: var(--text-landing-md);
+}
+
+.intro {
+  margin: 0;
+  font-size: var(--fs-body);
+  line-height: var(--lh-relaxed);
+  color: var(--text-landing-md);
+  padding-bottom: var(--sp-2);
+  border-bottom: 1px solid var(--border-landing);
+}
+
 .section {
   display: grid;
   gap: var(--sp-3);
   border-top: 1px solid var(--border-landing);
   padding-top: var(--sp-5);
+  scroll-margin-top: var(--sp-6);
 }
 
 .section h2 {
   font-size: var(--fs-heading);
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  color: var(--text-landing);
 }
 
 .section p,

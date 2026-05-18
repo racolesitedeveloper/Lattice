@@ -3,8 +3,8 @@ import s from "./Footer.module.css";
 import Logo from "@/components/ui/Logo";
 
 const links = [
-  { href: "/privacy", label: "Privacy" },
-  { href: "/terms", label: "Terms" },
+  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/terms", label: "Terms of Service" },
 ];
 
 export default function Footer() {

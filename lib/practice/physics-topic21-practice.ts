@@ -20,7 +20,6 @@ export const PHYSICS_TOPIC21_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation: "I0 is the amplitude of the sine wave, i.e. the maximum magnitude of current.",
         distractorRationale: {
           B: "Irms is I0 divided by sqrt(2), not I0 itself.",
-          C: "Correct: I0 is the peak value.",
           D: "Angular frequency is represented by w.",
         },
         tags: ["alternating-current", "definitions", "sine-wave"],
@@ -40,7 +39,6 @@ export const PHYSICS_TOPIC21_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Vrms = V0 / sqrt(2) = 170 / 1.414 = 120 V (to 3 s.f.).",
         distractorRationale: {
-          B: "Correct conversion from peak to r.m.s. for sinusoidal wave.",
           C: "This treats peak and r.m.s. as equal, which is incorrect.",
           D: "This is larger than peak value, physically impossible here.",
         },
@@ -62,7 +60,6 @@ export const PHYSICS_TOPIC21_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation:
           "In a resistor, p = I0^2 R sin^2 wt. Mean of sin^2 over a cycle is 1/2, so Pmean = pmax / 2.",
         distractorRationale: {
-          B: "Correct for sinusoidal current in a purely resistive load.",
           C: "Current averages to zero but power in a resistor does not.",
           D: "This inverts the correct relation.",
         },
@@ -329,7 +326,6 @@ export const PHYSICS_TOPIC21_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Rectification converts alternating input into a unidirectional (pulsating d.c.) output.",
         distractorRationale: {
-          B: "Correct definition.",
           C: "Amplification is different from rectification.",
           D: "Capacitance may smooth output but is not the definition of rectification.",
         },
@@ -352,7 +348,6 @@ export const PHYSICS_TOPIC21_PRACTICE: Record<string, SubtopicPracticePack> = {
           "Full-wave rectification uses both halves of the input cycle, so there are two output pulses per input cycle.",
         distractorRationale: {
           B: "This applies to half-wave pulse repetition, not full-wave.",
-          C: "Correct pulse-frequency comparison.",
           D: "Rectified output has positive average value (ideal case).",
         },
         tags: ["full-wave", "waveform", "frequency"],
@@ -373,7 +368,6 @@ export const PHYSICS_TOPIC21_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation:
           "One diagonal pair is forward-biased in each half-cycle, so two diodes conduct while two are reverse-biased.",
         distractorRationale: {
-          B: "Correct conduction pattern in ideal bridge operation.",
           C: "Only two are forward-biased at a time.",
           D: "All four conducting would short-circuit the source path assumptions.",
         },

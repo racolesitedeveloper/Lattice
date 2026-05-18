@@ -9,17 +9,46 @@ export const PHYSICS_TOPIC1_DRAFTS: Record<string, NoteDraft> = {
         id: "physical-quantity",
         title: "Physical quantities, magnitude and units",
         paragraphs: [
-          "In Cambridge International A Level Physics, a physical quantity is what you measure or what you calculate from measurements. Examples include length, time interval, mass, current, force, energy and many more. Every such quantity has two inseparable parts: a numerical magnitude and a unit. The magnitude tells you ‘how much’ and the unit tells you ‘in what standard chunk’ that amount is expressed.",
-          "A number on its own is not a physical quantity. Writing 9.81 tells the examiner nothing unless you add that it is an acceleration in m s⁻², a field strength in N kg⁻¹, or some other stated quantity. Conversely, if a ratio is defined as the quotient of two quantities of the same kind (for example two lengths), it may be dimensionless: it has no unit because the units cancel. Examples include refractive index n = speed in vacuum / speed in medium, and the sine of an angle in a right-triangle definition (opposite/hypotenuse as a ratio of lengths).",
-          "You are expected to use correct SI style in written work: a space between the numerical value and the unit symbol (e.g. 12.0 m, not 12.0m), and a decimal point on the line (not a comma) in line with international examination practice. Use negative indices for division in compound units (e.g. m s⁻¹ for speed, kg m s⁻² for the newton) unless a question explicitly uses another acceptable form.",
-          "Whether a quantity is a scalar or a vector is important for mechanics, but the syllabus treats that systematically in section 1.4. Here the focus is on units, dimensions and consistency of equations — skills you will use in every later topic.",
+          "Structured revision blocks below expand this section with tables, diagrams, and exam points.",
+        ],
+        blocks: [
+          {
+            type: "paragraph",
+            text: "A physical quantity is a measurable property written as a numerical magnitude together with a unit. In exam work, the number and the unit carry different information: the number gives the size of the quantity, while the unit states the agreed standard used for comparison.",
+          },
+          {
+            type: "callout",
+            tone: "exam",
+            title: "Exam wording",
+            paragraphs: [
+              "A final answer such as 9.81 is incomplete unless the quantity and unit are clear. Depending on context it could be acceleration in m s⁻², gravitational field strength in N kg⁻¹, or another physical quantity.",
+            ],
+          },
+          {
+            type: "table",
+            caption: "How notation changes the meaning of a symbol",
+            columns: ["Symbol in context", "Possible quantity", "Suitable unit"],
+            rows: [
+              ["v in mechanics", "velocity or speed", "m s⁻¹"],
+              ["V in electricity", "potential difference", "V"],
+              ["V in geometry/fluids", "volume", "m³"],
+            ],
+          },
+          {
+            type: "paragraph",
+            text: "Some quantities are dimensionless because they are formed from a ratio of two quantities of the same kind. Refractive index, strain and trigonometric ratios have no SI unit because the units cancel in their definitions.",
+          },
+          {
+            type: "paragraph",
+            text: "Use SI style consistently: leave a space between value and unit, write compound units with negative indices where possible, and use a decimal point rather than a comma. These presentation details make your working unambiguous to a marker.",
+          },
         ],
       },
       {
         id: "si-base-derived",
         title: "The SI, base quantities and derived quantities",
         paragraphs: [
-          "The International System of Units (SI) defines seven independent base quantities. Each has a name, a symbol for the quantity and a defined unit. At A Level you should know the set and the corresponding SI unit symbols:",
+          "Structured revision blocks below expand this section with tables, diagrams, and exam points.",
         ],
         bullets: [
           "Length l, unit metre (m)",
@@ -30,23 +59,100 @@ export const PHYSICS_TOPIC1_DRAFTS: Record<string, NoteDraft> = {
           "Amount of substance n, unit mole (mol)",
           "Luminous intensity, unit candela (cd)",
         ],
+        blocks: [
+          {
+            type: "paragraph",
+            text: "The SI is built from seven independent base quantities. These are treated as the starting quantities from which many other units are constructed.",
+          },
+          {
+            type: "table",
+            caption: "SI base quantities required for A Level Physics",
+            columns: ["Base quantity", "Common symbol", "SI base unit"],
+            rows: [
+              ["Length", "l or x", "metre, m"],
+              ["Mass", "m", "kilogram, kg"],
+              ["Time", "t", "second, s"],
+              ["Electric current", "I", "ampere, A"],
+              ["Thermodynamic temperature", "T", "kelvin, K"],
+              ["Amount of substance", "n", "mole, mol"],
+              ["Luminous intensity", "—", "candela, cd"],
+            ],
+          },
+          {
+            type: "callout",
+            tone: "warning",
+            title: "Do not write gram as the SI base unit",
+            paragraphs: [
+              "Mass is the unusual case: the SI base unit is kilogram, kg. The gram is a decimal submultiple, even though it is common in everyday laboratory measurements.",
+            ],
+          },
+        ],
       },
       {
         id: "derived-from-base",
         title: "Derived quantities",
         paragraphs: [
-          "A derived quantity is defined in terms of products and quotients of base quantities. Its SI unit is therefore a product or quotient of the base units. For example, speed is defined as distance divided by time, so its SI unit is m s⁻¹. Force, from Newton’s second law, has the unit kg m s⁻²; that combination is given the special name newton (symbol N). Energy has the unit kg m² s⁻², named the joule (J).",
-          "You do not need to memorise every named derived unit at the start of the course, but you must be able to express any given derived quantity in terms of base units when asked — this is the key skill for checking homogeneity and for dimensional analysis.",
-          "Prefixes (such as k for kilo-, m for milli-, μ for micro-) scale the magnitude of a quantity in powers of ten; they are part of how we write values, not part of the dimensional definition of the quantity itself. Prefix manipulation is developed further in section 1.2.",
+          "Structured revision blocks below expand this section with tables, diagrams, and exam points.",
+        ],
+        blocks: [
+          {
+            type: "paragraph",
+            text: "A derived quantity is obtained by combining base quantities. Its unit is therefore built by multiplying and dividing SI base units according to the defining equation.",
+          },
+          {
+            type: "table",
+            caption: "Examples of derived quantities",
+            columns: ["Derived quantity", "Definition idea", "Base-unit form"],
+            rows: [
+              ["Speed", "distance ÷ time", "m s⁻¹"],
+              ["Acceleration", "change in velocity ÷ time", "m s⁻²"],
+              ["Force", "mass × acceleration", "kg m s⁻²"],
+              ["Energy / work", "force × distance", "kg m² s⁻²"],
+            ],
+          },
+          {
+            type: "equation",
+            text: "1 N = 1 kg m s⁻²    and    1 J = 1 kg m² s⁻²",
+          },
+          {
+            type: "paragraph",
+            text: "Prefixes such as k, m and μ change the scale of the number being written, but they do not change the dimensions of the quantity. Convert prefixes carefully before comparing or substituting values.",
+          },
         ],
       },
       {
         id: "homogeneity",
         title: "Homogeneous equations",
         paragraphs: [
-          "An equation in physics is only meaningful if it is homogeneous: every separate term that is added or subtracted on one side of the equation must represent the same physical kind of quantity as every other such term, and the same as the single quantity on the other side (or the same as the corresponding sum on the other side).",
-          "For example, in constant linear acceleration work you meet s = ut + ½at². Here s, ut and ½at² must all have the dimension of length. The factor ½ is a pure number; numbers never carry dimensions. If you accidentally wrote s = ut + ½at³, the last term would have an extra factor of time in its dimensions and the equation would not be homogeneous — it could not represent a correct physical relationship.",
-          "Multiplication and division are allowed to combine quantities to make a new quantity (e.g. force × displacement gives work). The homogeneity rule applies to terms linked by + or −, and to the two sides of an equation related by =.",
+          "Structured revision blocks below expand this section with tables, diagrams, and exam points.",
+        ],
+        blocks: [
+          {
+            type: "paragraph",
+            text: "An equation is homogeneous when every term that is added or subtracted has the same dimensions. Homogeneity is a necessary condition for a physics equation to be correct.",
+          },
+          {
+            type: "equation",
+            text: "s = ut + ½at²",
+          },
+          {
+            type: "steps",
+            title: "Checking the suvat expression",
+            items: [
+              "s has dimension [L].",
+              "ut has dimensions [L T⁻¹][T] = [L].",
+              "at² has dimensions [L T⁻²][T²] = [L].",
+              "All terms have dimension [L], so the equation passes the homogeneity test.",
+            ],
+          },
+          {
+            type: "callout",
+            tone: "exam",
+            title: "What homogeneity can and cannot prove",
+            paragraphs: [
+              "A non-homogeneous equation is definitely wrong. A homogeneous equation is only possible, not automatically true; the numerical constant or the exact physical model may still be wrong.",
+            ],
+          },
         ],
       },
       {

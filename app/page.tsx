@@ -1,18 +1,11 @@
-import LandingExperience from "@/components/landing/LandingExperience";
+import LandingAuthGate from "@/components/landing/LandingAuthGate";
 import Footer from "@/components/landing/Footer";
-import { createClient } from "@/lib/supabase/server";
 
-export default async function Home() {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  const isSignedIn = Boolean(user);
-
+export default function Home() {
   return (
     <>
       <main>
-        <LandingExperience isSignedIn={isSignedIn} />
+        <LandingAuthGate />
       </main>
       <Footer />
     </>

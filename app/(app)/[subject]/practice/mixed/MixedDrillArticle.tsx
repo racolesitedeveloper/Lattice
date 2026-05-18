@@ -7,6 +7,10 @@ import { archiveMistake } from "@/lib/practice/mistakes";
 import { markRecentActivity } from "@/lib/recent-activity";
 import { studyStorageGetItem, studyStorageSetItem } from "@/lib/study-kv";
 import { renderExamText } from "@/lib/practice/render-exam-text";
+import {
+  splitExamTechniqueFromModelAnswer,
+  structuredRevealSections,
+} from "@/lib/practice/structured-reveal-sections";
 import s from "../practice.module.css";
 import sm from "./mixed.module.css";
 
@@ -95,6 +99,14 @@ export default function MixedDrillArticle({
 
   const current = shuffled[index];
   const q = current.question;
+  const structuredSections =
+    q.kind === "structured"
+      ? structuredRevealSections(q.workedSolution, q.modelAnswerPoints)
+      : null;
+  const modelAnswerSplit =
+    structuredSections !== null
+      ? splitExamTechniqueFromModelAnswer(structuredSections.modelAnswerLines)
+      : null;
   const key = `${current.noteId}:${q.id}`;
   const currentComplete = completed.includes(key);
   const idsInOrder = shuffled.map((item) => `${item.noteId}:${item.question.id}`);
@@ -200,11 +212,16 @@ export default function MixedDrillArticle({
         updatedAt: Date.now(),
       }),
     );
+    const isMistakesSession = storagePrefix === "practice-mistakes-session";
     markRecentActivity({
       kind: "drill",
-      href: `/${subject}/practice/mixed?sets=${encodeURIComponent(selectedNoteIds.join(","))}`,
+      href: isMistakesSession
+        ? `/${subject}/mistakes/drill`
+        : `/${subject}/practice/mixed?sets=${encodeURIComponent(selectedNoteIds.join(","))}`,
       title: sessionLabel,
-      subtitle: `${selectedNoteIds.length} subtopics selected`,
+      subtitle: isMistakesSession
+        ? `${shuffled.length} archived mistakes`
+        : `${selectedNoteIds.length} subtopics selected`,
     });
   }, [
     hydrated,
@@ -218,6 +235,7 @@ export default function MixedDrillArticle({
     storageKey,
     subject,
     sessionLabel,
+    storagePrefix,
   ]);
 
   function markDone(outcome: "correct" | "needs-work", selectedOptionId?: "A" | "B" | "C" | "D") {
@@ -451,7 +469,7 @@ export default function MixedDrillArticle({
                       Show model answer and mark scheme
                     </button>
                   </div>
-                ) : (
+                ) : structuredSections && modelAnswerSplit ? (
                   <div className={s.answerStack}>
                     <section className={s.answerSection}>
                       <h3 className={s.answerSectionLabel}>
@@ -459,28 +477,42 @@ export default function MixedDrillArticle({
                         Model answer
                       </h3>
                       <ol className={s.stepsList}>
-                        {q.workedSolution.map((p, i) => (
+                        {modelAnswerSplit.coreModelAnswerLines.map((line, i) => (
                           <li key={i} className={s.stepRow}>
                             <span className={s.stepNum}>{i + 1}</span>
-                            <span className={s.stepBody}>{renderExamText(p)}</span>
+                            <span className={s.stepBody}>{renderExamText(line)}</span>
                           </li>
                         ))}
                       </ol>
+                      {modelAnswerSplit.techniqueLines.length > 0 ? (
+                        <div className={s.answerTechnique}>
+                          <p className={s.answerTechniqueLabel}>Exam technique</p>
+                          <ul className={s.answerTechniqueList}>
+                            {modelAnswerSplit.techniqueLines.map((line, i) => (
+                              <li key={i} className={s.answerTechniqueRow}>
+                                {renderExamText(line)}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ) : null}
                     </section>
-                    <section className={s.answerSection}>
-                      <h3 className={s.answerSectionLabel}>
-                        <span className={s.answerSectionIndex}>2</span>
-                        Mark scheme
-                      </h3>
-                      <ul className={s.markList}>
-                        {q.modelAnswerPoints.map((p, i) => (
-                          <li key={i} className={s.markRow}>
-                            <span className={s.markBullet} aria-hidden />
-                            <span>{renderExamText(p)}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </section>
+                    {structuredSections.secondaryLines.length > 0 ? (
+                      <section className={s.answerSection}>
+                        <h3 className={s.answerSectionLabel}>
+                          <span className={s.answerSectionIndex}>2</span>
+                          {structuredSections.secondaryHeading}
+                        </h3>
+                        <ul className={s.markList}>
+                          {structuredSections.secondaryLines.map((line, i) => (
+                            <li key={i} className={s.markRow}>
+                              <span className={s.markBullet} aria-hidden />
+                              <span>{renderExamText(line)}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </section>
+                    ) : null}
                     <section className={`${s.answerSection} ${s.answerSectionMistake}`}>
                       <h3 className={s.answerSectionLabel}>
                         <span className={s.answerSectionIndex}>3</span>
@@ -517,7 +549,7 @@ export default function MixedDrillArticle({
                       </div>
                     </section>
                   </div>
-                )}
+                ) : null}
               </div>
             )}
           </div>

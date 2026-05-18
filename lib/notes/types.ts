@@ -3,11 +3,51 @@
  * Depth, voice, and coverage: see ./AUTHORING.md
  */
 /** One titled block inside the syllabus-aligned body (H3 + body). */
+export type NoteContentBlock =
+  | {
+      type: "paragraph";
+      text: string;
+    }
+  | {
+      type: "bullets";
+      items: string[];
+    }
+  | {
+      type: "steps";
+      title?: string;
+      items: string[];
+    }
+  | {
+      type: "table";
+      caption?: string;
+      columns: string[];
+      rows: string[][];
+    }
+  | {
+      type: "equation";
+      text: string;
+    }
+  | {
+      type: "callout";
+      title?: string;
+      tone?: "note" | "exam" | "warning";
+      paragraphs?: string[];
+      items?: string[];
+    }
+  | {
+      type: "diagram";
+      title: string;
+      caption?: string;
+      labels: string[];
+    };
+
 export type NoteSection = {
   id: string;
   title: string;
   paragraphs: string[];
   bullets?: string[];
+  /** Richer revision-note blocks; optional so existing notes stay compatible. */
+  blocks?: NoteContentBlock[];
 };
 
 /** One of three worked examples on every note page. */

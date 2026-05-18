@@ -217,7 +217,10 @@ export const CHEMISTRY_TOPIC3_DRAFTS: Record<string, NoteDraft> = {
         id: "t3-2-st2",
         question:
           "Write the ions formed by magnesium and oxygen atoms, and state the formula of the compound formed.",
-        modelAnswer: ["Mg2+ and O2- are formed; the compound formula is MgO."],
+        modelAnswer: [
+          "Magnesium loses two electrons to form Mg²⁺ and oxygen gains two electrons to form O²⁻.",
+          "The ionic compound formed has formula MgO with a 1:1 ratio of ions.",
+        ],
       },
       {
         id: "t3-2-st3",
@@ -494,7 +497,8 @@ export const CHEMISTRY_TOPIC3_DRAFTS: Record<string, NoteDraft> = {
         question:
           "Why is a shorter bond often associated with a higher bond energy?",
         modelAnswer: [
-          "A shorter bond means nuclei and bonding electrons are, on average, closer with stronger electrostatic attraction, so more energy is needed to break the bond.",
+          "A higher activation energy means fewer collisions have sufficient energy to react at a given temperature.",
+          "The rate constant is therefore smaller and the reaction proceeds more slowly under otherwise identical conditions.",
         ],
       },
     ],
@@ -724,7 +728,8 @@ export const CHEMISTRY_TOPIC3_DRAFTS: Record<string, NoteDraft> = {
         question:
           "Name the intermolecular force responsible for the unusually high surface tension of water.",
         modelAnswer: [
-          "Hydrogen bonding between water molecules is the key intermolecular force responsible for water's relatively high surface tension.",
+          "A catalyst provides an alternative reaction pathway with lower activation energy.",
+          "More collisions are successful per unit time, so rate increases without changing ΔH of the overall reaction.",
         ],
       },
       {

@@ -29,24 +29,26 @@ export const PHYSICS_TOPIC2_PRACTICE: Record<string, SubtopicPracticePack> = {
       {
         id: "t2-1-d2",
         noteId: "t2-1",
-        kind: "mcq",
+        kind: "structured",
         difficulty: 1,
-        stem: "Which statement about a velocity-time graph is correct?",
-        options: [
-          { id: "A", text: "The gradient is acceleration and the area under the graph is displacement." },
-          { id: "B", text: "The gradient is displacement and the area under the graph is acceleration." },
-          { id: "C", text: "The gradient is speed and the area under the graph is distance only." },
-          { id: "D", text: "The area under the graph is always zero if velocity changes sign." },
+        marks: 4,
+        stem:
+          "Define each of the following: (i) distance, (ii) displacement, (iii) speed, (iv) velocity, (v) acceleration.",
+        modelAnswerPoints: [
+          "Distance: total length of path travelled (scalar).",
+          "Displacement: change in position from start to finish, with direction (vector).",
+          "Speed: distance travelled per unit time (scalar).",
+          "Velocity: rate of change of displacement (vector).",
+          "Acceleration: rate of change of velocity (vector).",
         ],
-        correctOptionId: "A",
-        explanation:
-          "For a v-t graph, slope = dv/dt = acceleration. Signed area = integral of v dt = displacement.",
-        distractorRationale: {
-          B: "This swaps the two core interpretations and is a frequent graph-reading error.",
-          C: "Speed is not the gradient of v-t; area can represent signed displacement, not always distance.",
-          D: "A sign change can reduce net area but does not force it to be zero.",
-        },
-        tags: ["graphs", "velocity-time", "gradient", "area"],
+        workedSolution: [
+          "Distance and speed are scalars: magnitude only, with no direction in the definition.",
+          "Displacement, velocity, and acceleration are vectors: definitions must include direction or rate of change of a vector quantity.",
+          "Acceleration is not simply 'change in speed'; it is change of velocity per unit time, so direction changes count even if speed is constant.",
+        ],
+        commonMistake:
+          "Defining velocity as speed, or acceleration as change in speed without mentioning velocity.",
+        tags: ["definitions", "scalars-and-vectors", "kinematics"],
       },
       {
         id: "t2-1-d3",

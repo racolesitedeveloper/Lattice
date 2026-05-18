@@ -305,10 +305,24 @@ export const PHYSICS_TOPIC17_DRAFTS: Record<string, NoteDraft> = {
         id: "light-critical-heavy-damping",
         title: "Light, critical and heavy damping",
         paragraphs: [
-          "Light damping: oscillations continue with gradually decreasing amplitude. The displacement-time graph shows a decaying sinusoidal envelope.",
-          "Critical damping: the system returns to equilibrium in the shortest possible time without oscillating.",
-          "Heavy (over) damping: the system returns to equilibrium without oscillating, but more slowly than in the critical case.",
-          "In both critical and heavy damping there is no overshoot, but the time response differs, which is often tested qualitatively.",
+          "See the diagram and revision blocks below for displacement–time sketches of light, critical, and heavy damping.",
+        ],
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Light damping: oscillations continue with gradually decreasing amplitude (decaying sinusoidal envelope). Critical damping: returns to equilibrium in the shortest time without oscillating. Heavy (over) damping: returns without oscillating but more slowly than critical.",
+          },
+          {
+            type: "diagram",
+            title: "Displacement–time sketches: light, critical, and heavy damping",
+            caption:
+              "Light: oscillatory decay. Critical: fastest non-oscillatory return. Heavy: slower non-oscillatory return.",
+            labels: [
+              "light — oscillations with decreasing amplitude",
+              "critical — no overshoot, minimum return time",
+              "heavy — no overshoot, slower than critical",
+            ],
+          },
         ],
       },
       {
@@ -402,9 +416,9 @@ export const PHYSICS_TOPIC17_DRAFTS: Record<string, NoteDraft> = {
         question:
           "Distinguish clearly between light, critical and heavy damping using displacement-time descriptions.",
         modelAnswer: [
-          "Light damping: oscillatory motion continues with decaying amplitude.",
-          "Critical damping: no oscillation; returns to equilibrium in minimum time.",
-          "Heavy damping: no oscillation; returns more slowly than critical damping.",
+          "Light damping: oscillatory motion continues with decaying amplitude; displacement–time graph shows a sine-like wave with an envelope that falls gradually to zero.",
+          "Critical damping: no oscillation and no overshoot; displacement returns to zero in the shortest possible time for a non-oscillatory response.",
+          "Heavy damping: no oscillation; displacement returns to zero more slowly than in the critical case (flatter, longer approach to equilibrium).",
         ],
       },
       {
@@ -413,6 +427,7 @@ export const PHYSICS_TOPIC17_DRAFTS: Record<string, NoteDraft> = {
           "Define resonance for a forced oscillator.",
         modelAnswer: [
           "Resonance is the condition of maximum steady-state amplitude when driving frequency equals the system’s natural frequency.",
+          "At resonance, energy transfer from driver to oscillator per cycle is most efficient, so amplitude is largest for a given driving strength (limited by damping).",
         ],
       },
       {

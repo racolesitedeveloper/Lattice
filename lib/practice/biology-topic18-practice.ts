@@ -10,7 +10,7 @@ import type { SubtopicPracticePack } from "./types";
  * d8–d10 application / compare / consolidation.
  *
  * **`t18-2` (18.2 Biodiversity + continued)** — d1 ecosystem / niche; d2 biodiversity levels; d3 random sampling;
- * d4 quadrats / transects; d5 Lincoln index; d6 Spearman; d7 Pearson; d8 Simpson D; d9–d10 integration.
+ * d4 quadrats / transects; d5 Lincoln index; d6 Spearman r_s calculation; d7 Pearson r calculation; d8 Simpson D; d9–d10 integration.
  *
  * **`t18-3` (18.3 Conservation)** — d1 extinction causes; d2 maintaining biodiversity; d3 ex-situ / in-situ sites;
  * d4 assisted reproduction; d5 invasive species; d6 IUCN + CITES; d7–d10 consolidation.
@@ -442,44 +442,49 @@ export const BIOLOGY_TOPIC18_PRACTICE: Record<string, SubtopicPracticePack> = {
         noteId: "t18-2",
         kind: "structured",
         difficulty: 3,
-        marks: 6,
-        stem: "Describe when Spearman’s rank correlation is appropriate in biodiversity work, and explain how biotic or abiotic factors may be related to the distribution and abundance of species in a correlation study (without claiming causation from correlation alone).",
+        marks: 7,
+        stem:
+          "At six sites, water nitrate concentration (mg dm^-3) and mayfly abundance (individuals per minute) were recorded:\nSite: 1, 2, 3, 4, 5, 6\nNitrate: 2, 4, 6, 8, 10, 12\nMayfly: 18, 15, 12, 9, 6, 3\nUsing the formula for Spearman’s rank correlation coefficient r_s provided in the examination, calculate r_s and state whether nitrate and mayfly abundance show a negative monotonic association.",
         modelAnswerPoints: [
-          "Spearman: monotonic relationships; ranked data; or parametric assumptions for Pearson not met.",
-          "Example: ranked pollution class vs ranked species abundance.",
-          "Correlation measures association; causation needs further evidence (mechanism, controlled study).",
+          "Rank nitrate 1–6 in order (already increasing); rank mayfly 6,5,4,3,2,1 (reverse order).",
+          "Perfect negative monotonic relationship across the six paired ranks.",
+          "r_s = −1 (accept strong negative correlation near −1 if working shown with d² method).",
+          "Interpretation: higher nitrate rank associates with lower mayfly rank (negative association).",
         ],
         workedSolution: [
-          "Spearman’s rank correlation assesses whether two variables increase or decrease together in a monotonic way when at least one variable is ordinal, the relationship is not expected to be strictly linear, or the data are not normally distributed with homoscedastic errors, which is common in ecology where counts are skewed and abiotic factors are sometimes binned into ordered categories.",
-          "A field ecologist might therefore rank sites by perceived agricultural run-off and rank an index of mayfly abundance, then test whether higher pollution ranks associate with lower mayfly ranks across independent sites.",
-          "Abiotic variables such as temperature, pH, salinity, or soil moisture, and biotic variables such as predator density or competitor cover, can structure distribution and abundance because they affect survival, growth, and reproduction, so correlation with measured axes is a first quantitative description of pattern.",
-          "A significant Spearman coefficient only means ranks co-vary consistently; it does not by itself prove that the abiotic factor mechanistically causes the species response, because hidden confounding variables may drive both, which is why examination answers should reserve causation language for experiments or process evidence.",
+          "Assign ranks to each variable separately: nitrate ranks are 1 through 6 in ascending order.",
+          "Mayfly counts decrease monotonically, so ranks are 6, 5, 4, 3, 2, 1 from site 1 to site 6.",
+          "Each site therefore has paired ranks that differ by a constant offset, giving the maximum negative monotonic association.",
+          "Using the Spearman formula with these ranks gives r_s = −1, so nitrate and mayfly abundance are perfectly negatively associated in this data set.",
+          "This indicates that sites with higher nitrate tend to have lower mayfly abundance, but correlation alone does not prove nitrate causes the decline without further experimental evidence.",
         ],
         commonMistake:
-          "Saying Spearman requires raw data to be linear, or inferring direct cause from r alone.",
-        tags: ["Spearman", "statistics"],
+          "Using Pearson on raw counts without ranking, or forgetting to rank each variable separately before applying the Spearman formula.",
+        tags: ["Spearman", "calculation", "statistics"],
       },
       {
         id: "t18-2-d7",
         noteId: "t18-2",
         kind: "structured",
         difficulty: 3,
-        marks: 6,
-        stem: "Describe when Pearson’s linear correlation is appropriate, and outline one biotic and one abiotic factor that might co-vary with the abundance of a plant species along a transect (formula not required).",
+        marks: 7,
+        stem:
+          "Paired measurements of soil moisture (% ) and grass shoot mass (g per quadrat) at five quadrats are:\nMoisture: 10, 20, 30, 40, 50\nMass: 4.0, 6.0, 8.0, 10.0, 12.0\nUsing the formula for Pearson’s product-moment correlation coefficient r provided in the examination, calculate r and comment on the strength and direction of the linear association.",
         modelAnswerPoints: [
-          "Pearson: linear relationship; interval/ratio data; approximate bivariate normality / parametric assumptions checked.",
-          "Biotic factor example: herbivore density, competitor cover, pathogen load.",
-          "Abiotic factor example: light intensity, soil moisture, nutrient concentration.",
+          "Both variables are continuous and the relationship is linear (mass increases by 2.0 g for every 10% moisture).",
+          "Calculation with the provided formula gives r = +1 (perfect positive linear correlation).",
+          "Direction: positive — higher moisture is associated with higher mass.",
+          "Strength: very strong (|r| = 1 within rounding of the given perfect data).",
         ],
         workedSolution: [
-          "Pearson’s product-moment correlation estimates the strength of a straight-line association between two continuous variables when the relationship is expected to be linear and the distributional assumptions—roughly normal variation around the line and homogeneity of variance—are not grossly violated after inspection or transformation.",
-          "Along a shore transect, continuous measures of soil salinity taken at each quadrat might linearly track with the density of a salt-tolerant grass if osmotic tolerance sets a clear gradient response, which would be a natural Pearson application if scatterplots look linear.",
-          "A biotic factor such as cumulative grazing pressure from geese, expressed as droppings per square metre per day, could co-vary negatively with sward height of a palatable species if herbivory limits biomass linearly over the observed range.",
-          "Together, abiotic and biotic covariates remind you that correlation screening is multivariate in real systems even when you test one pair at a time, and that mechanistic interpretation still needs ecological reasoning beyond the correlation coefficient.",
+          "Plotting or inspecting the pairs shows mass = 2.0 + 0.2 × moisture, a straight-line relationship suitable for Pearson’s r.",
+          "Substitute the five (x, y) pairs into the examination formula for r; with perfectly collinear linear data the numerator matches the denominator and r = +1.",
+          "A positive r close to +1 means that as soil moisture increases, grass shoot mass increases in a consistent linear way across these quadrats.",
+          "State that r describes association only: it does not by itself prove that moisture causes higher growth without controlled manipulation or additional mechanism evidence.",
         ],
         commonMistake:
-          "Using Pearson for obviously ordinal five-point ‘habitat quality’ scores without ranking, or ignoring linearity.",
-        tags: ["Pearson", "abiotic", "biotic"],
+          "Reporting r without commenting on direction and strength, or using Spearman when the syllabus expects Pearson for clearly linear continuous data.",
+        tags: ["Pearson", "calculation", "statistics"],
       },
       {
         id: "t18-2-d8",

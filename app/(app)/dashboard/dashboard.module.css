@@ -101,19 +101,6 @@
   gap: var(--sp-2);
 }
 
-.filterPill {
-  min-height: 26px;
-  display: inline-flex;
-  align-items: center;
-  border: 1px solid color-mix(in srgb, var(--accent) 15%, var(--border));
-  border-radius: var(--r-pill);
-  background: color-mix(in srgb, var(--surface) 86%, var(--accent-subtle));
-  color: var(--accent);
-  font-size: var(--fs-label-sm);
-  font-weight: 500;
-  padding: 0 var(--sp-3);
-}
-
 /* Single summary surface: runway + weak + signal + exam (replaces 3+1 cards). */
 .overviewShell {
   display: flex;
@@ -126,13 +113,78 @@
   box-shadow: none;
 }
 
-.overviewRunway {
+.runwayButton {
   display: flex;
   flex-direction: column;
   gap: var(--sp-2);
+  width: 100%;
+  margin: 0;
   padding: var(--sp-3) var(--sp-4);
+  border: none;
   background: var(--accent);
   color: var(--on-accent);
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 140ms ease, filter 140ms ease;
+}
+
+.runwayButton:hover {
+  filter: brightness(1.06);
+}
+
+.runwayButton:active {
+  filter: brightness(0.98);
+}
+
+.runwayButton:focus-visible {
+  outline: 2px solid var(--on-accent);
+  outline-offset: -2px;
+}
+
+.runwayButton .kpiLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  width: 100%;
+  color: color-mix(in srgb, var(--on-accent) 78%, transparent);
+}
+
+.runwayLabelMain {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.runwayHint {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--on-accent) 62%, transparent);
+  transition:
+    color 140ms ease,
+    gap 140ms ease;
+}
+
+.runwayHintIcon {
+  transition: transform 140ms ease;
+}
+
+.runwayButton:hover .runwayHint,
+.runwayButton:focus-visible .runwayHint {
+  color: color-mix(in srgb, var(--on-accent) 92%, transparent);
+}
+
+.runwayButton:hover .runwayHintIcon,
+.runwayButton:focus-visible .runwayHintIcon {
+  transform: translateX(2px);
 }
 
 .runwayTop {
@@ -157,11 +209,7 @@
   flex: 0 0 auto;
 }
 
-.overviewRunway .kpiLabel {
-  color: color-mix(in srgb, var(--on-accent) 78%, transparent);
-}
-
-.overviewRunway .kpiValue {
+.runwayButton .kpiValue {
   display: block;
   margin: 0;
   color: var(--on-accent);
@@ -229,37 +277,101 @@
   border-top: 1px solid var(--border);
 }
 
-.overviewSignal .signalGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  border: 1px solid var(--border);
-  border-radius: var(--r-sm);
-  overflow: hidden;
-  background: var(--surface);
-  margin-top: 2px;
-}
-
-.overviewSignal .signalMetric {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  grid-template-areas:
-    "label value"
-    "meta value";
-  column-gap: var(--sp-1);
-  row-gap: 1px;
-  min-height: 0;
+.overviewSignal .signalHeader {
   min-width: 0;
-  margin: 0;
-  padding: var(--sp-2);
-  border: none;
-  border-right: 1px solid var(--border);
-  border-bottom: none;
-  align-content: center;
 }
 
-.overviewSignal .signalMetric:last-child {
-  border-right: none;
+.overviewSignal .signalSub {
+  margin: 1px 0 0;
+  font-size: var(--fs-label-xs);
+  color: var(--text-muted);
+  line-height: 1.2;
+}
+
+.overviewSignal .signalNote {
+  margin: 0;
+  font-size: var(--fs-label-xs);
+  font-weight: 500;
+  line-height: var(--lh-normal);
+  color: var(--text-muted);
+}
+
+.overviewSignal .signalNote[data-band="low"] {
+  color: color-mix(in srgb, var(--danger) 88%, var(--text));
+}
+
+.overviewSignal .signalList {
+  display: grid;
+  gap: 0;
+  min-width: 0;
+  border-top: 1px solid var(--border);
+}
+
+.overviewSignal .signalRow {
+  display: grid;
+  grid-template-columns: 3px minmax(0, 1fr) auto;
+  gap: var(--sp-2);
+  align-items: center;
+  min-height: 34px;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.overviewSignal .signalRow:last-child {
+  border-bottom: none;
+}
+
+.overviewSignal .signalRail {
+  width: 3px;
+  height: 22px;
+  border-radius: var(--r-pill);
+  background: color-mix(in srgb, var(--accent) 34%, var(--border));
+}
+
+.overviewSignal .signalRow[data-band="low"] .signalRail {
+  background: var(--danger);
+}
+
+.overviewSignal .signalBody {
+  min-width: 0;
+  display: grid;
+  gap: 1px;
+}
+
+.overviewSignal .signalTitle {
+  overflow: hidden;
+  color: var(--text);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.overviewSignal .signalMeta {
+  overflow: hidden;
+  color: var(--text-muted);
+  font-size: var(--fs-label-xs);
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.overviewSignal .signalScore {
+  display: grid;
+  justify-items: end;
+  min-width: 2.6rem;
+}
+
+.overviewSignal .signalValue {
+  color: var(--text);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.overviewSignal .signalRow[data-band="low"] .signalValue {
+  color: var(--danger);
 }
 
 .overviewExam {
@@ -1422,8 +1534,8 @@
     display: none;
   }
 
-  .overviewSignal .signalMetric span,
-  .overviewSignal .signalMetric em {
+  .overviewSignal .signalTitle,
+  .overviewSignal .signalMeta {
     white-space: normal;
     text-overflow: unset;
   }

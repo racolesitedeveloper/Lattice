@@ -27,6 +27,7 @@ const SECTION_ICONS: Record<AppSection, Icon> = {
 
 const LAST_SECTION_ROUTES_KEY = "lattice:last-section-routes:v1";
 type LastSectionRoutes = Partial<Record<AppSection, string>>;
+type SubjectId = "physics" | "chemistry" | "biology";
 
 function sectionActive(pathname: string, section: AppSection): boolean {
   if (pathname.startsWith(`/pick/${section}`)) return true;
@@ -46,6 +47,25 @@ function sectionFromPathname(pathname: string): AppSection | null {
   const section = match?.[1];
   if (!section || !(APP_SECTIONS as readonly string[]).includes(section)) return null;
   return section as AppSection;
+}
+
+function subjectFromPathname(pathname: string): SubjectId | null {
+  const path = pathname.split(/[?#]/)[0] ?? "";
+  const match = /^\/(physics|chemistry|biology)(?:\/|$)/.exec(path);
+  return (match?.[1] as SubjectId | undefined) ?? null;
+}
+
+function sectionHref(section: AppSection, pathname: string, lastSectionRoutes: LastSectionRoutes): string {
+  const currentSubject = subjectFromPathname(pathname);
+  const lastHref = lastSectionRoutes[section];
+
+  if (currentSubject) {
+    return lastHref && subjectFromPathname(lastHref) === currentSubject
+      ? lastHref
+      : `/${currentSubject}/${section}`;
+  }
+
+  return lastHref ?? `/pick/${section}`;
 }
 
 function readLastSectionRoutes(): LastSectionRoutes {
@@ -103,9 +123,12 @@ export default function AppSidebar() {
 
   return (
     <aside className={s.sidebar}>
-      <IntentPrefetchLink href="/dashboard" className={s.brand} aria-label="Lattice home">
-        <Logo size={22} />
-      </IntentPrefetchLink>
+      <div className={s.sidebarHead}>
+        <IntentPrefetchLink href="/dashboard" className={s.brand} aria-label="Lattice home">
+          <Logo size={22} />
+        </IntentPrefetchLink>
+        <ThemeToggle variant="icon" />
+      </div>
 
       <nav className={s.navBlock} aria-label="Main">
         <IntentPrefetchLink
@@ -119,7 +142,7 @@ export default function AppSidebar() {
         <span className={s.sectionLabel}>General</span>
         {APP_SECTIONS.map((section) => {
           const Icon = SECTION_ICONS[section];
-          const href = lastSectionRoutes[section] ?? `/pick/${section}`;
+          const href = sectionHref(section, pathname, lastSectionRoutes);
           return (
             <IntentPrefetchLink
               key={section}
@@ -134,7 +157,6 @@ export default function AppSidebar() {
       </nav>
 
       <div className={s.bottom}>
-        <ThemeToggle />
         <IntentPrefetchLink href="/" className={s.landingLink}>
           Marketing site
         </IntentPrefetchLink>
@@ -159,37 +181,39 @@ export default function AppSidebar() {
         </form>
       </div>
 
-      <details className={s.mobileMore}>
-        <summary className={s.mobileMoreSummary}>
-          <DotsThree className={s.navIcon} size={20} weight="bold" aria-hidden />
-          <span>More</span>
-        </summary>
-        <div className={s.mobileMorePanel}>
-          <ThemeToggle />
-          <IntentPrefetchLink href="/" className={s.landingLink}>
-            Marketing site
-          </IntentPrefetchLink>
-          {plan === "free" ? (
-            <IntentPrefetchLink href="/subscribe" className={s.upgradeBtn}>
-              Upgrade to Full
+      <div className={s.mobileTray}>
+        <ThemeToggle variant="icon" />
+        <details className={s.mobileMore}>
+          <summary className={s.mobileMoreSummary}>
+            <DotsThree className={s.navIcon} size={20} weight="bold" aria-hidden />
+            <span>More</span>
+          </summary>
+          <div className={s.mobileMorePanel}>
+            <IntentPrefetchLink href="/" className={s.landingLink}>
+              Marketing site
             </IntentPrefetchLink>
-          ) : (
-            <BillingActionButton
-              action="portal"
-              className={s.manageBillingBtn}
-              pendingLabel="Opening..."
-            >
-              Manage billing
-            </BillingActionButton>
-          )}
-          <SessionEmailLine />
-          <form action={logout}>
-            <button type="submit" className={s.signOutBtn}>
-              Sign out
-            </button>
-          </form>
-        </div>
-      </details>
+            {plan === "free" ? (
+              <IntentPrefetchLink href="/subscribe" className={s.upgradeBtn}>
+                Upgrade to Full
+              </IntentPrefetchLink>
+            ) : (
+              <BillingActionButton
+                action="portal"
+                className={s.manageBillingBtn}
+                pendingLabel="Opening..."
+              >
+                Manage billing
+              </BillingActionButton>
+            )}
+            <SessionEmailLine />
+            <form action={logout}>
+              <button type="submit" className={s.signOutBtn}>
+                Sign out
+              </button>
+            </form>
+          </div>
+        </details>
+      </div>
     </aside>
   );
 }

@@ -69,7 +69,7 @@ export const PHYSICS_TOPIC10_DRAFTS: Record<string, NoteDraft> = {
         id: "t10-1-ex1",
         title: "Terminal p.d. under load",
         problem: [
-          "A battery has e.m.f. 1.50 V and internal resistance 0.20 ohm. It supplies current 1.8 A to an external circuit. Calculate (a) terminal p.d. and (b) power dissipated inside the battery.",
+          "A battery has e.m.f. 1.50 V and internal resistance 0.20 Ω. It supplies current 1.8 A to an external circuit. Calculate (a) terminal p.d. and (b) power dissipated inside the battery.",
         ],
         solution: [
           "Use V = E - Ir.",
@@ -88,8 +88,8 @@ export const PHYSICS_TOPIC10_DRAFTS: Record<string, NoteDraft> = {
           "Open-circuit reading gives e.m.f. E = 9.0 V.",
           "Under load, V = 8.1 V and I = 0.60 A. Use V = E - Ir.",
           "So Ir = E - V = 9.0 - 8.1 = 0.9 V.",
-          "r = 0.9 / 0.60 = 1.5 ohm.",
-          "Internal resistance is 1.5 ohm.",
+          "r = 0.9 / 0.60 = 1.5 Ω.",
+          "Internal resistance is 1.5 Ω.",
         ],
       },
       {
@@ -120,7 +120,7 @@ export const PHYSICS_TOPIC10_DRAFTS: Record<string, NoteDraft> = {
       {
         id: "t10-1-st2",
         question:
-          "A source has e.m.f. 12.0 V and internal resistance 0.50 ohm. Find terminal p.d. when current is (a) 0 A and (b) 4.0 A.",
+          "A source has e.m.f. 12.0 V and internal resistance 0.50 Ω. Find terminal p.d. when current is (a) 0 A and (b) 4.0 A.",
         modelAnswer: [
           "Use V = E - Ir.",
           "(a) I = 0 gives V = 12.0 V.",
@@ -148,7 +148,7 @@ export const PHYSICS_TOPIC10_DRAFTS: Record<string, NoteDraft> = {
       {
         id: "t10-1-st5",
         question:
-          "A cell supplies current 2.5 A to an external circuit. Its e.m.f. is 6.0 V and internal resistance is 0.40 ohm. Calculate (a) terminal p.d. and (b) power delivered to external circuit.",
+          "A cell supplies current 2.5 A to an external circuit. Its e.m.f. is 6.0 V and internal resistance is 0.40 Ω. Calculate (a) terminal p.d. and (b) power delivered to external circuit.",
         modelAnswer: [
           "Terminal p.d.: V = E - Ir = 6.0 - (2.5)(0.40) = 5.0 V.",
           "Power delivered externally: Pexternal = VI = (5.0)(2.5) = 12.5 W.",
@@ -224,12 +224,12 @@ export const PHYSICS_TOPIC10_DRAFTS: Record<string, NoteDraft> = {
         id: "t10-2-ex1",
         title: "Series and parallel equivalent resistance",
         problem: [
-          "Calculate equivalent resistance of (a) 3.0 ohm, 5.0 ohm and 7.0 ohm in series, and (b) 6.0 ohm and 3.0 ohm in parallel.",
+          "Calculate equivalent resistance of (a) 3.0 Ω, 5.0 Ω and 7.0 Ω in series, and (b) 6.0 Ω and 3.0 Ω in parallel.",
         ],
         solution: [
-          "(a) Series: R = 3.0 + 5.0 + 7.0 = 15.0 ohm.",
+          "(a) Series: R = 3.0 + 5.0 + 7.0 = 15.0 Ω.",
           "(b) Parallel: 1/R = 1/6.0 + 1/3.0 = 1/6 + 2/6 = 3/6 = 1/2.",
-          "So R = 2.0 ohm.",
+          "So R = 2.0 Ω.",
         ],
       },
       {
@@ -248,7 +248,7 @@ export const PHYSICS_TOPIC10_DRAFTS: Record<string, NoteDraft> = {
         id: "t10-2-ex3",
         title: "Simple loop with source internal resistance",
         problem: [
-          "A source has e.m.f. 12 V and internal resistance 1.0 ohm. It is connected to an external resistor of 5.0 ohm in series. Use Kirchhoff's second law to find circuit current.",
+          "A source has e.m.f. 12 V and internal resistance 1.0 Ω. It is connected to an external resistor of 5.0 Ω in series. Use Kirchhoff's second law to find circuit current.",
         ],
         solution: [
           "Choose loop direction same as current I.",
@@ -300,12 +300,12 @@ export const PHYSICS_TOPIC10_DRAFTS: Record<string, NoteDraft> = {
       {
         id: "t10-2-st5",
         question:
-          "A 9.0 V source with negligible internal resistance is connected in a single loop with two resistors 2.0 ohm and 7.0 ohm in series. Find loop current and p.d. across each resistor.",
+          "A 9.0 V source with negligible internal resistance is connected in a single loop with two resistors 2.0 Ω and 7.0 Ω in series. Find loop current and p.d. across each resistor.",
         modelAnswer: [
-          "Series equivalent resistance is 2.0 + 7.0 = 9.0 ohm.",
+          "Series equivalent resistance is 2.0 + 7.0 = 9.0 Ω.",
           "Loop current I = V/R = 9.0/9.0 = 1.0 A.",
-          "P.d. across 2.0 ohm resistor: V1 = IR1 = 2.0 V.",
-          "P.d. across 7.0 ohm resistor: V2 = IR2 = 7.0 V.",
+          "P.d. across 2.0 Ω resistor: V1 = IR1 = 2.0 V.",
+          "P.d. across 7.0 Ω resistor: V2 = IR2 = 7.0 V.",
           "Check: V1 + V2 = 9.0 V matches source.",
         ],
       },

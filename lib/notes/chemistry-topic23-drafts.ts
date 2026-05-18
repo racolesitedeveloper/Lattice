@@ -131,7 +131,8 @@ export const CHEMISTRY_TOPIC23_DRAFTS: Record<string, NoteDraft> = {
         question:
           "Why is lattice energy magnitude generally larger for ions with higher charges and smaller radii?",
         modelAnswer: [
-          "Electrostatic attraction is stronger when ionic charges are larger and when ion-ion distance is smaller, so lattice formation releases more energy (more negative value, larger magnitude).",
+          "ΔS° is the standard entropy change for a reaction under standard conditions.",
+          "Positive ΔS° implies greater disorder in products than reactants at the molecular level.",
         ],
       },
       {

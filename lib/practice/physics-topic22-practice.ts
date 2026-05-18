@@ -61,7 +61,6 @@ export const PHYSICS_TOPIC22_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Photon momentum is inversely proportional to wavelength: p = h/lambda.",
         distractorRationale: {
-          B: "Correct inverse dependence.",
           C: "Momentum changes with wavelength/frequency.",
           D: "There is no such wavelength cutoff for photon momentum becoming zero.",
         },
@@ -322,7 +321,6 @@ export const PHYSICS_TOPIC22_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Emission requires photon energy above work function, giving a threshold frequency.",
         distractorRationale: {
-          B: "Correct threshold-frequency condition.",
           C: "Emission is effectively immediate when frequency is above threshold.",
           D: "Maximum kinetic energy depends on frequency, not intensity.",
         },
@@ -344,7 +342,6 @@ export const PHYSICS_TOPIC22_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation: "At fixed frequency, higher intensity means more photons per second, so more emitted electrons.",
         distractorRationale: {
           B: "Stopping potential tracks maximum kinetic energy, which stays set by frequency.",
-          C: "Correct: more photons above threshold gives greater emission rate.",
           D: "Work function is material dependent and does not increase with intensity.",
         },
         tags: ["intensity", "photoelectric-current", "experimental-trends"],
@@ -648,7 +645,6 @@ export const PHYSICS_TOPIC22_PRACTICE: Record<string, SubtopicPracticePack> = {
         distractorRationale: {
           B: "Particle identity is irrelevant when momentum is fixed.",
           C: "Mass differences matter only via momentum, already specified equal.",
-          D: "Correct conclusion from lambda = h/p.",
         },
         tags: ["conceptual", "momentum-dependence", "duality"],
       },
@@ -668,7 +664,6 @@ export const PHYSICS_TOPIC22_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation: "Diffraction of electrons demonstrates matter-wave behaviour.",
         distractorRationale: {
           B: "Electrons also show particle behaviour in many experiments.",
-          C: "Correct interpretation of diffraction evidence.",
           D: "Classical wave theory alone cannot explain full quantum behaviour.",
         },
         tags: ["electron-diffraction", "evidence", "matter-waves"],
@@ -927,7 +922,6 @@ export const PHYSICS_TOPIC22_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation: "Atomic energy levels are discrete; transitions give photons of specific energies.",
         distractorRationale: {
           B: "Equal emission at all wavelengths would give continuous spectra.",
-          C: "Correct explanation for discrete spectral lines.",
           D: "Continuous loss would not produce stable quantised line spectra.",
         },
         tags: ["energy-levels", "line-spectra", "bohr-model"],
@@ -948,7 +942,6 @@ export const PHYSICS_TOPIC22_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation: "Emission occurs when electron energy decreases; difference is carried by photon.",
         distractorRationale: {
           B: "No energy difference means no photon energy.",
-          C: "Correct direction for photon emission.",
           D: "No transition means no spectral photon.",
         },
         tags: ["transitions", "emission", "atomic-model"],
@@ -969,7 +962,6 @@ export const PHYSICS_TOPIC22_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation: "Use lambda(nm) approx 1240/E(eV). So lambda approx 1240/3.0 = 413 nm.",
         distractorRationale: {
           B: "This corresponds to about 2.0 eV, not 3.0 eV.",
-          C: "Correct inverse relation gives 413 nm.",
           D: "This would require about 8.0 eV transition.",
         },
         tags: ["energy-wavelength", "line-spectra", "numerical"],

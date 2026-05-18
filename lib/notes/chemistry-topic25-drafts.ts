@@ -159,9 +159,9 @@ export const CHEMISTRY_TOPIC25_DRAFTS: Record<string, NoteDraft> = {
         question:
           "Calculate pH of 0.00250 mol dm⁻3 Ba(OH)2 at 25 °C.",
         modelAnswer: [
-          "Ba(OH)2 gives 2OH-, so [OH-] = 2 × 0.00250 = 0.00500 mol dm⁻3.",
+          "Ba(OH)2 is a strong base giving [OH-] = 2 × 0.00250 = 0.00500 mol dm⁻3.",
           "pOH = -log10(0.00500) = 2.30.",
-          "pH = 14.00 - 2.30 = 11.70.",
+          "pH = 14.00 - 2.30 = 11.70 at 25 °C.",
         ],
       },
       {
@@ -297,7 +297,9 @@ export const CHEMISTRY_TOPIC25_DRAFTS: Record<string, NoteDraft> = {
         question:
           "A solute has equilibrium concentrations 0.045 mol dm⁻3 in octan-1-ol and 0.015 mol dm⁻3 in water. Calculate Kpc(octan-1-ol/water).",
         modelAnswer: [
+          "Kpc = [solute] in octan-1-ol / [solute] in water at equilibrium.",
           "Kpc = 0.045 / 0.015 = 3.0.",
+          "The solute is three times more concentrated in the organic layer than in water at equilibrium.",
         ],
       },
       {

@@ -43,7 +43,6 @@ export const PHYSICS_TOPIC25_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation:
           "Using b = L/(4pi d^2), d = sqrt(L/(4pi b)) = sqrt(8.0 x 10^26 / (4pi x 2.0 x 10^-10)) approx 5.6 x 10^17 m.",
         distractorRationale: {
-          B: "Correct substitution and square-root handling in the inverse-square law.",
           C: "A common error from omitting the 4pi factor before square rooting.",
           D: "Typically from inverting b/L or misreading the exponent sign.",
         },
@@ -364,25 +363,25 @@ export const PHYSICS_TOPIC25_PRACTICE: Record<string, SubtopicPracticePack> = {
       {
         id: "t25-2-d3",
         noteId: "t25-2",
-        kind: "mcq",
+        kind: "structured",
         difficulty: 3,
+        marks: 5,
         stem:
-          "A star has radius equal to the Sun's radius but surface temperature 2T_sun.\nIts luminosity is",
-        options: [
-          { id: "A", text: "2 L_sun" },
-          { id: "B", text: "4 L_sun" },
-          { id: "C", text: "8 L_sun" },
-          { id: "D", text: "16 L_sun" },
+          "State Wien's displacement law and use it to estimate the peak surface temperature of a star whose peak emission wavelength is 480 nm.\nTake Wien constant b = 2.90 x 10^-3 m K.",
+        modelAnswerPoints: [
+          "Wien's displacement law: peak wavelength lambda_max is inversely proportional to absolute temperature T (lambda_max T = constant b).",
+          "Rearrange to T = b/lambda_max.",
+          "Convert wavelength: 480 nm = 4.80 x 10^-7 m.",
+          "T = (2.90 x 10^-3)/(4.80 x 10^-7) = 6.04 x 10^3 K (about 6000 K).",
+          "Temperature must be in kelvin.",
         ],
-        correctOptionId: "D",
-        explanation:
-          "For fixed radius, L proportional T^4. Doubling T multiplies L by 2^4 = 16.",
-        distractorRationale: {
-          B: "This assumes linear dependence on T.",
-          C: "This corresponds to T^3 scaling, not Stefan-Boltzmann law.",
-          D: "Correct use of fourth-power temperature dependence.",
-        },
-        tags: ["temperature-dependence", "stefan-boltzmann", "comparisons"],
+        workedSolution: [
+          "Wien's law links the wavelength at maximum spectral intensity to surface temperature using lambda_max T = b.",
+          "Substitute b = 2.90 x 10^-3 m K and lambda_max = 4.80 x 10^-7 m to obtain T = 6.0 x 10^3 K.",
+          "This temperature scale is typical of a Sun-like stellar photosphere.",
+        ],
+        commonMistake: "Using Celsius temperature or forgetting to convert nanometres to metres.",
+        tags: ["wiens-law", "peak-wavelength", "temperature-estimate"],
       },
       {
         id: "t25-2-d4",

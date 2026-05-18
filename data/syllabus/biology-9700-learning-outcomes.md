@@ -207,7 +207,27 @@
 - explain the roles of the sinoatrial node, the atrioventricular node and the Purkyne tissue in the cardiac cycle (knowledge of nervous and hormonal control is not expected)
 
 
+## Topic 9
+
+### 9.1 The gas exchange system
+
+- describe the structure of the human gas exchange system, limited to: • lungs • trachea • bronchi • bronchioles • alveoli • capillary network
+- describe the distribution in the gas exchange system of cartilage, ciliated epithelium, goblet cells, squamous epithelium of alveoli, smooth muscle and capillaries
+- recognise cartilage, ciliated epithelium, goblet cells, squamous epithelium of alveoli, smooth muscle and capillaries in microscope slides, photomicrographs and electron micrographs
+- recognise trachea, bronchi, bronchioles and alveoli in microscope slides, photomicrographs and electron micrographs and make plan diagrams of transverse sections of the walls of the trachea and bronchus
+- describe the functions of ciliated epithelial cells, goblet cells and mucous glands in maintaining the health of the gas exchange system
+- describe the functions in the gas exchange system of cartilage, smooth muscle, elastic fibres and squamous epithelium
+- describe gas exchange between air in the alveoli and blood in the capillaries
+
+
 ## Topic 10
+
+### 10.1 Infectious diseases
+
+- state that infectious diseases are caused by pathogens and are transmissible
+- state the name and type of pathogen that causes each of the following diseases: • cholera – caused by the bacterium Vibrio cholerae • malaria – caused by the protoctists Plasmodium falciparum, Plasmodium malariae, Plasmodium ovale and Plasmodium vivax • tuberculosis (TB) – caused by the bacteria Mycobacterium tuberculosis and Mycobacterium bovis • HIV/AIDS – caused by the human immunodeficiency virus (HIV)
+- explain how cholera, malaria, TB and HIV are transmitted
+- discuss the biological, social and economic factors that need to be considered in the prevention and control of cholera, malaria, TB and HIV (details of the life cycle of the malarial parasite are not expected)
 
 ### 10.2 Antibiotics
 
@@ -217,6 +237,13 @@
 
 ## Topic 11
 
+### 11.1 The immune system
+
+- describe the mode of action of phagocytes (macrophages and neutrophils)
+- explain what is meant by an antigen (see 4.1.3) and state the difference between self antigens and non-self antigens
+- describe the sequence of events that occurs during a primary immune response with reference to the roles of: • macrophages • B-lymphocytes, including plasma cells • T-lymphocytes, limited to T-helper cells and T-killer cells
+- explain the role of memory cells in the secondary immune response and in long-term immunity
+
 ### 11.2 Antibodies and vaccination
 
 - relate the molecular structure of antibodies to their functions
@@ -224,13 +251,23 @@
 - outline the principles of using monoclonal antibodies in the diagnosis of disease and in the treatment of disease
 - describe the differences between active immunity and passive immunity and between natural immunity and artificial immunity
 - explain that vaccines contain antigens that stimulate immune responses to provide long-term immunity
-- explain how vaccination programmes can help to control the spread of infectious diseases A Level subject content
+- explain how vaccination programmes can help to control the spread of infectious diseases
 
 
 ## A Level subject content
 
 
 ## Topic 12
+
+### 12.1 Energy
+
+- outline the need for energy in living organisms, as illustrated by active transport, movement and anabolic reactions, such as those occurring in DNA replication and protein synthesis
+- describe the features of ATP that make it suitable as the universal energy currency
+- state that ATP is synthesised by: • transfer of phosphate in substrate-linked reactions • chemiosmosis in membranes of mitochondria and chloroplasts
+- explain the relative energy values of carbohydrates, lipids and proteins as respiratory substrates
+- state that the respiratory quotient (RQ) is the ratio of the number of molecules of carbon dioxide produced to the number of molecules of oxygen taken in, as a result of respiration
+- calculate RQ values of different respiratory substrates from equations for respiration
+- describe and carry out investigations, using simple respirometers, to determine the RQ of germinating seeds or small invertebrates (e.g. blowfly larvae)
 
 ### 12.2 Respiration
 
@@ -282,6 +319,17 @@
 
 
 ## Topic 14
+
+### 14.1 Homeostasis in mammals
+
+- explain what is meant by homeostasis and the importance of homeostasis in mammals
+- explain the principles of homeostasis in terms of internal and external stimuli, receptors, coordination systems (nervous system and endocrine system), effectors (muscles and glands) and negative feedback
+- state that urea is produced in the liver from the deamination of excess amino acids
+- describe the structure of the human kidney, limited to: • fibrous capsule • cortex • medulla • renal pelvis • ureter • branches of the renal artery and renal vein
+- identify, in diagrams, photomicrographs and electron micrographs, the parts of a nephron and its associated blood vessels and structures, limited to: • glomerulus • Bowman's capsule • proximal convoluted tubule • loop of Henle • distal convoluted tubule • collecting duct
+- describe and explain the formation of urine in the nephron, limited to: • the formation of glomerular filtrate by ultrafiltration in the Bowman's capsule • selective reabsorption in the proximal convoluted tubule
+- relate the detailed structure of the Bowman's capsule and proximal convoluted tubule to their functions in the formation of urine
+- describe the roles of the hypothalamus, posterior pituitary gland, antidiuretic hormone (ADH), aquaporins and collecting ducts in osmoregulation
 
 ### 14.1 Homeostasis in mammals continued
 

@@ -20,7 +20,6 @@ export const PHYSICS_TOPIC15_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation:
           "A mole is the amount of substance containing Avogadro constant number of specified particles.",
         distractorRationale: {
-          B: "Correct definition using number of entities, not mass or volume.",
           C: "Volume depends on state conditions and is not the definition of mole.",
           D: "Mass number 12 is linked to carbon-12 calibration, not the definition itself.",
         },
@@ -43,7 +42,6 @@ export const PHYSICS_TOPIC15_PRACTICE: Record<string, SubtopicPracticePack> = {
           "Use N = nN_A = 0.40 x 6.02 x 10^23 = 2.41 x 10^23 molecules.",
         distractorRationale: {
           B: "This often comes from using n = 0.10 mol by mistake.",
-          C: "Correct use of N = nN_A.",
           D: "This equals one mole, not 0.40 mol.",
         },
         tags: ["particle-number", "mole-calculation", "avogadro-constant"],
@@ -65,7 +63,6 @@ export const PHYSICS_TOPIC15_PRACTICE: Record<string, SubtopicPracticePack> = {
           "Amount of substance equals mass divided by molar mass, with consistent units.",
         distractorRationale: {
           B: "Multiplying gives wrong dimensions.",
-          C: "Correct dimensional and algebraic relation.",
           D: "Addition is physically meaningless here.",
         },
         tags: ["molar-mass", "equation", "units"],
@@ -357,7 +354,6 @@ export const PHYSICS_TOPIC15_PRACTICE: Record<string, SubtopicPracticePack> = {
         correctOptionId: "B",
         explanation: "Thermodynamic equations require absolute temperature in kelvin.",
         distractorRationale: {
-          B: "Correct absolute scale.",
           C: "Fahrenheit is not used in SI gas equations.",
           D: "Using Celsius introduces an offset error.",
         },
@@ -381,7 +377,6 @@ export const PHYSICS_TOPIC15_PRACTICE: Record<string, SubtopicPracticePack> = {
           "At constant V and n, p proportional T, so p2 = p1(T2/T1) = 1.50 x 10^5 x (360/300) = 1.80 x 10^5 Pa.",
         distractorRationale: {
           B: "Pressure changes when temperature changes at fixed volume.",
-          C: "Correct use of proportional relation.",
           D: "This over-scales by applying ratio twice.",
         },
         tags: ["constant-volume", "pressure-temperature", "proportionality"],
@@ -651,7 +646,6 @@ export const PHYSICS_TOPIC15_PRACTICE: Record<string, SubtopicPracticePack> = {
         explanation:
           "Molecules transfer momentum to walls during collisions, producing force and hence pressure.",
         distractorRationale: {
-          B: "Correct microscopic origin of gas pressure.",
           C: "Weight contributes only tiny hydrostatic gradients in many contexts.",
           D: "Ideal-gas pressure does not require reactions.",
         },
@@ -674,7 +668,6 @@ export const PHYSICS_TOPIC15_PRACTICE: Record<string, SubtopicPracticePack> = {
           "Ideal-gas theory assumes negligible intermolecular forces except during instantaneous collisions.",
         distractorRationale: {
           B: "Collisions are modeled as elastic, not inelastic.",
-          C: "Correct statement of a key assumption.",
           D: "Speeds are distributed, not identical.",
         },
         tags: ["assumptions", "ideal-gas-model"],
@@ -696,7 +689,6 @@ export const PHYSICS_TOPIC15_PRACTICE: Record<string, SubtopicPracticePack> = {
           "Mean molecular kinetic energy is (3/2)kT, directly proportional to absolute temperature.",
         distractorRationale: {
           B: "Volume alone does not determine molecular kinetic energy.",
-          C: "Correct direct proportionality with T.",
           D: "At fixed T, different gases have same mean kinetic energy per molecule.",
         },
         tags: ["mean-kinetic-energy", "temperature", "boltzmann"],
